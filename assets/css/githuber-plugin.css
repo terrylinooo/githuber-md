@@ -1,0 +1,12 @@
+/* GFM task list */
+.gfm-task-list {
+  border: 1px solid transparent;
+  list-style-type: none;
+}
+.gfm-task-list input {
+  margin-right: 10px !important;
+}
+
+.katex-container {
+  margin: 25px !important;
+}
