@@ -1,6 +1,6 @@
 === Githuber MD ===
 Contributors: terrylin
-Tags: githuber
+Tags: githuber, markdown
 Requires at least: 4.7
 Tested up to: 4.7
 Stable tag: 4.7

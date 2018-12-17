@@ -439,8 +439,8 @@ class Setting extends ControllerAbstract {
 	public function setting_admin_menu() {
 
 		add_options_page(
-			__( 'Githuber ', $this->text_domain ),
-			__( 'Githuber', $this->text_domain ),
+			__( 'Githuber MD ', $this->text_domain ),
+			__( 'Githuber MD', $this->text_domain ),
 			'manage_options',
 			'githuber-md',
 			array( $this, 'setting_plugin_page' )
