@@ -150,7 +150,7 @@ class Markdown extends ControllerAbstract {
 		}
 
 		wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.js', array( 'jquery' ), $this->editormd_varsion, true );
-		wp_enqueue_script( 'githuber-plugin', $this->githuber_plugin_url . 'assets/js/githuber-plugin.js', array( 'editormd' ), $this->version, true );
+		wp_enqueue_script( 'githuber-md', $this->githuber_plugin_url . 'assets/js/githuber-md.js', array( 'editormd' ), $this->version, true );
 
 		switch ( get_bloginfo( 'language' ) ) {
 			case 'zh-TW':
@@ -188,7 +188,7 @@ class Markdown extends ControllerAbstract {
 		$editormd_localize['editor_placeholder'] = __( 'Happy Markdowning!', $this->text_domain );
 
 		// Register JS variables for the Editormd library uses.
-		wp_localize_script( 'githuber-plugin', 'editormd_config', $editormd_localize );
+		wp_localize_script( 'githuber-md', 'editormd_config', $editormd_localize );
 	}
 
 	/**

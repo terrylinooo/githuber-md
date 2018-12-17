@@ -74,7 +74,7 @@ class Githuber {
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
-		wp_enqueue_style( 'githuber-plugin-css', GITHUBER_PLUGIN_URL . 'assets/css/githuber-plugin.css', array(), GITHUBER_PLUGIN_VERSION, 'all' );
+		wp_enqueue_style( 'githuber-md-css', GITHUBER_PLUGIN_URL . 'assets/css/githuber-md.css', array(), GITHUBER_PLUGIN_VERSION, 'all' );
 	}
 
 	/**

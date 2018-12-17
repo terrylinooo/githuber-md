@@ -19,7 +19,7 @@
  * Author URI:        https://terryl.in/
  * License:           GPL 3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:       githuber-plugin
+ * Text Domain:       githuber-md
  * Domain Path:       /languages
  */
 
@@ -63,7 +63,7 @@ define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 define( 'GITHUBER_PLUGIN_VERSION', '1.1.0' );
-define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'githuber-plugin' );
+define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'githuber-md' );
 
 /**
  * Start to run Githuber plugin cores.
