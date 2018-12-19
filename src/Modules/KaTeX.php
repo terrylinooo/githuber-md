@@ -162,21 +162,23 @@ class KaTeX extends ModuleAbstract {
 	 */
 	public function front_print_footer_scripts() {
 		$script = '
-			<script>
+			<script id="module-katex">
 				(function($) {
 					$(function() {
-						if ($(".katex-container").length > 0) {
-							$(".katex-container").each(function() {
-								var katexText = $(this).text();
-								var el = $( this ).get( 0 );
-								if ($(this).parent("code").length == 0) {
-									try {
-										katex.render(katexText, el)
-									} catch (err) {
-										$(this).html("<span class=\'err\'>" + err)
+						if (typeof katex !== "undefined") {
+							if ($(".katex-container").length > 0) {
+								$(".katex-container").each(function() {
+									var katexText = $(this).text();
+									var el = $( this ).get( 0 );
+									if ($(this).parent("code").length == 0) {
+										try {
+											katex.render(katexText, el)
+										} catch (err) {
+											$(this).html("<span class=\'err\'>" + err)
+										}
 									}
-								}
-							});
+								});
+							}
 						}
 					});
 				})(jQuery);

@@ -107,15 +107,17 @@ class SequenceDiagram extends ModuleAbstract {
 	 */
 	public function front_print_footer_scripts() {
 		$script = '
-			<script>
+			<script id="module-sequence-diagram">
 				(function($) {
-					$(".language-sequence").addClass("sequence-diagram").removeClass("language-sequence");
-                    $(".language-seq").addClass("sequence-diagram").removeClass("language-seq");
-					$(function() {
-						$(".sequence-diagram").sequenceDiagram({
-							theme: "simple"
+					if (typeof $.fn.sequenceDiagram !== "undefined") {
+						$(".language-sequence").addClass("sequence-diagram").removeClass("language-sequence");
+						$(".language-seq").addClass("sequence-diagram").removeClass("language-seq");
+						$(function() {
+							$(".sequence-diagram").sequenceDiagram({
+								theme: "simple"
+							});
 						});
-					});
+					}
                 })(jQuery);
 			</script>
 		';

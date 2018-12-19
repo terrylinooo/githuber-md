@@ -97,12 +97,14 @@ class FlowChart extends ModuleAbstract {
 	 */
 	public function front_print_footer_scripts() {
 		$script = '
-			<script>
+			<script id="module-flowchart">
 				(function($) {
 					$(function() {
-						if ($(".language-flow").length > 0) {
-							$(".language-flow").addClass("flowchart").removeClass("language-flow");
-							$(".flowchart").flowChart();
+						if (typeof $.fn.flowChart !== "undefined") {
+							if ($(".language-flow").length > 0) {
+								$(".language-flow").addClass("flowchart").removeClass("language-flow");
+								$(".flowchart").flowChart();
+							}
 						}
 					});
 				})(jQuery);
