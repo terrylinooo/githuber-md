@@ -47,15 +47,18 @@ class Githuber_Widget_Toc extends WP_Widget {
 	public function githuber_toc_inline_js() {
 
 		$inline_js = '
-		jQuery( document ).ready(function( $ ) {
-			Toc.init({
-				$nav: $( "#toc" ),
-				$scope: $( ".markdown-body" )
+			jQuery( document ).ready(function( $ ) {
+				Toc.init({
+					$nav: $( "#toc" ),
+					$scope: $( ".markdown-body" )
+				});
+
+				if ( "undefined" !== typeof $.fn.scrollspy ) {
+					$( "body" ).scrollspy({
+						target: "#toc"
+					});
+				}
 			});
-			$( "body" ).scrollspy({
-				target: "#toc"
-			});
-		});
 		';
 
 		wp_add_inline_script( 'bootstrap-toc', $inline_js );
