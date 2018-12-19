@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.1.0
- * @version 1.1.0
+ * @version 1.0.0
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
