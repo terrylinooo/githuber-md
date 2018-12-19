@@ -102,6 +102,7 @@ class FlowChart extends ModuleAbstract {
 					$(function() {
 						if (typeof $.fn.flowChart !== "undefined") {
 							if ($(".language-flow").length > 0) {
+								$(".language-flow").parent("pre").attr("style", "text-align: center; background: none;");
 								$(".language-flow").addClass("flowchart").removeClass("language-flow");
 								$(".flowchart").flowChart();
 							}
