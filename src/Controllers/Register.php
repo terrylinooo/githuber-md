@@ -15,22 +15,10 @@ namespace Githuber\Controller;
 class Register extends ControllerAbstract {
 
 	/**
-	 * Load current user data from global variable $current_user.
-	 *
-	 * @var object
-	 */
-	public $current_user;
-
-	/**
 	 * Constructer.
 	 */
 	public function __construct() {
 		parent::__construct();
-
-		global $current_user;
-
-		// Load current user.
-		$this->current_user = $current_user;
 	}
 
 	/**
@@ -62,16 +50,16 @@ class Register extends ControllerAbstract {
 	 * Activate Githuber plugin.
 	 */
 	public function activate_plugin() {
-
+		global $current_user;
 		// Turn off Rich-text editor.
-		update_user_option( $this->current_user->ID, 'rich_editing', 'false', true );
+		update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 	}
 
 	/**
 	 * Deactivate Githuber plugin.
 	 */
 	public function deactivate_plugin() {
-
+		global $current_user;
 		// Turn on Rich-text editor.
 		update_user_option( $current_user->ID, 'rich_editing', 'true', true );
 		delete_user_option( $current_user->ID, 'dismissed_wp_pointers', true );
@@ -103,7 +91,7 @@ class Register extends ControllerAbstract {
 	 */
 	public function register_hooks() {
 		register_activation_hook( $this->githuber_plugin_path, array( $this , 'activate_plugin' ) );
-		register_deactivation_hook( $this->githuber_plugin_path, array( $this , 'deactive_plugin' ) );
+		register_deactivation_hook( $this->githuber_plugin_path, array( $this , 'deactivate_plugin' ) );
 	}
 
 	/**
