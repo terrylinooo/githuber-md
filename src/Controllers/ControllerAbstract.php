@@ -53,6 +53,13 @@ abstract class ControllerAbstract {
 	public $githuber_plugin_path;
 
 	/**
+	 * Plugin's name.
+	 *
+	 * @var string
+	 */
+	public $githuber_plugin_name;
+
+	/**
 	 * Constructer.
 	 * 
 	 * @return void
@@ -61,6 +68,7 @@ abstract class ControllerAbstract {
 		/**
 		 * Basic plugin information. Mapping from the Constant in the plugin loader script.
 		 */
+		$this->githuber_plugin_name = GITHUBER_PLUGIN_NAME;
 		$this->githuber_plugin_url  = GITHUBER_PLUGIN_URL;
 		$this->githuber_plugin_dir  = GITHUBER_PLUGIN_DIR;
 		$this->githuber_plugin_path = GITHUBER_PLUGIN_PATH;

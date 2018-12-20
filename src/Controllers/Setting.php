@@ -18,6 +18,20 @@ class Setting extends ControllerAbstract {
 	public static $setting_api;
 
 	/**
+	 * Where the Githuber MD's setting menu displays on.
+	 *
+	 * @var string
+	 */
+	public $menu_position = 'plugins';
+
+	/**
+	 * Menu slug.
+	 *
+	 * @var string
+	 */
+	public $menu_slug = 'githuber-md';
+
+	/**
 	 * Constructer.
 	 */
 	public function __construct() {
@@ -35,6 +49,8 @@ class Setting extends ControllerAbstract {
 		add_action( 'admin_init', array( $this, 'setting_admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'setting_admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
+		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 5 );
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_extend_links' ), 10, 2 );
 	}
 
 	/**
@@ -437,14 +453,22 @@ class Setting extends ControllerAbstract {
 	 * Register the plugin page.
 	 */
 	public function setting_admin_menu() {
-
-		add_options_page(
-			__( 'Githuber MD ', $this->text_domain ),
-			__( 'Githuber MD', $this->text_domain ),
-			'manage_options',
-			'githuber-md',
-			array( $this, 'setting_plugin_page' )
-		);
+		switch ( $this->menu_position ) {
+			case 'menu':
+			case 'plugins':
+			case 'options':
+			default:
+				$menu_function = 'add_' . $this->menu_position . '_page';
+				$menu_function(
+					__( 'Githuber MD ', $this->text_domain ),
+					__( 'Githuber MD', $this->text_domain ),
+					'manage_options',
+					$this->menu_slug, 
+					array( $this, 'setting_plugin_page' ),
+					'dashicons-edit'
+				);
+				break;
+		}
 	}
 
 	/**
@@ -459,5 +483,42 @@ class Setting extends ControllerAbstract {
 		self::$setting_api->show_forms();
 	
 		echo '</div>';
+	}
+
+	/**
+	 * Filters the action links displayed for each plugin in the Network Admin Plugins list table.
+	 *
+	 * @param  array  $links Original links.
+	 * @param  string $file  File position.
+	 * @return array Combined links.
+	 */
+	public function plugin_action_links( $links, $file ) {
+		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+			return $links;
+		}
+
+		if ( $file == $this->githuber_plugin_name ) {
+			$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', $this->text_domain ) . '</a>';
+			return $links;
+		}
+	}
+
+	/**
+	 * Add links to plugin meta information on plugin list page.
+	 *
+	 * @param  array  $links Original links.
+	 * @param  string $file  File position.
+	 * @return array Combined links.
+	 */
+	public function plugin_extend_links( $links, $file ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			return $links;
+		}
+
+		if ( $file == $this->githuber_plugin_name ) {
+			$links[] = '<a href="https://github.com/terrylinooo/githuber-md" target="_blank">' . __( 'View GitHub project', $this->text_domain ) . '</a>';
+			$links[] = '<a href="https://github.com/terrylinooo/githuber-md/issues" target="_blank">' . __( 'Report issues', $this->text_domain ) . '</a>';
+		}
+		return $links;
 	}
 }

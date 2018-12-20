@@ -100,4 +100,15 @@ class Register extends ControllerAbstract {
 	public function register_widgets() {
 		register_widget( 'Githuber_Widget_Toc' );
 	}
+
+
+	public function add_settings_link( $actions ) {
+		return array_merge(
+			array(
+				'<a href="' . admin_url( "plugins.php?page=wp-editormd-settings" ) . '" rel="nofollow">' . __( 'Settings', $this->text_domain ) . '</a>',
+				'<a href="https://github.com/JaxsonWang/WP-Editor.md" target="_blank" rel="nofollow">' . __( 'Github', $this->text_domain ) . '</a>'
+			),
+			$actions
+		);
+	}
 }
