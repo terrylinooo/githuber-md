@@ -12,6 +12,25 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https://github.com/terrylinooo/githuber) functionality.
 
+== How it works ==
+
+1. Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
+2. Parse the Markdown to HTML, save the parsed HTML content into `wp_posts`.`post_content`.
+
+This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
+For example, if you enabled `Syntax highlight`, you have to update your post again to take effects.
+
+== Suggestions ==
+
+The better situation to use this plugin is you just started a new blog.
+
+If you're planing to use this plugin in an existing blog, be sure to:
+
+- At the first, backup your data, we are not guarantee things work as expected.
+- Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
+
+== Features ==
+
 Features For Markdown
 
 * Markdown editor.
