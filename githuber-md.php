@@ -14,7 +14,7 @@
  * Plugin Name: Githuber MD
  * Plugin URI:  https://github.com/terrylinooo/githuber-md
  * Description: Githuber MD is an all-in-one Markdown plugin for your WordPress sites.
- * Version:     1.1.0
+ * Version:     1.0.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0

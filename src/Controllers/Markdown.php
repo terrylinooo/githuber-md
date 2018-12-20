@@ -6,7 +6,7 @@
  * @link https://terryl.in/
  *
  * @package Githuber
- * @since 1.1.0
+ * @since 1.0.0
  * @version 1.0.0
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
