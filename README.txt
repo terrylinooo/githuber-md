@@ -29,6 +29,12 @@ If you're planing to use this plugin in an existing blog, be sure to:
 - At the first, backup your data, we are not guarantee things work as expected.
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
 
+== Installation ==
+
+1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Go to the Githuber MD menu in Plugins and set your Markdown options.
+
 == Features ==
 
 Features For Markdown
@@ -46,6 +52,16 @@ Features For Githuber Theme:
 
 * Widget: Table of Content.
 * Post type: GitHub Repository.
+
+== Frequently Asked Questions ==
+
+You'll find answers to many of your questions on [Report issues](https://github.com/terrylinooo/githuber-md/issues).
+
+== Screenshots ==
+
+1. Markdown editor.
+2. Plugin setting page - Markdown.
+3. Plugin setting page - Modules.
 
 == Copyright ==
 
@@ -67,6 +83,10 @@ GNU General Public License for more details.
 = 1.0.0
 
 * First release.
+
+== Upgrade Notice ==
+
+= Currently no logs now.
 
 
 
