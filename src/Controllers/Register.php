@@ -69,21 +69,27 @@ class Register extends ControllerAbstract {
 	 * Initialize Githuber widgets.
 	 */
 	public function add_widgets() {
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+		if ( 'yes' === githuber_get_option( 'githuber_theme_bootstrap_toc', 'githuber_options' ) ) {
+			add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+		}
 	}
 
 	/**
 	 * Register post typees.
 	 */
 	public function add_post_types() {
-		new \Githuber_Post_Type_Repository();
+		if ( 'yes' === githuber_get_option( 'githuber_theme_repository', 'githuber_options' ) ) {
+			new \Githuber_Post_Type_Repository();
+		}
 	}
 
 	/**
 	 * Register Walker for Bootstrap 4 header menu.
 	 */
 	public function add_walker() {
-		new \Githuber_Walker();
+		if ( 'yes' === githuber_get_option( 'githuber_theme_bootstrap_menu', 'githuber_options' ) ) {
+			new \Githuber_Walker();
+		}
 	}
 
 	/**
@@ -99,16 +105,5 @@ class Register extends ControllerAbstract {
 	 */
 	public function register_widgets() {
 		register_widget( 'Githuber_Widget_Toc' );
-	}
-
-
-	public function add_settings_link( $actions ) {
-		return array_merge(
-			array(
-				'<a href="' . admin_url( "plugins.php?page=wp-editormd-settings" ) . '" rel="nofollow">' . __( 'Settings', $this->text_domain ) . '</a>',
-				'<a href="https://github.com/JaxsonWang/WP-Editor.md" target="_blank" rel="nofollow">' . __( 'Github', $this->text_domain ) . '</a>'
-			),
-			$actions
-		);
 	}
 }

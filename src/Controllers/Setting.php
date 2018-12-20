@@ -76,6 +76,8 @@ class Setting extends ControllerAbstract {
 	 */
 	public function setting_admin_init() {
 
+		$message_for_githuber = __( 'This is for <a href="https://github.com/terrylinooo/githuber" target="_blank">Githuber theme</a>, you might ignore this section if youre not using it', $this->text_domain );
+
 		$sections = array(
 
 			array(
@@ -88,12 +90,10 @@ class Setting extends ControllerAbstract {
 				'title' => __( 'Modules', $this->text_domain )
 			),
 
-			/*
 			array(
-				'id'    => 'githuber_others',
-				'title' => __( 'Other Settings', $this->text_domain )
+				'id'    => 'githuber_options',
+				'title' => __( 'Options', $this->text_domain )
 			)
-			*/
 		);
 
 		$fields = array(
@@ -434,6 +434,63 @@ class Setting extends ControllerAbstract {
 						'default'        => 'default',
 						'cloudflare'     => 'cdnjs.cloudflare.com',
 						'jsdelivr'       => 'cdn.jsdelivr.net',
+					)
+				),
+			),
+
+			'githuber_options' => array(
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Menu', $this->text_domain ),
+					'desc'    => __( '', $this->text_domain ),
+				),
+
+				array(
+					'name'    => 'githuber_theme_bootstrap_menu',
+					'label'   => __( 'Bootstrap 4 Menu', $this->text_domain ),
+					'desc'    => __( 'Use Bootstrap 4 dropdown menu in header position. (2-layer)', $this->text_domain ) . '<br />' . $message_for_githuber,
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain )
+					)
+				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Widget', $this->text_domain ),
+					'desc'    => __( '', $this->text_domain ),
+				),
+
+				array(
+					'name'    => 'githuber_theme_bootstrap_toc',
+					'label'   => __( 'Bootstrap 4 TOC', $this->text_domain ),
+					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', $this->text_domain ),
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain )
+					)
+				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Post Type', $this->text_domain ),
+					'desc'    => __( '', $this->text_domain ),
+				),
+
+				array(
+					'name'    => 'githuber_theme_repository',
+					'label'   => __( 'GitHub Repository', $this->text_domain ),
+					'desc'    => __( 'Display the stars, forks, issues from your GitHub repository.', $this->text_domain )  . '<br />' . $message_for_githuber,
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain )
 					)
 				),
 			),
