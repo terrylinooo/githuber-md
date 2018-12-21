@@ -24,9 +24,9 @@ For example, if you enabled `Syntax highlight`, you have to update your post aga
 
 The better situation to use this plugin is you just started a new blog.
 
-If you're planing to use this plugin in an existing blog, be sure to:
+If you're planning to use this plugin in an existing blog, be sure to:
 
-- At the first, backup your data, we are not guarantee things work as expected.
+- At the first, backup your data, we do not guarantee things work as expected.
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
 
 == Installation ==
@@ -41,6 +41,7 @@ Features For Markdown
 
 * Markdown editor.
 * Live preivew.
+* Image copy & paste.
 * Syntax highlight.
 * Flow chart.
 * KaTex.
@@ -83,6 +84,10 @@ GNU General Public License for more details.
 = 1.0.0
 
 * First release.
+
+= 1.1.0
+
+* Add Image-Paste module.
 
 == Upgrade Notice ==
 

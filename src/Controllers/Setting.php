@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 namespace Githuber\Controller;
@@ -333,6 +333,8 @@ class Setting extends ControllerAbstract {
 					)
 				),
 
+				*/
+
 				array(
 					'name'    => 'support_image_paste',
 					'label'   => __( 'Image Paste', $this->text_domain ),
@@ -344,8 +346,6 @@ class Setting extends ControllerAbstract {
 						'no'  => __( 'No', $this->text_domain )
 					)
 				),
-
-				*/
 			),
 
 			'githuber_modules' =>  array(
@@ -467,7 +467,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'githuber_theme_bootstrap_toc',
 					'label'   => __( 'Bootstrap 4 TOC', $this->text_domain ),
-					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', $this->text_domain ),
+					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', $this->text_domain ) . '<br />' . $message_for_githuber,
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(

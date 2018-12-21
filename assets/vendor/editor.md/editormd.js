@@ -148,6 +148,7 @@
         imageUpload          : false,
         imageFormats         : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
         imageUploadURL       : "",
+        imagePasteCallback   : "",
         crossDomainUpload    : false,
         uploadCallbackURL    : "",
         
@@ -716,9 +717,17 @@
                 showTrailingSpace         : settings.showTrailingSpace,
                 highlightSelectionMatches : ( (!settings.matchWordHighlight) ? false : { showToken: (settings.matchWordHighlight === "onselected") ? false : /\w/ } )
             };
-            
+
             this.codeEditor = this.cm        = editormd.$CodeMirror.fromTextArea(this.markdownTextarea[0], codeMirrorConfig);
             this.codeMirror = this.cmElement = editor.children(".CodeMirror");
+
+            if (typeof inlineAttachment !== 'undefined') {
+                console.log('sss');
+                inlineAttachment.defaults.uploadUrl = settings.imagePasteCallback;
+                inlineAttachment.editors.codemirror4.attach(this.codeEditor);
+            }
+
+            
             
             if (settings.value !== "")
             {
@@ -3899,6 +3908,7 @@
             tocStartLevel        : 1,
             tocTitle             : "目录",
             tocDropdown          : false,
+            imagePasteCallback   : "",
             tocContainer         : "",
             markdown             : "",
             markdownSourceCode   : false,

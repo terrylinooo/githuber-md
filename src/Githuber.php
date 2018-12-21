@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 use Githuber\Controller as Controller;
@@ -33,6 +33,11 @@ class Githuber {
 
 		$setting = new Controller\Setting();
 		$setting->init();
+
+		if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_markdown' ) ) {
+			$image_paste = new Controller\ImagePaste();
+			$image_paste->init();
+		}
 
 		$markdown = new Controller\Markdown();
 		$markdown->init();

@@ -26,7 +26,8 @@ $(function() {
             toolbarAutoFixed: true, 
             tocm: false, 
             tocDropdown: false,    
-            atLink: false,                          
+            atLink: false,
+            imagePasteCallback: config.image_paste_callback,
             toolbarIcons: function () {
                 return [
                     'undo', 'redo', '|',
