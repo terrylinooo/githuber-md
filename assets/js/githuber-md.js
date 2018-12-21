@@ -19,7 +19,7 @@ $(function() {
             editorTheme: config.editor_editor_theme, 
             tocContainer: (config.support_toc === 'yes') ? '' : false,
             emoji: (config.support_emoji == 'yes'),   
-            tex: (config.support_latex == 'yes'),
+            tex: (config.support_katex == 'yes'),
             flowChart: (config.support_flowchart == 'yes'),  
             sequenceDiagram: (config.support_sequence_diagram == 'yes'), 
             taskList: (config.support_task_list == 'yes'),
