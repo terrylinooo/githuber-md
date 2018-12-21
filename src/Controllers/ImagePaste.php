@@ -32,8 +32,21 @@ class ImagePaste extends ControllerAbstract {
 	 * Initialize.
 	 */
 	public function init() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'wp_ajax_githuber_image_paste', array( $this, 'admin_githuber_image_paste' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+
+	/**
+	 * Initalize to WP `admin_init` hook.
+	 */
+	public function admin_init() {
+		$user          = wp_get_current_user();
+		$allowed_roles = array( 'editor', 'administrator', 'author' );
+
+		// For security reasons, only authorized logged-in users can upload images.
+		if ( array_intersect( $allowed_roles, $user->roles ) ) {
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+			add_action( 'wp_ajax_githuber_image_paste', array( $this, 'admin_githuber_image_paste' ) );
+		}
 	}
 
 	/**
@@ -62,13 +75,13 @@ class ImagePaste extends ControllerAbstract {
 		
 		if ( isset($_FILES['file']) ) {
 			$file = $_FILES['file'];
-			$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION) ? : 'png' );
-		
+			$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
+
 			move_uploaded_file( $file['tmp_name'], $upload_path . '/' . $filename );
 		
 			$response['filename'] = $online_path . '/' . $filename;
 		} else {
-			$response['error'] = 'Error while uploading file';
+			$response['error'] = __( 'Error while uploading file.', $this->text_domain );
 		}
 		echo json_encode($response);
 
