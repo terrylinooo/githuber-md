@@ -110,11 +110,6 @@ class Setting extends ControllerAbstract {
 			),
 
 			array(
-				'id'    => 'githuber_options',
-				'title' => __( 'Theme Options', $this->text_domain ),
-			),
-
-			array(
 				'id'    => 'githuber_about',
 				'title' => __( 'About', $this->text_domain ),
 			),
@@ -574,7 +569,7 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Shortcodes', $this->text_domain ),
+					'label' => __( 'Shortcode', $this->text_domain ),
 					'desc'  => '',
 				),
 
