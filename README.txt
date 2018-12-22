@@ -1,4 +1,4 @@
-=== Githuber MD ===
+=== WP Githuber MD ===
 Contributors: terrylin
 Tags: githuber, markdown
 Requires at least: 4.7
@@ -88,6 +88,12 @@ GNU General Public License for more details.
 = 1.1.0
 
 * Add Image-Paste module.
+
+= 1.2.0
+
+* Image paste - Provide an option that allows you directly upload to Imgur.com.
+* Rename plugin name from "Githuber MD" to "WP Githuber MD".
+* Add new settings.
 
 == Upgrade Notice ==
 

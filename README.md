@@ -1,4 +1,4 @@
-# Githuber MD
+# WP Githuber MD
 
 ![Screenshot](https://i.imgur.com/3O854Jm.png)
 
@@ -6,7 +6,7 @@ An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https:
 
 ## How it works
 
-1. Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
+1. WP Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
 2. Parse the Markdown to HTML, save the parsed HTML content into `wp_posts`.`post_content`.
 
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
@@ -33,10 +33,6 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Sequence diagram.
 * Github flavored Markdown task list.
 * Markdown extra...
-
-### Todo in version 1.2
-
-* Image paste - Provide an option that allows you directly upload to Imgur.com.
 
 ### Features For Githuber Theme:
 
