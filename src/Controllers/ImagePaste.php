@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.1
- * @version 1.1.0
+ * @version 1.2.0
  */
 
 namespace Githuber\Controller;
@@ -73,19 +73,67 @@ class ImagePaste extends ControllerAbstract {
 		$online_path = $upload_dir['url'];
 		$response    = array();
 		
-		if ( isset($_FILES['file']) ) {
+		if ( isset( $_FILES['file'] ) ) {
 			$file = $_FILES['file'];
 			$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
 
-			move_uploaded_file( $file['tmp_name'], $upload_path . '/' . $filename );
-		
-			$response['filename'] = $online_path . '/' . $filename;
+			$image_src       = githuber_get_option( 'image_paste_src', 'githuber_modules' );
+			$imgur_client_id = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
+
+			if ( 'imgur' === $image_src && ! empty( $imgur_client_id ) ) {
+				
+				if ( function_exists( 'curl_init') ) {
+					$image = file_get_contents( $file['tmp_name'] );
+					$data  = $this->upload_to_imgur( $image, $imgur_client_id );
+
+					if ( true === $data['success'] ) {
+						$response['filename'] = $data['data']['link'];
+					} else {
+						$response['error'] = __( 'Error while processing your request to Imgur!', $this->text_domain );
+					}
+				} else {
+					$response['error'] = __( 'PHP Curl is not available on your system.', $this->text_domain );
+				}
+			
+			} else {
+				move_uploaded_file( $file['tmp_name'], $upload_path . '/' . $filename );
+				$response['filename'] = $online_path . '/' . $filename;
+			}
 		} else {
 			$response['error'] = __( 'Error while uploading file.', $this->text_domain );
 		}
-		echo json_encode($response);
+		echo json_encode( $response );
 
-		// Avoid wp_ajax return "0" string to break the vaild json string.
+		// To avoid wp_ajax return "0" string to break the vaild json string.
 		wp_die();
+	}
+
+	/**
+	 * Upload images to Imgur.com
+	 * 
+	 * @param string $image     Image binary string.
+	 * @param string $client_id Imgur application Client ID.
+	 * @return array Response from Imgur image API.
+	 */
+	public function upload_to_imgur( $image, $client_id ) {
+		$header_data = array( "Authorization: Client-ID $client_id" );
+		$post_data   = array( 'image' => base64_encode( $image ) );
+
+		$ch = curl_init();
+
+		curl_setopt( $ch, CURLOPT_URL, 'https://api.imgur.com/3/image.json' );
+		curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)' );
+		curl_setopt( $ch, CURLOPT_POST, 1 );
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $post_data );
+		curl_setopt( $ch, CURLOPT_HTTPHEADER, $header_data );
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
+		
+		$result = curl_exec( $ch );
+		curl_close( $ch );
+
+		return json_decode( $result, true );
 	}
 }

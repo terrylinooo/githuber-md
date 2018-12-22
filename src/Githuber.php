@@ -69,8 +69,6 @@ class Githuber {
 			$module_sequence = new Module\SequenceDiagram();
 			$module_sequence->init();
 		}
-		
-
 	}
 
 	/**

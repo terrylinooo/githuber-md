@@ -82,17 +82,17 @@ class Setting extends ControllerAbstract {
 
 			array(
 				'id'    => 'githuber_markdown',
-				'title' => __( 'Markdown', $this->text_domain )
+				'title' => __( 'Markdown', $this->text_domain ),
 			),
 			
 			array(
 				'id'    => 'githuber_modules',
-				'title' => __( 'Modules', $this->text_domain )
+				'title' => __( 'Modules', $this->text_domain ),
 			),
 
 			array(
 				'id'    => 'githuber_options',
-				'title' => __( 'Options', $this->text_domain )
+				'title' => __( 'Options', $this->text_domain ),
 			)
 		);
 
@@ -111,11 +111,11 @@ class Setting extends ControllerAbstract {
 					'desc'    => __( 'Enable Markdown for post, pages or comments.', $this->text_domain ),
 					'type'    => 'multicheck',
 					'default' => array(
-						'posting' => 'posting'
+						'posting' => 'posting',
 					),
 					'options' => array(
 						'posting'    => 'Posts and pages',
-						'commenting' => 'Comments'
+						'commenting' => 'Comments',
 					)
 				),
 
@@ -132,7 +132,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -144,7 +144,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -156,7 +156,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -173,7 +173,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'options' => array(
 						'default' => 'default',
-						'dark'    => 'dark'
+						'dark'    => 'dark',
 					),
 				),
 
@@ -238,7 +238,7 @@ class Setting extends ControllerAbstract {
 						'xq-dark'                 => 'xq-dark',
 						'xq-light'                => 'xq-light',
 						'yeti'                    => 'yeti',
-						'zenburn'                 => 'zenburn'
+						'zenburn'                 => 'zenburn',
 					),
 				),
 
@@ -255,7 +255,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -267,7 +267,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -279,7 +279,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -291,7 +291,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -303,7 +303,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -343,7 +343,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 			),
@@ -353,7 +353,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Syntax Highlight', $this->text_domain ),
-					'desc'    => __( 'prism.js', $this->text_domain ),
+					'desc'  => __( 'prism.js', $this->text_domain ),
 				),
 
 				array(
@@ -370,7 +370,7 @@ class Setting extends ControllerAbstract {
 						'twilight'       => 'twilight',
 						'tomorrow'       => 'tomorrow',
 						'coy'            => 'coy',
-						'solarizedlight' => 'solarizedlight'
+						'solarizedlight' => 'solarizedlight',
 					)
 				),
 
@@ -382,7 +382,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
@@ -393,16 +393,16 @@ class Setting extends ControllerAbstract {
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
-						'default'        => 'default',
-						'cloudflare'     => 'cdnjs.cloudflare.com',
-						'jsdelivr'       => 'cdn.jsdelivr.net',
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'KaTex', $this->text_domain ),
-					'desc'    => __( 'KaTex.js', $this->text_domain ),
+					'desc'  => __( 'KaTex.js', $this->text_domain ),
 				),
 
 				array(
@@ -412,16 +412,16 @@ class Setting extends ControllerAbstract {
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
-						'default'        => 'default',
-						'cloudflare'     => 'cdnjs.cloudflare.com',
-						'jsdelivr'       => 'cdn.jsdelivr.net',
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Flow Chart', $this->text_domain ),
-					'desc'    => __( 'flowchart.js', $this->text_domain ),
+					'desc'  => __( 'flowchart.js', $this->text_domain ),
 				),
 
 				array(
@@ -431,11 +431,39 @@ class Setting extends ControllerAbstract {
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
-						'default'        => 'default',
-						'cloudflare'     => 'cdnjs.cloudflare.com',
-						'jsdelivr'       => 'cdn.jsdelivr.net',
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
 				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Image Paste', $this->text_domain ),
+				),
+
+				array(
+					'name'    => 'image_paste_src',
+					'label'   => __( 'Storage Space', $this->text_domain ),
+					'desc'    => __( 'Images are stored in WordPress\'s <strong>uploads</strong> folder by default. However, you can use Imgur instead of the default place.', $this->text_domain ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'options' => array(
+						'default' => __( 'default', $this->text_domain ),
+						'imgur'   => __( 'imgur.com', $this->text_domain ),
+					)
+				),
+
+				array(
+                    'name'              => 'imgur_client_id',
+					'label'             => __( 'Imgur Client ID', $this->text_domain ),
+					'desc'              => __( 'Required while the choosed storage space is <u>imgur.com</u>. If you don\'t have one, <a href="https://api.imgur.com/oauth2/addclient" target="_blank">sign up</a> here.', $this->text_domain ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+                    'default'           => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+				),
+
 			),
 
 			'githuber_options' => array(
@@ -443,7 +471,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Menu', $this->text_domain ),
-					'desc'    => __( '', $this->text_domain ),
+					'desc'  => __( '', $this->text_domain ),
 				),
 
 				array(
@@ -454,14 +482,14 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Widget', $this->text_domain ),
-					'desc'    => __( '', $this->text_domain ),
+					'desc'  => __( '', $this->text_domain ),
 				),
 
 				array(
@@ -472,14 +500,14 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Post Type', $this->text_domain ),
-					'desc'    => __( '', $this->text_domain ),
+					'desc'  => __( '', $this->text_domain ),
 				),
 
 				array(
@@ -490,7 +518,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'no',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'no'  => __( 'No', $this->text_domain ),
 					)
 				),
 			),

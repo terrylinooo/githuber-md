@@ -53,10 +53,10 @@ if ( ! defined( 'WPINC' ) ) {
  * 
  * Expected values:
  * 
- * GITHUBER_PLUGIN_DIR           : {absolute_path}/wp-content/plugins/githuber-enhanced-plugin/
- * GITHUBER_PLUGIN_URL           : {protocal}://{domain_name}/wp-content/plugins/githuber-enhanced-plugin/
- * GITHUBER_PLUGIN_PATH          : {absolute_path}/wp-content/plugins/githuber-enhanced-plugin/githuber-enhanced-plugin.php
- * GITHUBER_PLUGIN_LANGUAGE_PACK : githuber-enhanced-plugin/languages
+ * GITHUBER_PLUGIN_DIR           : {absolute_path}/wp-content/plugins/wp-githuber-md/
+ * GITHUBER_PLUGIN_URL           : {protocal}://{domain_name}/wp-content/plugins/wp-githuber-md/
+ * GITHUBER_PLUGIN_PATH          : {absolute_path}/wp-content/plugins/wp-githuber-md/wp-githuber-md.php
+ * GITHUBER_PLUGIN_LANGUAGE_PACK : wp-githuber-md/languages
  */
 
 define( 'GITHUBER_PLUGIN_NAME', plugin_basename( __FILE__ ) );
@@ -65,7 +65,7 @@ define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 define( 'GITHUBER_PLUGIN_VERSION', '1.1.0' );
-define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'githuber-md' );
+define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
  * Start to run Githuber plugin cores.
