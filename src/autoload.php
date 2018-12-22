@@ -58,25 +58,3 @@ spl_autoload_register( function( $class_name ) {
 		require $include_path;
 	}
 });
-
-/**
- * Function autoloader
- */
-function func_autoload() {
-
-	$autoload_list = array(
-		'functions',
-		'shortcode',
-		'theme-op'
-	);
-
-	foreach ( $autoload_list as $filename ) {
-		$include_path  = GITHUBER_PLUGIN_DIR . 'src/wp_utilities/githuber-' . $filename . '.php';
-
-		if ( ! empty( $include_path ) && is_readable( $include_path ) ) {
-			require $include_path;
-		}
-	}
-}
-
-func_autoload();

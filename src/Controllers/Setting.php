@@ -152,6 +152,18 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'name'    => 'disable_revision',
+					'label'   => __( 'Disable Revision', $this->text_domain ),
+					'desc'    => __( 'If you think the revision and auto-save functions are annoying when you\'re writing, you can to disable them.', $this->text_domain ),
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain ),
+					)
+				),
+
+				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Editor Settings', $this->text_domain ),
 				),
@@ -509,7 +521,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Menu', $this->text_domain ),
-					'desc'  => __( '', $this->text_domain ),
+					'desc'  => '',
 				),
 
 				array(
@@ -527,7 +539,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Widget', $this->text_domain ),
-					'desc'  => __( '', $this->text_domain ),
+					'desc'  => '',
 				),
 
 				array(
@@ -545,7 +557,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Post Type', $this->text_domain ),
-					'desc'  => __( '', $this->text_domain ),
+					'desc'  => '',
 				),
 
 				array(
@@ -558,6 +570,48 @@ class Setting extends ControllerAbstract {
 						'yes' => __( 'Yes', $this->text_domain ),
 						'no'  => __( 'No', $this->text_domain ),
 					)
+				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Shortcodes', $this->text_domain ),
+					'desc'  => '',
+				),
+
+				array(
+					'name'    => 'githuber_theme_shortcode_social_icons',
+					'label'   => __( 'Social Icons', $this->text_domain ),
+					'desc'    => __( '.', $this->text_domain ),
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain ),
+					)
+				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Adjustment', $this->text_domain ),
+					'desc'  => '',
+				),
+
+				array(
+					'name'    => 'githuber_theme_adjustment_head_output',
+					'label'   => __( 'Head Output', $this->text_domain ),
+					'desc'    => __( 'Remove information displays in HTML source code.', $this->text_domain ),
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain ),
+					)
+				),
+
+				array(
+                    'name' => 'theme_adjustment_head_output',
+                    'desc' => githuber_load_view( 'setting/theme-adjustment' ),
+                    'type' => 'html'
 				),
 			),
 

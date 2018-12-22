@@ -30,6 +30,21 @@ class Register extends ControllerAbstract {
 		$this->add_post_types();
 		$this->add_walker();
 		$this->add_widgets();
+
+		if ( 'yes' === githuber_get_option( 'githuber_theme_shortcode_social_icons', 'githuber_options' ) ) {
+			githuber_load_utility('functions');
+			githuber_load_utility('shortcode');
+		}
+
+		if ( 'yes' === githuber_get_option( 'githuber_theme_adjustment_head_output', 'githuber_options' ) ) {
+			githuber_load_utility('theme-adjustment');
+		}
+
+		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
+			remove_post_type_support( 'post', 'revisions' );
+			remove_post_type_support( 'page', 'revisions' );
+			remove_post_type_support( 'repository', 'revisions' );
+		}
 	}
 
 	/**
