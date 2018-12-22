@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.2.0
  */
 
 /**
@@ -38,4 +38,23 @@ function githuber_get_current_post_id() {
 	if ( ! empty( $post ) )  {
 		return $post->ID;
 	}
+}
+
+/**
+ * Load view files.
+ *
+ * @param string $template_path The specific template's path.
+ * @return string
+ */
+function githuber_load_view( $template_path ) {
+	$view_file_path = GITHUBER_PLUGIN_DIR . 'src/Views/' . $template_path . '.php';
+
+	if ( file_exists( $view_file_path ) ) {
+		ob_start();
+		require $view_file_path;
+		$result = ob_get_contents();
+		ob_end_clean();
+		return $result;
+	}
+	return null;
 }

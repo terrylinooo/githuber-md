@@ -76,9 +76,23 @@ class Setting extends ControllerAbstract {
 	 */
 	public function setting_admin_init() {
 
-		$message_for_githuber = __( 'This is for <a href="https://github.com/terrylinooo/githuber" target="_blank">Githuber theme</a>, you might ignore this section if youre not using it', $this->text_domain );
+		// set sections and fields.
+		self::$setting_api->set_sections( $this->get_sections() );
+		self::$setting_api->set_fields( $this->get_fields() );
+	 
+		// initialize them.
+		self::$setting_api->admin_init();
 
-		$sections = array(
+		self::$settings = $this->get_fields();
+	}
+
+	/**
+	 * Setting sections.
+	 *
+	 * @return array
+	 */
+	public function get_sections() {
+		return array(
 
 			array(
 				'id'    => 'githuber_markdown',
@@ -92,11 +106,29 @@ class Setting extends ControllerAbstract {
 
 			array(
 				'id'    => 'githuber_options',
-				'title' => __( 'Options', $this->text_domain ),
-			)
-		);
+				'title' => __( 'Theme Options', $this->text_domain ),
+			),
 
-		$fields = array(
+			array(
+				'id'    => 'githuber_options',
+				'title' => __( 'Theme Options', $this->text_domain ),
+			),
+
+			array(
+				'id'    => 'githuber_about',
+				'title' => __( 'About', $this->text_domain ),
+			),
+		);
+	}
+
+	/**
+	 * Setting fields.
+	 *
+	 * @return array
+	 */
+	public function get_fields() {
+
+		return array(
 
 			'githuber_markdown' => array(
 
@@ -469,6 +501,12 @@ class Setting extends ControllerAbstract {
 			'githuber_options' => array(
 
 				array(
+                    'name' => 'theme_description',
+                    'desc' => githuber_load_view( 'setting/theme-description' ),
+                    'type' => 'html'
+				),
+				
+				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Menu', $this->text_domain ),
 					'desc'  => __( '', $this->text_domain ),
@@ -477,7 +515,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'githuber_theme_bootstrap_menu',
 					'label'   => __( 'Bootstrap 4 Menu', $this->text_domain ),
-					'desc'    => __( 'Use Bootstrap 4 dropdown menu in header position. (2-layer)', $this->text_domain ) . '<br />' . $message_for_githuber,
+					'desc'    => __( 'Use Bootstrap 4 dropdown menu in header position. (2-layer)', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -495,7 +533,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'githuber_theme_bootstrap_toc',
 					'label'   => __( 'Bootstrap 4 TOC', $this->text_domain ),
-					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', $this->text_domain ) . '<br />' . $message_for_githuber,
+					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -513,7 +551,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'githuber_theme_repository',
 					'label'   => __( 'GitHub Repository', $this->text_domain ),
-					'desc'    => __( 'Display the stars, forks, issues from your GitHub repository.', $this->text_domain )  . '<br />' . $message_for_githuber,
+					'desc'    => __( 'Display the stars, forks, issues from your GitHub repository.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -522,16 +560,17 @@ class Setting extends ControllerAbstract {
 					)
 				),
 			),
-		);
 
-		// set sections and fields.
-		self::$setting_api->set_sections( $sections );
-		self::$setting_api->set_fields( $fields );
-	 
-		// initialize them.
-		self::$setting_api->admin_init();
-		
-		self::$settings = $fields;
+			'githuber_about' => array(
+
+				array(
+					'name' => 'plugin_about',
+					'label'   => __( 'Support', $this->text_domain ),
+					'desc' => githuber_load_view( 'setting/about-and-support' ),
+					'type' => 'html'
+				),
+			),
+		);
 	}
 
 	/**
