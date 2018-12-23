@@ -10,17 +10,7 @@
  * @copyright 2018 Terry Lin
  */
 
-$author_bio_icons = array(
-	'github'        => '<i class="fab fa-github-alt"></i>',
-	'gitlab'        => '<i class="fab fa-gitlab"></i>',
-	'stackoverflow' => '<i class="fab fa-stack-overflow"></i>',
-	'facebook'      => '<i class="fab fa-facebook-f"></i>',
-	'twitter'       => '<i class="fab fa-twitter"></i>',
-	'google'        => '<i class="fab fa-google"></i>',
-	'instagram'     => '<i class="fab fa-instagram"></i>',
-	'pinterest'     => '<i class="fab fa-pinterest-p"></i>',
-	'youtube'       => '<i class="fab fa-youtube"></i>',
-);
+
 
 /**
  * Get anchor link with icon.
@@ -30,7 +20,17 @@ $author_bio_icons = array(
  * @return string
  */
 function get_social_url( $type = '', $link = '' ) {
-	global $author_bio_icons;
+	$author_bio_icons = array(
+		'github'        => '<i class="fab fa-github-alt"></i>',
+		'gitlab'        => '<i class="fab fa-gitlab"></i>',
+		'stackoverflow' => '<i class="fab fa-stack-overflow"></i>',
+		'facebook'      => '<i class="fab fa-facebook-f"></i>',
+		'twitter'       => '<i class="fab fa-twitter"></i>',
+		'google'        => '<i class="fab fa-google"></i>',
+		'instagram'     => '<i class="fab fa-instagram"></i>',
+		'pinterest'     => '<i class="fab fa-pinterest-p"></i>',
+		'youtube'       => '<i class="fab fa-youtube"></i>',
+	);
 	return '<a href="' . $link . '" class="brand-link brand-' . $type . '">' . $author_bio_icons[ $type ] . '</a>';
 }
 

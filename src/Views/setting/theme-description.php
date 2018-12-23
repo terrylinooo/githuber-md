@@ -4,6 +4,6 @@
 
 <?php echo __( 
     '
-Theme option is specifically for <a href="https://github.com/terrylinooo/githuber" target="_blank">Githuber theme</a>, 
-you might ignore this section if youre not using it.
+Theme option is geared towards <a href="https://github.com/terrylinooo/githuber" target="_blank">Githuber theme</a> users, 
+you might ignore this section if you are not using Githuber theme.
     ', GITHUBER_PLUGIN_TEXT_DOMAIN ) ?>
