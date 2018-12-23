@@ -12,6 +12,11 @@ An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https:
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
 For example, if you enabled `syntax highlight`, you have to update your post again to take effects.
 
+## Requirement
+
+* PHP version > 5.6
+* WordPress version > 4.7
+
 ## Suggestions
 
 The better situation to use this plugin is you just started a new blog.
@@ -34,6 +39,10 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Github flavored Markdown task list.
 * Markdown extra...
 
+## Todo in the next version: 1.3.0
+
+* HTML to Markdown convertor - An option allows you quicky convert all old posts into Markdown text, then you can use WP Githuber MD immediately in your existing blogs.
+
 ### Features For Githuber Theme:
 
 * Menu: Bootstrap 4 menu.
@@ -45,6 +54,22 @@ If you're planning to use this plugin in an existing blog, be sure to:
 ![Screenshot](https://i.imgur.com/yamYEN8.png)
 
 ![Screenshot](https://i.imgur.com/CxvZERS.png)
+
+## Changelog
+
+1.0.0
+
+* First release.
+
+1.1.0
+
+* Add Image-Paste module.
+
+1.2.0
+
+* Image paste - Provide an option that allows you directly upload to Imgur.com.
+* Rename plugin name from "Githuber MD" to "WP Githuber MD".
+* Add new settings.
 
 
 
