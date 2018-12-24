@@ -24,7 +24,7 @@ spl_autoload_register( function( $class_name ) {
 		'Githuber_Walker'               => 'class-githuber-walker',
 		'Githuber_Post_Type_Repository' => 'class-githuber-post-type-repository',
 		'Githuber_Widget_Toc'           => 'class-githuber-widget-toc',
-		'WeDevs_Settings_API'           => 'class-settings-api'
+		'WeDevs_Settings_API'           => 'class-settings-api',
 	);
 
 	if ( array_key_exists( $class_name, $wp_utils_mapping ) ) {

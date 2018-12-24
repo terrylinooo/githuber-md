@@ -16,6 +16,7 @@ For example, if you enabled `syntax highlight`, you have to update your post aga
 
 * PHP version > 5.6
 * WordPress version > 4.7
+* Tested up to 5.0.2
 
 ## Suggestions
 

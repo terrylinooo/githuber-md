@@ -2,8 +2,8 @@
 Contributors: terrylin
 Tags: githuber, markdown
 Requires at least: 4.7
-Tested up to: 4.7
-Stable tag: 4.7
+Tested up to: 5.0.2
+Stable tag: 1.2.5
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -94,6 +94,8 @@ GNU General Public License for more details.
 * Image paste - Provide an option that allows you directly upload to Imgur.com.
 * Rename plugin name from "Githuber MD" to "WP Githuber MD".
 * Add new settings.
+
+= 1.2.5
 
 == Upgrade Notice ==
 

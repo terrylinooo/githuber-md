@@ -21,8 +21,13 @@ class Githuber {
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), 998 );
-	}
 
+		// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
+		if ( $GLOBALS['wp_version'] > '5.0' && is_admin() ) {
+			githuber_load_utility('classic-editor');
+		}
+	}
+	
 	/**
 	 * Initialize everything the Githuber plugin needs.
 	 */
@@ -31,19 +36,22 @@ class Githuber {
 		$register = new Controller\Register();
 		$register->init();
 
-		$setting = new Controller\Setting();
-		$setting->init();
-
-		if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_markdown' ) ) {
-			$image_paste = new Controller\ImagePaste();
-			$image_paste->init();
+		// Only load controllers in backend.
+		if ( is_admin() ) {
+			$setting = new Controller\Setting();
+			$setting->init();
+	
+			if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_markdown' ) ) {
+				$image_paste = new Controller\ImagePaste();
+				$image_paste->init();
+			}
+	
+			$markdown = new Controller\Markdown();
+			$markdown->init();
 		}
 
-		$markdown = new Controller\Markdown();
-		$markdown->init();
-
 		/**
-		 * Let's start loading modules.
+		 * Let's start loading frontend modules.
 		 */ 
 
 		// Module Name: FlowChart
