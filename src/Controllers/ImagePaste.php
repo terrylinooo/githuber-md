@@ -43,7 +43,7 @@ class ImagePaste extends ControllerAbstract {
 		$allowed_roles = array( 'editor', 'administrator', 'author' );
 
 		// For security reasons, only authorized logged-in users can upload images.
-		if ( array_intersect( $allowed_roles, $user->roles ) ) {
+		if ( array_intersect( $allowed_roles, $user->roles ) || is_super_admin() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 			add_action( 'wp_ajax_githuber_image_paste', array( $this, 'admin_githuber_image_paste' ) );
 		}
