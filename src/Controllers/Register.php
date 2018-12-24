@@ -41,10 +41,18 @@ class Register extends ControllerAbstract {
 		}
 
 		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
-			remove_post_type_support( 'post', 'revisions' );
-			remove_post_type_support( 'page', 'revisions' );
-			remove_post_type_support( 'repository', 'revisions' );
+			add_action( 'init', array( $this , 'remove_revisions' ), 10 );
 		}
+	}
+
+
+	/**
+	 * Remove revisions.
+	 */
+	public function remove_revisions() {
+		remove_post_type_support( 'post', 'revisions' );
+		remove_post_type_support( 'page', 'revisions' );
+		remove_post_type_support( 'repository', 'revisions' );
 	}
 
 	/**
