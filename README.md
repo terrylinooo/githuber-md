@@ -31,11 +31,11 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 * Markdown editor.
 * Live preivew.
-* Image copy & paste.
+* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/).
 * Syntax highlight.
-* Flow chart.
-* KaTex.
-* Sequence diagram.
+* [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
+* [KaTex](https://terryl.in/en/githuber-md-katax/).
+* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/).
 * Github flavored Markdown task list.
 * Markdown extra...
 
@@ -51,9 +51,15 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ### Other screenshots
 
-![Screenshot](https://i.imgur.com/yamYEN8.png)
+#### Image paste
+![file](https://i.imgur.com/BQgn2So.gif)
 
-![Screenshot](https://i.imgur.com/CxvZERS.png)
+#### Setting pages
+![Screenshot](https://i.imgur.com/tpRAEI5.png)
+
+![Screenshot](https://i.imgur.com/UylHwpr.png)
+
+
 
 ## Changelog
 

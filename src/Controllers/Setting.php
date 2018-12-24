@@ -301,7 +301,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_katex',
 					'label'   => __( 'KaTeX', $this->text_domain ),
-					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-katax" target="_blank">KaTeX</a> math typesetting.', $this->text_domain ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-katax/" target="_blank">KaTeX</a> math typesetting.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -377,7 +377,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_image_paste',
 					'label'   => __( 'Image Paste', $this->text_domain ),
-					'desc'    => __( 'Easily paste image from clipboard directly into the post content.', $this->text_domain ),
+					'desc'    => __( 'Easily <a href="https://terryl.in/en/githuber-md-image-paste/" target="_blank">paste image from clipboard</a> directly into the post content.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -633,8 +633,8 @@ class Setting extends ControllerAbstract {
 			default:
 				$menu_function = 'add_' . $this->menu_position . '_page';
 				$menu_function(
-					__( 'Githuber MD ', $this->text_domain ),
-					__( 'Githuber MD', $this->text_domain ),
+					__( 'WP Githuber MD ', $this->text_domain ),
+					__( 'WP Githuber MD', $this->text_domain ),
 					'manage_options',
 					$this->menu_slug, 
 					array( $this, 'setting_plugin_page' ),
