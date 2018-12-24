@@ -301,7 +301,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_katex',
 					'label'   => __( 'KaTeX', $this->text_domain ),
-					'desc'    => __( 'Support <a href="https://katex.org/" target="_blank">KaTeX</a> math typesetting.', $this->text_domain ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-katax" target="_blank">KaTeX</a> math typesetting.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -313,7 +313,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_flowchart',
 					'label'   => __( 'Flow Chart', $this->text_domain ),
-					'desc'    => __( 'Support <a href="http://flowchart.js.org/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', $this->text_domain ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
@@ -325,7 +325,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_sequence_diagram',
 					'label'   => __( 'Sequence Diagrams', $this->text_domain ),
-					'desc'    => __( 'Support <a href="https://bramp.github.io/js-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', $this->text_domain ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(

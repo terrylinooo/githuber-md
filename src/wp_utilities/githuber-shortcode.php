@@ -10,8 +10,6 @@
  * @copyright 2018 Terry Lin
  */
 
-
-
 /**
  * Get anchor link with icon.
  *
