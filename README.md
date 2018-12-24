@@ -39,10 +39,6 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Github flavored Markdown task list.
 * Markdown extra...
 
-## Todo in the next version: 1.3.0
-
-* HTML to Markdown convertor - An option allows you quicky convert all old posts into Markdown text, then you can use WP Githuber MD immediately in your existing blogs.
-
 ### Features For Githuber Theme:
 
 * Menu: Bootstrap 4 menu.
@@ -59,7 +55,9 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ![Screenshot](https://i.imgur.com/UylHwpr.png)
 
+## Todo in the next version: 1.3.0
 
+* HTML to Markdown convertor - An option allows you quicky convert all old posts into Markdown text, then you can use WP Githuber MD immediately in your existing blogs.
 
 ## Changelog
 
