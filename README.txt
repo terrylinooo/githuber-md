@@ -66,8 +66,8 @@ You'll find answers to many of your questions on [Report issues](https://github.
 
 == Copyright ==
 
-Githuber MD, Copyright 2018 TerryL.in
-Githuber is distributed under the terms of the GNU GPL
+WP Githuber MD, Copyright 2018 TerryL.in
+WP Githuber MD is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -96,6 +96,8 @@ GNU General Public License for more details.
 * Add new settings.
 
 = 1.2.5
+
+* Add support to WordPress 5.0 - Thanks to [Classic Editor](https://wordpress.org/plugins/classic-editor/) plugin.
 
 == Upgrade Notice ==
 

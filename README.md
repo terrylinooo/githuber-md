@@ -18,6 +18,15 @@ For example, if you enabled `syntax highlight`, you have to update your post aga
 * WordPress version > 4.7
 * Tested up to 5.0.2
 
+## Installation
+
+1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
+    - Search `Githuber` through plugins screen you will find this plugin.
+    - Download  from official WordPress plugin page: https://wordpress.org/plugins/wp-githuber-md/
+    - Download form GitHub repository releases page: https://github.com/terrylinooo/githuber-md/releases
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Go to the `WP Githuber MD` menu in Plugins and set your Markdown options.
+
 ## Suggestions
 
 The better situation to use this plugin is you just started a new blog.
@@ -75,6 +84,11 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Image paste - Provide an option that allows you directly upload to Imgur.com.
 * Rename plugin name from "Githuber MD" to "WP Githuber MD".
 * Add new settings.
+
+1.2.5
+
+* Add support to WordPress 5.0 - Thanks to [Classic Editor](https://wordpress.org/plugins/classic-editor/)  plugin.
+
 
 
 
