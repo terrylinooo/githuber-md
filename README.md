@@ -12,6 +12,17 @@ An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https:
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
 For example, if you enabled `syntax highlight`, you have to update your post again to take effects.
 
+## DEMO Animation
+
+![Screenshot](https://i.imgur.com/F6RQvA5.gif)
+
+The GIF animation shows you the following steps:
+
+1. Convert HTML to Markdown by using `HTML to Markdown` tool.
+2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
+3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
+4. View the result.
+
 ## Requirement
 
 * PHP version > 5.6
@@ -31,11 +42,13 @@ For example, if you enabled `syntax highlight`, you have to update your post aga
 
 The better situation to use this plugin is you just started a new blog.
 
+
+
 If you're planning to use this plugin in an existing blog, be sure to:
 
-- At the first, backup your data, we do not guarantee things work as expected.
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
 
+- My personal suggestion is to turn off `revision` and `auto-save`, there are options in setting page.
 
 ## Features
 
@@ -88,6 +101,12 @@ If you're planning to use this plugin in an existing blog, be sure to:
 1.2.5
 
 * Add support to WordPress 5.0 - Thanks to [Classic Editor](https://wordpress.org/plugins/classic-editor/)  plugin.
+
+1.3.0
+
+* Add a HTML to Markdown tool beside the editor.
+* Add an option that allows users to turn off `auto-save`.
+* Add more information in About page.
 
 
 

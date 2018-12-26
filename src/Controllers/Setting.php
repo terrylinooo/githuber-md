@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.3.0
  */
 
 namespace Githuber\Controller;
@@ -149,9 +149,35 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'disable_revision',
 					'label'   => __( 'Disable Revision', $this->text_domain ),
-					'desc'    => __( 'If you think the revision and auto-save functions are annoying when you\'re writing, you can to disable them.', $this->text_domain ),
+					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable them.', $this->text_domain ),
 					'type'    => 'radio',
 					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain ),
+					)
+				),
+
+				array(
+					'name'    => 'disable_autosave',
+					'class'   => 'disable_autosave',
+					'label'   => __( 'Disable Auto-save', $this->text_domain ),
+					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable them.', $this->text_domain ),
+					'type'    => 'radio',
+					'default' => 'yes',
+					'options' => array(
+						'yes' => __( 'Yes', $this->text_domain ),
+						'no'  => __( 'No', $this->text_domain ),
+					)
+				),
+
+				array(
+					'name'    => 'html_to_markdown',
+					'class'   => 'html_to_markdown',
+					'label'   => __( 'HTML to Markdown Convertor', $this->text_domain ),
+					'desc'    => githuber_load_view( 'setting/html_to_markdown' ),
+					'type'    => 'radio',
+					'default' => 'yes',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
 						'no'  => __( 'No', $this->text_domain ),
@@ -168,7 +194,7 @@ class Setting extends ControllerAbstract {
 					'label'   => __( 'Live Preview', $this->text_domain ),
 					'desc'    => __( 'Split editor into two panes to display a live preview when editing post.', $this->text_domain ),
 					'type'    => 'radio',
-					'default' => 'no',
+					'default' => 'yes',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
 						'no'  => __( 'No', $this->text_domain ),
@@ -180,7 +206,7 @@ class Setting extends ControllerAbstract {
 					'label'   => __( 'Sync Scrolling', $this->text_domain ),
 					'desc'    => __( 'Synchronize scrolling of two editor panes by content.', $this->text_domain ),
 					'type'    => 'radio',
-					'default' => 'no',
+					'default' => 'yes',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
 						'no'  => __( 'No', $this->text_domain ),
@@ -190,9 +216,9 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'editor_html_decode',
 					'label'   => __( 'HTML Decode', $this->text_domain ),
-					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor. Default false to increase security.', $this->text_domain ),
+					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor.', $this->text_domain ),
 					'type'    => 'radio',
-					'default' => 'no',
+					'default' => 'yes',
 					'options' => array(
 						'yes' => __( 'Yes', $this->text_domain ),
 						'no'  => __( 'No', $this->text_domain ),
@@ -613,7 +639,21 @@ class Setting extends ControllerAbstract {
 			'githuber_about' => array(
 
 				array(
-					'name' => 'plugin_about',
+					'name' => 'plugin_about_author',
+					'label'   => __( 'Author', $this->text_domain ),
+					'desc' => 'Terry L. from Taiwan.',
+					'type' => 'html'
+				),
+
+				array(
+					'name' => 'plugin_about_github',
+					'label'   => __( 'GitHub Repository', $this->text_domain ),
+					'desc' => githuber_load_view( 'setting/about-github-repo' ),
+					'type' => 'html'
+				),
+
+				array(
+					'name' => 'plugin_about_support',
 					'label'   => __( 'Support', $this->text_domain ),
 					'desc' => githuber_load_view( 'setting/about-and-support' ),
 					'type' => 'html'

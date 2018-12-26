@@ -12,6 +12,17 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https://github.com/terrylinooo/githuber) functionality.
 
+== DEMO ==
+
+https://youtu.be/it1noNCTXa4
+
+The Video shows you the following steps:
+
+1. Convert HTML to Markdown by using `HTML to Markdown` tool.
+2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
+3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
+4. View the result.
+
 == How it works ==
 
 1. Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.

@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 namespace Githuber\Controller;
@@ -43,8 +43,11 @@ class Register extends ControllerAbstract {
 		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
 			add_action( 'init', array( $this , 'remove_revisions' ), 10 );
 		}
-	}
 
+		if ( 'yes' === githuber_get_option( 'disable_autosave', 'githuber_markdown' ) ) {
+			add_action( 'wp_print_scripts', array( $this , 'remove_autosave' ), 10 );
+		}
+	}
 
 	/**
 	 * Remove revisions.
@@ -53,6 +56,13 @@ class Register extends ControllerAbstract {
 		remove_post_type_support( 'post', 'revisions' );
 		remove_post_type_support( 'page', 'revisions' );
 		remove_post_type_support( 'repository', 'revisions' );
+	}
+
+	/**
+	 * Remove auto-save function.
+	 */
+	function remove_autosave() {
+		wp_deregister_script('autosave');
 	}
 
 	/**
@@ -74,8 +84,24 @@ class Register extends ControllerAbstract {
 	 */
 	public function activate_plugin() {
 		global $current_user;
+
 		// Turn off Rich-text editor.
 		update_user_option( $current_user->ID, 'rich_editing', 'false', true );
+
+		$githuber_markdown = array(
+			'enable_markdown_for'   => array( 'posting' => 'posting' ),
+			'disable_revision'      => 'no',
+			'disable_autosave'      => 'yes',
+			'html_to_markdown'      => 'yes',
+			'editor_live_preview'   => 'yes',
+			'editor_sync_scrolling' => 'yes',
+			'editor_html_decode'    => 'yes',
+		);
+
+		// Add default setting. Only execute this action at the first time activation.
+		if ( false === get_option( 'githuber_markdown' ) ) {
+			update_option( 'githuber_markdown', $githuber_markdown, '', 'yes' );
+		}
 	}
 
 	/**

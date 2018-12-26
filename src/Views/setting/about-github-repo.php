@@ -14,6 +14,6 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 
 <?php echo __( 
 '
-If you have any issues, or found any bugs, please report them in the following URL.
+If you like this plugin, syndicate it, star it, share it to your friends.
 ', GITHUBER_PLUGIN_TEXT_DOMAIN ) ?><br />
-<a href="https://github.com/terrylinooo/githuber-md/issues" target="_blank">https://github.com/terrylinooo/githuber-md/issues</a>
+<a href="https://github.com/terrylinooo/githuber-md" target="_blank">https://github.com/terrylinooo/githuber-md</a>

@@ -48,6 +48,11 @@ class Githuber {
 	
 			$markdown = new Controller\Markdown();
 			$markdown->init();
+
+			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
+				$html2markdown = new Controller\HtmlToMarkdown();
+				$html2markdown->init();
+			}
 		}
 
 		/**

@@ -33,11 +33,26 @@ function githuber_get_option( $option, $section, $default = '' ) {
  * @return int
  */
 function githuber_get_current_post_id() {
-	global $post, $wp_posts;
+	global $post;
 
 	if ( ! empty( $post ) )  {
 		return $post->ID;
 	}
+}
+
+/**
+ * Check current user's permission.
+ *
+ * @param string $action User action.
+ * @return bool
+ */
+function githuber_current_user_can( $action ) {
+	global $post;
+
+	if ( current_user_can( $action, $post->ID ) ) {
+		return true;
+	}
+	return false;
 }
 
 /**

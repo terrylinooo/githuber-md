@@ -258,9 +258,9 @@ class WeDevs_Settings_API {
 		$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 
 		$html  = '<fieldset>';
-		$html  .= sprintf( '<label for="wpuf-%1$s[%2$s]">', $args['section'], $args['id'] );
-		$html  .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
-		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
+		$html  .= sprintf( '<label for="wpuf-%1$s-%2$s">', $args['section'], $args['id'] );
+		$html  .= sprintf( '<input type="hidden" name="%1$s-%2$s" value="off" />', $args['section'], $args['id'] );
+		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s-%2$s" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', $args['desc'] );
 		$html  .= '</fieldset>';
 
@@ -288,8 +288,8 @@ class WeDevs_Settings_API {
 			} else {
 				$html .= '<div style="display: inline-block; margin-right: 15px;">';
 			}
-			$html    .= sprintf( '<label for="wpuf-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-			$html    .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
+			$html    .= sprintf( '<label for="wpuf-%1$s-%2$s-%3$s">', $args['section'], $args['id'], $key );
+			$html    .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s-%2$s-%3$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
 			$html    .= sprintf( '%1$s</label>',  $label );
 			$html .= '</div>';
 		}
@@ -311,8 +311,8 @@ class WeDevs_Settings_API {
 		$html  = '<fieldset>';
 
 		foreach ( $args['options'] as $key => $label ) {
-			$html .= sprintf( '<label for="wpuf-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
-			$html .= sprintf( '<input type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+			$html .= sprintf( '<label for="wpuf-%1$s-%2$s-%3$s">',  $args['section'], $args['id'], $key );
+			$html .= sprintf( '<input type="radio" class="radio" id="wpuf-%1$s-%2$s-%3$s" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
 			$html .= sprintf( '%1$s</label><br>', $label );
 		}
 
