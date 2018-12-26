@@ -4,13 +4,13 @@ Tags: githuber, markdown
 Requires at least: 4.7
 Tested up to: 5.0.2
 Stable tag: 1.3.0
-Requires PHP: 5.6
+Requires PHP: 5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https://github.com/terrylinooo/githuber) functionality.
+An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
 == DEMO ==
 
@@ -52,7 +52,7 @@ Features For Markdown
 
 * Markdown editor.
 * Live preivew.
-* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/).
+* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
 * Syntax highlight.
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katax/).

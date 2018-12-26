@@ -2,7 +2,8 @@
 
 ![Screenshot](./assets/images/wp-githuber-md-cover.png)
 
-An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https://github.com/terrylinooo/githuber) functionality.
+An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+
 
 ## How it works
 
@@ -37,7 +38,7 @@ https://youtu.be/it1noNCTXa4
 
 ## Requirement
 
-* PHP version > 5.6
+* PHP version > 5.3
 * WordPress version > 4.7
 * Tested up to 5.0.2
 
