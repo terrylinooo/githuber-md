@@ -1,6 +1,6 @@
 # WP Githuber MD
 
-![Screenshot](https://i.imgur.com/3O854Jm.png)
+![Screenshot](./assets/images/wp-githuber-md-cover.png)
 
 An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https://github.com/terrylinooo/githuber) functionality.
 
@@ -16,18 +16,24 @@ For example, if you enabled `syntax highlight`, you have to update your post aga
 
 ### GIF animation
 
-![Screenshot](https://i.imgur.com/F6RQvA5.gif)
+The demo shows you the following steps:
+
+![Screenshot](./assets/images/screenshot-1.gif)
+
+1. Convert HTML to Markdown by using `HTML to Markdown` tool.
+
+![Screenshot](./assets/images/screenshot-2.gif)
+
+2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
+
+![Screenshot](./assets/images/screenshot-3.gif)
+
+3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
+4. View the result.
 
 ### Video
 
 https://youtu.be/it1noNCTXa4
-
-The demo shows you the following steps:
-
-1. Convert HTML to Markdown by using `HTML to Markdown` tool.
-2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
-3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
-4. View the result.
 
 ## Requirement
 
@@ -73,15 +79,11 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ### Other screenshots
 
-#### Image paste
-
-![file](https://i.imgur.com/BQgn2So.gif)
-
 #### Setting pages
 
-![Screenshot](https://i.imgur.com/tpRAEI5.png)
+![Screenshot](./assets/images/screenshot-5.png)
 
-![Screenshot](https://i.imgur.com/UylHwpr.png)
+![Screenshot](./assets/images/screenshot-6.png)
 
 ## Changelog
 
