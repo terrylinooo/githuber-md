@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: githuber, markdown
 Requires at least: 4.7
 Tested up to: 5.0.2
-Stable tag: 1.2.5
+Stable tag: 1.3.0
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -109,6 +109,12 @@ GNU General Public License for more details.
 = 1.2.5
 
 * Add support to WordPress 5.0 - Thanks to [Classic Editor](https://wordpress.org/plugins/classic-editor/) plugin.
+
+= 1.3.0
+
+* Add a `HTML to Markdown` tool beside editor.
+* Add an option that allows users to turn off `auto-save`.
+* Add more information in About page.
 
 == Upgrade Notice ==
 

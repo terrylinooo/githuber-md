@@ -12,11 +12,17 @@ An all-in-on Markdown WordPress plugin and also improves [Githuber theme](https:
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
 For example, if you enabled `syntax highlight`, you have to update your post again to take effects.
 
-## DEMO Animation
+## DEMO 
+
+### GIF animation
 
 ![Screenshot](https://i.imgur.com/F6RQvA5.gif)
 
-The GIF animation shows you the following steps:
+### Video
+
+https://youtu.be/it1noNCTXa4
+
+The demo shows you the following steps:
 
 1. Convert HTML to Markdown by using `HTML to Markdown` tool.
 2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
@@ -42,12 +48,9 @@ The GIF animation shows you the following steps:
 
 The better situation to use this plugin is you just started a new blog.
 
-
-
 If you're planning to use this plugin in an existing blog, be sure to:
 
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
-
 - My personal suggestion is to turn off `revision` and `auto-save`, there are options in setting page.
 
 ## Features
@@ -71,16 +74,14 @@ If you're planning to use this plugin in an existing blog, be sure to:
 ### Other screenshots
 
 #### Image paste
+
 ![file](https://i.imgur.com/BQgn2So.gif)
 
 #### Setting pages
+
 ![Screenshot](https://i.imgur.com/tpRAEI5.png)
 
 ![Screenshot](https://i.imgur.com/UylHwpr.png)
-
-## Todo in the next version: 1.3.0
-
-* HTML to Markdown convertor - An option allows you quicky convert all old posts into Markdown text, then you can use WP Githuber MD immediately in your existing blogs.
 
 ## Changelog
 
