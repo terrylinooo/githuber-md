@@ -721,11 +721,11 @@ class Setting extends ControllerAbstract {
 	 */
 	public function plugin_action_links( $links, $file ) {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			//return $links;
+			return $links;
 		}
 
 		if ( $file == $this->githuber_plugin_name ) {
-			//$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', 'wp-githuber-md' ) . '</a>';
+			$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', 'wp-githuber-md' ) . '</a>';
 			return $links;
 		}
 	}
