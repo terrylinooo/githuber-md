@@ -38,11 +38,9 @@ spl_autoload_register( function( $class_name ) {
 				return false;
 			}
 
-			$class_name = str_replace(
-				['Controller\\', 'Model\\', 'Module\\'], 
-				['Controllers\\', 'Models\\', 'Modules\\'], 
-				$class_name
-			);
+			$class_name = str_replace('Controller\\', 'Controllers\\', $class_name);
+			$class_name = str_replace('Model\\', 'Models\\', $class_name);
+			$class_name = str_replace('Module\\', 'Modules\\', $class_name);
 
 			$last_ns_pos = strrpos( $class_name, '\\' );
 			$namespace = substr( $class_name, 0, $last_ns_pos );

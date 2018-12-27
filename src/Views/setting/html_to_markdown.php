@@ -21,12 +21,14 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
     ', GITHUBER_PLUGIN_TEXT_DOMAIN ) ?>
 
 <script>
-    $(function() {
-        var is_html_to_markdown = $('#wpuf-githuber_markdown-html_to_markdown-yes').is(':checked');
+    (function($) {
+        $(function() {
+            var is_html_to_markdown = $('#wpuf-githuber_markdown-html_to_markdown-yes').is(':checked');
 
-        if (is_html_to_markdown) {
-            $('#wpuf-githuber_markdown-disable_autosave-yes').prop('checked', true);
-            $('#wpuf-githuber_markdown-disable_autosave-no').prop('checked', false);
-        }
-    });
+            if (is_html_to_markdown) {
+                $('#wpuf-githuber_markdown-disable_autosave-yes').prop('checked', true);
+                $('#wpuf-githuber_markdown-disable_autosave-no').prop('checked', false);
+            }
+        });
+    })(jQuery);
 </script>

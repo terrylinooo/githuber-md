@@ -10,6 +10,10 @@
  * @updateTime  2015-06-09
  */
 
+ if (typeof $ === 'undefined' && typeof window.jQuery !== 'undefined') {
+    var $ = window.jQuery;
+ }
+ 
 ;(function(factory) {
     "use strict";
     

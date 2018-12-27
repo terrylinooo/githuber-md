@@ -52,7 +52,7 @@ class Githuber_Post_Type_Repository {
 				'has_archive'  => true,
 				'can_export'   => true,
 				'menu_icon'    => 'dashicons-lightbulb',
-				'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
+				'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'author' ),
 				'taxonomies'   => array( 'post_tag', 'category' ),
 			)
 		);

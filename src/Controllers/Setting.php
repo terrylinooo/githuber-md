@@ -14,7 +14,7 @@ namespace Githuber\Controller;
 
 class Setting extends ControllerAbstract {
 
-	public static $settings = [];
+	public static $settings = array();
 	public static $setting_api;
 
 	/**

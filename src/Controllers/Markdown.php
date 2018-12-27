@@ -459,7 +459,7 @@ class Markdown extends ControllerAbstract {
 			'xeora'             => array( 'markup' )
 		);
 
-		$prism_meta_array = [];
+		$prism_meta_array = array();
 
 		delete_metadata( 'post', $post_id, self::MD_POST_META_PRISM);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_SEQUENCE);
