@@ -15,7 +15,7 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 <div class="submitbox">
     <div class="misc-publishing-actions">
         <p>
-            <?php echo __( 'This is a tool that helps you easily convert an old post into Markdown. If you are not satisfied with the result, do not click <strong>Update</strong> button.', GITHUBER_PLUGIN_TEXT_DOMAIN ); ?>
+            <?php echo __( 'This is a tool that helps you easily convert an old post (not current content in your editor area) into Markdown. If you are not satisfied with the result, do not click <strong>Update</strong> button.', GITHUBER_PLUGIN_TEXT_DOMAIN ); ?>
         </p>
         <table>
             <tr>

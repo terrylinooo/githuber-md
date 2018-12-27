@@ -13,7 +13,7 @@ An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpre
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
 For example, if you enabled `syntax highlight`, you have to update your post again to take effects.
 
-## DEMO 
+## Demo
 
 ### GIF animation
 
@@ -39,12 +39,12 @@ https://youtu.be/it1noNCTXa4
 ## Requirement
 
 * PHP version > 5.3
-* WordPress version > 4.7
+* WordPress version > 4.0
 * Tested up to 5.0.2
 
 ## Installation
 
-1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/wp-githuber-md` directory, or install the plugin through the WordPress plugins screen directly.
     - Search `Githuber` through plugins screen you will find this plugin.
     - Download  from official WordPress plugin page: https://wordpress.org/plugins/wp-githuber-md/
     - Download form GitHub repository releases page: https://github.com/terrylinooo/githuber-md/releases
@@ -112,6 +112,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Add an option that allows users to turn off `auto-save`.
 * Add more information in About page.
 
+1.3.1
 
-
-
+* Backward compatible with PHP 5.3 and WordPress 4.0.x. Tested OKAY.
+* Modify HTML-to-Markdown helper description.

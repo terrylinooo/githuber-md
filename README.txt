@@ -1,9 +1,9 @@
 === WP Githuber MD ===
 Contributors: terrylin
 Tags: githuber, markdown
-Requires at least: 4.7
+Requires at least: 4.0
 Tested up to: 5.0.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
-== DEMO ==
+== Demo ==
 
 https://youtu.be/it1noNCTXa4
 
@@ -42,7 +42,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/wp-githuber-md` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to the Githuber MD menu in Plugins and set your Markdown options.
 
@@ -116,9 +116,11 @@ GNU General Public License for more details.
 * Add an option that allows users to turn off `auto-save`.
 * Add more information in About page.
 
+= 1.3.1
+
+* Backward compatible with PHP 5.3 and WordPress 4.0.x. (Tested in PHP 5.3.5 with WordPress 4.0.25 OKAY.)
+* Modify HTML-to-Markdown helper description.
+
 == Upgrade Notice ==
 
 = Currently no logs now.
-
-
-
