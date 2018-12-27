@@ -6,6 +6,9 @@
         var h2m_line_break = $('input[name=h2m_line_break]:checked').val();
 
         $('#btn-html2markdown').click(function() {
+
+            var h2m_post_content = githuber_md_editor.getValue();
+
             $.ajax({
                 url: h2m.ajax_url,
                 type: 'post',
@@ -14,7 +17,8 @@
                     action: 'githuber_html2markdown',
                     strip_tags: h2m_strip_tags,
                     line_break: h2m_line_break,
-                    post_id: h2m.post_id
+                    post_id: h2m.post_id,
+                    post_content: h2m_post_content
                 },
                 success: function(data) {
                     if (data.success) {
