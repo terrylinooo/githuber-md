@@ -116,5 +116,5 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 * Backward compatible with PHP 5.3 and WordPress 4.0.x. Tested OKAY.
 * Modify HTML-to-Markdown helper and image-paste description.
-* Add language packs for zh_TW and zh_CN.
+* Add language packs template.
 * Improve HTML-to-Markdown helper.
