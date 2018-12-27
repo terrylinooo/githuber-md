@@ -96,6 +96,8 @@ class Register extends ControllerAbstract {
 			'editor_live_preview'   => 'yes',
 			'editor_sync_scrolling' => 'yes',
 			'editor_html_decode'    => 'yes',
+			'editor_toolbar_theme'  => 'default',
+			'editor_editor_theme'   => 'default',
 		);
 
 		// Add default setting. Only execute this action at the first time activation.
