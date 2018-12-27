@@ -49,7 +49,7 @@ class Setting extends ControllerAbstract {
 		add_action( 'admin_init', array( $this, 'setting_admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'setting_admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
-		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 5 );
+		add_filter( 'plugin_action_links_' . $this->githuber_plugin_name, array( $this, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_extend_links' ), 10, 2 );
 	}
 
@@ -96,22 +96,22 @@ class Setting extends ControllerAbstract {
 
 			array(
 				'id'    => 'githuber_markdown',
-				'title' => __( 'Markdown', $this->text_domain ),
+				'title' => __( 'Markdown', 'wp-githuber-md' ),
 			),
 			
 			array(
 				'id'    => 'githuber_modules',
-				'title' => __( 'Modules', $this->text_domain ),
+				'title' => __( 'Modules', 'wp-githuber-md' ),
 			),
 
 			array(
 				'id'    => 'githuber_options',
-				'title' => __( 'Theme Options', $this->text_domain ),
+				'title' => __( 'Theme Options', 'wp-githuber-md' ),
 			),
 
 			array(
 				'id'    => 'githuber_about',
-				'title' => __( 'About', $this->text_domain ),
+				'title' => __( 'About', 'wp-githuber-md' ),
 			),
 		);
 	}
@@ -129,13 +129,13 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Writing', $this->text_domain ),
+					'label' => __( 'Writing', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'enable_markdown_for',
-					'label'   => __( 'Enable', $this->text_domain ),
-					'desc'    => __( 'Enable Markdown for post, pages or comments.', $this->text_domain ),
+					'label'   => __( 'Enable', 'wp-githuber-md' ),
+					'desc'    => __( 'Enable Markdown for post, pages or comments.', 'wp-githuber-md' ),
 					'type'    => 'multicheck',
 					'default' => array(
 						'posting' => 'posting',
@@ -148,92 +148,92 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'disable_revision',
-					'label'   => __( 'Disable Revision', $this->text_domain ),
-					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable them.', $this->text_domain ),
+					'label'   => __( 'Disable Revision', 'wp-githuber-md' ),
+					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'disable_autosave',
 					'class'   => 'disable_autosave',
-					'label'   => __( 'Disable Auto-save', $this->text_domain ),
-					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable them.', $this->text_domain ),
+					'label'   => __( 'Disable Auto-save', 'wp-githuber-md' ),
+					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'yes',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'html_to_markdown',
 					'class'   => 'html_to_markdown',
-					'label'   => __( 'HTML to Markdown Convertor', $this->text_domain ),
-					'desc'    => githuber_load_view( 'setting/html_to_markdown' ),
+					'label'   => __( 'HTML-to-Markdown Helper', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'setting/html-to-markdown' ),
 					'type'    => 'radio',
 					'default' => 'yes',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Editor Settings', $this->text_domain ),
+					'label' => __( 'Editor Settings', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'editor_live_preview',
-					'label'   => __( 'Live Preview', $this->text_domain ),
-					'desc'    => __( 'Split editor into two panes to display a live preview when editing post.', $this->text_domain ),
+					'label'   => __( 'Live Preview', 'wp-githuber-md' ),
+					'desc'    => __( 'Split editor into two panes to display a live preview when editing post.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'yes',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'editor_sync_scrolling',
-					'label'   => __( 'Sync Scrolling', $this->text_domain ),
-					'desc'    => __( 'Synchronize scrolling of two editor panes by content.', $this->text_domain ),
+					'label'   => __( 'Sync Scrolling', 'wp-githuber-md' ),
+					'desc'    => __( 'Synchronize scrolling of two editor panes by content.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'yes',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'editor_html_decode',
-					'label'   => __( 'HTML Decode', $this->text_domain ),
-					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor.', $this->text_domain ),
+					'label'   => __( 'HTML Decode', 'wp-githuber-md' ),
+					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'yes',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Editor Style', $this->text_domain ),
+					'label' => __( 'Editor Style', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'editor_toolbar_theme',
-					'label'   => __( 'Toolbar', $this->text_domain ),
-					'desc'    => __( 'Choose a perferred style for the Editor\'s toolbar.', $this->text_domain ),
+					'label'   => __( 'Toolbar', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a perferred style for the Editor\'s toolbar.', 'wp-githuber-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -244,8 +244,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_editor_theme',
-					'label'   => __( 'Editing Area', $this->text_domain ),
-					'desc'    => __( 'Choose a perferred style for the Editor\'s editing area.', $this->text_domain ),
+					'label'   => __( 'Editing Area', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a perferred style for the Editor\'s editing area.', 'wp-githuber-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -309,66 +309,66 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Modules', $this->text_domain ),
+					'label' => __( 'Modules', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'support_prism',
-					'label'   => __( 'Syntax Highlight', $this->text_domain ),
-					'desc'    => __( 'Highligh the syntax in your code snippets by Prism.js', $this->text_domain ),
+					'label'   => __( 'Syntax Highlight', 'wp-githuber-md' ),
+					'desc'    => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'support_katex',
-					'label'   => __( 'KaTeX', $this->text_domain ),
-					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-katax/" target="_blank">KaTeX</a> math typesetting.', $this->text_domain ),
+					'label'   => __( 'KaTeX', 'wp-githuber-md' ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-katax/" target="_blank">KaTeX</a> math typesetting.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'support_flowchart',
-					'label'   => __( 'Flow Chart', $this->text_domain ),
-					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', $this->text_domain ),
+					'label'   => __( 'Flow Chart', 'wp-githuber-md' ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'support_sequence_diagram',
-					'label'   => __( 'Sequence Diagrams', $this->text_domain ),
-					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', $this->text_domain ),
+					'label'   => __( 'Sequence Diagrams', 'wp-githuber-md' ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'support_task_list',
-					'label'   => __( 'Task List', $this->text_domain ),
-					'desc'    => __( 'Support Github Flavored Markdown task lists.', $this->text_domain ),
+					'label'   => __( 'Task List', 'wp-githuber-md' ),
+					'desc'    => __( 'Support Github Flavored Markdown task lists.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
@@ -376,25 +376,25 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'support_toc',
-					'label'   => __( 'Table of Content', $this->text_domain ),
-					'desc'    => __( 'Display a TOC in the every first section.', $this->text_domain ),
+					'label'   => __( 'Table of Content', 'wp-githuber-md' ),
+					'desc'    => __( 'Display a TOC in the every first section.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' )
 					)
 				),
 
 				array(
 					'name'    => 'support_emoji',
-					'label'   => __( 'Emoji', $this->text_domain ),
-					'desc'    => __( 'Support Emoji in posts.', $this->text_domain ),
+					'label'   => __( 'Emoji', 'wp-githuber-md' ),
+					'desc'    => __( 'Support Emoji in posts.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain )
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' )
 					)
 				),
 
@@ -402,13 +402,13 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'support_image_paste',
-					'label'   => __( 'Image Paste', $this->text_domain ),
-					'desc'    => __( 'Easily <a href="https://terryl.in/en/githuber-md-image-paste/" target="_blank">paste image from clipboard</a> directly into the post content.', $this->text_domain ),
+					'label'   => __( 'Image Paste', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'setting/image-paste' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 			),
@@ -417,14 +417,14 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Syntax Highlight', $this->text_domain ),
-					'desc'  => __( 'prism.js', $this->text_domain ),
+					'label' => __( 'Syntax Highlight', 'wp-githuber-md' ),
+					'desc'  => __( 'prism.js', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'prism_theme',
-					'label'   => __( 'Theme', $this->text_domain ),
-					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', $this->text_domain ),
+					'label'   => __( 'Theme', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', 'wp-githuber-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -441,20 +441,20 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'prism_line_number',
-					'label'   => __( 'Line Number', $this->text_domain ),
-					'desc'    => __( 'Show line number in code area?', $this->text_domain ),
+					'label'   => __( 'Line Number', 'wp-githuber-md' ),
+					'desc'    => __( 'Show line number in code area?', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'prism_src',
-					'label'   => __( 'File Host', $this->text_domain ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', $this->text_domain ),
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
@@ -466,14 +466,14 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'KaTex', $this->text_domain ),
-					'desc'  => __( 'KaTex.js', $this->text_domain ),
+					'label' => __( 'KaTex', 'wp-githuber-md' ),
+					'desc'  => __( 'KaTex.js', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'katex_src',
-					'label'   => __( 'File Host', $this->text_domain ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', $this->text_domain ),
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
@@ -485,14 +485,14 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Flow Chart', $this->text_domain ),
-					'desc'  => __( 'flowchart.js', $this->text_domain ),
+					'label' => __( 'Flow Chart', 'wp-githuber-md' ),
+					'desc'  => __( 'flowchart.js', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'flowchart_src',
-					'label'   => __( 'File Host', $this->text_domain ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', $this->text_domain ),
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
@@ -504,25 +504,25 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Image Paste', $this->text_domain ),
+					'label' => __( 'Image Paste', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'    => 'image_paste_src',
-					'label'   => __( 'Storage Space', $this->text_domain ),
-					'desc'    => __( 'Images are stored in WordPress\'s <strong>uploads</strong> folder by default. However, you can use Imgur instead of the default place.', $this->text_domain ),
+					'label'   => __( 'Storage Space', 'wp-githuber-md' ),
+					'desc'    => __( 'Images are stored in WordPress\'s <strong>uploads</strong> folder by default. However, you can use Imgur instead of the default place.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'options' => array(
-						'default' => __( 'default', $this->text_domain ),
-						'imgur'   => __( 'imgur.com', $this->text_domain ),
+						'default' => __( 'default', 'wp-githuber-md' ),
+						'imgur'   => __( 'imgur.com', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
                     'name'              => 'imgur_client_id',
-					'label'             => __( 'Imgur Client ID', $this->text_domain ),
-					'desc'              => __( 'Required while the choosed storage space is <u>imgur.com</u>. If you don\'t have one, <a href="https://api.imgur.com/oauth2/addclient" target="_blank">sign up</a> here.', $this->text_domain ),
+					'label'             => __( 'Imgur Client ID', 'wp-githuber-md' ),
+					'desc'              => githuber_load_view( 'setting/image-paste-imgur' ),
                     'placeholder'       => '',
                     'type'              => 'text',
                     'default'           => '',
@@ -541,91 +541,91 @@ class Setting extends ControllerAbstract {
 				
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Menu', $this->text_domain ),
+					'label' => __( 'Menu', 'wp-githuber-md' ),
 					'desc'  => '',
 				),
 
 				array(
 					'name'    => 'githuber_theme_bootstrap_menu',
-					'label'   => __( 'Bootstrap 4 Menu', $this->text_domain ),
-					'desc'    => __( 'Use Bootstrap 4 dropdown menu in header position. (2-layer)', $this->text_domain ),
+					'label'   => __( 'Bootstrap 4 Menu', 'wp-githuber-md' ),
+					'desc'    => __( 'Use Bootstrap 4 dropdown menu in header position. (2-layer)', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Widget', $this->text_domain ),
+					'label' => __( 'Widget', 'wp-githuber-md' ),
 					'desc'  => '',
 				),
 
 				array(
 					'name'    => 'githuber_theme_bootstrap_toc',
-					'label'   => __( 'Bootstrap 4 TOC', $this->text_domain ),
-					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', $this->text_domain ),
+					'label'   => __( 'Bootstrap 4 TOC', 'wp-githuber-md' ),
+					'desc'    => __( 'A widget that shows a Bootstrap 4 styled TOC deponds on your post content.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Post Type', $this->text_domain ),
+					'label' => __( 'Post Type', 'wp-githuber-md' ),
 					'desc'  => '',
 				),
 
 				array(
 					'name'    => 'githuber_theme_repository',
-					'label'   => __( 'GitHub Repository', $this->text_domain ),
-					'desc'    => __( 'Display the stars, forks, issues from your GitHub repository.', $this->text_domain ),
+					'label'   => __( 'GitHub Repository', 'wp-githuber-md' ),
+					'desc'    => __( 'Display the stars, forks, issues from your GitHub repository.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Shortcode', $this->text_domain ),
+					'label' => __( 'Shortcode', 'wp-githuber-md' ),
 					'desc'  => '',
 				),
 
 				array(
 					'name'    => 'githuber_theme_shortcode_social_icons',
-					'label'   => __( 'Social Icons', $this->text_domain ),
-					'desc'    => __( '.', $this->text_domain ),
+					'label'   => __( 'Social Icons', 'wp-githuber-md' ),
+					'desc'    => __( 'Use social icons in author section.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Adjustment', $this->text_domain ),
+					'label' => __( 'Adjustment', 'wp-githuber-md' ),
 					'desc'  => '',
 				),
 
 				array(
 					'name'    => 'githuber_theme_adjustment_head_output',
-					'label'   => __( 'Head Output', $this->text_domain ),
-					'desc'    => __( 'Remove information displays in HTML source code.', $this->text_domain ),
+					'label'   => __( 'Head Output', 'wp-githuber-md' ),
+					'desc'    => __( 'Remove information displays in HTML source code.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', $this->text_domain ),
-						'no'  => __( 'No', $this->text_domain ),
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
 					)
 				),
 
@@ -640,22 +640,36 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name' => 'plugin_about_author',
-					'label'   => __( 'Author', $this->text_domain ),
+					'label'   => __( 'Author', 'wp-githuber-md' ),
 					'desc' => 'Terry L. from Taiwan.',
 					'type' => 'html'
 				),
 
 				array(
+					'name' => 'plugin_about_version',
+					'label'   => __( 'Version', 'wp-githuber-md' ),
+					'desc' => GITHUBER_PLUGIN_VERSION,
+					'type' => 'html'
+				),
+
+				array(
 					'name' => 'plugin_about_github',
-					'label'   => __( 'GitHub Repository', $this->text_domain ),
+					'label'   => __( 'GitHub Repository', 'wp-githuber-md' ),
 					'desc' => githuber_load_view( 'setting/about-github-repo' ),
 					'type' => 'html'
 				),
 
 				array(
 					'name' => 'plugin_about_support',
-					'label'   => __( 'Support', $this->text_domain ),
+					'label'   => __( 'Support', 'wp-githuber-md' ),
 					'desc' => githuber_load_view( 'setting/about-and-support' ),
+					'type' => 'html'
+				),
+
+				array(
+					'name' => 'plugin_about_changelog',
+					'label'   => __( 'Changelog', 'wp-githuber-md' ),
+					'desc' => githuber_load_view( 'setting/about-changelog' ),
 					'type' => 'html'
 				),
 			),
@@ -673,8 +687,8 @@ class Setting extends ControllerAbstract {
 			default:
 				$menu_function = 'add_' . $this->menu_position . '_page';
 				$menu_function(
-					__( 'WP Githuber MD ', $this->text_domain ),
-					__( 'WP Githuber MD', $this->text_domain ),
+					__( 'WP Githuber MD ', 'wp-githuber-md' ),
+					__( 'WP Githuber MD', 'wp-githuber-md' ),
 					'manage_options',
 					$this->menu_slug, 
 					array( $this, 'setting_plugin_page' ),
@@ -706,12 +720,12 @@ class Setting extends ControllerAbstract {
 	 * @return array Combined links.
 	 */
 	public function plugin_action_links( $links, $file ) {
-		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
-			return $links;
+		if ( ! current_user_can( 'manage_options' ) ) {
+			//return $links;
 		}
 
 		if ( $file == $this->githuber_plugin_name ) {
-			$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', $this->text_domain ) . '</a>';
+			//$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', 'wp-githuber-md' ) . '</a>';
 			return $links;
 		}
 	}
@@ -729,8 +743,8 @@ class Setting extends ControllerAbstract {
 		}
 
 		if ( $file == $this->githuber_plugin_name ) {
-			$links[] = '<a href="https://github.com/terrylinooo/githuber-md" target="_blank">' . __( 'View GitHub project', $this->text_domain ) . '</a>';
-			$links[] = '<a href="https://github.com/terrylinooo/githuber-md/issues" target="_blank">' . __( 'Report issues', $this->text_domain ) . '</a>';
+			$links[] = '<a href="https://github.com/terrylinooo/githuber-md" target="_blank">' . __( 'View GitHub project', 'wp-githuber-md' ) . '</a>';
+			$links[] = '<a href="https://github.com/terrylinooo/githuber-md/issues" target="_blank">' . __( 'Report issues', 'wp-githuber-md' ) . '</a>';
 		}
 		return $links;
 	}

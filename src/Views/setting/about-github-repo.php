@@ -12,8 +12,9 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  */
 ?>
 
-<?php echo __( 
-'
-If you like this plugin, syndicate it, star it, share it to your friends.
-', GITHUBER_PLUGIN_TEXT_DOMAIN ) ?><br />
+<?php
+
+echo __( 'If you like this plugin, syndicate it, star it, share it to your friends.', 'wp-githuber-md' );
+
+?><br />
 <a href="https://github.com/terrylinooo/githuber-md" target="_blank">https://github.com/terrylinooo/githuber-md</a>

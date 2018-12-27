@@ -73,7 +73,6 @@ abstract class ControllerAbstract {
 		$this->githuber_plugin_dir  = GITHUBER_PLUGIN_DIR;
 		$this->githuber_plugin_path = GITHUBER_PLUGIN_PATH;
 		$this->version              = GITHUBER_PLUGIN_VERSION;
-		$this->text_domain          = GITHUBER_PLUGIN_TEXT_DOMAIN;
 	}
 
 	/**

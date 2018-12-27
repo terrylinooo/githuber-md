@@ -86,7 +86,7 @@ class Register extends ControllerAbstract {
 		global $current_user;
 
 		// Turn off Rich-text editor.
-		update_user_option( $current_user->ID, 'rich_editing', 'false', true );
+		//update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 
 		$githuber_markdown = array(
 			'enable_markdown_for'   => array( 'posting' => 'posting' ),

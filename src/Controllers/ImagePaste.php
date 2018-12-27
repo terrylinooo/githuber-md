@@ -89,10 +89,10 @@ class ImagePaste extends ControllerAbstract {
 					if ( true === $data['success'] ) {
 						$response['filename'] = $data['data']['link'];
 					} else {
-						$response['error'] = __( 'Error while processing your request to Imgur!', $this->text_domain );
+						$response['error'] = __( 'Error while processing your request to Imgur!', 'wp-githuber-md' );
 					}
 				} else {
-					$response['error'] = __( 'PHP Curl is not available on your system.', $this->text_domain );
+					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
 				}
 			
 			} else {
@@ -100,7 +100,7 @@ class ImagePaste extends ControllerAbstract {
 				$response['filename'] = $online_path . '/' . $filename;
 			}
 		} else {
-			$response['error'] = __( 'Error while uploading file.', $this->text_domain );
+			$response['error'] = __( 'Error while uploading file.', 'wp-githuber-md' );
 		}
 		echo json_encode( $response );
 

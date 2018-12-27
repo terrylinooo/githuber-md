@@ -86,7 +86,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 
         add_meta_box(
             'html2markdown_meta_box',
-            __( 'HTML to Markdown', $this->text_domain ),
+            __( 'HTML to Markdown', 'wp-githuber-md' ),
             array( $this, 'show_meta_box' ),
             null,
             'side',
@@ -98,7 +98,7 @@ class HtmlToMarkdown extends ControllerAbstract {
      * Show `HtmlToMarkdown` meta box.
      */
     public function show_meta_box() {
-        echo githuber_load_view( 'meta_box/html_to_markdown' );
+        echo githuber_load_view( 'metabox/html-to-markdown' );
     }
 
 	/**
@@ -107,6 +107,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 	public function admin_githuber_html2markdown() {
         $is_strip_tags = false;
         $is_line_break = false;
+        $post_content  = '';
 
         $response = array(
             'success' => false,
@@ -125,15 +126,19 @@ class HtmlToMarkdown extends ControllerAbstract {
             //return;
         }
 
-        $post_id = (int) $_POST['post_id'];
-        $post    = (array) get_post( $post_id );
+        if ( ! empty( $_POST['post_content'] ) ) {
+            $post_content = $_POST['post_content'];
+        }
+
+        //$post_id = (int) $_POST['post_id'];
+        //$post    = (array) get_post( $post_id );
 
         $converter = new HtmlConverter();
         $converter->getConfig()->setOption('strip_tags', $is_strip_tags);
         $converter->getConfig()->setOption('hard_break', $is_line_break);
         $converter->getConfig()->setOption('header_style', 'atx');
 
-        $markdown = $converter->convert( $post['post_content'] ); 
+        $markdown = $converter->convert( $post_content ); 
 
         if ( ! empty( $markdown ) ) {
             $response = array(

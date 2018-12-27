@@ -34,7 +34,7 @@ if ( 'plugins.php' !== $pagenow ) {
 			$description = str_replace( $all_matches, '', $description );
 		}
 		?>
-			<h3 class="section-title"><?php esc_html_e( 'Author', 'githuber' ); ?></h3>
+			<h3 class="section-title"><?php esc_html_e( 'Author', 'wp-githuber-md' ); ?></h3>
 			<aside class="author-card" itemscope itemprop="author" itemtype="http://schema.org/Person">
 				<div class="author-avatar">
 					<img src="<?php echo esc_url( get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => $avatar_size ) ) ); ?>" class="rounded-circle" itemprop="image">

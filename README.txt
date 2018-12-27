@@ -119,7 +119,9 @@ GNU General Public License for more details.
 = 1.3.1
 
 * Backward compatible with PHP 5.3 and WordPress 4.0.x. (Tested in PHP 5.3.5 with WordPress 4.0.25 OKAY.)
-* Modify HTML-to-Markdown helper description.
+* Modify HTML-to-Markdown helper and image-paste description.
+* Add language packs for zh_TW and zh_CN.
+* Improve HTML-to-Markdown helper.
 
 == Upgrade Notice ==
 
