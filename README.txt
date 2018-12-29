@@ -127,6 +127,11 @@ GNU General Public License for more details.
 * Add language packs template.
 * Improve HTML-to-Markdown helper.
 
+= 1.3.2
+
+* Add language pack: zh_TW.
+* Fix bugs.
+
 == Upgrade Notice ==
 
 = Currently no logs now.

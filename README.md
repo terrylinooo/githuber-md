@@ -126,3 +126,4 @@ Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 1.3.2
 
 * Add language pack: zh_TW.
+* Fix bugs.
