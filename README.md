@@ -88,7 +88,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ## Translations
 
-Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/) | 
+Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 
 ## Changelog
 
