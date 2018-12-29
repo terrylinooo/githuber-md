@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: githuber, markdown
 Requires at least: 4.0
 Tested up to: 5.0.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Requires PHP: 5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -74,6 +74,10 @@ You'll find answers to many of your questions on [Report issues](https://github.
 1. Markdown editor.
 2. Plugin setting page - Markdown.
 3. Plugin setting page - Modules.
+
+== Translations
+
+Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 
 == Copyright ==
 

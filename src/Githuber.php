@@ -33,8 +33,6 @@ class Githuber {
 	 */
 	public function init() {
 
-
-
 		$register = new Controller\Register();
 		$register->init();
 

@@ -726,7 +726,6 @@
             this.codeMirror = this.cmElement = editor.children(".CodeMirror");
 
             if (typeof inlineAttachment !== 'undefined') {
-                console.log('sss');
                 inlineAttachment.defaults.uploadUrl = settings.imagePasteCallback;
                 inlineAttachment.editors.codemirror4.attach(this.codeEditor);
             }

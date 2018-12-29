@@ -86,6 +86,10 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ![Screenshot](./assets/images/screenshot-6.png)
 
+## Translations
+
+Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/) | 
+
 ## Changelog
 
 1.0.0
@@ -118,3 +122,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Modify HTML-to-Markdown helper and image-paste description.
 * Add language packs template.
 * Improve HTML-to-Markdown helper.
+
+1.3.2
+
+* Add language pack: zh_TW.

@@ -141,8 +141,8 @@ class Setting extends ControllerAbstract {
 						'posting' => 'posting',
 					),
 					'options' => array(
-						'posting'    => 'Posts and pages',
-						'commenting' => 'Comments',
+						'posting'    => __( 'Posts and pages', 'wp-githuber-md' ),
+						'commenting' => __( 'Comments', 'wp-githuber-md' ),
 					)
 				),
 
