@@ -1,84 +1,84 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-29 05:43+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"PO-Revision-Date: 2018-12-29 05:44+0000\n"
+"Last-Translator: Terry Lin <contact@terryl.in>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.0.2"
 
 #: src/Controllers/HtmlToMarkdown.php:89
 msgid "HTML to Markdown"
-msgstr ""
+msgstr "HTML 轉換成 Markdown"
 
 #: src/Controllers/ImagePaste.php:92
 msgid "Error while processing your request to Imgur!"
-msgstr ""
+msgstr "處理 Imgur 要求時發生錯誤！"
 
 #: src/Controllers/ImagePaste.php:95
 msgid "PHP Curl is not installed on your system."
-msgstr ""
+msgstr "系統尚未安裝 PHP Curl 模組。"
 
 #: src/Controllers/ImagePaste.php:103
 msgid "Error while uploading file."
-msgstr ""
+msgstr "上傳檔案時發生錯誤。"
 
 #: src/Controllers/Markdown.php:188
 msgid "Happy Markdowning!"
-msgstr ""
+msgstr "快樂的使用 Markdown 吧！"
 
 #: src/Controllers/Setting.php:99
 msgid "Markdown"
-msgstr ""
+msgstr "Markdown"
 
 #: src/Controllers/Setting.php:104 src/Controllers/Setting.php:312
 msgid "Modules"
-msgstr ""
+msgstr "模組"
 
 #: src/Controllers/Setting.php:109
 msgid "Theme Options"
-msgstr ""
+msgstr "佈景主題選項"
 
 #: src/Controllers/Setting.php:114
 msgid "About"
-msgstr ""
+msgstr "關於"
 
 #: src/Controllers/Setting.php:132
 msgid "Writing"
-msgstr ""
+msgstr "寫作設定"
 
 #: src/Controllers/Setting.php:137
 msgid "Enable"
-msgstr ""
+msgstr "啟用 Markdown 的內容類型"
 
 #: src/Controllers/Setting.php:138
 msgid "Enable Markdown for post, pages or comments."
-msgstr ""
+msgstr "為文章、頁面或留言啟用 Markdown 功能。"
 
 #: src/Controllers/Setting.php:144
 msgid "Posts and pages"
-msgstr ""
+msgstr "文章和頁面"
 
 #: src/Controllers/Setting.php:145
 msgid "Comments"
-msgstr ""
+msgstr "迴響"
 
 #: src/Controllers/Setting.php:151
 msgid "Disable Revision"
-msgstr ""
+msgstr "停用內容修訂"
 
 #: src/Controllers/Setting.php:152
 msgid ""
 "If you think the revision function is annoying when you're writing, you can "
 "to disable it."
-msgstr ""
+msgstr "如果覺得內容修訂妨礙寫作，請停用這項。"
 
 #: src/Controllers/Setting.php:156 src/Controllers/Setting.php:169
 #: src/Controllers/Setting.php:182 src/Controllers/Setting.php:199
@@ -92,7 +92,7 @@ msgstr ""
 #: src/Views/metabox/html-to-markdown.php:27
 #: src/Views/metabox/html-to-markdown.php:38
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: src/Controllers/Setting.php:157 src/Controllers/Setting.php:170
 #: src/Controllers/Setting.php:183 src/Controllers/Setting.php:200
@@ -106,102 +106,106 @@ msgstr ""
 #: src/Views/metabox/html-to-markdown.php:29
 #: src/Views/metabox/html-to-markdown.php:40
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #: src/Controllers/Setting.php:164
 msgid "Disable Auto-save"
-msgstr ""
+msgstr "停用自動儲存"
 
 #: src/Controllers/Setting.php:165
 msgid ""
 "If you think the auto-save function is annoying when you're writing, you can "
 "to disable it."
-msgstr ""
+msgstr "如果覺得自動儲存妨礙寫作，請停用這項。"
 
 #: src/Controllers/Setting.php:177
 msgid "HTML-to-Markdown Helper"
-msgstr ""
+msgstr "HTML 轉換成 Markdown 協助程式"
 
 #: src/Controllers/Setting.php:189
 msgid "Editor Settings"
-msgstr ""
+msgstr "編輯器設定"
 
 #: src/Controllers/Setting.php:194
 msgid "Live Preview"
-msgstr ""
+msgstr "即時預覽"
 
 #: src/Controllers/Setting.php:195
 msgid ""
 "Split editor into two panes to display a live preview when editing post."
-msgstr ""
+msgstr "將編輯器分割為兩個窗格以顯示即時預覽內容。"
 
 #: src/Controllers/Setting.php:206
 msgid "Sync Scrolling"
-msgstr ""
+msgstr "同步捲動"
 
 #: src/Controllers/Setting.php:207
 msgid "Synchronize scrolling of two editor panes by content."
-msgstr ""
+msgstr "在兩個編輯器窗格中同步捲動觀看內容。"
 
 #: src/Controllers/Setting.php:218
 msgid "HTML Decode"
-msgstr ""
+msgstr "HTML 解碼"
 
 #: src/Controllers/Setting.php:219
 msgid "Allow all HTML tags and attributes in the Markdown Editor."
-msgstr ""
+msgstr "在 Markdown 編輯器中開放使用全部 HTML 標籤及屬性。"
 
 #: src/Controllers/Setting.php:230
 msgid "Editor Style"
-msgstr ""
+msgstr "編輯器樣式"
 
 #: src/Controllers/Setting.php:235
 msgid "Toolbar"
-msgstr ""
+msgstr "工具列"
 
 #: src/Controllers/Setting.php:236
 msgid "Choose a perferred style for the Editor's toolbar."
-msgstr ""
+msgstr "為編輯器工具列選取偏好的樣式。"
 
 #: src/Controllers/Setting.php:247
 msgid "Editing Area"
-msgstr ""
+msgstr "編輯區域"
 
 #: src/Controllers/Setting.php:248
 msgid "Choose a perferred style for the Editor's editing area."
-msgstr ""
+msgstr "為編輯器的編輯區選取偏好的樣式。"
 
 #: src/Controllers/Setting.php:317 src/Controllers/Setting.php:420
 msgid "Syntax Highlight"
-msgstr ""
+msgstr "啟用語法醒目提示"
 
 #: src/Controllers/Setting.php:318
 msgid "Highligh the syntax in your code snippets by Prism.js"
-msgstr ""
+msgstr "使用 Prism.js 為程式碼片段中的語法標示醒目提示。"
 
 #: src/Controllers/Setting.php:329
 msgid "KaTeX"
-msgstr ""
+msgstr "啟用 KaTeX"
 
 #: src/Controllers/Setting.php:330
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
 "target=\"_blank\">KaTeX</a> math typesetting."
 msgstr ""
+"啟用這項設定，便能使用 <a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"target=\"_blank\">KaTeX</a> 數學公式排版語法。"
 
 #: src/Controllers/Setting.php:341 src/Controllers/Setting.php:488
 msgid "Flow Chart"
-msgstr ""
+msgstr "啟用流程圖"
 
 #: src/Controllers/Setting.php:342
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
 msgstr ""
+"啟用這項設定，便能使用 <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"target=\"_blank\">flowchart.js</a> 畫出簡易的 SVG 向量流程圖。"
 
 #: src/Controllers/Setting.php:353
 msgid "Sequence Diagrams"
-msgstr ""
+msgstr "啟用順序圖表"
 
 #: src/Controllers/Setting.php:354
 msgid ""
@@ -209,180 +213,184 @@ msgid ""
 "target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
 "sequence diagrams."
 msgstr ""
+"啟用這項設定，便能使用 <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"target=\"_blank\">js-sequence-diagrams</a> 將文字轉換成向量 UML 順序圖表。"
 
 #: src/Controllers/Setting.php:365
 msgid "Task List"
-msgstr ""
+msgstr "啟用工作清單"
 
 #: src/Controllers/Setting.php:366
 msgid "Support Github Flavored Markdown task lists."
-msgstr ""
+msgstr "啟用這項設定，便能使用 Github Flavored 格式的 Markdown 工作清單。"
 
 #: src/Controllers/Setting.php:405 src/Controllers/Setting.php:507
 msgid "Image Paste"
-msgstr ""
+msgstr "啟用圖片隨貼"
 
 #: src/Controllers/Setting.php:421
 msgid "prism.js"
-msgstr ""
+msgstr "prism.js"
 
 #: src/Controllers/Setting.php:426
 msgid "Theme"
-msgstr ""
+msgstr "主題"
 
 #: src/Controllers/Setting.php:427
 msgid "Choose a perferred theme for the syntax highlighter."
-msgstr ""
+msgstr "為語法醒目提示選取偏好的主題。"
 
 #: src/Controllers/Setting.php:444
 msgid "Line Number"
-msgstr ""
+msgstr "行號"
 
 #: src/Controllers/Setting.php:445
 msgid "Show line number in code area?"
-msgstr ""
+msgstr "設定是否顯示編輯區行號。"
 
 #: src/Controllers/Setting.php:456 src/Controllers/Setting.php:475
 #: src/Controllers/Setting.php:494
 msgid "File Host"
-msgstr ""
+msgstr "檔案託管設定"
 
 #: src/Controllers/Setting.php:457 src/Controllers/Setting.php:476
 #: src/Controllers/Setting.php:495
 msgid "Use this library with a CDN service or self-hosted (default)?"
-msgstr ""
+msgstr "設定使用託管於 CDN 服務或自主託管 (預設值) 的函式庫。"
 
 #: src/Controllers/Setting.php:469
 msgid "KaTex"
-msgstr ""
+msgstr "KaTex"
 
 #: src/Controllers/Setting.php:470
 msgid "KaTex.js"
-msgstr ""
+msgstr "KaTex.js"
 
 #: src/Controllers/Setting.php:489
 msgid "flowchart.js"
-msgstr ""
+msgstr "flowchart.js"
 
 #: src/Controllers/Setting.php:512
 msgid "Storage Space"
-msgstr ""
+msgstr "儲存空間"
 
 #: src/Controllers/Setting.php:513
 msgid ""
 "Images are stored in WordPress's <strong>uploads</strong> folder by default. "
 "However, you can use Imgur instead of the default place."
 msgstr ""
+"圖片預設儲存在 WordPress 的 <strong>uploads</strong> 資料夾。網站管理員可以選擇使用 Imgur "
+"服務取代預設儲存位置。"
 
 #: src/Controllers/Setting.php:517
 msgid "default"
-msgstr ""
+msgstr "預設"
 
 #: src/Controllers/Setting.php:518
 msgid "imgur.com"
-msgstr ""
+msgstr "imgur.com"
 
 #: src/Controllers/Setting.php:524
 msgid "Imgur Client ID"
-msgstr ""
+msgstr "Imgur Client ID"
 
 #: src/Controllers/Setting.php:544
 msgid "Menu"
-msgstr ""
+msgstr "選單"
 
 #: src/Controllers/Setting.php:550
 msgid "Bootstrap 4 Menu"
-msgstr ""
+msgstr "啟用 Bootstrap 4 選單"
 
 #: src/Controllers/Setting.php:551
 msgid "Use Bootstrap 4 dropdown menu in header position. (2-layer)"
-msgstr ""
+msgstr "在頁首位置使用 Bootstrap 4 下拉式選單 (兩層)。"
 
 #: src/Controllers/Setting.php:562
 msgid "Widget"
-msgstr ""
+msgstr "小工具"
 
 #: src/Controllers/Setting.php:568
 msgid "Bootstrap 4 TOC"
-msgstr ""
+msgstr "啟用 Bootstrap 4 目錄"
 
 #: src/Controllers/Setting.php:569
 msgid ""
 "A widget that shows a Bootstrap 4 styled TOC deponds on your post content."
-msgstr ""
+msgstr "一個能根據文章內容顯示 Bootstrap 4 樣式目錄的小工具。"
 
 #: src/Controllers/Setting.php:580
 msgid "Post Type"
-msgstr ""
+msgstr "內容類型"
 
 #: src/Controllers/Setting.php:586 src/Controllers/Setting.php:657
 msgid "GitHub Repository"
-msgstr ""
+msgstr "GitHub 存放庫"
 
 #: src/Controllers/Setting.php:587
 msgid "Display the stars, forks, issues from your GitHub repository."
-msgstr ""
+msgstr "根據 GitHub 存放庫資料顯示 Star、Fork 及 Issue 的數量。"
 
 #: src/Controllers/Setting.php:598
 msgid "Shortcode"
-msgstr ""
+msgstr "短代碼"
 
 #: src/Controllers/Setting.php:604
 msgid "Social Icons"
-msgstr ""
+msgstr "社交網路服務圖示"
 
 #: src/Controllers/Setting.php:605
 msgid "Use social icons in author section."
-msgstr ""
+msgstr "將社交網路服務圖示顯示於作者區塊。"
 
 #: src/Controllers/Setting.php:616
 msgid "Adjustment"
-msgstr ""
+msgstr "調整"
 
 #: src/Controllers/Setting.php:622
 msgid "Head Output"
-msgstr ""
+msgstr "Head 標籤區段輸出結果"
 
 #: src/Controllers/Setting.php:623
 msgid "Remove information displays in HTML source code."
-msgstr ""
+msgstr "移除顯示於 HTML 程式碼中的資訊。"
 
 #: src/Controllers/Setting.php:643 src/wp_utilities/githuber-functions.php:37
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: src/Controllers/Setting.php:650
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: src/Controllers/Setting.php:664
 msgid "Support"
-msgstr ""
+msgstr "技術支援"
 
 #: src/Controllers/Setting.php:671
 msgid "Changelog"
-msgstr ""
+msgstr "變更記錄"
 
 #: src/Controllers/Setting.php:690
 msgid "WP Githuber MD "
-msgstr ""
+msgstr "WP Githuber MD "
 
-#. Name of the plugin
+#. Plugin Name of the plugin/theme
 #: src/Controllers/Setting.php:691
 msgid "WP Githuber MD"
-msgstr ""
+msgstr "WP Githuber MD"
 
 #: src/Controllers/Setting.php:728
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: src/Controllers/Setting.php:746
 msgid "View GitHub project"
-msgstr ""
+msgstr "檢視 GitHub 專案"
 
 #: src/Controllers/Setting.php:747
 msgid "Report issues"
-msgstr ""
+msgstr "回報問題"
 
 #: src/Views/metabox/html-to-markdown.php:18
 msgid ""
@@ -390,33 +398,34 @@ msgid ""
 "you are not satisfied with the result, do not click <strong>Update</strong> "
 "button."
 msgstr ""
+"這個外掛能協助作者輕鬆將舊文章內容轉換成 Markdown 語法格式。如果對轉換結果不滿意，請勿點擊 <strong>[更新]</strong> 按鈕。"
 
 #: src/Views/metabox/html-to-markdown.php:23
 msgid "Strip tags"
-msgstr ""
+msgstr "移除標籤"
 
 #: src/Views/metabox/html-to-markdown.php:34
 msgid "Line break"
-msgstr ""
+msgstr "分行符號"
 
 #: src/Views/metabox/html-to-markdown.php:49
 msgid "Reload"
-msgstr ""
+msgstr "重新載入"
 
 #: src/Views/metabox/html-to-markdown.php:50
 msgid "Convert"
-msgstr ""
+msgstr "轉換"
 
 #: src/Views/setting/about-and-support.php:17
 msgid ""
 "If you have any issues, or found any bugs, please report them in the "
 "following URL."
-msgstr ""
+msgstr "如果發現任何問題或程式碼錯誤，請透過下方連結回報。"
 
 #: src/Views/setting/about-github-repo.php:17
 msgid ""
 "If you like this plugin, syndicate it, star it, share it to your friends."
-msgstr ""
+msgstr "如果喜歡這個外掛，歡迎與你的朋友交流、分享及收藏。"
 
 #: src/Views/setting/html-to-markdown.php:17
 msgid ""
@@ -428,6 +437,10 @@ msgid ""
 "prevents breaking your original content.<br />If you are not satisfied with "
 "the result, do not click <strong>Update</strong> button."
 msgstr ""
+"在 Markdown 編輯器旁邊顯示 <strong>[HTML 轉換成 Markdown]</strong> 協助程式區塊，以協助作者將<strong>"
+"舊文章</strong>轉換成 Markdown 語法。<br />這個區塊顯示的是<strong>預覽內容</strong>，讓作者瞭解轉換成 "
+"Markdown 語法後的內容呈現方式。<br /><br />請注意，啟用這項設定會強制停用<strong>自動儲存</strong>"
+"功能，避免對原始內容造成破壞。<br />如果對轉換結果不滿意，請勿點擊 <strong>[更新]</strong> 按鈕。"
 
 #: src/Views/setting/image-paste-imgur.php:17
 msgid ""
@@ -435,12 +448,14 @@ msgid ""
 "have one, <a href=\"https://api.imgur.com/oauth2/addclient\" "
 "target=\"_blank\">sign up</a> here."
 msgstr ""
+"選取的儲存空間如為 <u>imgur.com</u>，這個欄位為必填。如果沒有 Imgur Client ID，請點擊<a href=\"https:"
+"//api.imgur.com/oauth2/addclient\" target=\"_blank\">這裡</a>進行申請。"
 
 #: src/Views/setting/image-paste-imgur.php:23
 msgid ""
 "Uploading images to Imgur is unavailable because that <strong>PHP "
 "CURL</strong> is not installed on your system."
-msgstr ""
+msgstr "由於系統並未安裝 <strong>PHP CURL</strong>功能，因此無法將圖片上傳至 Imgur。"
 
 #: src/Views/setting/image-paste.php:17
 msgid ""
@@ -448,6 +463,8 @@ msgid ""
 "target=\"_blank\">paste image from clipboard</a> directly into the post "
 "content."
 msgstr ""
+"啟用這項設定，便能輕鬆<a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"target=\"_blank\">從剪貼簿直接將圖片貼上</a>至文章內容中。"
 
 #: src/Views/setting/theme-description.php:19
 msgid ""
@@ -455,74 +472,76 @@ msgid ""
 "com/terrylinooo/githuber\" target=\"_blank\">Githuber theme</a> users, you "
 "might ignore this section if you are not using Githuber theme."
 msgstr ""
+"[佈景主題選項] 功能提供給 <a href=\"https://github.com/terrylinooo/githuber\" "
+"target=\"_blank\">Githuber</a> 主題的使用者進行設定。如果這個網站並未使用 Githuber 主題，請忽略這些設定。"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:36
 msgid "Repositories"
-msgstr ""
+msgstr "存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:37
 msgid "Repository"
-msgstr ""
+msgstr "存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:38
 msgid "Add New"
-msgstr ""
+msgstr "新增"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:39
 msgid "Add New Repository"
-msgstr ""
+msgstr "新增存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:40
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:41
 msgid "Edit Repository"
-msgstr ""
+msgstr "編輯存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:42
 msgid "New Repository"
-msgstr ""
+msgstr "新增存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:43
 #: src/wp_utilities/class-githuber-post-type-repository.php:44
 msgid "View Repository"
-msgstr ""
+msgstr "檢視存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:45
 msgid "Search Repository"
-msgstr ""
+msgstr "搜尋存放庫"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:46
 msgid "No Repository Posts found"
-msgstr ""
+msgstr "沒有找到存放庫類型內容"
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:47
 msgid "No Repository Posts found in Trash"
-msgstr ""
+msgstr "沒有在垃圾桶中找到存放庫類型內容"
 
 #: src/wp_utilities/class-githuber-widget-toc.php:25
 msgid ""
 "Add a Table of Content for your article. This widget is for single-post "
 "pages only."
-msgstr ""
+msgstr "在文章中加入目錄。此工具專屬於單篇內容或頁面。"
 
 #: src/wp_utilities/class-githuber-widget-toc.php:28
 msgid "Githuber: Table of Content"
-msgstr ""
+msgstr "Githuber: 目錄"
 
-#. Description of the plugin
+#. Description of the plugin/theme
 msgid "An all-in-one Markdown plugin for your WordPress sites."
-msgstr ""
+msgstr "一個為 WordPress 網站提供全功能 Markdown 語法的外掛。"
 
-#. URI of the plugin
+#. Plugin URI of the plugin/theme
 msgid "https://github.com/terrylinooo/githuber-md"
-msgstr ""
+msgstr "https://github.com/terrylinooo/githuber-md"
 
-#. Author of the plugin
+#. Author of the plugin/theme
 msgid "Terry Lin"
-msgstr ""
+msgstr "Terry Lin"
 
-#. Author URI of the plugin
+#. Author URI of the plugin/theme
 msgid "https://terryl.in/"
-msgstr ""
+msgstr "https://terryl.in/"
