@@ -64,11 +64,13 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 * Markdown editor.
 * Live preivew.
-* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/).
+* [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
+* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
 * Syntax highlight.
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katax/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/).
+* [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
 * Github flavored Markdown task list.
 * Markdown extra...
 

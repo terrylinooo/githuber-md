@@ -65,7 +65,7 @@ class Prism extends ModuleAbstract {
 			$prism_src         = githuber_get_option( 'prism_src', 'githuber_modules' );
 			$prism_theme       = githuber_get_option( 'prism_theme', 'githuber_modules' );
 			$prism_line_number = githuber_get_option( 'prism_line_number', 'githuber_modules' );
-			$theme             = ( 'default' === $prism_theme ) ? 'prism' : 'prism-' . $prism_theme;
+			$theme             = ( 'default' === $prism_theme || empty( $prism_theme ) ) ? 'prism' : 'prism-' . $prism_theme;
 
 			switch ( $prism_src ) {
 				case 'cloudflare':

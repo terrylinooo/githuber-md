@@ -13,8 +13,10 @@
  if (typeof $ === 'undefined' && typeof window.jQuery !== 'undefined') {
     var $ = window.jQuery;
  }
- var mermaid_counter = 0;
- 
+ if (typeof mermaid_counter === 'undefined') {
+    var mermaid_counter = 0;
+ }
+
 ;(function(factory) {
     "use strict";
     
@@ -4216,13 +4218,6 @@
         }
     };
     
-    // 使用国外的CDN，加载速度有时会很慢，或者自定义URL
-    // You can custom KaTeX load url.
-    editormd.katexURL  = {
-        css : "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min",
-        js  : "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min"
-    };
-    
     editormd.kaTeXLoaded = false;
     
     /**
@@ -4233,8 +4228,8 @@
      */
     
     editormd.loadKaTeX = function (callback) {
-        editormd.loadCSS(editormd.katexURL.css, function(){
-            editormd.loadScript(editormd.katexURL.js, callback || function(){});
+        editormd.loadCSS(loadPath + "../../katexkatex.min", function(){
+            editormd.loadScript(loadPath + "../../katex/katex.min", callback || function(){});
         });
     };
         
