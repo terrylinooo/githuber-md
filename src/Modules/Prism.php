@@ -214,6 +214,7 @@ class Prism extends ModuleAbstract {
 						$(function() {
 							$("code").each(function() {
 								var parent_div = $(this).parent("pre");
+								var pre_css = $(this).attr("class");
 								if (typeof pre_css !== "undefined" && -1 !== pre_css.indexOf("language-")) {
 									parent_div.addClass("line-numbers");
 								}

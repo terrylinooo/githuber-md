@@ -45,6 +45,7 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
 	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
+	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
 
 	/**
 	 * Parser's instance.
@@ -80,6 +81,7 @@ class Markdown extends ControllerAbstract {
 	public $is_support_katex     = false;
 	public $is_support_flowchart = false;
 	public $is_support_sequence  = false;
+	public $is_support_mermaid  = false;
 
 	/**
 	 * Constructer.
@@ -109,6 +111,10 @@ class Markdown extends ControllerAbstract {
 
 		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ) ) {
 			$this->is_support_sequence = true;
+		}
+
+		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_markdown' ) ) {
+			$this->is_support_mermaid = true;
 		}
 	}
 
@@ -175,7 +181,8 @@ class Markdown extends ControllerAbstract {
 			'support_katex',
 			'support_flowchart',
 			'support_sequence_diagram',
-			'support_task_list'
+			'support_task_list',
+			'support_mermaid',
 		);
 
 		$editormd_localize = array();
@@ -467,6 +474,7 @@ class Markdown extends ControllerAbstract {
 
 		$is_sequence  = false;
 		$is_flowchart = false;
+		$is_mermaid   = false;
 
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
 			
@@ -493,6 +501,10 @@ class Markdown extends ControllerAbstract {
 				if ( 'flow' === $match || 'flowchart' === $match ) {
 					$is_flowchart = true;
 				}
+
+				if ( 'mermaid' === $match ) {
+					$is_mermaid = true;
+				}
 			}
 		}
 
@@ -510,6 +522,10 @@ class Markdown extends ControllerAbstract {
 
 		if ( $this->is_support_flowchart && $is_flowchart ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_FLOW, true );
+		}
+
+		if ( $this->is_support_mermaid && $is_mermaid ) {
+			update_metadata( 'post', $post_id, self::MD_POST_META_MERMAID, true );
 		}
 	}
 

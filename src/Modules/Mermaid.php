@@ -1,7 +1,7 @@
 <?php
 /**
  * Module Name: Mermaid
- * Module Description: Turn text into vector UML sequence diagrams.
+ * Module Description: Generation of diagrams and flowcharts from text in a similar manner as markdown.
  *
  * @author Terry Lin
  * @link https://terryl.in/
@@ -89,7 +89,11 @@ class Mermaid extends ModuleAbstract {
 				(function($) {
 					$(function() {
 						if (typeof mermaid !== "undefined") {
-							mermaid.initialize();
+                            if ($(".language-mermaid").length > 0) {
+								$(".language-mermaid").parent("pre").attr("style", "text-align: center; background: none;");
+								$(".language-mermaid").addClass("mermaid").removeClass("language-mermaid");
+								mermaid.init();
+                            }
 						}
 					});
                 })(jQuery);

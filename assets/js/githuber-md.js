@@ -26,6 +26,7 @@ var githuber_md_editor;
             flowChart: (config.support_flowchart == 'yes'),  
             sequenceDiagram: (config.support_sequence_diagram == 'yes'), 
             taskList: (config.support_task_list == 'yes'),
+            mermaid: (config.support_mermaid == 'yes'),
             toolbarAutoFixed: true, 
             tocm: false, 
             tocDropdown: false,    

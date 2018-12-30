@@ -13,6 +13,7 @@
  if (typeof $ === 'undefined' && typeof window.jQuery !== 'undefined') {
     var $ = window.jQuery;
  }
+ var mermaid_counter = 0;
  
 ;(function(factory) {
     "use strict";
@@ -603,6 +604,12 @@
                 });
                 
             });
+
+            if (settings.mermaid) {
+                editormd.loadScript(loadPath + "../../mermaid/mermaid.min", function() {
+                    mermaid_counter = mermaid_counter + 1;
+                });
+            }
 
             return this;
         },
@@ -2090,7 +2097,14 @@
                         this.katexRender();
                     }
                 }                
-                
+                if (settings.mermaid) {
+                    if (typeof mermaid !== "undefined") {
+                        if (mermaid_counter > 1) {
+                            mermaid.init();
+                        }
+                        mermaid_counter++;
+                    }
+                }
                 if (settings.flowChart || settings.sequenceDiagram)
                 {
                     flowchartTimer = setTimeout(function(){
@@ -3406,6 +3420,7 @@
             emoji                : false,          // :emoji: , Support Twemoji, fontAwesome, Editor.md logo emojis.
             tex                  : false,          // TeX(LaTeX), based on KaTeX
             flowChart            : false,          // flowChart.js only support IE9+
+            mermaid              : false,
             sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
         };
         
@@ -3639,6 +3654,10 @@
             else if ( lang === "flow")
             {
                 return "<div class=\"flowchart\">" + code + "</div>";
+            } 
+            else if ( lang === "mermaid")
+            {
+                return "<div class=\"mermaid\">" + code + "</div>";
             } 
             else if ( lang === "math" || lang === "latex" || lang === "katex")
             {
@@ -3924,6 +3943,7 @@
             taskList             : false,   // Github Flavored Markdown task lists
             emoji                : false,
             flowChart            : false,
+            mermaid              : false,
             sequenceDiagram      : false,
             previewCodeHighlight : true
         };
@@ -3954,6 +3974,7 @@
             atLink               : settings.atLink,           // for @link
             emailLink            : settings.emailLink,        // for mail address auto link
             flowChart            : settings.flowChart,
+            mermaid              : settings.mermaid,
             sequenceDiagram      : settings.sequenceDiagram,
             previewCodeHighlight : settings.previewCodeHighlight,
         };
@@ -4019,6 +4040,13 @@
 
             if (settings.sequenceDiagram) {
                 div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
+            }
+        }
+
+        if (settings.mermaid) {
+            if (typeof mermaid !== "undefined") {
+                console.log('eee');
+               mermaid.init();
             }
         }
 

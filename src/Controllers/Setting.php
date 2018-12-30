@@ -372,6 +372,18 @@ class Setting extends ControllerAbstract {
 					)
 				),
 
+				array(
+					'name'    => 'support_mermaid',
+					'label'   => __( 'Mermaid', 'wp-githuber-md' ),
+					'desc'    => __( 'Support <a href="https://mermaidjs.github.io/" target="_blank">Mermaid.js</a>, more information please visit the link.', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'no',
+					'options' => array(
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
+					)
+				),
+
 				/*
 
 				array(
@@ -491,6 +503,44 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'flowchart_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Sequence Diagrams', 'wp-githuber-md' ),
+					'desc'  => __( 'sequence-diagrams.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'    => 'sequence_diagram_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'name'  => '_TITLE_',
+					'label' => __( 'Mermaid', 'wp-githuber-md' ),
+					'desc'  => __( 'mermaid.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'    => 'mermaid_src',
 					'label'   => __( 'File Host', 'wp-githuber-md' ),
 					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
 					'type'    => 'radio',
