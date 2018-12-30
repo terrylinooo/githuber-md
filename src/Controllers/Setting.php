@@ -375,7 +375,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_mermaid',
 					'label'   => __( 'Mermaid', 'wp-githuber-md' ),
-					'desc'    => __( 'Support <a href="https://mermaidjs.github.io/" target="_blank">Mermaid.js</a>, more information please visit the link.', 'wp-githuber-md' ),
+					'desc'    => __( 'Support <a href="https://terryl.in/en/githuber-md-mermaid/" target="_blank">Mermaid.js</a>, a Markdownish Syntax for Generating Charts.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(

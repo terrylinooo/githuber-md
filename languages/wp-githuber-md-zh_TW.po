@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-29 05:43+0000\n"
-"PO-Revision-Date: 2018-12-29 05:44+0000\n"
+"POT-Creation-Date: 2018-12-30 18:03+0000\n"
+"PO-Revision-Date: 2018-12-30 18:05+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -30,7 +30,7 @@ msgstr "系統尚未安裝 PHP Curl 模組。"
 msgid "Error while uploading file."
 msgstr "上傳檔案時發生錯誤。"
 
-#: src/Controllers/Markdown.php:188
+#: src/Controllers/Markdown.php:195
 msgid "Happy Markdowning!"
 msgstr "快樂的使用 Markdown 吧！"
 
@@ -85,11 +85,11 @@ msgstr "如果覺得內容修訂妨礙寫作，請停用這項。"
 #: src/Controllers/Setting.php:211 src/Controllers/Setting.php:223
 #: src/Controllers/Setting.php:322 src/Controllers/Setting.php:334
 #: src/Controllers/Setting.php:346 src/Controllers/Setting.php:358
-#: src/Controllers/Setting.php:370 src/Controllers/Setting.php:410
-#: src/Controllers/Setting.php:449 src/Controllers/Setting.php:555
-#: src/Controllers/Setting.php:573 src/Controllers/Setting.php:591
-#: src/Controllers/Setting.php:609 src/Controllers/Setting.php:627
-#: src/Views/metabox/html-to-markdown.php:27
+#: src/Controllers/Setting.php:370 src/Controllers/Setting.php:382
+#: src/Controllers/Setting.php:422 src/Controllers/Setting.php:461
+#: src/Controllers/Setting.php:605 src/Controllers/Setting.php:623
+#: src/Controllers/Setting.php:641 src/Controllers/Setting.php:659
+#: src/Controllers/Setting.php:677 src/Views/metabox/html-to-markdown.php:27
 #: src/Views/metabox/html-to-markdown.php:38
 msgid "Yes"
 msgstr "是"
@@ -99,11 +99,11 @@ msgstr "是"
 #: src/Controllers/Setting.php:212 src/Controllers/Setting.php:224
 #: src/Controllers/Setting.php:323 src/Controllers/Setting.php:335
 #: src/Controllers/Setting.php:347 src/Controllers/Setting.php:359
-#: src/Controllers/Setting.php:371 src/Controllers/Setting.php:411
-#: src/Controllers/Setting.php:450 src/Controllers/Setting.php:556
-#: src/Controllers/Setting.php:574 src/Controllers/Setting.php:592
-#: src/Controllers/Setting.php:610 src/Controllers/Setting.php:628
-#: src/Views/metabox/html-to-markdown.php:29
+#: src/Controllers/Setting.php:371 src/Controllers/Setting.php:383
+#: src/Controllers/Setting.php:423 src/Controllers/Setting.php:462
+#: src/Controllers/Setting.php:606 src/Controllers/Setting.php:624
+#: src/Controllers/Setting.php:642 src/Controllers/Setting.php:660
+#: src/Controllers/Setting.php:678 src/Views/metabox/html-to-markdown.php:29
 #: src/Views/metabox/html-to-markdown.php:40
 msgid "No"
 msgstr "否"
@@ -171,7 +171,7 @@ msgstr "編輯區域"
 msgid "Choose a perferred style for the Editor's editing area."
 msgstr "為編輯器的編輯區選取偏好的樣式。"
 
-#: src/Controllers/Setting.php:317 src/Controllers/Setting.php:420
+#: src/Controllers/Setting.php:317 src/Controllers/Setting.php:432
 msgid "Syntax Highlight"
 msgstr "啟用語法醒目提示"
 
@@ -191,7 +191,7 @@ msgstr ""
 "啟用這項設定，便能使用 <a href=\"https://terryl.in/en/githuber-md-katax/\" "
 "target=\"_blank\">KaTeX</a> 數學公式排版語法。"
 
-#: src/Controllers/Setting.php:341 src/Controllers/Setting.php:488
+#: src/Controllers/Setting.php:341 src/Controllers/Setting.php:500
 msgid "Flow Chart"
 msgstr "啟用流程圖"
 
@@ -203,7 +203,7 @@ msgstr ""
 "啟用這項設定，便能使用 <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</a> 畫出簡易的 SVG 向量流程圖。"
 
-#: src/Controllers/Setting.php:353
+#: src/Controllers/Setting.php:353 src/Controllers/Setting.php:519
 msgid "Sequence Diagrams"
 msgstr "啟用順序圖表"
 
@@ -224,57 +224,79 @@ msgstr "啟用工作清單"
 msgid "Support Github Flavored Markdown task lists."
 msgstr "啟用這項設定，便能使用 Github Flavored 格式的 Markdown 工作清單。"
 
-#: src/Controllers/Setting.php:405 src/Controllers/Setting.php:507
+#: src/Controllers/Setting.php:377 src/Controllers/Setting.php:538
+msgid "Mermaid"
+msgstr "Mermaid"
+
+#: src/Controllers/Setting.php:378
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
+msgstr ""
+"支援 <a href=\"https://terryl.in/en/githuber-md-mermaid/\" target=\"_blank\">"
+"Mermaid.js</a>，一種用產生圖表的類 Markdown 語法。"
+
+#: src/Controllers/Setting.php:417 src/Controllers/Setting.php:557
 msgid "Image Paste"
 msgstr "啟用圖片隨貼"
 
-#: src/Controllers/Setting.php:421
+#: src/Controllers/Setting.php:433
 msgid "prism.js"
 msgstr "prism.js"
 
-#: src/Controllers/Setting.php:426
+#: src/Controllers/Setting.php:438
 msgid "Theme"
 msgstr "主題"
 
-#: src/Controllers/Setting.php:427
+#: src/Controllers/Setting.php:439
 msgid "Choose a perferred theme for the syntax highlighter."
 msgstr "為語法醒目提示選取偏好的主題。"
 
-#: src/Controllers/Setting.php:444
+#: src/Controllers/Setting.php:456
 msgid "Line Number"
 msgstr "行號"
 
-#: src/Controllers/Setting.php:445
+#: src/Controllers/Setting.php:457
 msgid "Show line number in code area?"
 msgstr "設定是否顯示編輯區行號。"
 
-#: src/Controllers/Setting.php:456 src/Controllers/Setting.php:475
-#: src/Controllers/Setting.php:494
+#: src/Controllers/Setting.php:468 src/Controllers/Setting.php:487
+#: src/Controllers/Setting.php:506 src/Controllers/Setting.php:525
+#: src/Controllers/Setting.php:544
 msgid "File Host"
 msgstr "檔案託管設定"
 
-#: src/Controllers/Setting.php:457 src/Controllers/Setting.php:476
-#: src/Controllers/Setting.php:495
+#: src/Controllers/Setting.php:469 src/Controllers/Setting.php:488
+#: src/Controllers/Setting.php:507 src/Controllers/Setting.php:526
+#: src/Controllers/Setting.php:545
 msgid "Use this library with a CDN service or self-hosted (default)?"
 msgstr "設定使用託管於 CDN 服務或自主託管 (預設值) 的函式庫。"
 
-#: src/Controllers/Setting.php:469
+#: src/Controllers/Setting.php:481
 msgid "KaTex"
 msgstr "KaTex"
 
-#: src/Controllers/Setting.php:470
+#: src/Controllers/Setting.php:482
 msgid "KaTex.js"
 msgstr "KaTex.js"
 
-#: src/Controllers/Setting.php:489
+#: src/Controllers/Setting.php:501
 msgid "flowchart.js"
 msgstr "flowchart.js"
 
-#: src/Controllers/Setting.php:512
+#: src/Controllers/Setting.php:520
+msgid "sequence-diagrams.js"
+msgstr "sequence-diagrams.js"
+
+#: src/Controllers/Setting.php:539
+msgid "mermaid.js"
+msgstr "mermaid.js"
+
+#: src/Controllers/Setting.php:562
 msgid "Storage Space"
 msgstr "儲存空間"
 
-#: src/Controllers/Setting.php:513
+#: src/Controllers/Setting.php:563
 msgid ""
 "Images are stored in WordPress's <strong>uploads</strong> folder by default. "
 "However, you can use Imgur instead of the default place."
@@ -282,113 +304,113 @@ msgstr ""
 "圖片預設儲存在 WordPress 的 <strong>uploads</strong> 資料夾。網站管理員可以選擇使用 Imgur "
 "服務取代預設儲存位置。"
 
-#: src/Controllers/Setting.php:517
+#: src/Controllers/Setting.php:567
 msgid "default"
 msgstr "預設"
 
-#: src/Controllers/Setting.php:518
+#: src/Controllers/Setting.php:568
 msgid "imgur.com"
 msgstr "imgur.com"
 
-#: src/Controllers/Setting.php:524
+#: src/Controllers/Setting.php:574
 msgid "Imgur Client ID"
 msgstr "Imgur Client ID"
 
-#: src/Controllers/Setting.php:544
+#: src/Controllers/Setting.php:594
 msgid "Menu"
 msgstr "選單"
 
-#: src/Controllers/Setting.php:550
+#: src/Controllers/Setting.php:600
 msgid "Bootstrap 4 Menu"
 msgstr "啟用 Bootstrap 4 選單"
 
-#: src/Controllers/Setting.php:551
+#: src/Controllers/Setting.php:601
 msgid "Use Bootstrap 4 dropdown menu in header position. (2-layer)"
 msgstr "在頁首位置使用 Bootstrap 4 下拉式選單 (兩層)。"
 
-#: src/Controllers/Setting.php:562
+#: src/Controllers/Setting.php:612
 msgid "Widget"
 msgstr "小工具"
 
-#: src/Controllers/Setting.php:568
+#: src/Controllers/Setting.php:618
 msgid "Bootstrap 4 TOC"
 msgstr "啟用 Bootstrap 4 目錄"
 
-#: src/Controllers/Setting.php:569
+#: src/Controllers/Setting.php:619
 msgid ""
 "A widget that shows a Bootstrap 4 styled TOC deponds on your post content."
 msgstr "一個能根據文章內容顯示 Bootstrap 4 樣式目錄的小工具。"
 
-#: src/Controllers/Setting.php:580
+#: src/Controllers/Setting.php:630
 msgid "Post Type"
 msgstr "內容類型"
 
-#: src/Controllers/Setting.php:586 src/Controllers/Setting.php:657
+#: src/Controllers/Setting.php:636 src/Controllers/Setting.php:707
 msgid "GitHub Repository"
 msgstr "GitHub 存放庫"
 
-#: src/Controllers/Setting.php:587
+#: src/Controllers/Setting.php:637
 msgid "Display the stars, forks, issues from your GitHub repository."
 msgstr "根據 GitHub 存放庫資料顯示 Star、Fork 及 Issue 的數量。"
 
-#: src/Controllers/Setting.php:598
+#: src/Controllers/Setting.php:648
 msgid "Shortcode"
 msgstr "短代碼"
 
-#: src/Controllers/Setting.php:604
+#: src/Controllers/Setting.php:654
 msgid "Social Icons"
 msgstr "社交網路服務圖示"
 
-#: src/Controllers/Setting.php:605
+#: src/Controllers/Setting.php:655
 msgid "Use social icons in author section."
 msgstr "將社交網路服務圖示顯示於作者區塊。"
 
-#: src/Controllers/Setting.php:616
+#: src/Controllers/Setting.php:666
 msgid "Adjustment"
 msgstr "調整"
 
-#: src/Controllers/Setting.php:622
+#: src/Controllers/Setting.php:672
 msgid "Head Output"
 msgstr "Head 標籤區段輸出結果"
 
-#: src/Controllers/Setting.php:623
+#: src/Controllers/Setting.php:673
 msgid "Remove information displays in HTML source code."
 msgstr "移除顯示於 HTML 程式碼中的資訊。"
 
-#: src/Controllers/Setting.php:643 src/wp_utilities/githuber-functions.php:37
+#: src/Controllers/Setting.php:693 src/wp_utilities/githuber-functions.php:37
 msgid "Author"
 msgstr "作者"
 
-#: src/Controllers/Setting.php:650
+#: src/Controllers/Setting.php:700
 msgid "Version"
 msgstr "版本"
 
-#: src/Controllers/Setting.php:664
+#: src/Controllers/Setting.php:714
 msgid "Support"
 msgstr "技術支援"
 
-#: src/Controllers/Setting.php:671
+#: src/Controllers/Setting.php:721
 msgid "Changelog"
 msgstr "變更記錄"
 
-#: src/Controllers/Setting.php:690
+#: src/Controllers/Setting.php:740
 msgid "WP Githuber MD "
 msgstr "WP Githuber MD "
 
 #. Plugin Name of the plugin/theme
-#: src/Controllers/Setting.php:691
+#: src/Controllers/Setting.php:741
 msgid "WP Githuber MD"
 msgstr "WP Githuber MD"
 
-#: src/Controllers/Setting.php:728
+#: src/Controllers/Setting.php:778
 msgid "Settings"
 msgstr "設定"
 
-#: src/Controllers/Setting.php:746
+#: src/Controllers/Setting.php:796
 msgid "View GitHub project"
 msgstr "檢視 GitHub 專案"
 
-#: src/Controllers/Setting.php:747
+#: src/Controllers/Setting.php:797
 msgid "Report issues"
 msgstr "回報問題"
 
