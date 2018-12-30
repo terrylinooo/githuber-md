@@ -8,7 +8,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.4.0
  * 
  */
 
@@ -114,6 +114,10 @@ class Prism extends ModuleAbstract {
 					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/components/prism-core.min.js';
 					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/prism.min.js';
 
+					if ( 'yes' === $prism_line_number ) {
+						$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.min.js';
+					}
+
 					if ( ! empty( $prism_meta_array ) ) {
 						foreach (  array_reverse( $prism_meta_array ) as $component_name ) {
 
@@ -123,11 +127,16 @@ class Prism extends ModuleAbstract {
 							}
 						}
 					}
+
 					break;
 
 				case 'jsdelivr':
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/components/prism-core.min.js';
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/prism.min.js';
+
+					if ( 'yes' === $prism_line_number ) {
+						$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.min.js';
+					}
 
 					if ( ! empty( $prism_meta_array ) ) {
 						foreach ( array_reverse( $prism_meta_array ) as $component_name ) {
@@ -145,6 +154,10 @@ class Prism extends ModuleAbstract {
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/components/prism-core.min.js';
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/prism.min.js';
 
+					if ( 'yes' === $prism_line_number ) {
+						$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.min.js';
+					}
+
 					if ( ! empty( $prism_meta_array ) ) {
 						foreach ( array_reverse( $prism_meta_array ) as $component_name ) {
 
@@ -154,8 +167,10 @@ class Prism extends ModuleAbstract {
 							}
 						}
 					}
+
 					break;
 			}
+
 			foreach ( $script_url as $key => $url ) {
 				wp_enqueue_script( 'prism-js-' . $key, $url, array(), $this->prism_version, true );
 			}
@@ -190,6 +205,24 @@ class Prism extends ModuleAbstract {
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
+		$prism_line_number = githuber_get_option( 'prism_line_number', 'githuber_modules' );
 
+		if ( 'yes' === $prism_line_number ) {
+			$script = '
+				<script id="module-prism-line-number">
+					(function($) {
+						$(function() {
+							$("code").each(function() {
+								var parent_div = $(this).parent("pre");
+								if (typeof pre_css !== "undefined" && -1 !== pre_css.indexOf("language-")) {
+									parent_div.addClass("line-numbers");
+								}
+							});
+						});
+					})(jQuery);
+				</script>
+			';
+			echo $script;
+		}
 	}
 }
