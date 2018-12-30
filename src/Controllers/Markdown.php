@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.4.0
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -27,7 +27,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $editormd_varsion = '1.5.0.1';
+	public $editormd_varsion = '1.5.0.2';
 
 	/**
 	 * The Post Type support from Markdown controller.
@@ -155,7 +155,7 @@ class Markdown extends ControllerAbstract {
 			return;
 		}
 
-		wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.js', array( 'jquery' ), $this->editormd_varsion, true );
+		wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
 		wp_enqueue_script( 'githuber-md', $this->githuber_plugin_url . 'assets/js/githuber-md.js', array( 'editormd' ), $this->version, true );
 
 		switch ( get_bloginfo( 'language' ) ) {

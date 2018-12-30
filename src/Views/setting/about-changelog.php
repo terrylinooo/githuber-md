@@ -8,11 +8,11 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  *
  * @package Githuber
  * @since 1.2.0
- * @version 1.3.1
+ * @version 1.4.0
  */
 ?>
 
-<pre style="font-size: 13px;">
+<pre style="font-size: 13px; height: 200px; overflow-y: scroll; border: 1px #dddddd solid; background-color: #ffffff; padding: 20px">
 1.0.0
 
 * First release.
@@ -43,4 +43,14 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 * Modify HTML-to-Markdown helper and image-paste description.
 * Improve HTML-to-Markdown helper.
 * Add language packs for zh_TW and zh_CN.
+
+1.3.2
+
+* Add language pack: zh_TW.
+* Fix bugs.
+
+1.4.0
+
+* Add Mermaid module.
+* Fx bugs.
 </pre>

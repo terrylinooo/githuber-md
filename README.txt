@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: githuber, markdown
 Requires at least: 4.0
 Tested up to: 5.0.2
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 Requires PHP: 5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -131,6 +131,11 @@ GNU General Public License for more details.
 
 * Add language pack: zh_TW.
 * Fix bugs.
+
+= 1.4.0
+
+* Add Mermaid module.
+* Fx bugs.
 
 == Upgrade Notice ==
 

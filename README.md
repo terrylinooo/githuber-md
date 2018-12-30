@@ -127,3 +127,8 @@ Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 
 * Add language pack: zh_TW.
 * Fix bugs.
+
+1.4.0
+
+* Add Mermaid module.
+* Fx bugs.

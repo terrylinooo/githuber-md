@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.4.0
  */
 
 use Githuber\Controller as Controller;
@@ -71,17 +71,23 @@ class Githuber {
 			$module_katex->init();
 		}
 
+		// Module Name: Sequence Diagram
+		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ) ) {
+			$module_sequence = new Module\SequenceDiagram();
+			$module_sequence->init();
+		}
+
+		// Module Name: Mermaid
+		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_markdown' ) ) {
+			$module_mermaid = new Module\Mermaid();
+			$module_mermaid->init();
+		}
+
 		// Module Name: Prism
 		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_markdown' ) ) {
 			$module_prism = new Module\Prism();
 			$module_prism->init();
 		}
-
-		// Module Name: Sequence Diagram
-		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ) ) {
-			$module_sequence = new Module\SequenceDiagram();
-			$module_sequence->init();
-		} 
 	}
 
 	/**
