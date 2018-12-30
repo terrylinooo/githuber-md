@@ -137,6 +137,7 @@ GNU General Public License for more details.
 = 1.4.0
 
 * Add Mermaid module.
+* Add language pack: zh_CN.
 * Fx bugs.
 
 == Upgrade Notice ==

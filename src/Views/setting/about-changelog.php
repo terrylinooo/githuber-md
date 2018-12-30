@@ -52,5 +52,6 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 1.4.0
 
 * Add Mermaid module.
+* Add language pack: zh_CN.
 * Fx bugs.
 </pre>
