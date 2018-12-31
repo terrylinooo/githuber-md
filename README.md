@@ -69,7 +69,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Syntax highlight.
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katax/).
-* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/).
+* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
 * Github flavored Markdown task list.
 * Markdown extra...
@@ -135,3 +135,7 @@ Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 * Add Mermaid module.
 * Add language pack: zh_CN.
 * Fx bugs.
+
+## Known Issues
+
+* #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
