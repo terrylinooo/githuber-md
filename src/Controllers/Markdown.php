@@ -176,6 +176,7 @@ class Markdown extends ControllerAbstract {
 			'editor_html_decode',
 			'editor_toolbar_theme',
 			'editor_editor_theme',
+			'editor_line_number',
 			'support_toc',
 			'support_emoji',
 			'support_katex',

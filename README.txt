@@ -1,6 +1,6 @@
 === WP Githuber MD ===
 Contributors: terrylin
-Tags: githuber, markdown
+Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.0.2
 Stable tag: 1.4.0

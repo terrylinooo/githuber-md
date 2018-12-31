@@ -245,6 +245,18 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'name'    => 'editor_line_number',
+					'label'   => __( 'Line Number', 'wp-githuber-md' ),
+					'desc'    => __( 'Display number in the Markdown Editor.', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'yes',
+					'options' => array(
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
+					)
+				),
+
+				array(
 					'name'  => '_TITLE_',
 					'label' => __( 'Editor Style', 'wp-githuber-md' ),
 				),
