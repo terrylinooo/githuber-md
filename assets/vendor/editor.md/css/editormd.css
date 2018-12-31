@@ -262,6 +262,8 @@
   position: relative;
   padding: 20px;
   line-height: 1.4;
+  overflow: hidden;
+  display: block;
 }
 .editormd-dialog-container h1 {
   font-size: 24px;
@@ -3162,9 +3164,6 @@
   font-size: 1rem;
   line-height: 1.5;
   word-wrap: break-word;
-}
-.markdown-body > h1:first-child {
-  display: none;
 }
 .markdown-body .pl-c {
   color: #6a737d;

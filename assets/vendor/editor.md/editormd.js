@@ -4228,7 +4228,8 @@
      */
     
     editormd.loadKaTeX = function (callback) {
-        editormd.loadCSS(loadPath + "../../katexkatex.min", function(){
+        var loadPath = window.editormd_config.editor_modules_url;
+        editormd.loadCSS(loadPath + "../../katex/katex.min", function(){
             editormd.loadScript(loadPath + "../../katex/katex.min", callback || function(){});
         });
     };
@@ -4257,7 +4258,7 @@
         var defaults = {
             name : "",
             width : 420,
-            height: 240,
+            //height: 240,
             title : "",
             drag  : true,
             closed : true,
