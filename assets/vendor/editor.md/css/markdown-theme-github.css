@@ -11,9 +11,6 @@
   line-height: 1.5;
   word-wrap: break-word;
 }
-.markdown-body > h1:first-child {
-  display: none;
-}
 .markdown-body .pl-c {
   color: #6a737d;
 }
