@@ -121,11 +121,25 @@
     }
 
     ol.linenums { 
-        color: #999; 
-        padding-left: 2.5em; 
-    
-        li { 
-            list-style-type: decimal; 
+        color: #999;
+        margin-left: 20px;
+        padding-left: 0px; 
+        counter-reset: item;
+        list-style-type: none;
+
+        li:after { 
+            content: counter(item) "  "; 
+            counter-increment: item;
+            position: absolute;
+            left: -20px;
+            top: 2px;
+        }
+
+        li {
+            position: relative;
+            display: block;
+            padding: 0;
+            margin: 0;
         
             code {
                 border: none;

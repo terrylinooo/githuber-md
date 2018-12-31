@@ -143,7 +143,7 @@ class Markdown extends ControllerAbstract {
 	 * Register CSS style files.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
-		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.min.css', array(), $this->editormd_varsion, 'all' );
+		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.css', array(), $this->editormd_varsion, 'all' );
 	}
 
 	/**
@@ -195,6 +195,8 @@ class Markdown extends ControllerAbstract {
 		$editormd_localize['editor_modules_url']   = $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/';
 		$editormd_localize['editor_placeholder']   = __( 'Happy Markdowning!', 'wp-githuber-md' );
 		$editormd_localize['image_paste_callback'] = admin_url( 'admin-ajax.php?action=githuber_image_paste');
+		$editormd_localize['prism_line_number']    = githuber_get_option( 'prism_line_number', 'githuber_modules' );
+		
 
 		// Register JS variables for the Editormd library uses.
 		wp_localize_script( 'githuber-md', 'editormd_config', $editormd_localize );

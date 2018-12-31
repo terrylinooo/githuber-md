@@ -28,6 +28,7 @@ var githuber_md_editor;
             taskList: (config.support_task_list == 'yes'),
             mermaid: (config.support_mermaid == 'yes'),
             lineNumbers: (config.editor_line_number == 'yes'),
+            previewCodeLineNumber: (config.prism_line_number == 'yes'),
             toolbarAutoFixed: true, 
             tocm: false, 
             tocDropdown: false,    

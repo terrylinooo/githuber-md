@@ -177,6 +177,7 @@
         flowChart            : false,          // flowChart.js only support IE9+
         sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
         previewCodeHighlight : true,
+        previewCodeLineNumber: false,
                 
         toolbar              : true,           // show/hide toolbar
         toolbarAutoFixed     : true,           // on window scroll auto fixed position
@@ -1491,8 +1492,12 @@
             
             if (settings.previewCodeHighlight) 
             {
-                previewContainer.find("pre").addClass("prettyprint");
-                
+                if (settings.previewCodeLineNumber) {
+                    previewContainer.find("pre").addClass("prettyprint linenums");
+                } else {
+                    previewContainer.find("pre").addClass("prettyprint");
+                }
+
                 if (typeof prettyPrint !== "undefined")
                 {                    
                     prettyPrint();
@@ -2017,6 +2022,7 @@
                 flowChart            : settings.flowChart,
                 sequenceDiagram      : settings.sequenceDiagram,
                 previewCodeHighlight : settings.previewCodeHighlight,
+                previewCodeLineNumber: settings.previewCodeLineNumber,
             };
             
             var markedOptions = this.markedOptions = {
@@ -3944,7 +3950,7 @@
             flowChart            : false,
             mermaid              : false,
             sequenceDiagram      : false,
-            previewCodeHighlight : true
+            previewCodeHighlight : true,
         };
         
         editormd.$marked  = marked;
@@ -3976,6 +3982,7 @@
             mermaid              : settings.mermaid,
             sequenceDiagram      : settings.sequenceDiagram,
             previewCodeHighlight : settings.previewCodeHighlight,
+            previewCodeLineNumber: settings.previewCodeLineNumber,
         };
 
         var markedOptions = {
@@ -4027,7 +4034,11 @@
             
         if (settings.previewCodeHighlight) 
         {
-            div.find("pre").addClass("prettyprint");
+            if (settings.previewCodeLineNumber) {
+                div.find("pre").addClass("prettyprint linenums");
+            } else {
+                div.find("pre").addClass("prettyprint");
+            }
             prettyPrint();
         }
         
