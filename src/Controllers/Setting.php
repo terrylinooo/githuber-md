@@ -78,12 +78,31 @@ class Setting extends ControllerAbstract {
 
 		// set sections and fields.
 		self::$setting_api->set_sections( $this->get_sections() );
-		self::$setting_api->set_fields( $this->get_fields() );
+
+		$settings = $this->get_fields();
+
+		if ( $GLOBALS['wp_version'] < '4.5' ) {
+			// sequence_diagram uses underscore.js, and it has some conflict issues with WordPress's plupload uploader in older vision.
+			// So, we hide this option in older version.
+			foreach ( $settings['githuber_markdown'] as $k => $v ) {
+				if ( 'support_sequence_diagram' === $v['name'] ) {
+					unset( $settings['githuber_markdown'][ $k ] );
+				}
+			}
+			foreach ( $settings['githuber_modules'] as $k => $v ) {
+				if ( 'sequence_diagram_src' === $v['name'] ) {
+					unset( $settings['githuber_modules'][ $k-1 ] );
+					unset( $settings['githuber_modules'][ $k ] );
+				}
+			}
+		}
+
+		self::$setting_api->set_fields( $settings );
 	 
 		// initialize them.
 		self::$setting_api->admin_init();
 
-		self::$settings = $this->get_fields();
+		self::$settings = $settings;
 	}
 
 	/**

@@ -506,46 +506,37 @@
             var loadPath     = settings.path;
                                 
             var loadFlowChartOrSequenceDiagram = function() {
-                
+
                 if (editormd.isIE8) 
                 {
                     _this.loadedDisplay();
-                    
+    
                     return ;
                 }
 
-                if (settings.flowChart || settings.sequenceDiagram) 
-                {
-                    editormd.loadScript(loadPath + "raphael.min", function() {
+                if (settings.flowChart || settings.sequenceDiagram) {
+                    editormd.loadScript(loadPath + "../../raphael/raphael.min", function() {
 
-                        editormd.loadScript(loadPath + "underscore.min", function() {  
-
-                            if (!settings.flowChart && settings.sequenceDiagram) 
-                            {
-                                editormd.loadScript(loadPath + "sequence-diagram.min", function() {
+                        if (!settings.flowChart && settings.sequenceDiagram) {
+                            editormd.loadScript(loadPath + "../../underscore/underscore.min", function() {
+                                editormd.loadScript(loadPath + "../../js-sequence-diagrams/sequence-diagram.min", function() {
                                     _this.loadedDisplay();
                                 });
-                            }
-                            else if (settings.flowChart && !settings.sequenceDiagram) 
-                            {      
-                                editormd.loadScript(loadPath + "flowchart.min", function() {  
-                                    editormd.loadScript(loadPath + "jquery.flowchart.min", function() {
+                            });
+ 
+                        } else if (settings.flowChart && !settings.sequenceDiagram) {      
+                            editormd.loadScript(loadPath + "../../flowchart/flowchart.min", function() {  
+                                _this.loadedDisplay();
+                            });
+                        } else if (settings.flowChart && settings.sequenceDiagram) {
+                            editormd.loadScript(loadPath + "../../underscore/underscore.min", function() {
+                                editormd.loadScript(loadPath + "../../js-sequence-diagrams/sequence-diagram.min", function() {
+                                    editormd.loadScript(loadPath + "../../flowchart/flowchart.min", function() {  
                                         _this.loadedDisplay();
                                     });
                                 });
-                            }
-                            else if (settings.flowChart && settings.sequenceDiagram) 
-                            {  
-                                editormd.loadScript(loadPath + "flowchart.min", function() {  
-                                    editormd.loadScript(loadPath + "jquery.flowchart.min", function() {
-                                        editormd.loadScript(loadPath + "sequence-diagram.min", function() {
-                                            _this.loadedDisplay();
-                                        });
-                                    });
-                                });
-                            }
-                        });
-
+                            });
+                        }
                     });
                 } 
                 else
@@ -566,15 +557,17 @@
             {
                 editormd.loadCSS(loadPath + "codemirror/addon/fold/foldgutter");            
             }
-            
+
             editormd.loadScript(loadPath + "codemirror/codemirror.min", function() {
                 editormd.$CodeMirror = CodeMirror;
                 
                 editormd.loadScript(loadPath + "codemirror/modes.min", function() {
-                    
+                   
                     editormd.loadScript(loadPath + "codemirror/addons.min", function() {
                         
                         _this.setCodeMirror();
+
+                        
                         
                         if (settings.mode !== "gfm" && settings.mode !== "markdown") 
                         {
@@ -582,13 +575,13 @@
                             
                             return false;
                         }
-                        
+                         
                         _this.setToolbar();
 
                         editormd.loadScript(loadPath + "marked.min", function() {
 
                             editormd.$marked = marked;
-                                
+                             
                             if (settings.previewCodeHighlight) 
                             {
                                 editormd.loadScript(loadPath + "prettify.min", function() {
@@ -596,16 +589,20 @@
                                 });
                             } 
                             else
-                            {                  
+                            {
                                 loadFlowChartOrSequenceDiagram();
                             }
+                           
                         });
                         
                     });
                     
+                    
                 });
                 
             });
+
+            
 
             if (settings.mermaid) {
                 editormd.loadScript(loadPath + "../../mermaid/mermaid.min", function() {
