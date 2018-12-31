@@ -54,7 +54,7 @@ var githuber_md_editor;
                     'position': 'relative',
                     'z-index': 'auto'
                 });
-                githuber_md_editor = editormd(wp_editor, global_editormd_config);
+                reload_githuber_md();
             },
 
             toolbarIconsClass: {
@@ -79,6 +79,10 @@ var githuber_md_editor;
         };
 
         if ($(wp_editor_container).length == 1) {
+            githuber_md_editor = editormd(wp_editor, global_editormd_config);
+        }
+
+        function reload_githuber_md() {
             githuber_md_editor = editormd(wp_editor, global_editormd_config);
         }
 

@@ -4242,7 +4242,7 @@
     editormd.lockScreen = function(lock) {
         $("html,body").css("overflow", (lock) ? "hidden" : "");
     };
-        
+
     /**
      * 动态创建对话框
      * Creating custom dialogs

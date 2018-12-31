@@ -124,10 +124,10 @@
 }
 .editormd-menu > li > a {
   outline: 0;
-  color: #666;
+  color: #333333;
   display: inline-block;
   min-width: 24px;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
   text-align: center;
   -webkit-border-radius: 2px;
@@ -203,7 +203,7 @@
   top: -10px;
 }
 .editormd-dropdown-menu > li > a {
-  color: #666;
+  color: #333333;
   display: block;
   text-decoration: none;
   padding: 8px 10px;
@@ -235,7 +235,7 @@
 }
 
 .editormd-dialog {
-  color: #666;
+  color: #333333;
   position: fixed;
   z-index: 99999;
   display: none;
@@ -519,7 +519,7 @@
 }
 
 .editormd-form {
-  color: #666;
+  color: #333333;
 }
 .editormd-form label {
   float: left;
@@ -582,7 +582,7 @@
 .editormd-dialog-footer input[type="submit"],
 .editormd-dialog-footer .editormd-btn,
 .editormd-dialog-footer button {
-  color: #666;
+  color: #333333;
   min-width: 75px;
   cursor: pointer;
   background: #fff;
@@ -3709,7 +3709,7 @@
   background-color: #fff;
 }
 .editormd-preview-container blockquote, .editormd-html-preview blockquote {
-  color: #666;
+  color: #333333;
   border-left: 4px solid #ddd;
   padding-left: 20px;
   margin-left: 0;

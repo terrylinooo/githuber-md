@@ -27,7 +27,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $editormd_varsion = '1.5.0.2';
+	public $editormd_varsion = '1.5.0.3';
 
 	/**
 	 * The Post Type support from Markdown controller.
@@ -143,7 +143,7 @@ class Markdown extends ControllerAbstract {
 	 * Register CSS style files.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
-		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.css', array(), $this->editormd_varsion, 'all' );
+		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.min.css', array(), $this->editormd_varsion, 'all' );
 	}
 
 	/**
