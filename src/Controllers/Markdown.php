@@ -81,7 +81,7 @@ class Markdown extends ControllerAbstract {
 	public $is_support_katex     = false;
 	public $is_support_flowchart = false;
 	public $is_support_sequence  = false;
-	public $is_support_mermaid  = false;
+	public $is_support_mermaid   = false;
 
 	/**
 	 * Constructer.
@@ -475,6 +475,7 @@ class Markdown extends ControllerAbstract {
 		$is_sequence  = false;
 		$is_flowchart = false;
 		$is_mermaid   = false;
+		$is_katex     = false;
 
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
 			
@@ -505,6 +506,10 @@ class Markdown extends ControllerAbstract {
 				if ( 'mermaid' === $match ) {
 					$is_mermaid = true;
 				}
+
+				if ( 'katex' === $match ) {
+					$is_katex = true;
+				}
 			}
 		}
 
@@ -527,18 +532,8 @@ class Markdown extends ControllerAbstract {
 		if ( $this->is_support_mermaid && $is_mermaid ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_MERMAID, true );
 		}
-	}
 
-	/**
-	 * Detect if post content contains KaTeX or not.
-	 *
-	 * @param int   $post_id       The post ID.
-	 * @param string $post_content The post content.
-	 * @return void
-	 */
-	public function detect_katex( $post_id, $post_content ) {
-		delete_metadata( 'post', $post_id, self::MD_POST_META_KATEX);
-		if ( preg_match_all( '/class="katex\-container"/', $post_content, $matches ) > 0 ) {
+		if ( $this->is_support_katex && $is_katex ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, true );
 		}
 	}
@@ -765,7 +760,6 @@ class Markdown extends ControllerAbstract {
 
 		// Is it support Prism - syntax highlighter.
 		$this->detect_code_languages( $post_id, wp_unslash( $post_data['post_content'] ) );
-		$this->detect_katex( $post_id, wp_unslash( $post_data['post_content'] ) ) ;
 
 		return $post_data;
 	}
@@ -846,11 +840,6 @@ class Markdown extends ControllerAbstract {
 		// Render Github Flavored Markdown task lists if this module is enabled.
 		if ( $this->is_support_task_list ) {
 			$text = Module\TaskList::parse_gfm_task_list( $text );
-		}
-
-		// Add a HTML wrapper if this module is enabled.
-		if ( $this->is_support_katex ) {
-			$text = Module\KaTeX::katex_markup( $text );
 		}
 
 		// Markdown inserts extra spaces to make itself work. Buh-bye.
