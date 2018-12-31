@@ -524,15 +524,18 @@
 
 .editormd-form {
   color: #333333;
+  overflow: hidden;
+  display: block;
 }
 .editormd-form label {
   float: left;
   display: block;
   width: 75px;
   text-align: left;
-  padding: 7px 0 15px 5px;
+  font-size: 13px;
+  padding: 7px 0 5px 5px;
   margin: 0 0 2px;
-  font-weight: normal;
+  font-weight: bold;
 }
 .editormd-form br {
   clear: both;
@@ -586,23 +589,29 @@
 .editormd-dialog-footer input[type="submit"],
 .editormd-dialog-footer .editormd-btn,
 .editormd-dialog-footer button {
-  color: #333333;
   min-width: 75px;
   cursor: pointer;
-  background: #fff;
-  padding: 7px 10px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  color: #555;
+  border-color: #ccc;
+  background: #f7f7f7;
+  box-shadow: 0 1px 0 #ccc;
+  vertical-align: top;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 26px;
+  height: 28px;
+  margin: 0;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
   border-radius: 3px;
-  -webkit-transition: background 300ms ease-out;
-  /* Safari, Chrome */
-  -moz-transition: background 300ms ease-out;
-  /* Firefox 4.0~16.0 */
-  transition: background 300ms ease-out;
-  /* IE >9, FF >15, Opera >12.0 */
+  white-space: nowrap;
+  box-sizing: border-box;
+  height: 30px;
+  line-height: 28px;
+  padding: 0 12px 2px;
 }
 .editormd-form input[type="submit"]:hover, .editormd-form .editormd-btn:hover, .editormd-form button:hover,
 .editormd-dialog-container input[type="submit"]:hover,
@@ -622,6 +631,26 @@
 .editormd-dialog-container .editormd-btn + .editormd-btn,
 .editormd-dialog-footer .editormd-btn + .editormd-btn {
   margin-left: 8px;
+}
+.editormd-form .editormd-enter-btn,
+.editormd-dialog-container .editormd-enter-btn,
+.editormd-dialog-footer .editormd-enter-btn {
+  background: #0085ba;
+  border-color: #0073aa #006799 #006799;
+  box-shadow: 0 1px 0 #006799;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+}
+.editormd-form .editormd-enter-btn:hover,
+.editormd-dialog-container .editormd-enter-btn:hover,
+.editormd-dialog-footer .editormd-enter-btn:hover {
+  background: #008cc4;
+  border-color: #007ab4 #006ea3 #006ea3;
+  box-shadow: 0 1px 0 #006799;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #006ea3, 1px 0 1px #006ea3, 0 1px 1px #006ea3, -1px 0 1px #006ea3;
 }
 
 .editormd-file-input {

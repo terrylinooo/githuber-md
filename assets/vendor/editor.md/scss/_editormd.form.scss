@@ -4,15 +4,18 @@
             
 #{$prefix}form {
     color: $color;
+    overflow: hidden;
+    display: block;
     
     label {
         float: left;
         display: block;
         width: 75px;
         text-align: left;
-        padding: 7px 0 15px 5px;
+        font-size: 13px;
+        padding: 7px 0 5px 5px;
         margin: 0 0 2px;
-        font-weight: normal;
+        font-weight: bold;
     }
 
     br {
@@ -75,14 +78,29 @@
 #{$prefix}dialog-footer {
 
     input[type="submit"], #{$prefix}btn, button {
-        color: $color;
         min-width: 75px;
         cursor: pointer;
-        background: #fff;
-        padding: 7px 10px;
-        border: 1px solid #ddd;
-        @include border-radius(3px);
-        @include transition(background 300ms ease-out);
+        color: #555;
+        border-color: #ccc;
+        background: #f7f7f7;
+        box-shadow: 0 1px 0 #ccc;
+        vertical-align: top;
+        display: inline-block;
+        text-decoration: none;
+        font-size: 13px;
+        line-height: 26px;
+        height: 28px;
+        margin: 0;
+        cursor: pointer;
+        border-width: 1px;
+        border-style: solid;
+        -webkit-appearance: none;
+        border-radius: 3px;
+        white-space: nowrap;
+        box-sizing: border-box;
+        height: 30px;
+        line-height: 28px;
+        padding: 0 12px 2px;
 
         &:hover {
             background: #eee;
@@ -95,6 +113,24 @@
 
     #{$prefix}btn + #{$prefix}btn {
         margin-left: 8px;
+    }
+
+    .editormd-enter-btn {
+        background: #0085ba;
+        border-color: #0073aa #006799 #006799;
+        box-shadow: 0 1px 0 #006799;
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+
+        &:hover {
+            background: lighten(#0085ba, 2%);
+            border-color: lighten(#0073aa, 2%) lighten(#006799, 2%) lighten(#006799, 2%);
+            box-shadow: 0 1px 0 #006799;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0 -1px 1px lighten(#006799, 2%), 1px 0 1px lighten(#006799, 2%), 0 1px 1px lighten(#006799, 2%), -1px 0 1px lighten(#006799, 2%);    
+        }
     }
 }
 
