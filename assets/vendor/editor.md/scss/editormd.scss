@@ -2,7 +2,11 @@
 
 @import "variables";
 @import "prefixes";
-        
+
+.path {
+    animation: none !important;
+}
+
 .editormd {
     width: 90%;
     height: 640px;
@@ -17,7 +21,7 @@
     *, *:before, *:after {
         @include box-sizing(border-box);
     }
-    
+
     a {
         text-decoration: none;
     }
