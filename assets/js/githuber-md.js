@@ -83,7 +83,7 @@ var githuber_md_editor;
         }
 
         function reload_githuber_md() {
-            githuber_md_editor = editormd(wp_editor, global_editormd_config);
+            //  githuber_md_editor = editormd(wp_editor, global_editormd_config);
         }
 
         $(document).ajaxSuccess(function(event, xhr, settings, data) {
