@@ -136,6 +136,13 @@ Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 * Add language pack: zh_CN.
 * Fx bugs.
 
+= 1.4.1
+
+* Add line-number setting for Markdown Editor.
+* Adjust KaTeX module - Now it can only used in the Markdown code block defined with `katax`.
+* Improve Markdown editor - Adjust the dialog button's look and fix the overflow issues.
+* Yoast SEO's CSS has a global class name `path` uses animation, will break the Marmaid's SVG in the editor's preview panel, because they both uses the same common class name. We force to remove the animation attribute to make it work.
+
 ## Known Issues
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
