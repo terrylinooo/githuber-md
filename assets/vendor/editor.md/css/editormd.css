@@ -3949,9 +3949,42 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 {
-  background: #eee;
+  background: #eeeeee;
 }
 
+.editormd-preview-container, .editormd-html-preview {
+    /*
+
+    ol.linenums { 
+        color: #999;
+        margin-left: 20px;
+        padding-left: 0px; 
+        counter-reset: item;
+        list-style-type: none;
+
+        li:after { 
+            content: counter(item) "  "; 
+            counter-increment: item;
+            position: absolute;
+            left: -20px;
+            top: 2px;
+        }
+
+        li {
+            position: relative;
+            display: block;
+            padding: 0;
+            margin: 0;
+        
+            code {
+                border: none;
+                background:none;  
+                padding: 0;
+            }
+        }
+    }
+    */
+}
 .editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint {
   padding: 10px;
   border: 1px solid #ddd;
@@ -3960,23 +3993,12 @@ li.L9 {
 }
 .editormd-preview-container ol.linenums, .editormd-html-preview ol.linenums {
   color: #999;
-  margin-left: 20px;
-  padding-left: 0px;
-  counter-reset: item;
-  list-style-type: none;
-}
-.editormd-preview-container ol.linenums li:after, .editormd-html-preview ol.linenums li:after {
-  content: counter(item) "  ";
-  counter-increment: item;
-  position: absolute;
-  left: -20px;
-  top: 2px;
+  padding-left: 0;
 }
 .editormd-preview-container ol.linenums li, .editormd-html-preview ol.linenums li {
-  position: relative;
-  display: block;
-  padding: 0;
+  list-style-type: decimal;
   margin: 0;
+  padding: 2px;
 }
 .editormd-preview-container ol.linenums li code, .editormd-html-preview ol.linenums li code {
   border: none;
