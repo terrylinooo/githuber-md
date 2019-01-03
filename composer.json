@@ -1,4 +1,16 @@
 {
+    "name": "terrylinooo/githuber-md",
+    "description": "An all-in-one WordPress Markdown plugin.",
+    "keywords": ["markdown", "markdown-editor", "wordpress-plugin", "wordpress-markdown-plugin"],
+    "homepage": "https://github.com/terrylinooo/githuber-md",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Terry Lin",
+            "email": "contact@terryl.in",
+            "homepage": "https://terryl.in"
+        }
+    ],
     "require": {
         "erusev/parsedown": "^1.7",
         "erusev/parsedown-extra": "^0.7.1",

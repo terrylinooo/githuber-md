@@ -37,8 +37,8 @@ The better situation to use this plugin is you just started a new blog.
 
 If you're planning to use this plugin in an existing blog, be sure to:
 
-- At the first, backup your data, we do not guarantee things work as expected.
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
+- My personal suggestion is to turn off `revision` and `auto-save`, there are options in setting page.
 
 == Installation ==
 
@@ -144,7 +144,7 @@ GNU General Public License for more details.
 = 1.4.1
 
 * Add line-number setting for Markdown Editor.
-* Adjust KaTeX module - Now it can only used in the Markdown code block defined with `katax`.
+* Adjust KaTeX module - Now it can only used in the Markdown code blocks that are defined with `katax`.
 * Improve Markdown editor - Adjust the dialog button's look and fix the overflow issues.
 * Yoast SEO's CSS has a global class name `path` uses animation, will break the Marmaid's SVG in the editor's preview panel, because they both uses the same common class name. We force to remove the animation attribute to make it work.
 
