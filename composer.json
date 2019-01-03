@@ -12,6 +12,7 @@
         }
     ],
     "require": {
+        "php": ">=5.3",
         "erusev/parsedown": "^1.7",
         "erusev/parsedown-extra": "^0.7.1",
         "league/html-to-markdown": "^4.8"
