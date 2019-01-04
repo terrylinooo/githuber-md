@@ -50,7 +50,7 @@ https://youtu.be/it1noNCTXa4
     - Search `Githuber` through plugins screen you will find this plugin.
     - Download  from official WordPress plugin page: https://wordpress.org/plugins/wp-githuber-md/
     - Download form GitHub repository releases page: https://github.com/terrylinooo/githuber-md/releases
-2. Activate the plugin through the 'Plugins' screen in WordPress.
+2. Activate the plugin through the `Plugins` screen in WordPress.
 3. Go to the `WP Githuber MD` menu in Plugins and set your Markdown options.
 
 ### Install via Composer
