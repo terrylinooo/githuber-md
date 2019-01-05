@@ -72,89 +72,82 @@ If you're planning to use this plugin in an existing blog, be sure to:
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
 - My personal suggestion is to turn off `revision` and `auto-save`, there are options in setting page.
 
-## Features
+## Features  & Sceenshots
 
-* Markdown editor.
+* All-in-one Markdown Editor.
 * Live preivew.
 * [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
 * [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
 * Syntax highlight.
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katax/).
-* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
+* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
 * Github flavored Markdown task list.
 * Markdown extra...
 
-### Features For Githuber Theme:
+### Image copy & paste
 
-* Menu: Bootstrap 4 menu.
-* Widget: Table of content.
-* Post type: GitHub repository.
+![Image copy & paste](https://i.imgur.com/FObsHBG.gif)
 
-### Other screenshots
+Uplaoding images becomes much more eaiser, just copy and paste, then done.
+You can upload to your `upload` folder or host your images to `Imgur.com`.
 
-#### Setting pages
+### HTML to Markdown
 
-![Screenshot](./assets/images/screenshot-5.png)
+![HTML-to-Markdown helper](https://i.imgur.com/DmLhnXM.gif)
 
-![Screenshot](./assets/images/screenshot-6.png)
+Convert your old posts into Markdown by using HTML-to-Markdown helper that beside the Editor.
 
-## Translations
+### Syntax Highlighing
 
-Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
+![Syntax Highlighing](https://i.imgur.com/sJclXdR.png)
 
-## Changelog
+Use Google prettify.js for the Editor's live-preview pane, and use prism.js for the fontend pages. You can choose your favorite theme for syntax hgihlighing.
 
-1.0.0
+### Mermaid
 
-* First release.
+![Module: Mermaid](https://i.imgur.com/6dfCQT6.png)
 
-1.1.0
+Mermaid is a Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams, gantt charts and git graphs.
 
-* Add Image-Paste module.
+### [KaTex](https://terryl.in/en/githuber-md-katax/)
 
-1.2.0
+![Module: Katex](https://i.imgur.com/ZWUaNNO.png)
 
-* Image paste - Provide an option that allows you directly upload to Imgur.com.
-* Rename plugin name from "Githuber MD" to "WP Githuber MD".
-* Add new settings.
+KaTex is a fast, easy-to-use JavaScript library for TeX math rendering on the web.
 
-1.2.5
+### Flow Chart
 
-* Add support to WordPress 5.0 - Thanks to [Classic Editor](https://wordpress.org/plugins/classic-editor/)  plugin.
+![Module: Flow Chart](https://i.imgur.com/3ZQRuwQ.png)
 
-1.3.0
+Draws simple SVG flow chart diagrams from textual representation of the diagram.
 
-* Add a HTML to Markdown tool beside the editor.
-* Add an option that allows users to turn off `auto-save`.
-* Add more information in About page.
+### Sequence Diagram
 
-1.3.1
+![Module: Sequence diagram](https://i.imgur.com/P7ymz9a.png)
 
-* Backward compatible with PHP 5.3 and WordPress 4.0.x. Tested OKAY.
-* Modify HTML-to-Markdown helper and image-paste description.
-* Add language packs template.
-* Improve HTML-to-Markdown helper.
+Turns Text Into Vector UML sequence diagrams.
 
-1.3.2
+### Setting Pages
 
-* Add language pack: zh_TW.
-* Fix bugs.
+![Setting page 1](https://i.imgur.com/0yhHBhL.png)
 
-1.4.0
+Setting page 1: Markdown settings.
 
-* Add Mermaid module.
-* Add language pack: zh_CN.
-* Fx bugs.
+![Setting page 2](https://i.imgur.com/Va8z7Jg.png)
 
-1.4.1
+Setting page 2: Modules settings.
 
-* Add line-number setting for Markdown Editor.
-* Adjust KaTeX module - Now it can be used only in the Markdown code blocks that are defined with `katax`.
-* Improve Markdown editor - Adjust the dialog button's look and fix the overflow issues.
-* Yoast SEO's CSS has a global class name `path` uses animation, will break the Marmaid's SVG in the editor's preview panel, because they both uses the same common class name. We force to remove the animation attribute to make it work.
+### Note
 
-## Known Issues
+- [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
+- [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
+- [Known issues](https://github.com/terrylinooo/githuber-md/wiki/Known-Issues)
 
-* #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
+### License
+
+GPLv3 or later
+
+
+
