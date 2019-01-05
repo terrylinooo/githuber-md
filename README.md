@@ -80,7 +80,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
 * Syntax highlight.
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
-* [KaTex](https://terryl.in/en/githuber-md-katax/).
+* [KaTex](https://terryl.in/en/githuber-md-katex/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
 * Github flavored Markdown task list.
