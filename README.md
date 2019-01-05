@@ -103,7 +103,7 @@ Convert your old posts into Markdown by using HTML-to-Markdown helper that besid
 
 ![Syntax Highlighing](https://i.imgur.com/sJclXdR.png)
 
-Use Google prettify.js for the Editor's live-preview pane, and use prism.js for the fontend pages. You can choose your favorite theme for syntax hgihlighing.
+Use Google `prettify.js` for the Editor's live-preview pane, and use `prism.js` for the fontend pages. You can choose your favorite theme for syntax hgihlighing.
 
 ### Mermaid
 
@@ -111,7 +111,7 @@ Use Google prettify.js for the Editor's live-preview pane, and use prism.js for 
 
 Mermaid is a Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams, gantt charts and git graphs.
 
-### [KaTex](https://terryl.in/en/githuber-md-katax/)
+### KaTex
 
 ![Module: Katex](https://i.imgur.com/ZWUaNNO.png)
 
