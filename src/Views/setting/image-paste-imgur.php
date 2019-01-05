@@ -18,9 +18,9 @@ echo __( 'Required while the choosed storage space is <u>imgur.com</u>. If you d
 
 if ( ! function_exists( 'curl_init') ) {
 
-    echo '<br /><span style="color: #b00000">';
+	echo '<br /><span style="color: #b00000">';
 
-    echo __( 'Uploading images to Imgur is unavailable because that <strong>PHP CURL</strong> is not installed on your system.', 'wp-githuber-md' );
+	echo __( 'Uploading images to Imgur is unavailable because that <strong>PHP CURL</strong> is not installed on your system.', 'wp-githuber-md' );
 
-    echo '</span>';
+	echo '</span>';
 }

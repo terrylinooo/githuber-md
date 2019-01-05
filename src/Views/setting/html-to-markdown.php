@@ -19,14 +19,14 @@ echo __( 'Dsiplaying A <strong>HTML to Markdown</strong> helper widget beside Ma
 ?>
 
 <script>
-    (function($) {
-        $(function() {
-            var is_html_to_markdown = $('#wpuf-githuber_markdown-html_to_markdown-yes').is(':checked');
+	(function($) {
+		$(function() {
+			var is_html_to_markdown = $('#wpuf-githuber_markdown-html_to_markdown-yes').is(':checked');
 
-            if (is_html_to_markdown) {
-                $('#wpuf-githuber_markdown-disable_autosave-yes').prop('checked', true);
-                $('#wpuf-githuber_markdown-disable_autosave-no').prop('checked', false);
-            }
-        });
-    })(jQuery);
+			if (is_html_to_markdown) {
+				$('#wpuf-githuber_markdown-disable_autosave-yes').prop('checked', true);
+				$('#wpuf-githuber_markdown-disable_autosave-no').prop('checked', false);
+			}
+		});
+	})(jQuery);
 </script>
