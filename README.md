@@ -13,7 +13,26 @@ An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpre
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
 For example, if you enabled `syntax highlight`, you have to update your post again to take effects.
 
-### Demo
+## Demo
+
+### GIF animation
+
+The demo shows you the following steps:
+
+![Screenshot](./assets/images/screenshot-1.gif)
+
+1. Convert HTML to Markdown by using `HTML to Markdown` tool.
+
+![Screenshot](./assets/images/screenshot-2.gif)
+
+2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
+
+![Screenshot](./assets/images/screenshot-3.gif)
+
+3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
+4. View the result.
+
+### Video
 
 https://youtu.be/it1noNCTXa4
 
@@ -50,7 +69,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
 - My personal suggestion is to turn off `revision` and `auto-save`, there are options in setting page.
 
-## Features  & Sceenshots
+## Features
 
 * All-in-one Markdown Editor.
 * Live preivew.
@@ -64,60 +83,22 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Github flavored Markdown task list.
 * Markdown extra...
 
-### Image copy & paste
+## Sceenshots
 
-![Image copy & paste](https://i.imgur.com/FObsHBG.gif)
+|  | thumbnail | screenshot | description |
+| --- | --- | --- | --- |
+| Image copy & paste | ![Image copy & paste](https://i.imgur.com/gX4buPZ.gif) | [view](https://i.imgur.com/gX4buPZ.gif) | Uplaoding images becomes much more eaiser, just copy and paste, then done. You can upload to your `upload` folder or host your images to `Imgur.com`. |
+| HTML to Markdown | ![HTML-to-Markdown helper](https://i.imgur.com/P5bOKn8.gif) |[view](https://i.imgur.com/DmLhnXM.gif) | Convert your old posts into Markdown by using HTML-to-Markdown helper that beside the Editor. |
+| Syntax Highlighing | ![Syntax Highlighing](https://i.imgur.com/sJclXdRm.png)  |[view](https://i.imgur.com/sJclXdR.png) | Use Google `prettify.js` for the Editor's live-preview pane, and use `prism.js` for the fontend pages. You can choose your favorite theme for syntax hgihlighing. |
+| Mermaid | ![Module: Mermaid](https://i.imgur.com/6dfCQT6m.png) | [view](https://i.imgur.com/6dfCQT6.png) | Mermaid is a Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams, gantt charts and git graphs.
+| KaTex | ![Module: Katex](https://i.imgur.com/ZWUaNNOm.png) | [view](https://i.imgur.com/ZWUaNNO.png) | KaTex is a fast, easy-to-use JavaScript library for TeX math rendering on the web. |
+| Flow Chart | ![Module: Flow Chart](https://i.imgur.com/3ZQRuwQ.png) | [view](https://i.imgur.com/3ZQRuwQ.png) | Draws simple SVG flow chart diagrams from textual representation of the diagram. |
+| Sequence Diagram | ![Module: Sequence diagram](https://i.imgur.com/P7ymz9am.png) | [view](https://i.imgur.com/P7ymz9a.png) | Turns Text Into Vector UML sequence diagrams. |
+| Setting Page 1 | ![Setting page 1](https://i.imgur.com/0yhHBhLm.png) | [view](https://i.imgur.com/0yhHBhL.png) | Markdown settings. |
+| Setting page 2 | ![Setting page 2](https://i.imgur.com/Va8z7Jgm.png) | [view](https://i.imgur.com/Va8z7Jg.png) | Modules settings. |
 
-Uplaoding images becomes much more eaiser, just copy and paste, then done.
-You can upload to your `upload` folder or host your images to `Imgur.com`.
 
-### HTML to Markdown
-
-![HTML-to-Markdown helper](https://i.imgur.com/DmLhnXM.gif)
-
-Convert your old posts into Markdown by using HTML-to-Markdown helper that beside the Editor.
-
-### Syntax Highlighing
-
-![Syntax Highlighing](https://i.imgur.com/sJclXdR.png)
-
-Use Google `prettify.js` for the Editor's live-preview pane, and use `prism.js` for the fontend pages. You can choose your favorite theme for syntax hgihlighing.
-
-### Mermaid
-
-![Module: Mermaid](https://i.imgur.com/6dfCQT6.png)
-
-Mermaid is a Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams, gantt charts and git graphs.
-
-### KaTex
-
-![Module: Katex](https://i.imgur.com/ZWUaNNO.png)
-
-KaTex is a fast, easy-to-use JavaScript library for TeX math rendering on the web.
-
-### Flow Chart
-
-![Module: Flow Chart](https://i.imgur.com/3ZQRuwQ.png)
-
-Draws simple SVG flow chart diagrams from textual representation of the diagram.
-
-### Sequence Diagram
-
-![Module: Sequence diagram](https://i.imgur.com/P7ymz9a.png)
-
-Turns Text Into Vector UML sequence diagrams.
-
-### Setting Pages
-
-![Setting page 1](https://i.imgur.com/0yhHBhL.png)
-
-Setting page 1: Markdown settings.
-
-![Setting page 2](https://i.imgur.com/Va8z7Jg.png)
-
-Setting page 2: Modules settings.
-
-### Note
+### Notes
 
 - [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
 - [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
