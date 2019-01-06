@@ -83,7 +83,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 |  | thumbnail | screenshot | description |
 | --- | --- | --- | --- |
-| Image copy & paste | ![Image copy & paste](https://i.imgur.com/gX4buPZ.gif) | [view](https://i.imgur.com/gX4buPZ.gif) | Uplaoding images becomes much more eaiser, just copy and paste, then done. You can upload to your `upload` folder or host your images to `Imgur.com`. |
+| Image copy & paste | ![Image copy & paste](https://i.imgur.com/gX4buPZ.gif) | [view](https://i.imgur.com/FObsHBG.gif) | Uplaoding images becomes much more eaiser, just copy and paste, then done. You can upload to your `upload` folder or host your images to `Imgur.com`. |
 | HTML to Markdown | ![HTML-to-Markdown helper](https://i.imgur.com/P5bOKn8.gif) |[view](https://i.imgur.com/DmLhnXM.gif) | Convert your old posts into Markdown by using HTML-to-Markdown helper that beside the Editor. |
 | Syntax Highlighing | ![Syntax Highlighing](https://i.imgur.com/sJclXdRm.png)  |[view](https://i.imgur.com/sJclXdR.png) | Use Google `prettify.js` for the Editor's live-preview pane, and use `prism.js` for the fontend pages. You can choose your favorite theme for syntax hgihlighing. |
 | Mermaid | ![Module: Mermaid](https://i.imgur.com/6dfCQT6m.png) | [view](https://i.imgur.com/6dfCQT6.png) | Mermaid is a Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams, gantt charts and git graphs.
