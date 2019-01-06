@@ -92,7 +92,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 | Syntax Highlighing | ![Syntax Highlighing](https://i.imgur.com/sJclXdRm.png)  |[view](https://i.imgur.com/sJclXdR.png) | Use Google `prettify.js` for the Editor's live-preview pane, and use `prism.js` for the fontend pages. You can choose your favorite theme for syntax hgihlighing. |
 | Mermaid | ![Module: Mermaid](https://i.imgur.com/6dfCQT6m.png) | [view](https://i.imgur.com/6dfCQT6.png) | Mermaid is a Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams, gantt charts and git graphs.
 | KaTex | ![Module: Katex](https://i.imgur.com/ZWUaNNOm.png) | [view](https://i.imgur.com/ZWUaNNO.png) | KaTex is a fast, easy-to-use JavaScript library for TeX math rendering on the web. |
-| Flow Chart | ![Module: Flow Chart](https://i.imgur.com/3ZQRuwQ.png) | [view](https://i.imgur.com/3ZQRuwQ.png) | Draws simple SVG flow chart diagrams from textual representation of the diagram. |
+| Flow Chart | ![Module: Flow Chart](https://i.imgur.com/3ZQRuwQm.png) | [view](https://i.imgur.com/3ZQRuwQ.png) | Draws simple SVG flow chart diagrams from textual representation of the diagram. |
 | Sequence Diagram | ![Module: Sequence diagram](https://i.imgur.com/P7ymz9am.png) | [view](https://i.imgur.com/P7ymz9a.png) | Turns Text Into Vector UML sequence diagrams. |
 | Setting Page 1 | ![Setting page 1](https://i.imgur.com/0yhHBhLm.png) | [view](https://i.imgur.com/0yhHBhL.png) | Markdown settings. |
 | Setting page 2 | ![Setting page 2](https://i.imgur.com/Va8z7Jgm.png) | [view](https://i.imgur.com/Va8z7Jg.png) | Modules settings. |
