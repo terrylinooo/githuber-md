@@ -138,7 +138,8 @@ class HtmlToMarkdown extends ControllerAbstract {
 		$converter->getConfig()->setOption('hard_break', $is_line_break);
 		$converter->getConfig()->setOption('header_style', 'atx');
 
-		$markdown = $converter->convert( $post_content ); 
+		$markdown = $converter->convert( $post_content );
+		$markdown = $this->filter_wordpress_html( $markdown );
 
 		if ( ! empty( $markdown ) ) {
 			$response = array(
@@ -148,9 +149,22 @@ class HtmlToMarkdown extends ControllerAbstract {
 		}
 
 		header('Content-type: application/json');
+		
 		echo json_encode( $response );
 
 		// To avoid wp_ajax return "0" string to break the vaild json string.
 		wp_die();
+	}
+
+	/**
+	 * Strip slash and quotes that added by jQuery AJAX.
+	 *
+	 * @param string HTML string
+	 * @return string
+	 */
+	private function filter_wordpress_html( $content ) {
+		$content = str_replace( '\\"', '', $content );
+		$content = wp_unslash( $content );
+		return $content;
 	}
 }
