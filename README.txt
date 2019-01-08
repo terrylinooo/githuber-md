@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.0.2
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 Requires PHP: 5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -11,6 +11,8 @@ License URI: https://www.gnu.org/licenses/gpl.html
 == Description ==
 
 An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+
+Read detailed document, please visit [Wiki](https://github.com/terrylinooo/githuber-md/wiki).
 
 == Demo ==
 
@@ -22,6 +24,19 @@ The Video shows you the following steps:
 2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
 3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
 4. View the result.
+
+== Screenshots ==
+
+1. HTML-to-Markdown tool.
+2. Image copy and paste.
+3. Update post and see result. 
+4. Syntax Highlighing
+5. Mermaid.
+6. KaTex.
+7. Flow Chart.
+8. Sequence Diagram.
+9. Setting Page 1.
+10. Setting page 2.
 
 == How it works ==
 
@@ -54,7 +69,7 @@ Features For Markdown
 * Live preivew.
 * [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
 * [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
-* Syntax highlight.
+* Syntax highlighting
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katax/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
@@ -70,12 +85,6 @@ Features For Githuber Theme:
 == Frequently Asked Questions ==
 
 You'll find answers to many of your questions on [Report issues](https://github.com/terrylinooo/githuber-md/issues).
-
-== Screenshots ==
-
-1. Markdown editor.
-2. Plugin setting page - Markdown.
-3. Plugin setting page - Modules.
 
 == Translations
 
@@ -147,6 +156,10 @@ GNU General Public License for more details.
 * Adjust KaTeX module - Now it can only used in the Markdown code blocks that are defined with `katax`.
 * Improve Markdown editor - Adjust the dialog button's look and fix the overflow issues.
 * Yoast SEO's CSS has a global class name `path` uses animation, will break the Marmaid's SVG in the editor's preview panel, because they both uses the same common class name. We force to remove the animation attribute to make it work.
+
+= 1.4.2
+
+* Fix bug: HTML-to-Markdown helper.
 
 == Known Issues ==
 

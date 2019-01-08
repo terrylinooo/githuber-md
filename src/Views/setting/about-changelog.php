@@ -61,4 +61,8 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 * Adjust KaTeX module - Now it can only used in the Markdown code block defined with `katax`.
 * Improve Markdown editor - Adjust the dialog button's look and fix the overflow issues.
 * Yoast SEO's CSS has a global class name `path` uses animation, will break the Marmaid's SVG in the editor's preview panel, because they both uses the same common class name. We force to remove the animation attribute to make it work.
+
+1.4.2
+
+* Fix bug: HTML-to-Markdown helper.
 </pre>
