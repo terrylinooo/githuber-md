@@ -65,4 +65,9 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 1.4.2
 
 * Fix bug: HTML-to-Markdown helper.
+
+1.4.3
+
+* Bug fix - issue #3 - Thank to <a href="https://github.com/wojciehm">wojciehm</a> for reporting this issue.
+* Display a notice if  user's PHP version does not meet the minimum requirement.
 </pre>
