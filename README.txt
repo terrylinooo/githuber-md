@@ -2,9 +2,9 @@
 Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
-Tested up to: 5.0.2
-Stable tag: 1.4.2
-Requires PHP: 5.3
+Tested up to: 5.0.3
+Stable tag: 1.4.3
+Requires PHP: 5.3.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -160,6 +160,11 @@ GNU General Public License for more details.
 = 1.4.2
 
 * Fix bug: HTML-to-Markdown helper.
+
+= 1.4.3
+
+* Bug fix - issue #3 - Thank to wojciehm@github for reporting this issue.
+* Display a notice if  user's PHP version does not meet the minimum requirement.
 
 == Known Issues ==
 

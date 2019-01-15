@@ -38,9 +38,9 @@ https://youtu.be/it1noNCTXa4
 
 ## Requirement
 
-* PHP version > 5.3
+* PHP version > 5.3.6
 * WordPress version > 4.0
-* Tested up to 5.0.2
+* Tested up to 5.0.3
 
 ## Download
 

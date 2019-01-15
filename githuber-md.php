@@ -7,14 +7,14 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.4.2
+ * @version 1.4.3
  */
 
 /**
  * Plugin Name: WP Githuber MD
  * Plugin URI:  https://github.com/terrylinooo/githuber-md
  * Description: An all-in-one Markdown plugin for your WordPress sites.
- * Version:     1.4.2
+ * Version:     1.4.3
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'GITHUBER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'GITHUBER_PLUGIN_VERSION', '1.4.2' );
+define( 'GITHUBER_PLUGIN_VERSION', '1.4.3' );
 define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
@@ -80,8 +80,20 @@ require_once GITHUBER_PLUGIN_DIR . 'src/helpers.php';
 // Composer autoloader.
 require_once GITHUBER_PLUGIN_DIR . 'vendor/autoload.php';
 
-// Load main launcher class of WP Githuber MD plugin.
-$gitbuber = new Githuber();
+if ( version_compare( phpversion(), '5.3.6', '>=' ) ) {
 
-// Let's go!
-$gitbuber->init();
+	// Load main launcher class of WP Githuber MD plugin.
+	$gitbuber = new Githuber();
+	// Let's go!
+	$gitbuber->init();
+
+} else {
+	/**
+	 * Prompt a warning message while PHP version does not meet the minimum requirement.
+	 * And, nothing to do.
+	 */
+	function githuber_md_warning() {
+		echo githuber_load_view( 'message/php-version-warning' );
+	}
+	add_action( 'admin_notices', 'githuber_md_warning' );
+}
