@@ -70,4 +70,9 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 
 * Bug fix - issue #3 - Thank to <a href="https://github.com/wojciehm">wojciehm</a> for reporting this issue.
 * Display a notice if  user's PHP version does not meet the minimum requirement.
+
+1.5.0
+
+* * Detect Jetpack Markdown module.
+
 </pre>
