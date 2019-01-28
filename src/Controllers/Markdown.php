@@ -47,6 +47,9 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
 
+	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
+	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
+
 	/**
 	 * Parser's instance.
 	 */
@@ -155,6 +158,12 @@ class Markdown extends ControllerAbstract {
 			return;
 		}
 
+		// Jetpack Markdown should not be turned on with Githuber MD at the same time.
+		// We should notice users to turn it off.
+		if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
+			add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
+		}
+
 		wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
 		wp_enqueue_script( 'githuber-md', $this->githuber_plugin_url . 'assets/js/githuber-md.js', array( 'editormd' ), $this->version, true );
 
@@ -210,6 +219,13 @@ class Markdown extends ControllerAbstract {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
+	/**
+	 * Display a warning, when Jetpack Markdown is on.
+	 */
+	public function jetpack_warning() {
+		echo githuber_load_view( 'message/jetpack-warning' );
+	}
+	
 	/**
 	 * Markdown parser.
 	 *
@@ -657,7 +673,15 @@ class Markdown extends ControllerAbstract {
 	 * @return bool
 	 */
 	public function has_markdown( $post_id ) {
-		return get_metadata( 'post', $post_id, self::MD_POST_META, true );
+		if ( get_metadata( 'post', $post_id, self::MD_POST_META, true ) ) {
+			return true;
+		}
+
+		// Backward check Jetpack Markdown.
+		if ( get_metadata( 'post', $post_id, self::JETPACK_MD_POST_META, true ) ) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

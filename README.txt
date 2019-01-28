@@ -1,9 +1,9 @@
-=== WP Githuber MD ===
+=== WP Githuber MD - WordPress Markdown Editor ===
 Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.0.3
-Stable tag: 1.4.3
+Stable tag: 1.5.0
 Requires PHP: 5.3.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -25,22 +25,9 @@ The Video shows you the following steps:
 3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
 4. View the result.
 
-== Screenshots ==
-
-1. HTML-to-Markdown tool.
-2. Image copy and paste.
-3. Update post and see result. 
-4. Syntax Highlighing
-5. Mermaid.
-6. KaTex.
-7. Flow Chart.
-8. Sequence Diagram.
-9. Setting Page 1.
-10. Setting page 2.
-
 == How it works ==
 
-1. Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
+1. WP Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
 2. Parse the Markdown to HTML, save the parsed HTML content into `wp_posts`.`post_content`.
 
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
@@ -59,11 +46,9 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 1. Upload the plugin files to the `/wp-content/plugins/wp-githuber-md` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to the Githuber MD menu in Plugins and set your Markdown options.
+3. Go to the WP Githuber MD menu in Plugins and set your Markdown options.
 
 == Features ==
-
-Features For Markdown
 
 * Markdown editor.
 * Live preivew.
@@ -77,19 +62,27 @@ Features For Markdown
 * Github flavored Markdown task list.
 * Markdown extra...
 
-Features For Githuber Theme:
-
-* Widget: Table of Content.
-* Post type: GitHub Repository.
-
 == Frequently Asked Questions ==
 
 You'll find answers to many of your questions on [Report issues](https://github.com/terrylinooo/githuber-md/issues).
 
-== Translations
+== Translations ==
 
 Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
 Simplified Chinese (zh_CN)
+
+== Screenshots ==
+
+1. HTML-to-Markdown tool.
+2. Image copy and paste.
+3. Update post and see result. 
+4. Syntax Highlighing
+5. Mermaid.
+6. KaTex.
+7. Flow Chart.
+8. Sequence Diagram.
+9. Setting Page 1.
+10. Setting page 2.
 
 == Copyright ==
 
@@ -165,6 +158,10 @@ GNU General Public License for more details.
 
 * Bug fix - issue #3 - Thank to wojciehm@github for reporting this issue.
 * Display a notice if  user's PHP version does not meet the minimum requirement.
+
+= 1.5.0
+
+* Detect Jetpack Markdown module.
 
 == Known Issues ==
 

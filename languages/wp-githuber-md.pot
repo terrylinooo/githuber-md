@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-01 06:01+0000\n"
+"POT-Creation-Date: 2019-01-28 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -12,7 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.0.3"
 
 #: src/Controllers/HtmlToMarkdown.php:89
 msgid "HTML to Markdown"
@@ -30,7 +31,7 @@ msgstr ""
 msgid "Error while uploading file."
 msgstr ""
 
-#: src/Controllers/Markdown.php:196
+#: src/Controllers/Markdown.php:205
 msgid "Happy Markdowning!"
 msgstr ""
 
@@ -478,8 +479,25 @@ msgstr ""
 #: src/Views/setting/theme-description.php:19
 msgid ""
 "Theme option is geared towards <a href=\"https://github."
-"com/terrylinooo/githuber\" target=\"_blank\">Githuber theme</a> users, you "
-"might ignore this section if you are not using Githuber theme."
+"com/terrylinooo/mynote\" target=\"_blank\">Mynote theme</a> users, you might "
+"ignore this section if you are not using Mynote theme."
+msgstr ""
+
+#: src/Views/message/jetpack-warning.php:18
+msgid ""
+"WP Gitbuber MD suggests you to disable Jetpack Markdown (or other Markdown "
+"plugins that use Jetpack Markdown module) to prevent conflicts."
+msgstr ""
+
+#: src/Views/message/php-version-warning.php:18
+#, php-format
+msgid ""
+"The minimum required PHP version for WP Githuber MD is PHP <strong>5.3."
+"6</strong>, and yours is <strong>%1s</strong>."
+msgstr ""
+
+#: src/Views/message/php-version-warning.php:19
+msgid "Please remove WP Githuber MD or upgrade your PHP version."
 msgstr ""
 
 #: src/wp_utilities/class-githuber-post-type-repository.php:36
