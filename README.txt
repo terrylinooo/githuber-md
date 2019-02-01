@@ -163,6 +163,12 @@ GNU General Public License for more details.
 
 * Detect Jetpack Markdown module.
 
+= 1.5.2
+
+* Fix bug: Inserting image not working. (issue #6)
+* Support KaTex inline. (feature request #7)
+* Add custom Markdown syntax block for HTML 5 `figure` (feature request #8)
+
 == Known Issues ==
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
