@@ -89,7 +89,7 @@ var githuber_md_editor;
         }
 
         $(document).ajaxSuccess(function(event, xhr, settings, data) {
-            if (settings.url == '/wp-admin/admin-ajax.php' && typeof data.data !== 'undefined') {
+            if (settings.url.indexOf('/wp-admin/admin-ajax.php') !== -1 && typeof data.data !== 'undefined') {
                 if (data.success && typeof data.data === 'string') {
                     var html_str = data.data;
                     if (html_str.substring(0, 4) == '<img') {
