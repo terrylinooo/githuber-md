@@ -75,4 +75,10 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 
 * * Detect Jetpack Markdown module.
 
+= 1.5.2
+
+* Fix bug: Inserting image not working. (issue #6)
+* Support KaTex inline. (feature request #7)
+* Add custom Markdown syntax block for HTML 5 `figure` (feature request #8)
+
 </pre>
