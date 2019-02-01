@@ -869,6 +869,11 @@ class Markdown extends ControllerAbstract {
 			$text = Module\TaskList::parse_gfm_task_list( $text );
 		}
 
+		// Render KaTeX inline markup.
+		if ( $this->is_support_katex ) {
+			$text = Module\KaTeX::katex_inline_markup( $text );
+		}
+
 		// Markdown inserts extra spaces to make itself work. Buh-bye.
 		$text = rtrim( $text );
 

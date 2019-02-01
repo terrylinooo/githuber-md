@@ -12,4 +12,17 @@
 .katex-container {
 	margin: 25px !important;
 	text-align: center;
+
+	&.katex-inline {
+		display: inline-block !important;
+		background: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+
+pre {
+	.katex-container {
+		font-size: 1.4em !important;
+	}
 }

@@ -138,4 +138,29 @@ class KaTeX extends ModuleAbstract {
 		';
 		echo $script;
 	}
+
+	/**
+	 * Katex Inline Markup
+	 * 
+	 * Ex.
+	 * `$$ x_{1,2} = {-b\pm\sqrt{b^2 - 4ac} \over 2a}.$$`
+	 *
+	 * @param string  $content HTML or Markdown content.
+	 * @return void
+	 */
+	public static function katex_inline_markup( $content ) {
+
+		$regex = '%<code>\$\$*((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$*\$<\/code>%ix';
+		$content = preg_replace_callback( $regex, function() {
+			$matches = func_get_arg(0);
+
+			if ( ! empty( $matches[1] ) ) {
+				$katex = $matches[1];
+				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
+				return '<code class="language-katex katex-inline">' . trim( $katex ) . '</code>';
+			}
+		}, $content );
+
+		return $content;
+	}
 }
