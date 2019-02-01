@@ -21,6 +21,9 @@ class MarkdownParser extends ParsedownExtra {
 	 */
 	public function __construct() {
 		parent::__construct();
+
+		$this->InlineTypes['%'] = array( 'Figure' );
+		$this->inlineMarkerList = '!%"*_&[:<>`~\\';
 	}
 
 	/**
@@ -39,7 +42,57 @@ class MarkdownParser extends ParsedownExtra {
 	 * @param string $text Markdown content.
 	 */
 	public function transform( $text ) {
+
 		$parsed_content = $this->text( $text );
 		return $parsed_content;
 	}
+
+	/**
+	 * Extend ParseDown for HTML 5 figure tag.
+	 *
+	 * @param array $excerpt
+	 * @return array
+	 */
+	protected function inlineFigure( $excerpt ) {
+
+        if ( !isset( $excerpt['text'][1] ) || '[' !== $excerpt['text'][1] ) {
+            return;
+        }
+
+        $excerpt['text']= substr($excerpt['text'], 1);
+
+        $link = $this->inlineLink($excerpt);
+
+        if ( null === $link ) {
+            return;
+		}
+
+		$attr_href  = $link['element']['attributes']['href'];
+		$attr_text  = $link['element']['text'];
+		$attr_title = $link['element']['attributes']['title'];
+		
+		$markup = '<figure>';
+
+		$markup .= '<img src="' . $attr_href . '" alt="' . $attr_text . '">';
+
+		if ( ! empty( $attr_title ) ) {
+			$markup .= '<figcaption>' . $attr_title . '</figcaption>';
+		}
+
+		$markup .= '</figure>';
+
+        $inline = array(
+			'extent'  => $link['extent'] + 1,
+			'markup'  => $markup,
+            'element' => array(
+                'name'       => 'img',
+                'attributes' => array(
+                    'src' => $attr_href,
+                    'alt' => $attr_text,
+                ),
+            ),
+        );
+
+        return $inline;
+    }
 }

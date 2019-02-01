@@ -567,8 +567,7 @@
                     editormd.loadScript(loadPath + "codemirror/addons.min", function() {
                         
                         _this.setCodeMirror();
-
-                        
+            
                         
                         if (settings.mode !== "gfm" && settings.mode !== "markdown") 
                         {
@@ -576,10 +575,10 @@
                             
                             return false;
                         }
-                         
+
                         _this.setToolbar();
 
-                        editormd.loadScript(loadPath + "marked.min", function() {
+                        editormd.loadScript(loadPath + "marked.min.20190201", function() {
 
                             editormd.$marked = marked;
                              
@@ -597,13 +596,9 @@
                         });
                         
                     });
-                    
-                    
-                });
-                
+   
+                });    
             });
-
-            
 
             if (settings.mermaid) {
                 editormd.loadScript(loadPath + "../../mermaid/mermaid.min", function() {
