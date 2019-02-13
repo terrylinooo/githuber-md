@@ -21,7 +21,8 @@ class Githuber {
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), 998 );
-
+		add_action( 'wp_loaded', array( $this, 'init' ) );
+		
 		// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
 		if ( $GLOBALS['wp_version'] > '5.0' && is_admin() ) {
 			githuber_load_utility('classic-editor');

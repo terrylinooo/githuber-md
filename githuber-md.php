@@ -85,7 +85,7 @@ if ( version_compare( phpversion(), '5.3.6', '>=' ) ) {
 	// Load main launcher class of WP Githuber MD plugin.
 	$gitbuber = new Githuber();
 	// Let's go!
-	$gitbuber->init();
+	// $gitbuber->init();
 
 } else {
 	/**
