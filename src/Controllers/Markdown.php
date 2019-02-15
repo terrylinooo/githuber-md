@@ -132,6 +132,8 @@ class Markdown extends ControllerAbstract {
 			'revision',
 			'repository'
 		);
+		
+		$support_post_types = apply_filters( 'githuber_md_suppot_post_types', $support_post_types );
 
 		foreach ( $support_post_types as $post_type ) {
 			add_post_type_support( $post_type, self::MD_POST_TYPE );
