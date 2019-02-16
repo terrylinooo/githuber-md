@@ -64,6 +64,25 @@ class Register extends ControllerAbstract {
 	}
 
 	/**
+	 * Enable rich editor.
+	 */
+	function rich_editing() {
+		add_action( 'admin_init', array( $this, '_rich_editing' ) );
+	}
+
+	/**
+	 * Apply hook for enabling rich editor.
+	 */
+	function _rich_editing() {
+		global $current_user;
+
+		if ( ! user_can_richedit() ) {
+			update_user_option( $current_user->ID, 'rich_editing', 'true', true );
+		}
+		add_filter( 'user_can_richedit' , '__return_true', 50 );
+	}
+
+	/**
 	 * Remove revisions.
 	 */
 	public function remove_revisions() {

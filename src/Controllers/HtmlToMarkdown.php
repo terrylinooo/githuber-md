@@ -33,6 +33,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 	 * Initalize to WP `admin_init` hook.
 	 */
 	public function admin_init() {
+
 		$user          = wp_get_current_user();
 		$allowed_roles = array( 'editor', 'administrator', 'author' );
 
@@ -60,6 +61,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 	 * Register JS files.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
+
 		wp_enqueue_script( 'githuber-md-h2m', $this->githuber_plugin_url . 'assets/js/githuber-md-h2m.js', array(), $this->version, true );
 
 		$data['ajax_url'] = admin_url( 'admin-ajax.php' );

@@ -34,19 +34,19 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $post_type;
+	public $enabled_post_types;
 
 	/**
 	 * Constants.
 	 */
 	const MD_POST_TYPE          = 'githuber_markdown';
 	const MD_POST_META          = '_is_githuber_markdown';
+	const MD_POST_META_DISABLED = '_is_githuber_md_disabled';
 	const MD_POST_META_PRISM    = '_githuber_prismjs';
 	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
 	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
-
 	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
 
@@ -85,6 +85,8 @@ class Markdown extends ControllerAbstract {
 	public $is_support_flowchart = false;
 	public $is_support_sequence  = false;
 	public $is_support_mermaid   = false;
+
+	public $is_editor = array();
 
 	/**
 	 * Constructer.
@@ -126,22 +128,51 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function init() {
 
-		$support_post_types = array(
-			'post',
-			'page',
-			'revision',
-			'repository'
-		);
-		
+		$support_post_types = get_post_types( array( 'public' => true ) );
+		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
+
+		$support_post_types[] = 'revision';
+
+		$post_types = array();
+
+		foreach($support_post_types as $post_type) {
+			if( 'attachment' !== $post_type ) {
+				$support_post_types[] = $post_type;
+			}
+		}
+
 		$support_post_types = apply_filters( 'githuber_md_suppot_post_types', $support_post_types );
 
 		foreach ( $support_post_types as $post_type ) {
-			add_post_type_support( $post_type, self::MD_POST_TYPE );
+			if ( isset( $enabled_post_types[ $post_type ] ) ) {
+				$this->is_editor[ $post_type ] = true;
+				add_post_type_support( $post_type, self::MD_POST_TYPE );
+			} else {
+				$this->is_editor[ $post_type ] = false;
+			}
 		}
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
 		$this->jetpack_code_snippets();
+	}
+
+	/**
+	 * Is editor enabled?
+	 *
+	 * @return boolean
+	 */
+	public function is_editor_enabled() {
+		if ( empty( $_REQUEST['post_type']) ) {
+			return true;
+		} else {
+			$post_type = $_REQUEST['post_type'];
+
+			if ( ! empty( $this->is_editor[ $post_type ] ) || empty( $post_type ) )  {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -156,13 +187,15 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
-		if ( ! post_type_supports( get_current_screen()->post_type, self::MD_POST_TYPE ) ) {
+		$screen_post_type = get_current_screen()->post_type;
+
+		if ( ! post_type_supports( $screen_post_type, self::MD_POST_TYPE ) ) {
 			return;
 		}
 
 		// Jetpack Markdown should not be turned on with Githuber MD at the same time.
 		// We should notice users to turn it off.
-		if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
+		if ( post_type_supports( $screen_post_type, self::JETPACK_MD_POST_TYPE ) ) {
 			add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
 		}
 
@@ -233,8 +266,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @return object MarkdownParser instance.
 	 */
-	public static function get_parser()
-	{
+	public static function get_parser() {
 		if ( ! self::$parser_instance ) {
 			self::$parser_instance = new Module\MarkdownParser();
 		}
@@ -245,13 +277,17 @@ class Markdown extends ControllerAbstract {
 	 * Is Markdown conversion for posts or comments enabled?
 	 *
 	 * @param string $post_action_type The type of posting action.
+	 * @param string $post_type        The post type.
 	 * @return bool
 	 */
-	public function is_md_enabled( $post_action_type ) {
+	public function is_md_enabled( $post_action_type, $post_type = '' ) {
 		switch ( $post_action_type ) {
 			case 'posting':
+
+				break;
 			case 'commeting':
-				$setting = githuber_get_option( 'enable_markdown_for', 'githuber_markdown' );
+				$setting = githuber_get_option( 'enable_markdown_for_comment', 'githuber_markdown' );
+
 				if ( isset( $setting[ $post_action_type ] ) && $setting[ $post_action_type ] === $post_action_type ) {
 					return true;
 				}
@@ -492,6 +528,7 @@ class Markdown extends ControllerAbstract {
 		delete_metadata( 'post', $post_id, self::MD_POST_META_PRISM);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_SEQUENCE);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_FLOW);
+		delete_metadata( 'post', $post_id, self::MD_POST_META_KATEX);
 
 		$is_sequence  = false;
 		$is_flowchart = false;
@@ -571,15 +608,6 @@ class Markdown extends ControllerAbstract {
 
 		if ( defined( 'REST_API_REQUEST' ) && REST_API_REQUEST ) {
 			add_action( 'switch_blog', array( $this, 'maybe_load_actions_and_filters' ), 10, 2 );
-		}
-	}
-
-	/**
-	 * If we're in a bulk edit session, unload so that we don't lose our markdown metadata
-	 */
-	public function maybe_unload_for_bulk_edit() {
-		if ( isset( $_REQUEST['bulk_edit'] ) && $this->is_md_enabled( 'posting' ) ) {
-			$this->unload_markdown_for_posts();
 		}
 	}
 
@@ -675,15 +703,23 @@ class Markdown extends ControllerAbstract {
 	 * @return bool
 	 */
 	public function has_markdown( $post_id ) {
+		$status = false;
+
 		if ( get_metadata( 'post', $post_id, self::MD_POST_META, true ) ) {
-			return true;
+			$status = true;
 		}
 
 		// Backward check Jetpack Markdown.
 		if ( get_metadata( 'post', $post_id, self::JETPACK_MD_POST_META, true ) ) {
-			return true;
+			$status = true;
 		}
-		return false;
+
+		// Check signle post.
+		if ( 'no' === get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true ) ) {
+			$status = false;
+		}
+
+		return $status;
 	}
 
 	/**
@@ -745,7 +781,7 @@ class Markdown extends ControllerAbstract {
 		$post_id = isset( $postarr['ID'] ) ? $postarr['ID'] : false;
 
 		// bail early if markdown is disabled or this post type is unsupported.
-		if ( ! $this->is_md_enabled( 'posting' ) || ! post_type_supports( $post_data['post_type'], self::MD_POST_TYPE ) ) {
+		if ( ! $this->is_md_enabled( 'posting', $post_data['post_type'] ) || ! post_type_supports( $post_data['post_type'], self::MD_POST_TYPE ) ) {
 
 			// it's disabled, but maybe this *was* a markdown post before.
 			if ( $this->has_markdown( $post_id ) && ! empty( $post_data['post_content_filtered'] ) ) {
