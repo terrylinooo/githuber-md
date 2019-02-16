@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.5.2
+ * @version 1.5.3
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -144,7 +144,7 @@ class Markdown extends ControllerAbstract {
 		$support_post_types = apply_filters( 'githuber_md_suppot_post_types', $support_post_types );
 
 		foreach ( $support_post_types as $post_type ) {
-			if ( isset( $enabled_post_types[ $post_type ] ) ) {
+			if ( isset( $enabled_post_types[ $post_type ] ) || 'revision' === $post_type ) {
 				$this->is_editor[ $post_type ] = true;
 				add_post_type_support( $post_type, self::MD_POST_TYPE );
 			} else {

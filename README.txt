@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.0.3
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 Requires PHP: 5.3.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -168,6 +168,10 @@ GNU General Public License for more details.
 * Fix bug: Inserting image not working. (issue #6)
 * Support KaTex inline. (feature request #7)
 * Add custom Markdown syntax block for HTML 5 `figure` (feature request #8)
+
+= 1.5.3
+
+* Support cusotm post types.
 
 == Known Issues ==
 
