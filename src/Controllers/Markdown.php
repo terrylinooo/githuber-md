@@ -280,7 +280,7 @@ class Markdown extends ControllerAbstract {
 	 * @param string $post_type        The post type.
 	 * @return bool
 	 */
-	public function is_md_enabled( $post_action_type, $post_type = '' ) {
+	public function is_md_enabled( $post_action_type ) {
 		switch ( $post_action_type ) {
 			case 'posting':
 				return true;
