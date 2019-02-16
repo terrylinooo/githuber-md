@@ -142,6 +142,16 @@ class Setting extends ControllerAbstract {
 	 */
 	public function get_fields() {
 
+		$support_post_types = get_post_types( array( 'public' => true ), 'objects' );
+
+		$post_type_options = array();
+
+		foreach($support_post_types as $post_type) {
+			if( 'attachment' !== $post_type->name ) {
+				$post_type_options[ $post_type->name ] = $post_type->label;
+			}
+		}
+
 		return array(
 
 			'githuber_markdown' => array(
@@ -152,16 +162,24 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'name'    => 'enable_markdown_for',
+					'name'    => 'enable_markdown_for_post_types',
 					'label'   => __( 'Enable', 'wp-githuber-md' ),
-					'desc'    => __( 'Enable Markdown for post, pages or comments.', 'wp-githuber-md' ),
+					'desc'    => __( 'Which post types you would like to enable Markdown editor for.', 'wp-githuber-md' ),
 					'type'    => 'multicheck',
+					'options' => $post_type_options,
 					'default' => array(
-						'posting' => 'posting',
-					),
-					'options' => array(
-						'posting'    => __( 'Posts and pages', 'wp-githuber-md' ),
-						'commenting' => __( 'Comments', 'wp-githuber-md' ),
+						'post' => 'post',
+						'page' => 'page',
+					)
+				),
+
+				array(
+					'name'    => 'enable_markdown_for_comment',
+					'label'   => '',
+					'desc'    => __( 'Enable Markdown for comments.', 'wp-githuber-md' ),
+					'type'    => 'multicheck',
+					'options' => array( 
+						'commenting' => __( 'Comments', 'wp-githuber-md' )
 					)
 				),
 
