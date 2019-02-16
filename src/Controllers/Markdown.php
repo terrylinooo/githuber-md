@@ -283,7 +283,7 @@ class Markdown extends ControllerAbstract {
 	public function is_md_enabled( $post_action_type, $post_type = '' ) {
 		switch ( $post_action_type ) {
 			case 'posting':
-
+				return true;
 				break;
 			case 'commeting':
 				$setting = githuber_get_option( 'enable_markdown_for_comment', 'githuber_markdown' );
@@ -715,7 +715,7 @@ class Markdown extends ControllerAbstract {
 		}
 
 		// Check signle post.
-		if ( 'no' === get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true ) ) {
+		if ( 'yes' === get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true ) ) {
 			$status = false;
 		}
 
@@ -781,7 +781,7 @@ class Markdown extends ControllerAbstract {
 		$post_id = isset( $postarr['ID'] ) ? $postarr['ID'] : false;
 
 		// bail early if markdown is disabled or this post type is unsupported.
-		if ( ! $this->is_md_enabled( 'posting', $post_data['post_type'] ) || ! post_type_supports( $post_data['post_type'], self::MD_POST_TYPE ) ) {
+		if ( ! $this->is_md_enabled( 'posting' ) || ! post_type_supports( $post_data['post_type'], self::MD_POST_TYPE ) ) {
 
 			// it's disabled, but maybe this *was* a markdown post before.
 			if ( $this->has_markdown( $post_id ) && ! empty( $post_data['post_content_filtered'] ) ) {
