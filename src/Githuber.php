@@ -33,6 +33,11 @@ class Githuber {
 	 */
 	public function init() {
 
+		if ( is_admin() ) {
+			$rich_editing = new Controller\RichEditing();
+			$rich_editing->disable();
+		}
+
 		$register = new Controller\Register();
 		$register->init();
 
@@ -50,7 +55,7 @@ class Githuber {
 			$markdown->init();
 
 			if ( ! $markdown->is_editor_enabled() ) {
-				$register->rich_editing();
+				$rich_editing->enable();
 			}
 
 			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) && $markdown->is_editor_enabled() ) {

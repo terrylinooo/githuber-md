@@ -244,6 +244,12 @@ class Markdown extends ControllerAbstract {
 
 		// Register JS variables for the Editormd library uses.
 		wp_localize_script( 'githuber-md', 'editormd_config', $editormd_localize );
+
+
+		$metabox_data['ajax_url'] = admin_url( 'admin-ajax.php' );
+		$metabox_data['post_id']  = githuber_get_current_post_id();
+
+		wp_localize_script( 'githuber-md', 'markdown_per_post_config', $metabox_data );
 	}
 
 	/**
@@ -252,6 +258,10 @@ class Markdown extends ControllerAbstract {
 	public function admin_init() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'wp_ajax_githuber_markdown_per_post', array( $this, 'admin_githuber_markdown_per_post' ) );
+
+		// Add the sidebar metabox to posts.
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 	}
 
 	/**
@@ -597,6 +607,73 @@ class Markdown extends ControllerAbstract {
 	}
 
 	/**
+	 * Register the `HtmlToMarkdown` meta box in the post-editor.
+	 */
+	public function add_meta_box() {
+		
+		if ( ! githuber_current_user_can( 'edit_posts' ) ) {
+			return false;
+		}
+
+		add_meta_box(
+			'markdown_per_post_meta_box',
+			__( 'Enable Markdown', 'wp-githuber-md' ),
+			array( $this, 'show_meta_box' ),
+			null,
+			'side',
+			'high'
+		);
+	}
+	
+	/**
+	 * Show `HtmlToMarkdown` meta box.
+	 */
+	public function show_meta_box() {
+
+		$post_id                  = githuber_get_current_post_id();
+		$markdown_per_post_choice = get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+
+		$data['markdown_per_post_choice'] = $markdown_per_post_choice;
+		echo githuber_load_view( 'metabox/markdown-per-post', $data );
+	}
+
+	/**
+	 * Do action hook for per post Markdown control.
+	 */
+	public function admin_githuber_markdown_per_post() {
+
+		$response = array(
+			'success' => false,
+			'result'  => '',
+		);
+
+		$post_id = 0;
+
+		if ( ! empty( $_POST['post_id'] && ! empty( $_POST['markdown_per_post'] ) ) ) {
+			$post_id = (int) $_POST['post_id'];
+			$choice  = $_POST['markdown_per_post'];
+
+			if ( 'yes' === $choice ) {
+				update_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+			} else {
+				update_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, false );
+			}
+
+			$response = array(
+				'success' => true,
+				'result'  => $choice,
+			);
+		}
+		
+		header('Content-type: application/json');
+		
+		echo json_encode( $response );
+
+		// To avoid wp_ajax return "0" string to break the vaild json string.
+		wp_die();
+	}
+
+	/**
 	 * The below methods are from Jetpack: Markdown modular
 	 * And we modified it for our needs.
 	 * 
@@ -714,6 +791,10 @@ class Markdown extends ControllerAbstract {
 			$status = true;
 		}
 
+
+		$x = get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+
+		//die(var_dump($x));
 		// Check signle post.
 		if ( 'yes' === get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true ) ) {
 			$status = false;

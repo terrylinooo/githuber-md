@@ -59,10 +59,15 @@ function githuber_current_user_can( $action ) {
  * Load view files.
  *
  * @param string $template_path The specific template's path.
+ * @param array  $data              Data is being passed to.
  * @return string
  */
-function githuber_load_view( $template_path ) {
+function githuber_load_view( $template_path, $data = array() ) {
 	$view_file_path = GITHUBER_PLUGIN_DIR . 'src/Views/' . $template_path . '.php';
+
+	if ( ! empty( $data ) ) {
+		extract( $data );
+	}
 
 	if ( file_exists( $view_file_path ) ) {
 		ob_start();

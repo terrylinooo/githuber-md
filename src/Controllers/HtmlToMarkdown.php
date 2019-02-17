@@ -104,7 +104,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 	}
 
 	/**
-	 * Do action hook for image paste.
+	 * Do action hook for HTML-to-Markdown
 	 */
 	public function admin_githuber_html2markdown() {
 		$is_strip_tags = false;
