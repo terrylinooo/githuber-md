@@ -768,7 +768,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name' => 'plugin_about_changelog',
 					'label'   => __( 'Changelog', 'wp-githuber-md' ),
-					'desc' => githuber_load_view( 'setting/about-changelog' ),
+					'desc' => '<a href="https://github.com/terrylinooo/githuber-md/wiki/Changelog" target="_blank">https://github.com/terrylinooo/githuber-md/wiki/Changelog</a>',
 					'type' => 'html'
 				),
 			),
