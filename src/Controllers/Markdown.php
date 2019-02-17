@@ -41,7 +41,7 @@ class Markdown extends ControllerAbstract {
 	 */
 	const MD_POST_TYPE          = 'githuber_markdown';
 	const MD_POST_META          = '_is_githuber_markdown';
-	const MD_POST_META_DISABLED = '_is_githuber_md_disabled';
+	const MD_POST_META_ENABLED  = '_is_githuber_md_enabled';
 	const MD_POST_META_PRISM    = '_githuber_prismjs';
 	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
 	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
@@ -86,8 +86,6 @@ class Markdown extends ControllerAbstract {
 	public $is_support_sequence  = false;
 	public $is_support_mermaid   = false;
 
-	public $is_editor = array();
-
 	/**
 	 * Constructer.
 	 */
@@ -126,62 +124,17 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * Initialize.
 	 * 
-	 * @param array $args Pass arguments to initialize plugin.
+	 * @param bool $per_post_status The Markdown `enable / disable` status for single post.
 	 */
-	public function init( $args = array() ) {
+	public function init( $per_post_status = true ) {
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 	
-		if ( ! $args['per_post_status'] ) {
+		if ( ! $per_post_status ) {
 			return;
 		}
 
-		$support_post_types = get_post_types( array( 'public' => true ) );
-		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
-
-		$support_post_types[] = 'revision';
-
-		$post_types = array();
-
-		foreach($support_post_types as $post_type) {
-			if( 'attachment' !== $post_type ) {
-				$support_post_types[] = $post_type;
-			}
-		}
-
-		$support_post_types = apply_filters( 'githuber_md_suppot_post_types', $support_post_types );
-
-		foreach ( $support_post_types as $post_type ) {
-
-			if ( isset( $enabled_post_types[ $post_type ] ) || 'revision' === $post_type ) {
-				$this->is_editor[ $post_type ] = true;
-				add_post_type_support( $post_type, self::MD_POST_TYPE );
-			} else {
-				$this->is_editor[ $post_type ] = false;
-			}
-		}
-
 		$this->jetpack_code_snippets();
-	}
-
-	/**
-	 * Is editor enabled?
-	 *
-	 * @return boolean
-	 */
-	public function is_editor_enabled() {
-
-		if ( empty( $_REQUEST['post_type'] ) ) {
-			return true;
-		} else {
-			$post_type = $_REQUEST['post_type'];
-
-			if ( ! empty( $this->is_editor[ $post_type ] ) || empty( $post_type ) )  {
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 	/**
@@ -639,7 +592,7 @@ class Markdown extends ControllerAbstract {
 	public function show_meta_box() {
 
 		$post_id                  = githuber_get_current_post_id();
-		$markdown_per_post_choice = get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+		$markdown_per_post_choice = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
 		$data['markdown_per_post_choice'] = $markdown_per_post_choice;
 		echo githuber_load_view( 'metabox/markdown-per-post', $data );
@@ -662,9 +615,9 @@ class Markdown extends ControllerAbstract {
 			$choice  = $_POST['markdown_per_post'];
 
 			if ( 'yes' === $choice ) {
-				update_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+				update_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 			} else {
-				update_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, false );
+				update_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, false );
 			}
 
 			$response = array(
@@ -799,7 +752,7 @@ class Markdown extends ControllerAbstract {
 			$status = true;
 		}
 
-		$markdown_per_post = get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+		$markdown_per_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 		$is_markdowin      = (bool) $markdown_per_post;
 
 		// Check signle post.
@@ -1032,6 +985,7 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function wp_restore_post_revision( $post_id, $revision_id ) {
 		if ( $this->has_markdown( $revision_id ) ) {
+
 			$revision = get_post( $revision_id, ARRAY_A );
 			$post = get_post( $post_id, ARRAY_A );
 

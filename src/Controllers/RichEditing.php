@@ -12,38 +12,16 @@
 
 namespace Githuber\Controller;
 
-class RichEditing extends ControllerAbstract {
+class RichEditing {
 
-    const MD_POST_META_DISABLED = '_is_githuber_md_disabled';
+    const MD_POST_META_ENABLED = '_is_githuber_md_enabled';
 
 	/**
 	 * Constructer.
 	 */
 	public function __construct() {
-		parent::__construct();
+
 	}
-
-	/**
-	 * Initialize.
-	 */
-
-	public function init() {
-
-    }
-
-	/**
-	 * Register CSS style files.
-	 */
-	public function admin_enqueue_styles( $hook_suffix ) {
-
-    }
-
-	/**
-	 * Register JS files.
-	 */
-    public function admin_enqueue_scripts( $hook_suffix ) {
-
-    }
 
 	/**
 	 * Enable rich editor.
@@ -65,7 +43,7 @@ class RichEditing extends ControllerAbstract {
     function is_current_post_markdown_enabled() {
         $post_id = githuber_get_current_post_id();
 
-		$markdown_per_post = get_metadata( 'post', $post_id, self::MD_POST_META_DISABLED, true );
+		$markdown_per_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
         $is_markdowin      = (bool) $markdown_per_post;
 
         return $is_markdowin;
