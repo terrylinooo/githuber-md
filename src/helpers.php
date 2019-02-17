@@ -37,6 +37,8 @@ function githuber_get_current_post_id() {
 
 	if ( ! empty( $post ) )  {
 		return $post->ID;
+	} elseif ( ! empty( $_REQUEST['post'] ) ) {
+		return $_REQUEST['post'];
 	}
 }
 

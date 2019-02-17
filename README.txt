@@ -169,9 +169,10 @@ GNU General Public License for more details.
 * Support KaTex inline. (feature request #7)
 * Add custom Markdown syntax block for HTML 5 `figure` (feature request #8)
 
-= 1.5.3
+= 1.6.0
 
 * Support cusotm post types.
+* Add `Enable Markdown` option beside editor.
 
 == Known Issues ==
 

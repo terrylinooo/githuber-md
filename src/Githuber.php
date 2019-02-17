@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.4.0
+ * @version 1.6.0
  */
 
 use Githuber\Controller as Controller;
@@ -50,11 +50,13 @@ class Githuber {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
 			}
-	
-			$markdown = new Controller\Markdown();
-			$markdown->init();
 
-			if ( ! $markdown->is_editor_enabled() ) {
+			$args['per_post_status'] = $rich_editing->is_current_post_markdown_enabled();
+
+			$markdown = new Controller\Markdown();
+			$markdown->init( $args );
+
+			if ( ! $markdown->is_editor_enabled() || ! $args['per_post_status'] ) {
 				$rich_editing->enable();
 			}
 

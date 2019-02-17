@@ -7,8 +7,8 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  * @link https://terryl.in/
  *
  * @package Githuber
- * @since 1.3.0
- * @version 1.3.0
+ * @since 1.6.0
+ * @version 1.6.0
  */
 if ( ! isset( $markdown_per_post_choice ) ) {
     return;
