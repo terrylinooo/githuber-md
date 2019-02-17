@@ -89,15 +89,15 @@ class Register extends ControllerAbstract {
 		update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 
 		$githuber_markdown = array(
-			'enable_markdown_for'   => array( 'posting' => 'posting' ),
-			'disable_revision'      => 'no',
-			'disable_autosave'      => 'yes',
-			'html_to_markdown'      => 'yes',
-			'editor_live_preview'   => 'yes',
-			'editor_sync_scrolling' => 'yes',
-			'editor_html_decode'    => 'yes',
-			'editor_toolbar_theme'  => 'default',
-			'editor_editor_theme'   => 'default',
+			'enable_markdown_for_post_types' => array( 'post' => 'page' ),
+			'disable_revision'               => 'no',
+			'disable_autosave'               => 'yes',
+			'html_to_markdown'               => 'yes',
+			'editor_live_preview'            => 'yes',
+			'editor_sync_scrolling'          => 'yes',
+			'editor_html_decode'             => 'yes',
+			'editor_toolbar_theme'           => 'default',
+			'editor_editor_theme'            => 'default',
 		);
 
 		// Add default setting. Only execute this action at the first time activation.
