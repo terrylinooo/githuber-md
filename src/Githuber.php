@@ -34,7 +34,8 @@ class Githuber {
 
 		// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
 		if ( $GLOBALS['wp_version'] > '5.0' && is_admin() ) {
-			githuber_load_utility('classic-editor');
+			add_filter('use_block_editor_for_post', '__return_false', 5);
+			//githuber_load_utility('classic-editor');
 		}
 
 		$register = new Controller\Register();

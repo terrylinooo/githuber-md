@@ -66,13 +66,17 @@ class RichEditing {
 	 * Enable Gutenberg.
 	 */
 	public function enable_gutenberg() {
-		add_filter('use_block_editor_for_post', '__return_true', 5);
+		if ( $GLOBALS['wp_version'] > '5.0' ) {
+			add_filter('use_block_editor_for_post', '__return_true', 5);
+		}
 	}
 
 	/**
 	 * Disable Gutenberg.
 	 */
 	public function disable_gutenberg() {
-		add_filter('use_block_editor_for_post', '__return_false', 5);
+		if ( $GLOBALS['wp_version'] > '5.0' ) {
+			add_filter('use_block_editor_for_post', '__return_false', 5);
+		}
 	}
 }

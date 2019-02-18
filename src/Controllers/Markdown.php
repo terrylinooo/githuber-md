@@ -160,6 +160,7 @@ class Markdown extends ControllerAbstract {
 		if ( $markdown_this_post === 'no' ) {
 			$rich_editing = new RichEditing();
 			$rich_editing->enable();
+			$rich_editing->enable_gutenberg();
 		} else {
 			$this->jetpack_code_snippets();
 
