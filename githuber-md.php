@@ -68,6 +68,16 @@ define( 'GITHUBER_PLUGIN_VERSION', '1.6.0' );
 define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
+ * Developer only.
+ * 
+ * Turnning this option on, you have to install Monolog first.
+ * Run: `composer require monolog/monolog` to install Monolog.
+ * 
+ * After finishing debugging, run: `composer remove monolog/monolog` to remove it.
+ */
+define( 'GITHUBER_DEBUG_MODE', false );
+
+/**
  * Start to run Githuber plugin cores.
  */
 
@@ -84,9 +94,6 @@ if ( version_compare( phpversion(), '5.3.6', '>=' ) ) {
 
 	// Load main launcher class of WP Githuber MD plugin.
 	$gitbuber = new Githuber();
-
-	// Let's go!
-	add_action( 'wp_loaded', array( $gitbuber, 'init' ) );
 
 } else {
 	/**

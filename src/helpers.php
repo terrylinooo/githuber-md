@@ -35,11 +35,17 @@ function githuber_get_option( $option, $section, $default = '' ) {
 function githuber_get_current_post_id() {
 	global $post;
 
+	$post_id = null;
+
 	if ( ! empty( $post ) )  {
-		return $post->ID;
+		$post_id = $post->ID;
 	} elseif ( ! empty( $_REQUEST['post'] ) ) {
-		return $_REQUEST['post'];
+		$post_id = $_REQUEST['post'];
+	} else {
+
 	}
+	
+	return $post_id;
 }
 
 /**

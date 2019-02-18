@@ -11,10 +11,11 @@
  */
 
 namespace Githuber\Controller;
+use Githuber\Controller\Monolog as Monolog;
 
 class RichEditing {
 
-    const MD_POST_META_ENABLED = '_is_githuber_md_enabled';
+	const MD_POST_META_ENABLED  = '_is_githuber_markdown_enabled';
 
 	/**
 	 * Constructer.
@@ -26,33 +27,21 @@ class RichEditing {
 	/**
 	 * Enable rich editor.
 	 */
-	function enable() {
+	public function enable() {
 		add_action( 'admin_init', array( $this, '_rich_editing_true' ) );
     }
     
 	/**
 	 * Enable rich editor.
 	 */
-	function disable() {
+	public function disable() {
 		add_action( 'admin_init', array( $this, '_rich_editing_false' ) );
     }
     
-    /**
-	 * Get current postmeta.
-	 */
-    function is_current_post_markdown_enabled() {
-        $post_id = githuber_get_current_post_id();
-
-		$markdown_per_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
-        $is_markdowin      = (bool) $markdown_per_post;
-
-        return $is_markdowin;
-    }
-
 	/**
 	 * Apply hook for enabling rich editor.
 	 */
-	function _rich_editing_true() {
+	public function _rich_editing_true() {
 		global $current_user;
 
 		if ( ! user_can_richedit() ) {
@@ -64,12 +53,26 @@ class RichEditing {
     /**
 	 * Apply hook for disabling rich editor.
 	 */
-	function _rich_editing_false() {
+	public function _rich_editing_false() {
 		global $current_user;
 
 		if ( user_can_richedit() ) {
 			update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 		}
 		add_filter( 'user_can_richedit' , '__return_false', 50 );
-    }  
+	}
+
+	/**
+	 * Enable Gutenberg.
+	 */
+	public function enable_gutenberg() {
+		add_filter('use_block_editor_for_post', '__return_true', 5);
+	}
+
+	/**
+	 * Disable Gutenberg.
+	 */
+	public function disable_gutenberg() {
+		add_filter('use_block_editor_for_post', '__return_false', 5);
+	}
 }

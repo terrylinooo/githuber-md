@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.5.3
+ * @version 1.5.2
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -34,19 +34,20 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $enabled_post_types;
+	public $post_type;
 
 	/**
 	 * Constants.
 	 */
 	const MD_POST_TYPE          = 'githuber_markdown';
 	const MD_POST_META          = '_is_githuber_markdown';
-	const MD_POST_META_ENABLED  = '_is_githuber_md_enabled';
+	const MD_POST_META_ENABLED  = '_is_githuber_markdown_enabled';
 	const MD_POST_META_PRISM    = '_githuber_prismjs';
 	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
 	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
+
 	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
 
@@ -123,18 +124,56 @@ class Markdown extends ControllerAbstract {
 
 	/**
 	 * Initialize.
-	 * 
-	 * @param bool $per_post_status The Markdown `enable / disable` status for single post.
 	 */
-	public function init( $per_post_status = true ) {
+	public function init() {
 
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-	
-		if ( ! $per_post_status ) {
-			return;
+		$support_post_types = array(
+			'post',
+			'page',
+			'revision',
+			'repository'
+		);
+
+		foreach ( $support_post_types as $post_type ) {
+			add_post_type_support( $post_type, self::MD_POST_TYPE );
 		}
 
-		$this->jetpack_code_snippets();
+		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
+
+		if ( empty( $enabled_post_types ) ) {
+			$enabled_post_types = array(
+				'post',
+				'page',
+			);
+		}
+
+		foreach( $enabled_post_types as $post_type ) {
+			$support_post_types[] = $post_type;
+		}
+
+		$support_post_types = apply_filters( 'githuber_md_suppot_post_types', $support_post_types );
+
+		array_push( $support_post_types , 'revision');
+
+		foreach ( $support_post_types as $post_type ) {
+			add_post_type_support( $post_type, self::MD_POST_TYPE );
+
+			$this->is_editor[ $post_type ] = $post_type;
+			Monolog::logger( 'add_post_type_support', array( $post_type ) );
+		}
+
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+
+		$post_id = githuber_get_current_post_id();
+
+		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
+	
+		if ( $markdown_this_post === 'no' ) {
+			$rich_editing = new RichEditing();
+			$rich_editing->enable();
+		} else {
+			$this->jetpack_code_snippets();
+		}
 	}
 
 	/**
@@ -149,13 +188,19 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
-		$screen_post_type = get_current_screen()->post_type;
+		if ( ! post_type_supports( get_current_screen()->post_type, self::MD_POST_TYPE ) ) {
+			return;
+		}
 
-		if ( post_type_supports( $screen_post_type, self::MD_POST_TYPE ) ) {
+		$post_id = githuber_get_current_post_id();
+		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
+		if ( $markdown_this_post === 'no' ) {
+
+		} else {
 			// Jetpack Markdown should not be turned on with Githuber MD at the same time.
 			// We should notice users to turn it off.
-			if ( post_type_supports( $screen_post_type, self::JETPACK_MD_POST_TYPE ) ) {
+			if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
 				add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
 			}
 
@@ -205,12 +250,13 @@ class Markdown extends ControllerAbstract {
 			wp_localize_script( 'githuber-md', 'editormd_config', $editormd_localize );
 		}
 
+		/* @version 1.6.0 */
 		wp_enqueue_script( 'githuber-md-mpp', $this->githuber_plugin_url . 'assets/js/githuber-md-mpp.js', array( 'jquery' ), $this->version, true );
 
 		$metabox_data['ajax_url'] = admin_url( 'admin-ajax.php' );
 		$metabox_data['post_id']  = githuber_get_current_post_id();
 
-		wp_localize_script( 'githuber-md-mpp', 'markdown_per_post_config', $metabox_data );
+		wp_localize_script( 'githuber-md-mpp', 'markdown_this_post_config', $metabox_data );
 	}
 
 	/**
@@ -219,7 +265,9 @@ class Markdown extends ControllerAbstract {
 	public function admin_init() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'wp_ajax_githuber_markdown_per_post', array( $this, 'admin_githuber_markdown_per_post' ) );
+
+		/* @version 1.6.0 */
+		add_action( 'wp_ajax_githuber_markdown_this_post', array( $this, 'admin_githuber_markdown_this_post' ) );
 
 		// Add the sidebar metabox to posts.
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
@@ -237,7 +285,8 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @return object MarkdownParser instance.
 	 */
-	public static function get_parser() {
+	public static function get_parser()
+	{
 		if ( ! self::$parser_instance ) {
 			self::$parser_instance = new Module\MarkdownParser();
 		}
@@ -248,7 +297,6 @@ class Markdown extends ControllerAbstract {
 	 * Is Markdown conversion for posts or comments enabled?
 	 *
 	 * @param string $post_action_type The type of posting action.
-	 * @param string $post_type        The post type.
 	 * @return bool
 	 */
 	public function is_md_enabled( $post_action_type ) {
@@ -258,7 +306,6 @@ class Markdown extends ControllerAbstract {
 				break;
 			case 'commeting':
 				$setting = githuber_get_option( 'enable_markdown_for_comment', 'githuber_markdown' );
-
 				if ( isset( $setting[ $post_action_type ] ) && $setting[ $post_action_type ] === $post_action_type ) {
 					return true;
 				}
@@ -499,7 +546,6 @@ class Markdown extends ControllerAbstract {
 		delete_metadata( 'post', $post_id, self::MD_POST_META_PRISM);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_SEQUENCE);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_FLOW);
-		delete_metadata( 'post', $post_id, self::MD_POST_META_KATEX);
 
 		$is_sequence  = false;
 		$is_flowchart = false;
@@ -577,7 +623,7 @@ class Markdown extends ControllerAbstract {
 		}
 
 		add_meta_box(
-			'markdown_per_post_meta_box',
+			'markdown_this_post_meta_box',
 			__( 'Enable Markdown', 'wp-githuber-md' ),
 			array( $this, 'show_meta_box' ),
 			null,
@@ -591,41 +637,52 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function show_meta_box() {
 
-		$post_id                  = githuber_get_current_post_id();
-		$markdown_per_post_choice = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
+		$post_id             = githuber_get_current_post_id();
+		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
-		$data['markdown_per_post_choice'] = $markdown_per_post_choice;
+		Monolog::logger( 'Show meta box.', array( 
+			'post_id'            => $post_id,
+			'markdown_this_post' => $markdown_this_post,
+		) );
+
+		$data['markdown_this_post_choice'] = $markdown_this_post;
 		echo githuber_load_view( 'metabox/markdown-per-post', $data );
 	}
 
 	/**
 	 * Do action hook for per post Markdown control.
 	 */
-	public function admin_githuber_markdown_per_post() {
+	public function admin_githuber_markdown_this_post() {
+
+		Monolog::logger( 'Start an Ajax call.');
 
 		$response = array(
 			'success' => false,
 			'result'  => '',
 		);
 
-		$post_id = 0;
-
-		if ( ! empty( $_POST['post_id'] && ! empty( $_POST['markdown_per_post'] ) ) ) {
+		if ( ! empty( $_POST['post_id'] ) && ! empty( $_POST['markdown_this_post'] ) ) {
 			$post_id = (int) $_POST['post_id'];
-			$choice  = $_POST['markdown_per_post'];
+			$choice  = $_POST['markdown_this_post'];
 
 			if ( 'yes' === $choice ) {
-				update_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
+				update_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, 'yes' );
 			} else {
-				update_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, false );
+				update_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, 'no' );
 			}
 
 			$response = array(
 				'success' => true,
 				'result'  => $choice,
+				'post_id' => $post_id,
 			);
+
+			Monolog::logger( 'Post data is gotten.', array( 
+				'post_id' => $_POST['post_id'],
+				'markdown_this_post' => $_POST['markdown_this_post'],
+			) );
 		}
-		
+
 		header('Content-type: application/json');
 		
 		echo json_encode( $response );
@@ -646,6 +703,15 @@ class Markdown extends ControllerAbstract {
 
 		if ( defined( 'REST_API_REQUEST' ) && REST_API_REQUEST ) {
 			add_action( 'switch_blog', array( $this, 'maybe_load_actions_and_filters' ), 10, 2 );
+		}
+	}
+
+	/**
+	 * If we're in a bulk edit session, unload so that we don't lose our markdown metadata
+	 */
+	public function maybe_unload_for_bulk_edit() {
+		if ( isset( $_REQUEST['bulk_edit'] ) && $this->is_md_enabled( 'posting' ) ) {
+			$this->unload_markdown_for_posts();
 		}
 	}
 
@@ -741,26 +807,15 @@ class Markdown extends ControllerAbstract {
 	 * @return bool
 	 */
 	public function has_markdown( $post_id ) {
-		$status = false;
-
 		if ( get_metadata( 'post', $post_id, self::MD_POST_META, true ) ) {
-			$status = true;
+			return true;
 		}
 
 		// Backward check Jetpack Markdown.
 		if ( get_metadata( 'post', $post_id, self::JETPACK_MD_POST_META, true ) ) {
-			$status = true;
+			return true;
 		}
-
-		$markdown_per_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
-		$is_markdowin      = (bool) $markdown_per_post;
-
-		// Check signle post.
-		if ( ! $is_markdowin ) {
-			$status = false;
-		}
-
-		return $status;
+		return false;
 	}
 
 	/**
@@ -985,7 +1040,6 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function wp_restore_post_revision( $post_id, $revision_id ) {
 		if ( $this->has_markdown( $revision_id ) ) {
-
 			$revision = get_post( $revision_id, ARRAY_A );
 			$post = get_post( $post_id, ARRAY_A );
 

@@ -7,56 +7,46 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.6.0
+ * @version 1.4.0
  */
 
 use Githuber\Controller as Controller;
 use Githuber\Module as Module;
+use Githuber\Controller\Monolog as Monolog;
 
 class Githuber {
 
-	public $post_type_controller;
-	public $rich_editing_controller;
+	public $current_url;
 
 	/**
 	 * Constructer.
 	 */
 	public function __construct() {
-
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), 998 );
+
+		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+		Monolog::logger( 'Hello, Githuber MD.', array(
+			'wp_version'  => $GLOBALS['wp_version'],
+			'php_version' => phpversion(),
+		) );
+
+		// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
+		if ( $GLOBALS['wp_version'] > '5.0' && is_admin() ) {
+			githuber_load_utility('classic-editor');
+		}
 
 		$register = new Controller\Register();
 		$register->init();
 
-		if ( is_admin() ) {
+		add_action( 'wp_loaded', array( $this, 'init' ) );
 
-			$rich_editing = new Controller\RichEditing();
-			$post_type    = new Controller\PostType();
-
-			$per_post_status = $rich_editing->is_current_post_markdown_enabled();
-
-			if ( $per_post_status ) {
-				$post_type->init();
-			}
-
-			if ( ! $post_type->is_editor_enabled() || ! $per_post_status ) {
-				$rich_editing->enable();
-			} else {
-
-				// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
-				if ( $GLOBALS['wp_version'] > '5.0' ) {
-					githuber_load_utility('classic-editor');
-				}
-
-				$rich_editing->disable();
-			}
-
-			$this->rich_editing_controller = $rich_editing;
-			$this->post_type_controller    = $post_type;
-		}
+		Monolog::logger( 'Hook: wp_loaded', array( 
+			'url' => $this->current_url,
+		) );
 	}
-
+	
 	/**
 	 * Initialize everything the Githuber plugin needs.
 	 */
@@ -64,7 +54,6 @@ class Githuber {
 
 		// Only load controllers in backend.
 		if ( is_admin() ) {
-
 			$setting = new Controller\Setting();
 			$setting->init();
 	
@@ -72,13 +61,11 @@ class Githuber {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
 			}
-
-			$per_post_status = $this->rich_editing_controller->is_current_post_markdown_enabled();
-
+	
 			$markdown = new Controller\Markdown();
-			$markdown->init( $per_post_status );
+			$markdown->init();
 
-			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) && $per_post_status ) {
+			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
 				$html2markdown = new Controller\HtmlToMarkdown();
 				$html2markdown->init();
 			}

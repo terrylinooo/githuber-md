@@ -26,6 +26,8 @@ class Register extends ControllerAbstract {
 	 */
 	public function init() {
 
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+
 		$this->register_hooks();
 		$this->add_post_types();
 		$this->add_walker();
@@ -47,6 +49,18 @@ class Register extends ControllerAbstract {
 		if ( 'yes' === githuber_get_option( 'disable_autosave', 'githuber_markdown' ) ) {
 			add_action( 'wp_print_scripts', array( $this , 'remove_autosave' ), 10 );
 		}
+	}
+
+	/**
+	 * Initalize to WP `admin_init` hook.
+	 */
+	function admin_init() {
+		global $current_user;
+
+		if ( user_can_richedit() ) {
+			update_user_option( $current_user->ID, 'rich_editing', 'false', true );
+		}
+		add_filter( 'user_can_richedit' , '__return_false', 50 );
 	}
 
 	/**
