@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.5.2
+ * @version 1.6.0
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -127,17 +127,6 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function init() {
 
-		$support_post_types = array(
-			'post',
-			'page',
-			'revision',
-			'repository'
-		);
-
-		foreach ( $support_post_types as $post_type ) {
-			add_post_type_support( $post_type, self::MD_POST_TYPE );
-		}
-
 		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
 
 		if ( empty( $enabled_post_types ) ) {
@@ -173,6 +162,11 @@ class Markdown extends ControllerAbstract {
 			$rich_editing->enable();
 		} else {
 			$this->jetpack_code_snippets();
+
+			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
+				$html2markdown = new Controller\HtmlToMarkdown();
+				$html2markdown->init();
+			}
 		}
 	}
 

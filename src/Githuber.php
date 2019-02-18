@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.4.0
+ * @version 1.6.0
  */
 
 use Githuber\Controller as Controller;
@@ -64,11 +64,6 @@ class Githuber {
 	
 			$markdown = new Controller\Markdown();
 			$markdown->init();
-
-			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
-				$html2markdown = new Controller\HtmlToMarkdown();
-				$html2markdown->init();
-			}
 		}
 
 		/**

@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.6.0
  */
 
 namespace Githuber\Controller;
