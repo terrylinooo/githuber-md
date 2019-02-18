@@ -52,6 +52,9 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 * Markdown editor.
 * Live preivew.
+* Enable / disable Markdown for single post.
+* Support Gutenberg editor.
+* Support custom post types.
 * [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
 * [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
 * Syntax highlighting
