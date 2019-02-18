@@ -173,6 +173,7 @@ GNU General Public License for more details.
 
 * Support cusotm post types.
 * Add `Enable Markdown` option beside editor.
+* Support Gutenberg editor. Now you are able to disable Markdown for a post then back to use Gutenberg editor.
 
 == Known Issues ==
 
