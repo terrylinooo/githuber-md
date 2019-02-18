@@ -694,24 +694,6 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'  => '_TITLE_',
-					'label' => __( 'Shortcode', 'wp-githuber-md' ),
-					'desc'  => '',
-				),
-
-				array(
-					'name'    => 'githuber_theme_shortcode_social_icons',
-					'label'   => __( 'Social Icons', 'wp-githuber-md' ),
-					'desc'    => __( 'Use social icons in author section.', 'wp-githuber-md' ),
-					'type'    => 'radio',
-					'default' => 'no',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
-				),
-
-				array(
-					'name'  => '_TITLE_',
 					'label' => __( 'Adjustment', 'wp-githuber-md' ),
 					'desc'  => '',
 				),
@@ -740,7 +722,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name' => 'plugin_about_author',
 					'label'   => __( 'Author', 'wp-githuber-md' ),
-					'desc' => 'Terry L. from Taiwan.',
+					'desc' => 'Terry L. @ Taiwan.',
 					'type' => 'html'
 				),
 
