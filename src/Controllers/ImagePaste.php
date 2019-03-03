@@ -73,7 +73,7 @@ class ImagePaste extends ControllerAbstract {
 		$online_path = $upload_dir['url'];
 		$response    = array();
 		
-		if ( isset( $_FILES['file'] ) ) {
+		if ( isset( $_FILES['file'], $_GET['_wpnonce'], $_GET['post_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'image_paste_action_' . $_GET['post_id'] ) && current_user_can( 'edit_post', $_GET['post_id'] ) ) {
 			$file = $_FILES['file'];
 			$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
 
@@ -96,8 +96,11 @@ class ImagePaste extends ControllerAbstract {
 				}
 			
 			} else {
-				move_uploaded_file( $file['tmp_name'], $upload_path . '/' . $filename );
-				$response['filename'] = $online_path . '/' . $filename;
+				require_once ABSPATH . 'wp-admin/includes/media.php';
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				require_once ABSPATH . 'wp-admin/includes/image.php';
+				$attachment_id = media_handle_upload('file', $_GET['post_id']);
+				$response['filename'] = wp_get_attachment_url($attachment_id);;
 			}
 		} else {
 			$response['error'] = __( 'Error while uploading file.', 'wp-githuber-md' );
