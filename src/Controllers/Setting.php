@@ -628,6 +628,17 @@ class Setting extends ControllerAbstract {
                     'sanitize_callback' => 'sanitize_text_field',
 				),
 
+				array(
+                    'name'    => 'is_image_paste_media_library',
+					'label'   => __( 'Upload to Media Library?', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'setting/image-paste-media-library' ),
+					'type'    => 'radio',
+					'default' => 'yes',
+					'options' => array(
+						'yes' => __( 'Yes', 'wp-githuber-md' ),
+						'no'  => __( 'No', 'wp-githuber-md' ),
+					)
+				),
 			),
 
 			'githuber_options' => array(

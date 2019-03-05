@@ -68,18 +68,15 @@ class ImagePaste extends ControllerAbstract {
 	 * Do action hook for image paste.
 	 */
 	public function admin_githuber_image_paste() {
-		$upload_dir  = wp_upload_dir();
-		$upload_path = $upload_dir['path'];
-		$online_path = $upload_dir['url'];
 		$response    = array();
 		
 		if ( isset( $_FILES['file'], $_GET['_wpnonce'], $_GET['post_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'image_paste_action_' . $_GET['post_id'] ) && current_user_can( 'edit_post', $_GET['post_id'] ) ) {
+			$image_src        = githuber_get_option( 'image_paste_src', 'githuber_modules' );
+			$imgur_client_id  = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
+			$is_media_library = githuber_get_option( 'is_image_paste_media_library', 'githuber_modules' );
+
 			$file = $_FILES['file'];
-			$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
-
-			$image_src       = githuber_get_option( 'image_paste_src', 'githuber_modules' );
-			$imgur_client_id = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
-
+	
 			if ( 'imgur' === $image_src && ! empty( $imgur_client_id ) ) {
 				
 				if ( function_exists( 'curl_init') ) {
@@ -96,11 +93,28 @@ class ImagePaste extends ControllerAbstract {
 				}
 			
 			} else {
-				require_once ABSPATH . 'wp-admin/includes/media.php';
-				require_once ABSPATH . 'wp-admin/includes/file.php';
-				require_once ABSPATH . 'wp-admin/includes/image.php';
-				$attachment_id = media_handle_upload('file', $_GET['post_id']);
-				$response['filename'] = wp_get_attachment_url($attachment_id);;
+
+				if ( 'no' === $is_media_library ) {
+					$upload_dir  = wp_upload_dir();
+					$upload_path = $upload_dir['path'];
+					$online_path = $upload_dir['url'];
+
+					$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
+
+					if ( is_ssl()) {
+						$online_path = str_replace( 'http://', 'https://', $online_path );
+					}
+
+					move_uploaded_file( $file['tmp_name'], $upload_path . '/' . $filename );
+					$response['filename'] = $online_path . '/' . $filename;
+
+				} else {
+					require_once ABSPATH . 'wp-admin/includes/media.php';
+					require_once ABSPATH . 'wp-admin/includes/file.php';
+					require_once ABSPATH . 'wp-admin/includes/image.php';
+					$attachment_id = media_handle_upload( 'file', $_GET['post_id'] );
+					$response['filename'] = wp_get_attachment_url( $attachment_id );
+				}
 			}
 		} else {
 			$response['error'] = __( 'Error while uploading file.', 'wp-githuber-md' );

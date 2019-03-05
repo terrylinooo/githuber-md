@@ -108,6 +108,7 @@ class Register extends ControllerAbstract {
 			'editor_html_decode'             => 'yes',
 			'editor_toolbar_theme'           => 'default',
 			'editor_editor_theme'            => 'default',
+			'is_image_paste_attachment'      => 'yes',
 		);
 
 		// Add default setting. Only execute this action at the first time activation.
