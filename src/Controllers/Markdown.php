@@ -238,7 +238,7 @@ class Markdown extends ControllerAbstract {
 
 			$editormd_localize['editor_modules_url']   = $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/';
 			$editormd_localize['editor_placeholder']   = __( 'Happy Markdowning!', 'wp-githuber-md' );
-			$editormd_localize['image_paste_callback'] = admin_url('admin-ajax.php?action=githuber_image_paste&post_id=' . $post_id . '&_wpnonce=' . wp_create_nonce('image_paste_action_' . $post_id));
+			$editormd_localize['image_paste_callback'] = admin_url( 'admin-ajax.php?action=githuber_image_paste&post_id=' . $post_id . '&_wpnonce=' . wp_create_nonce( 'image_paste_action_' . $post_id ) );
 			$editormd_localize['prism_line_number']    = githuber_get_option( 'prism_line_number', 'githuber_modules' );
 
 			// Register JS variables for the Editormd library uses.
