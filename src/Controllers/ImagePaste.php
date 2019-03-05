@@ -109,9 +109,6 @@ class ImagePaste extends ControllerAbstract {
 					$response['filename'] = $online_path . '/' . $filename;
 
 				} else {
-					require_once ABSPATH . 'wp-admin/includes/media.php';
-					require_once ABSPATH . 'wp-admin/includes/file.php';
-					require_once ABSPATH . 'wp-admin/includes/image.php';
 					$attachment_id = media_handle_upload( 'file', $_GET['post_id'] );
 					$response['filename'] = wp_get_attachment_url( $attachment_id );
 				}
