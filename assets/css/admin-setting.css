@@ -24,6 +24,7 @@ form .g-section-title {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
 }
+
 form .g-section-title-desc {
   font-size: 13px;
   margin: 0px 5px;
@@ -31,16 +32,7 @@ form .g-section-title-desc {
   color: #aaaaaa;
   border-radius: 3px;
 }
+
 form .g-section-desc {
   display: block;
 }
-
-/*
-.nav-tab-active, .metabox-holder {
-	background-color: #ffffff;
-}
-
-.nav-tab-active {
-	border-bottom: 1px solid #ffffff;
-}
-*/

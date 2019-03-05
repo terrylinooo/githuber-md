@@ -1,0 +1,49 @@
+
+.wpmd {
+	display: block;
+	margin-top: 10px;
+}
+
+.wpmd input[type=checkbox] {
+	display: none !important;
+}
+
+.wpmd input[type=checkbox]:before {
+	display: none !important;
+}
+
+.wpmd label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 25px;
+	background: grey;
+	display: inline-block;
+	border-radius: 25px;
+	position: relative;
+}
+
+.wpmd label:after {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 22px;
+	height: 22px;
+	background: #fff;
+	border-radius: 11px;
+	transition: 0.3s;
+}
+
+.wpmd input:checked + label {
+	background: #0073aa;
+}
+
+.wpmd input:checked + label:after {
+	left: calc(100% - 2px);
+	transform: translateX(-100%);
+}
+
+.wpmd label:active:after {
+	width: 40px;
+}

@@ -61,7 +61,7 @@ class Setting extends ControllerAbstract {
 		if ( false === strpos( $hook_suffix, 'githuber-md' ) ) {
 			return;
 		}
-		wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css' );
+		wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-setting.css', array(), $this->version, 'all' );
 	}
 
 	/**
