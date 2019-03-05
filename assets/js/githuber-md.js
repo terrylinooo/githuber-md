@@ -88,6 +88,14 @@ var githuber_md_editor;
             //  githuber_md_editor = editormd(wp_editor, global_editormd_config);
         }
 
+        
+        if (typeof image_insert_type !== 'undefined') {
+            var image_insert_type = 'markdown';
+        }
+        $(document).on('change', '.githuber_image_insert', function() {
+            image_insert_type = $(this).val();
+        });
+
         $(document).ajaxSuccess(function(event, xhr, settings, data) {
             if (settings.url.indexOf('/wp-admin/admin-ajax.php') !== -1 && typeof data.data !== 'undefined') {
                 if (data.success && typeof data.data === 'string') {
@@ -95,11 +103,20 @@ var githuber_md_editor;
                     if (html_str.substring(0, 4) == '<img') {
                         var img_src = $(html_str).attr('src');
                         var editor_content = githuber_md_editor.getValue();
-                        var new_content = editor_content + "\n\n![](" + img_src + ")\n\n";
+
+                        if (image_insert_type === 'html') {
+                            var new_content = editor_content + "\n\n" + html_str;
+                        } else {
+                            var new_content = editor_content + "\n\n![](" + img_src + ")\n\n";
+                        }
                         githuber_md_editor.setValue(new_content);
+                        image_insert_type = 'markdown';
                     }
                 }
             }
         });
     });
+
 })(jQuery);
+
+

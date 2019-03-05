@@ -62,7 +62,12 @@ class Githuber {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
 			}
-	
+
+			if ( 'yes' === githuber_get_option( 'editor_html_decode', 'githuber_markdown' ) ) {
+				$customMediaLibrary = new Controller\CustomMediaLibrary();
+				$customMediaLibrary->init();
+			}
+
 			$markdown = new Controller\Markdown();
 			$markdown->init();
 		}
