@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.0.3
-Stable tag: 1.5.3
+Stable tag: 1.6.2
 Requires PHP: 5.3.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -177,6 +177,13 @@ GNU General Public License for more details.
 * Support cusotm post types.
 * Add `Enable Markdown` option beside editor.
 * Support Gutenberg editor. Now you are able to disable Markdown for a post then back to use Gutenberg editor.
+
+= 1.6.2
+
+* Add a new setting option in ImagePaste module. (feature request #16)
+* Add new option when using `Add media -> Insert to post` that allows user insert HTML into post. (feature request #17)
+* Fix bug: Classic editor's visual mode is not showed after disabling post type option. (issue #15)
+* Imporve: Beautify Markdown switcher.
 
 == Known Issues ==
 
