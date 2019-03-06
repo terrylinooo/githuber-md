@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.6.0
+ * @version 1.6.2
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -290,7 +290,12 @@ class Markdown extends ControllerAbstract {
 		add_action( 'wp_ajax_githuber_markdown_this_post', array( $this, 'admin_githuber_markdown_this_post' ) );
 
 		// Add the sidebar metabox to posts.
-		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		$current_post_type = githuber_get_current_post_type();
+
+		// Only display metabox if current post-type supports Markdown.
+		if ( ! empty( $current_post_type) && post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
+			add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		}
 	}
 
 	public function admin_init_meta_box() {
