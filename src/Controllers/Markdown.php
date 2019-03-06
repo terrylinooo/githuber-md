@@ -147,7 +147,7 @@ class Markdown extends ControllerAbstract {
 		foreach ( $support_post_types as $post_type ) {
 			add_post_type_support( $post_type, self::MD_POST_TYPE );
 
-			$this->is_editor[ $post_type ] = $post_type;
+			// Only use it in DEBUG mode.
 			Monolog::logger( 'add_post_type_support', array( $post_type ) );
 		}
 
@@ -156,17 +156,41 @@ class Markdown extends ControllerAbstract {
 		$post_id = githuber_get_current_post_id();
 
 		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
-	
-		if ( $markdown_this_post === 'no' ) {
+
+		// Get post type from curren screen.
+		$current_post_type = githuber_get_current_post_type();
+
+		if ( ! empty( $current_post_type) && ! post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
+
+			// We enable Rich editor if user not enable Markdown for current post type!
 			$rich_editing = new RichEditing();
 			$rich_editing->enable();
-			$rich_editing->enable_gutenberg();
-		} else {
-			$this->jetpack_code_snippets();
 
-			if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
-				$html2markdown = new Controller\HtmlToMarkdown();
-				$html2markdown->init();
+			// Custom post types are not supporting Gutenberg by default for now, so 
+			// We only enable Gutenberg for `post` and `page`...
+			if ( 'post' === $current_post_type || 'page' === $current_post_type ) {
+				$rich_editing->enable_gutenberg();
+			}
+		} else {
+
+			// Markdown-per-post switcher.
+			if ( 'no' === $markdown_this_post ) {
+				$rich_editing = new RichEditing();
+				$rich_editing->enable();
+
+				if ( 'post' === $current_post_type || 'page' === $current_post_type ) {
+					$rich_editing->enable_gutenberg();
+				}
+
+			} else {
+
+				// Okay! User enable Markdown for current current post and it's post type.
+				$this->jetpack_code_snippets();
+	
+				if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
+					$html2markdown = new Controller\HtmlToMarkdown();
+					$html2markdown->init();
+				}
 			}
 		}
 	}
@@ -267,6 +291,10 @@ class Markdown extends ControllerAbstract {
 
 		// Add the sidebar metabox to posts.
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+	}
+
+	public function admin_init_meta_box() {
+
 	}
 
 	/**

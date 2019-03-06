@@ -29,15 +29,15 @@ class RichEditing {
 	 */
 	public function enable() {
 		add_action( 'admin_init', array( $this, '_rich_editing_true' ) );
-    }
-    
+	}
+		
 	/**
 	 * Enable rich editor.
 	 */
 	public function disable() {
 		add_action( 'admin_init', array( $this, '_rich_editing_false' ) );
-    }
-    
+	}
+		
 	/**
 	 * Apply hook for enabling rich editor.
 	 */
@@ -50,7 +50,7 @@ class RichEditing {
 		add_filter( 'user_can_richedit' , '__return_true', 50 );
 	}
 
-    /**
+		/**
 	 * Apply hook for disabling rich editor.
 	 */
 	public function _rich_editing_false() {

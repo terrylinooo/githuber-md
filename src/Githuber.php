@@ -22,11 +22,13 @@ class Githuber {
 	 * Constructer.
 	 */
 	public function __construct() {
+
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), 998 );
 
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
+		// Only use it in DEBUG mode.
 		Monolog::logger( 'Hello, Githuber MD.', array(
 			'wp_version'  => $GLOBALS['wp_version'],
 			'php_version' => phpversion(),
@@ -35,17 +37,16 @@ class Githuber {
 		// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
 		if ( $GLOBALS['wp_version'] > '5.0' && is_admin() ) {
 			add_filter('use_block_editor_for_post', '__return_false', 5);
-			//githuber_load_utility('classic-editor');
 		}
 
 		$register = new Controller\Register();
 		$register->init();
 
+		// Load core functions when `wp_loaded` is ready.
 		add_action( 'wp_loaded', array( $this, 'init' ) );
 
-		Monolog::logger( 'Hook: wp_loaded', array( 
-			'url' => $this->current_url,
-		) );
+		// Only use it in DEBUG mode.
+		Monolog::logger( 'Hook: wp_loaded', array( 'url' => $this->current_url ) );
 	}
 	
 	/**
@@ -55,6 +56,7 @@ class Githuber {
 
 		// Only load controllers in backend.
 		if ( is_admin() ) {
+
 			$setting = new Controller\Setting();
 			$setting->init();
 	

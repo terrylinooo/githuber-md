@@ -100,3 +100,27 @@ function githuber_load_utility( $filename ) {
 		require $include_path;
 	}
 }
+
+/**
+ * Get post type on current screen.
+ *
+ * @return string
+ */
+function githuber_get_current_post_type() {
+	global $post, $typenow, $current_screen;
+
+	$post_type = null;
+
+	if ( ! empty( $post ) && ! empty( $post->post_type ) ) {
+		$post_type = $post->post_type;
+	} elseif ( ! empty( $typenow ) ) {
+		$post_type = $typenow;
+	} elseif ( ! empty( $current_screen ) && ! empty( $current_screen->post_type ) ) {
+		$post_type = $current_screen->post_type;
+	} elseif ( ! empty( $_REQUEST['post_type'] ) ) {
+		$post_type = sanitize_key( $_REQUEST['post_type'] );
+	} elseif ( ! empty( $_REQUEST['post'] ) ) {
+		$post_type = get_post_type( $_REQUEST['post'] );
+	}
+	return $post_type;
+}
