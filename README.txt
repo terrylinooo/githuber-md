@@ -2,7 +2,7 @@
 Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
-Tested up to: 5.0.3
+Tested up to: 5.1.0
 Stable tag: 1.6.2
 Requires PHP: 5.3.6
 License: GPLv3 or later
@@ -55,14 +55,15 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
 * Support custom post types.
+* Syntax highlighting.
 * [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
 * [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
-* Syntax highlighting
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katax/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
 * Github flavored Markdown task list.
+* Githuber MD extended Markdown.
 * Markdown extra...
 
 == Frequently Asked Questions ==
