@@ -1,3 +1,76 @@
+.wpmd {
+	display: block;
+    margin-top: 10px;
+
+	input[type=checkbox] {
+		display: none !important;
+		&:before {
+			display: none !important;
+		}
+    }
+
+	label {
+		cursor: pointer;
+		text-indent: -9999px;
+		width: 50px;
+		height: 25px;
+		background: grey;
+		display: inline-block;
+		border-radius: 25px;
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 1px;
+			left: 2px;
+			width: 23px;
+			height: 23px;
+			background: #fff;
+			border-radius: 11px;
+			transition: 0.3s;
+		}
+	}
+	input:checked + label {
+		background: #0073aa;
+		&:after {
+			left: calc(100% - 2px);
+			transform: translateX(-100%);
+		}
+	}
+	label:active:after {
+		width: 40px;
+	}
+
+	&.sm {
+		margin-top: 3px;
+		label {
+			width: 44px;
+			height: 22px;
+			background: grey;
+			display: inline-block;
+			border-radius: 22px;
+			
+			&:after {
+				top: 1px;
+				left: 2px;
+				width: 20px;
+				height: 20px;
+				border-radius: 11px;
+			}
+		}
+		input:checked + label {
+			background: #0073aa;
+			&:after {
+				left: calc(100% - 2px);
+				transform: translateX(-100%);
+			}
+		}
+		label:active:after {
+			width: 30px;
+		}
+	}
+}
+
 .metabox-holder {
 	border: 0px solid #ccc;
 	border-top: 0;

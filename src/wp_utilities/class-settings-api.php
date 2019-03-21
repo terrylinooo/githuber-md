@@ -330,9 +330,10 @@ class Githuber_Settings_API {
 		$value     = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 		$location  = isset( $args['location_id'] ) ? $args['location_id'] : '';
 		$has_child = isset( $args['has_child'] ) ? 'has-child' : '';
+		$size      = isset( $args['size'] ) ? $args['size'] : '';
 
 		$html = '';
-		$html .= sprintf( '<div class="wpmd setting-toggle %4$s" data-location="%1$s" data-target="%2$s[%3$s]" data-setting="%3$s">', $location, $args['section'], $args['id'], $has_child );
+		$html .= sprintf( '<div class="wpmd setting-toggle %4$s %5$s" data-location="%1$s" data-target="%2$s[%3$s]" data-setting="%3$s">', $location, $args['section'], $args['id'], $has_child, $size );
 		$html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="no" />', $args['section'], $args['id'] );
 		$html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s-%2$s" name="%1$s[%2$s]" value="yes" %3$s />', $args['section'], $args['id'], checked( $value, 'yes', false ) );
 		$html .= sprintf( '<label for="wpuf-%1$s-%2$s">', $args['section'], $args['id'] );

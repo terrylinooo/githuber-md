@@ -200,7 +200,6 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.min.css', array(), $this->editormd_varsion, 'all' );
-		wp_enqueue_style( 'githuber-md-metabox', $this->githuber_plugin_url . 'assets/css/admin-meta-box.css', array(), $this->version, 'all' );
 	}
 
 	/**

@@ -192,12 +192,9 @@ class Setting extends ControllerAbstract {
 					'name'    => 'disable_revision',
 					'label'   => __( 'Disable Revision', 'wp-githuber-md' ),
 					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'no',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
@@ -205,12 +202,9 @@ class Setting extends ControllerAbstract {
 					'class'   => 'disable_autosave',
 					'label'   => __( 'Disable Auto-save', 'wp-githuber-md' ),
 					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
@@ -223,12 +217,9 @@ class Setting extends ControllerAbstract {
 					'class'   => 'html_to_markdown',
 					'label'   => __( 'HTML-to-Markdown', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'setting/html-to-markdown' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
@@ -236,12 +227,9 @@ class Setting extends ControllerAbstract {
 					'class'   => 'markdown_editor_switcher',
 					'label'   => __( 'Markdown Editor Switcher', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'setting/markdown-editor-switcher' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
@@ -253,48 +241,36 @@ class Setting extends ControllerAbstract {
 					'name'    => 'editor_live_preview',
 					'label'   => __( 'Live Preview', 'wp-githuber-md' ),
 					'desc'    => __( 'Split editor into two panes to display a live preview when editing post.', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
 					'name'    => 'editor_sync_scrolling',
 					'label'   => __( 'Sync Scrolling', 'wp-githuber-md' ),
 					'desc'    => __( 'Synchronize scrolling of two editor panes by content.', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
 					'name'    => 'editor_html_decode',
 					'label'   => __( 'HTML Decode', 'wp-githuber-md' ),
 					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor.', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
 					'name'    => 'editor_line_number',
 					'label'   => __( 'Line Number', 'wp-githuber-md' ),
 					'desc'    => __( 'Display line number in the Markdown Editor.', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
@@ -447,13 +423,10 @@ class Setting extends ControllerAbstract {
 					'name'    => 'prism_line_number',
 					'label'   => __( 'Line Number', 'wp-githuber-md' ),
 					'desc'    => __( 'Show line number in code area?', 'wp-githuber-md' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'no',
 					'parent'  => 'support_prism',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 
 				array(
@@ -638,13 +611,10 @@ class Setting extends ControllerAbstract {
                     'name'    => 'is_image_paste_media_library',
 					'label'   => __( 'Upload to Media Library?', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'setting/image-paste-media-library' ),
-					'type'    => 'radio',
+					'type'    => 'toggle',
+					'size'    => 'sm',
 					'default' => 'yes',
 					'parent'  => 'support_image_paste',
-					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' ),
-					)
 				),
 			),
 
@@ -654,15 +624,17 @@ class Setting extends ControllerAbstract {
 					'name'    => 'support_mardown_extra',
 					'label'   => __( 'Markdown Extra', 'wp-githuber-md' ),
 					'desc'    => __( 'Support Markdown Extra. (Require PHP version > 5.3.6 with module mb multibyte installed.', 'wp-githuber-md' ),
-					'type'        => 'toggle',
-					'default'     => 'no'
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no'
 				),
 				array(
 					'name'    => 'support_task_list',
 					'label'   => __( 'GFM Task List', 'wp-githuber-md' ),
 					'desc'    => __( 'Support Github Flavored Markdown task lists.', 'wp-githuber-md' ),
-					'type'        => 'toggle',
-					'default'     => 'no'
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no'
 				),
 
 				array(
@@ -674,8 +646,9 @@ class Setting extends ControllerAbstract {
 					'label'   => __( 'HTML5 Figure', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'setting/support-html5-figure' ),
 					// <figure><img src="http://yoururl.com/test.jpg" alt="Alt text"><figcaption>Title text</figcaption></figure>
-					'type'        => 'toggle',
-					'default'     => 'no'
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no'
 				),
 			),
 
