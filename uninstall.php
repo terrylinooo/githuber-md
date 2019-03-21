@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.0.1
+ * @version 1.7.0
  */
 
 // if uninstall.php is not called by WordPress, die.
@@ -25,6 +25,8 @@ foreach ( $options_names as $option_name ) {
 	delete_option( $option_name );
 	delete_site_option( $option_name );
 }
+
+delete_option(( 'githuber_migration_v162' );
 
 $post_meta_keys = array(
 	'_is_githuber_markdown',

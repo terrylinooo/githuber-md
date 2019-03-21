@@ -21,10 +21,18 @@
 form {
 
 	.g-section-title {
+		position: relative;
 		display: block;
 		font-size: 1.2rem;
 		border-bottom: 1px solid #ccc;
 		padding-bottom: 10px;
+
+		.setting-toggle {
+			position: absolute;
+			display: inline-block !important;
+			right: 15px;
+			top: -15px;
+		}
 	}
 	
 	.g-section-title-desc {

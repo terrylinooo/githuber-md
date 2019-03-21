@@ -1,20 +1,25 @@
 <?php
 
 /**
- * weDevs Settings API wrapper class
+ * Githuber MD Settings API wrapper class
+ *
+ * @author Terry Lin
+ * @package Githuber
+ * @since 1.0.0
+ * @version 1.7.0
+ * @license GPLv3
+ *
+ * Notice:
+ * This script is modified a lot by Terry L. for Githuber MD plugin use.
+ * If you're looking for original code, go visit https://github.com/tareq1988/wordpress-settings-api-class
  *
  * @version 1.3 (27-Sep-2016)
- *
  * @author Tareq Hasan <tareq@weDevs.com>
  * @link https://tareq.co Tareq Hasan
  * @license MIT
- * 
- * Notice:
- * If you're looking for original code, go visit https://github.com/tareq1988/wordpress-settings-api-class
- * This script is modified by Terry L., for Githuber plugin.
  */
 
-class WeDevs_Settings_API {
+class Githuber_Settings_API {
 
 	/**
 	 * settings sections array
@@ -43,6 +48,50 @@ class WeDevs_Settings_API {
 		wp_enqueue_media();
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'jquery' );
+
+		$script_toggle_js = '
+			( function( $ ) {
+				$( function() {
+					$( ".setting-toggle" ).each( function() {
+						var toggle_location = $( this ).attr( "data-location" );
+						if ( toggle_location ) {
+							$( this ).appendTo( $( "#" + toggle_location ) );
+						}
+					});
+
+					$( ".setting-toggle" ).each( function() {
+						check_toggle( $( this ) );
+					} );
+
+					$( ".setting-toggle" ).click( function () {
+						check_toggle( $( this ) );
+					} );
+
+					function check_toggle( obj ) {
+						if ( obj.hasClass( "has-child" ) ) {
+							var setting = obj.attr( "data-setting" );
+							var target  = obj.attr( "data-target" );
+						
+							var option_value = $( "input[type=checkbox][name=\'" + target + "\']" ).is(":checked");  
+
+							console.log(option_value);
+	
+							if ( option_value ) {
+								$( ".setting-has-parent[data-parent=" + setting + "]" ).each( function() {
+										$( this ).closest( "tr" ).fadeIn(500);
+								} );
+							} else {
+								$( ".setting-has-parent[data-parent=" + setting + "]" ).each( function() {
+										$( this ).closest( "tr" ).hide();
+								} );
+							}
+						}
+					}
+				});
+			} )( jQuery );
+		';
+
+		wp_add_inline_script( 'jquery', $script_toggle_js );
 	}
 
 	/**
@@ -130,32 +179,22 @@ class WeDevs_Settings_API {
 
 			foreach ( $field as $option ) {
 				$i++;
-				$name = $option['name'];
+				$name = isset( $option['name'] ) ? $option['name'] : 'No name';
 				$type = isset( $option['type'] ) ? $option['type'] : 'text';
 				$label = isset( $option['label'] ) ? $option['label'] : '';
 				$callback = isset( $option['callback'] ) ? $option['callback'] : array( $this, 'callback_' . $type );
 				
-				if ( '_TITLE_' === $name ) {
+				if ( isset( $option['section_title'] ) && true === $option['section_title'] ) {
 					// Create a section in same page if $name is empty.
 					$next_section_group = $section . '_' . $i;
-					
-					$section_title = '<span class="g-section-title">' . $option['label'] . '</span>';
+					$location_id        = isset( $option['location_id'] ) ? $option['location_id'] : '';
+					$section_title      = '<span class="g-section-title" id="' . $location_id . '">' . $option['label'] . '</span>';
 
 					if ( ! empty( $option['desc'] )) {
-						$section_title = '<span class="g-section-title">' . $option['label'] . '<span class="g-section-title-desc">' . $option['desc'] . '</span></span>';
+						$section_title = '<span class="g-section-title" id="' . $location_id . '">' . $option['label'] . '<span class="g-section-title-desc">' . $option['desc'] . '</span></span>';
 					}
-
 					add_settings_section( $next_section_group, $section_title, '', $section);
-
-				} elseif ( '_DESCRIPTION_' === $name ) {
-					$section_desc_id = $section . '_desc_' . $i;
-
-					$args = array(
-						'desc' => '<div class="g-section-desc">' . ( isset( $option['desc'] ) ? $option['desc'] : '' ) . '</div>',
-					);
-
-					add_settings_field( $section_desc_id, $label, $callback, $section, $next_section_group, $args );
-
+					
 				} else {
 					$args = array(
 						'id'                => $name,
@@ -173,6 +212,9 @@ class WeDevs_Settings_API {
 						'min'               => isset( $option['min'] ) ? $option['min'] : '',
 						'max'               => isset( $option['max'] ) ? $option['max'] : '',
 						'step'              => isset( $option['step'] ) ? $option['step'] : '',
+						'location_id'       => isset( $option['location_id'] ) ? $option['location_id'] : '',
+						'parent'            => isset( $option['parent'] ) ? $option['parent'] : '',
+						'has_child'         => isset( $option['has_child'] ) ? $option['has_child'] : '',
 					);
 	
 					add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $next_section_group, $args );
@@ -216,6 +258,10 @@ class WeDevs_Settings_API {
 		$html        = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder );
 		$html       .= $this->get_field_description( $args );
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -245,6 +291,10 @@ class WeDevs_Settings_API {
 		$html        = sprintf( '<input type="%1$s" class="%2$s-number" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step );
 		$html       .= $this->get_field_description( $args );
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -256,13 +306,44 @@ class WeDevs_Settings_API {
 	function callback_checkbox( $args ) {
 
 		$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
-
 		$html  = '<fieldset>';
 		$html  .= sprintf( '<label for="wpuf-%1$s-%2$s">', $args['section'], $args['id'] );
-		$html  .= sprintf( '<input type="hidden" name="%1$s-%2$s" value="off" />', $args['section'], $args['id'] );
+		$html  .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
 		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s-%2$s" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', $args['desc'] );
 		$html  .= '</fieldset>';
+
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
+		echo $html;
+	}
+
+	/**
+	 * Displays a toggle for a settings field
+	 *
+	 * @param array   $args settings field args
+	 */
+	function callback_toggle( $args ) {
+
+		$value     = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+		$location  = isset( $args['location_id'] ) ? $args['location_id'] : '';
+		$has_child = isset( $args['has_child'] ) ? 'has-child' : '';
+
+		$html = '';
+		$html .= sprintf( '<div class="wpmd setting-toggle %4$s" data-location="%1$s" data-target="%2$s[%3$s]" data-setting="%3$s">', $location, $args['section'], $args['id'], $has_child );
+		$html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="no" />', $args['section'], $args['id'] );
+		$html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s-%2$s" name="%1$s[%2$s]" value="yes" %3$s />', $args['section'], $args['id'], checked( $value, 'yes', false ) );
+		$html .= sprintf( '<label for="wpuf-%1$s-%2$s">', $args['section'], $args['id'] );
+		$html .= sprintf( '%1$s</label>', 'toggle' );
+		$html .= '</div>';
+		$html .= $this->get_field_description( $args );
+		$html .= '</fieldset>';
+
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
 
 		echo $html;
 	}
@@ -297,6 +378,10 @@ class WeDevs_Settings_API {
 		$html .= $this->get_field_description( $args );
 		$html .= '</fieldset>';
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -319,6 +404,10 @@ class WeDevs_Settings_API {
 		$html .= $this->get_field_description( $args );
 		$html .= '</fieldset>';
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -340,6 +429,10 @@ class WeDevs_Settings_API {
 		$html .= sprintf( '</select>' );
 		$html .= $this->get_field_description( $args );
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -356,6 +449,10 @@ class WeDevs_Settings_API {
 
 		$html        = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]"%4$s>%5$s</textarea>', $size, $args['section'], $args['id'], $placeholder, $value );
 		$html        .= $this->get_field_description( $args );
+
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
 
 		echo $html;
 	}
@@ -380,6 +477,10 @@ class WeDevs_Settings_API {
 		$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
 		$size  = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : '500px';
 
+		if ( ! empty( $args['parent'] ) ) {
+			echo '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">';
+		}
+
 		echo '<div style="max-width: ' . $size . ';">';
 
 		$editor_settings = array(
@@ -397,6 +498,10 @@ class WeDevs_Settings_API {
 		echo '</div>';
 
 		echo $this->get_field_description( $args );
+
+		if ( ! empty( $args['parent'] ) ) {
+			echo '</div>';
+		}
 	}
 
 	/**
@@ -415,6 +520,10 @@ class WeDevs_Settings_API {
 		$html  .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
 		$html  .= $this->get_field_description( $args );
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -431,6 +540,10 @@ class WeDevs_Settings_API {
 		$html  = sprintf( '<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
 		$html  .= $this->get_field_description( $args );
 
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -446,6 +559,10 @@ class WeDevs_Settings_API {
 
 		$html  = sprintf( '<input type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />', $size, $args['section'], $args['id'], $value, $args['std'] );
 		$html  .= $this->get_field_description( $args );
+
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
 
 		echo $html;
 	}
@@ -465,6 +582,11 @@ class WeDevs_Settings_API {
 			'echo'     => 0
 		);
 		$html = wp_dropdown_pages( $dropdown_args );
+
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
 		echo $html;
 	}
 
@@ -507,7 +629,7 @@ class WeDevs_Settings_API {
 		// Iterate over registered fields and see if we can find proper callback
 		foreach( $this->settings_fields as $section => $options ) {
 			foreach ( $options as $option ) {
-				if ( $option['name'] != $slug ) {
+				if ( ! isset( $option['name'] ) || $option['name'] != $slug ) {
 					continue;
 				}
 

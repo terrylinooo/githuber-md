@@ -60,7 +60,7 @@ class Githuber {
 			$setting = new Controller\Setting();
 			$setting->init();
 	
-			if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_markdown' ) ) {
+			if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_modules' ) ) {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
 			}
@@ -79,31 +79,31 @@ class Githuber {
 		 */ 
 
 		// Module Name: FlowChart
-		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_modules' ) ) {
 			$module_flowchart = new Module\FlowChart();
 			$module_flowchart->init();
 		}
 
 		// Module Name: KaTeX
-		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_modules' ) ) {
 			$module_katex = new Module\KaTeX();
 			$module_katex->init();
 		}
 
 		// Module Name: Sequence Diagram
-		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_modules' ) ) {
 			$module_sequence = new Module\SequenceDiagram();
 			$module_sequence->init();
 		}
 
 		// Module Name: Mermaid
-		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
 			$module_mermaid = new Module\Mermaid();
 			$module_mermaid->init();
 		}
 
 		// Module Name: Prism
-		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
 			$module_prism = new Module\Prism();
 			$module_prism->init();
 		}

@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.6.2
+ * @version 1.7.0
  */
 
 namespace Githuber\Controller;
@@ -29,14 +29,6 @@ class Register extends ControllerAbstract {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
 		$this->register_hooks();
-		$this->add_post_types();
-		$this->add_walker();
-		$this->add_widgets();
-
-
-		if ( 'yes' === githuber_get_option( 'githuber_theme_adjustment_head_output', 'githuber_options' ) ) {
-			githuber_load_utility('theme-adjustment');
-		}
 
 		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
 			add_action( 'init', array( $this , 'remove_revisions' ), 10 );
@@ -45,6 +37,8 @@ class Register extends ControllerAbstract {
 		if ( 'yes' === githuber_get_option( 'disable_autosave', 'githuber_markdown' ) ) {
 			add_action( 'wp_print_scripts', array( $this , 'remove_autosave' ), 10 );
 		}
+
+		$this->version_migration();
 	}
 
 	/**
@@ -57,6 +51,34 @@ class Register extends ControllerAbstract {
 			update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 		}
 		add_filter( 'user_can_richedit' , '__return_false', 50 );
+	}
+
+	/**
+	 * Migration.
+	 */
+	public function version_migration() {
+
+		$migration_v162 = get_option( 'githuber_migration_v162');
+
+		if ( empty( $migration_v162 ) ) {
+
+			$githuber_modules = array(
+				'support_prism'            => githuber_get_option( 'support_prism', 'githuber_markdown' ),
+				'support_katex'            => githuber_get_option( 'support_katex', 'githuber_markdown' ),
+				'support_flowchart'        => githuber_get_option( 'support_flowchart', 'githuber_markdown' ),
+				'support_sequence_diagram' => githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ),
+				'support_mermaid'          => githuber_get_option( 'support_mermaid', 'githuber_markdown' ),
+				'support_image_paste'      => githuber_get_option( 'support_image_paste', 'githuber_markdown' ),
+			);
+
+			$githuber_extensions = array(
+				'support_task_list' => githuber_get_option( 'support_task_list', 'githuber_markdown' ),
+			);
+
+			update_option( 'githuber_modules', $githuber_modules, '', 'yes' );
+			update_option( 'githuber_extensions', $githuber_extensions, '', 'yes' );
+			update_option( 'githuber_migration_v162', 'yes', '', 'yes' );
+		}
 	}
 
 	/**
@@ -105,12 +127,12 @@ class Register extends ControllerAbstract {
 			'editor_html_decode'             => 'yes',
 			'editor_toolbar_theme'           => 'default',
 			'editor_editor_theme'            => 'default',
-			'is_image_paste_attachment'      => 'yes',
 		);
 
 		// Add default setting. Only execute this action at the first time activation.
 		if ( false === get_option( 'githuber_markdown' ) ) {
 			update_option( 'githuber_markdown', $githuber_markdown, '', 'yes' );
+			update_option( 'githuber_migration_v162', 'yes', '', 'yes' );
 		}
 	}
 
@@ -125,44 +147,10 @@ class Register extends ControllerAbstract {
 	}
 
 	/**
-	 * Initialize Githuber widgets.
-	 */
-	public function add_widgets() {
-		if ( 'yes' === githuber_get_option( 'githuber_theme_bootstrap_toc', 'githuber_options' ) ) {
-			add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-		}
-	}
-
-	/**
-	 * Register post typees.
-	 */
-	public function add_post_types() {
-		if ( 'yes' === githuber_get_option( 'githuber_theme_repository', 'githuber_options' ) ) {
-			new \Githuber_Post_Type_Repository();
-		}
-	}
-
-	/**
-	 * Register Walker for Bootstrap 4 header menu.
-	 */
-	public function add_walker() {
-		if ( 'yes' === githuber_get_option( 'githuber_theme_bootstrap_menu', 'githuber_options' ) ) {
-			new \Githuber_Walker();
-		}
-	}
-
-	/**
 	 * Register hooks.
 	 */
 	public function register_hooks() {
 		register_activation_hook( $this->githuber_plugin_path, array( $this , 'activate_plugin' ) );
 		register_deactivation_hook( $this->githuber_plugin_path, array( $this , 'deactivate_plugin' ) );
-	}
-
-	/**
-	 * Register Githuber widgets. (Triggered by $this->add_widgets).
-	 */
-	public function register_widgets() {
-		register_widget( 'Githuber_Widget_Toc' );
 	}
 }

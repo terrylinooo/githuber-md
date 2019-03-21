@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.6.2
+ * @version 1.7.0
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -97,27 +97,27 @@ class Markdown extends ControllerAbstract {
 			self::$model_instance = new Model\Markdown();
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
 			$this->is_support_prism = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_task_list', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_task_list', 'githuber_extensions' ) ) {
 			$this->is_support_task_list = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_modules' ) ) {
 			$this->is_support_katex = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_modules' ) ) {
 			$this->is_support_flowchart = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_modules' ) ) {
 			$this->is_support_sequence = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_markdown' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
 			$this->is_support_mermaid = true;
 		}
 	}
@@ -238,7 +238,7 @@ class Markdown extends ControllerAbstract {
 					wp_enqueue_script( 'editor-md-lang', $this->githuber_plugin_url . 'assets/vendor/editor.md/languages/en.js', array(), $this->editormd_varsion, true );
 			}
 
-			$editormd_config_list = array(
+			$editormd_config_list['markdown'] = array(
 				'editor_sync_scrolling',
 				'editor_live_preview',
 				'editor_image_paste',
@@ -246,19 +246,27 @@ class Markdown extends ControllerAbstract {
 				'editor_toolbar_theme',
 				'editor_editor_theme',
 				'editor_line_number',
-				'support_toc',
-				'support_emoji',
+			);
+
+			$editormd_config_list['modules'] = array(
+				//'support_toc',
+				//'support_emoji',
 				'support_katex',
 				'support_flowchart',
 				'support_sequence_diagram',
-				'support_task_list',
 				'support_mermaid',
+			);
+
+			$editormd_config_listp['extensions'] = array(
+				'support_task_list',
 			);
 
 			$editormd_localize = array();
 
-			foreach ($editormd_config_list as $setting_name) {
-				$editormd_localize[ $setting_name ] = githuber_get_option( $setting_name, 'githuber_markdown' );
+			foreach ( $editormd_config_list as $key => $value ) {
+				foreach ( $value as $setting_name ) {
+					$editormd_localize[ $setting_name ] = githuber_get_option( $setting_name, 'githuber_' . $key );
+				}
 			}
 
 			$editormd_localize['editor_modules_url']   = $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/';
