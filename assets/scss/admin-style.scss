@@ -121,7 +121,16 @@ form {
 	}
 }
 
+pre.setting-example {
+	background-color: #ffffff;
+	border: 0 !important;
+	padding: 10px !important;
+	border-radius: 3px;
 
+	code {
+		background-color: #ffffff;
+	}
+}
 /*
 .nav-tab-active, .metabox-holder {
 	background-color: #ffffff;

@@ -111,6 +111,16 @@ form .g-section-desc {
   display: block;
 }
 
+pre.setting-example {
+  background-color: #ffffff;
+  border: 0 !important;
+  padding: 10px !important;
+  border-radius: 3px;
+}
+pre.setting-example code {
+  background-color: #ffffff;
+}
+
 /*
 .nav-tab-active, .metabox-holder {
 	background-color: #ffffff;

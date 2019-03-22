@@ -88,20 +88,6 @@ function githuber_load_view( $template_path, $data = array() ) {
 }
 
 /**
- * Load utility files.
- *
- * @param string $filename
- * @return string
- */
-function githuber_load_utility( $filename ) {
-	$include_path  = GITHUBER_PLUGIN_DIR . 'src/wp_utilities/githuber-' . $filename . '.php';
-
-	if ( ! empty( $include_path ) && is_readable( $include_path ) ) {
-		require $include_path;
-	}
-}
-
-/**
  * Get post type on current screen.
  *
  * @return string
