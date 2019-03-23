@@ -51,6 +51,8 @@ class Register extends ControllerAbstract {
 			update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 		}
 		add_filter( 'user_can_richedit' , '__return_false', 50 );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 	}
 
 	/**
@@ -101,7 +103,7 @@ class Register extends ControllerAbstract {
 	 * Register CSS style files.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
-
+		wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
 	}
 
 	/**

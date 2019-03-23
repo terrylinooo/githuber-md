@@ -61,7 +61,7 @@ class Setting extends ControllerAbstract {
 		if ( false === strpos( $hook_suffix, 'githuber-md' ) ) {
 			return;
 		}
-		wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
+		//wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -392,7 +392,7 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'        => 'support_prism',
-					//'label'       => __( 'Syntax Highlight', 'wp-githuber-md' ),
+					//'label'     => __( 'Syntax Highlight', 'wp-githuber-md' ),
 					'desc'        => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-githuber-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
@@ -444,6 +444,13 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/prism' ),
+					'type'    => 'html',
+					'parent'  => 'support_prism',
+				),
+
+				array(
 					'section_title' => true,
 					'location_id'   => 'katex',
 					'label'         => __( 'KaTex', 'wp-githuber-md' ),
@@ -472,6 +479,13 @@ class Setting extends ControllerAbstract {
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/katex' ),
+					'type'    => 'html',
+					'parent'  => 'support_katex',
 				),
 
 				array(
@@ -506,6 +520,13 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/flowchart' ),
+					'type'    => 'html',
+					'parent'  => 'support_flowchart',
+				),
+
+				array(
 					'section_title' => true,
 					'location_id'   => 'sequence-diagram',
 					'label'         => __( 'Sequence Diagrams', 'wp-githuber-md' ),
@@ -537,6 +558,13 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/sequence' ),
+					'type'    => 'html',
+					'parent'  => 'support_sequence_diagram',
+				),
+
+				array(
 					'section_title' => true,
 					'location_id'   => 'mermaid',
 					'label'         => __( 'Mermaid', 'wp-githuber-md' ),
@@ -565,6 +593,13 @@ class Setting extends ControllerAbstract {
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/mermaid' ),
+					'type'    => 'html',
+					'parent'  => 'support_mermaid',
 				),
 
 				array(
@@ -644,7 +679,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_html_figure',
 					'label'   => __( 'HTML5 Figure', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'setting/support-html5-figure' ),
+					'desc'    => githuber_load_view( 'example/html5-figure' ),
 					// <figure><img src="http://yoururl.com/test.jpg" alt="Alt text"><figcaption>Title text</figcaption></figure>
 					'type'    => 'toggle',
 					'size'    => 'sm',

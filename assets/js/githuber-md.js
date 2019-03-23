@@ -5,6 +5,13 @@ var wp_editor_container = '#wp-content-editor-container';
 var wp_editor = 'wp-content-editor-container';
 var githuber_md_editor;
 
+onkeydown = function(e){
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
+      e.preventDefault();
+      //your saving code
+    }
+  };
+  
 (function($) {
     $(function() {
         var config = window.editormd_config;
@@ -77,6 +84,15 @@ var githuber_md_editor;
                     toc: 'The Table Of Contents',
                     more: 'More'
                 }
+            },
+            onload : function() {
+                var keyMap = {
+                    "Ctrl-T": function(cm) {
+                        alert("Ctrl+T");
+                    },
+            
+                };
+                this.addKeyMap(keyMap);
             }
         };
 

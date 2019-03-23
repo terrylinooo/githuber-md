@@ -119,6 +119,17 @@ pre.setting-example {
 }
 pre.setting-example code {
   background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.example-tag {
+  border: 1px #dddddd solid;
+  padding: 2px 5px;
+  margin: 3px;
+  border-radius: 2px;
+  color: #0073aa;
+  background-color: #ffffff;
 }
 
 /*

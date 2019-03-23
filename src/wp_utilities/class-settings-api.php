@@ -469,7 +469,14 @@ class Githuber_Settings_API {
 	 * @return string
 	 */
 	function callback_html( $args ) {
-		echo $this->get_field_description( $args );
+
+		$html = $args['desc'];
+
+		if ( ! empty( $args['parent'] ) ) {
+			$html = '<div class="setting-has-parent" data-parent="' . $args['parent'] . '">' . $html . '</div>';
+		}
+
+		echo $html;
 	}
 
 	/**

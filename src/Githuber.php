@@ -39,9 +39,6 @@ class Githuber {
 			add_filter('use_block_editor_for_post', '__return_false', 5);
 		}
 
-		$register = new Controller\Register();
-		$register->init();
-
 		// Load core functions when `wp_loaded` is ready.
 		add_action( 'wp_loaded', array( $this, 'init' ) );
 
@@ -56,6 +53,9 @@ class Githuber {
 
 		// Only load controllers in backend.
 		if ( is_admin() ) {
+
+			$register = new Controller\Register();
+			$register->init();
 
 			$setting = new Controller\Setting();
 			$setting->init();
