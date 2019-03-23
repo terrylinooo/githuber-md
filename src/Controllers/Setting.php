@@ -658,7 +658,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_mardown_extra',
 					'label'   => __( 'Markdown Extra', 'wp-githuber-md' ),
-					'desc'    => __( 'Support Markdown Extra. (Require PHP version > 5.3.6 with module mb multibyte installed.', 'wp-githuber-md' ),
+					'desc'    => __( 'Support <a href="https://michelf.ca/projects/php-markdown/extra/" target="_blank">Markdown Extra</a>. (Require PHP version > 5.3.6 with module mb multibyte installed.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no'
@@ -676,6 +676,7 @@ class Setting extends ControllerAbstract {
 					'label'         => __( 'Githuber MD Extensions', 'wp-githuber-md' ),
 					'section_title' => true,
 				),
+
 				array(
 					'name'    => 'support_html_figure',
 					'label'   => __( 'HTML5 Figure', 'wp-githuber-md' ),
@@ -687,6 +688,20 @@ class Setting extends ControllerAbstract {
 				),
 			),
 
+			'githuber_preferences' => array(
+				array(
+					'name'    => 'post_link_target_attribute',
+					'label'   => __( 'Link Opening Method', 'wp-githuber-md' ),
+					'desc'    => __( 'For links in posts, please specify where to open the linked document.', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => '_self',
+					'options' => array(
+						'_self' => 'Same window. (default)',
+						'_blank'  => 'New window.',
+					)
+				),
+
+			),
 
 			'githuber_about' => array(
 

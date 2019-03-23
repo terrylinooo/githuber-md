@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.6.0
+ * @version 1.7.0
  */
 
 use Githuber\Controller as Controller;
@@ -107,6 +107,11 @@ class Githuber {
 			$module_prism = new Module\Prism();
 			$module_prism->init();
 		}
+
+		/**
+		 * Let's start setting user's perferences...
+		 */
+		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
 
 	/**
@@ -123,6 +128,26 @@ class Githuber {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( GITHUBER_PLUGIN_TEXT_DOMAIN, false, GITHUBER_PLUGIN_LANGUAGE_PACK ); 
+	}
+
+	/**
+	 * Print Javascript plaintext in page footer.
+	 */
+	public function front_print_footer_scripts() {
+
+		$html  = '<script id="module-preferences">';
+		$html .= '    (function($) {';
+		$html .= '        $(function() {';
+
+		if ( '_blank' === githuber_get_option( 'post_link_target_attribute', 'githuber_preferences' ) ) {
+			$html .= '$(".post a").attr("target", "_blank");';
+		}
+            
+		$html .= '        });';
+		$html .= '    })(jQuery);';
+		$html .= '</script>';
+
+		echo $html;
 	}
 }
 
