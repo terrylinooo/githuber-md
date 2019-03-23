@@ -16,6 +16,22 @@ use ParsedownExtra;
 
 class MarkdownParser extends ParsedownExtra {
 
+	// Stores shortcodes we remove and then replace
+	protected $preserve_text_hash = array();
+
+	/**
+	 * Preserve shortcodes, untouched by Markdown.
+	 * This requires use within a WordPress installation.
+	 * @var boolean
+	 */
+	public $preserve_shortcodes = true;
+
+	/**
+	 * Preserve single-line <code> blocks.
+	 * @var boolean
+	 */
+	public $preserve_inline_code_blocks = true;
+
 	/**
 	 * Constructer.
 	 */
@@ -43,7 +59,19 @@ class MarkdownParser extends ParsedownExtra {
 	 */
 	public function transform( $text ) {
 
+		// Preserve anything inside a single-line <code> element
+		if ( $this->preserve_inline_code_blocks ) {
+			$text = $this->single_line_code_preserve( $text );
+		}
+		// Remove all shortcodes so their interiors are left intact
+		if ( $this->preserve_shortcodes ) {
+			$text = $this->shortcode_preserve( $text );
+		}
+
 		$parsed_content = $this->text( $text );
+
+		$parsed_content = $this->do_restore( $parsed_content );
+
 		return $parsed_content;
 	}
 
@@ -94,5 +122,156 @@ class MarkdownParser extends ParsedownExtra {
         );
 
         return $inline;
-    }
+	}
+	
+	/**
+	 * The below methods are from Jetpack: Markdown modular
+	 * 
+	 * @link https://github.com/Automattic/jetpack/blob/master/_inc/lib/markdown/gfm.php
+	 * @license GPL
+	 */
+
+	/**
+	 * Retrieve the shortcode regular expression for searching.
+	 * @return string A regex for grabbing shortcodes.
+	 */
+	protected function get_shortcode_regex() {
+		$pattern = get_shortcode_regex();
+
+		// don't match markdown link anchors that could be mistaken for shortcodes.
+		$pattern .= '(?!\()';
+
+		return "/$pattern/s";
+	}
+
+	/**
+	 * Called to preserve WP shortcodes from being formatted by Markdown in any way.
+	 *
+	 * @param  string $text Text in which to preserve shortcodes
+	 * @return string Text with shortcodes replaced by a hash that will be restored later
+	 */
+	protected function shortcode_preserve( $text ) {
+		$text = preg_replace_callback( $this->get_shortcode_regex(), array( $this, 'do_remove_text' ), $text );
+		return $text;
+	}
+
+	/**
+	 * Regex callback for text preservation
+	 *
+	 * @param  array $m Regex $matches array
+	 * @return string    A placeholder that will later be replaced by the original text
+	 */
+	protected function do_remove_text( $m ) {
+		return $this->hash_block( $m[0] );
+	}
+	/**
+	 * Call this to store a text block for later restoration.
+	 *
+	 * @param  string $text Text to preserve for later
+	 * @return string  Placeholder that will be swapped out later for the original text
+	 */
+	protected function hash_block( $text ) {
+		$hash                              = md5( $text );
+		$this->preserve_text_hash[ $hash ] = $text;
+		$placeholder                       = $this->hash_maker( $hash );
+
+		return $placeholder;
+	}
+
+	/**
+	 * Prevents blocks like <code>__this__</code> from turning into <code><strong>this</strong></code>
+	 *
+	 * @param  string $text Text that may need preserving
+	 * @return string Text that was preserved if needed
+	 */
+	public function single_line_code_preserve( $text ) {
+		return preg_replace_callback( '|<code\b[^>]*>(.*?)</code>|', array( $this, 'do_single_line_code_preserve' ), $text );
+	}
+
+	/**
+	 * Regex callback for inline code presevation
+	 *
+	 * @param  array $matches Regex matches
+	 * @return string Hashed content for later restoration
+	 */
+	public function do_single_line_code_preserve( $matches ) {
+		return '<code>' . $this->hash_block( $matches[1] ) . '</code>';
+	}
+
+	/**
+	 * Preserve code block contents by HTML encoding them. Useful before getting to KSES stripping.
+	 *
+	 * @param  string $text Markdown/HTML content
+	 * @return string       Markdown/HTML content with escaped code blocks
+	 */
+	public function codeblock_preserve( $text ) {
+		return preg_replace_callback( "/^([`~]{3})([^`\n]+)?\n([^`~]+)(\\1)/m", array( $this, 'do_codeblock_preserve' ), $text );
+	}
+
+	/**
+	 * Regex callback for code block preservation.
+	 *
+	 * @param  array $matches Regex matches
+	 * @return string Codeblock with escaped interior
+	 */
+	public function do_codeblock_preserve( $matches ) {
+		$block = stripslashes( $matches[3] );
+		$block = esc_html( $block );
+		$block = str_replace( '\\', '\\\\', $block );
+		$open  = $matches[1] . $matches[2] . "\n";
+
+		return $open . $block . $matches[4];
+	}
+
+	/**
+	 * Restore previously preserved (i.e. escaped) code block contents.
+	 *
+	 * @param  string $text Markdown/HTML content with escaped code blocks
+	 * @return string Markdown/HTML content
+	 */
+	public function codeblock_restore( $text ) {
+		return preg_replace_callback( "/^([`~]{3})([^`\n]+)?\n([^`~]+)(\\1)/m", array( $this, 'do_codeblock_restore' ), $text );
+	}
+
+	/**
+	 * Regex callback for code block restoration (unescaping).
+	 *
+	 * @param  array $matches Regex matches
+	 * @return string Codeblock with unescaped interior
+	 */
+	public function do_codeblock_restore( $matches ) {
+		$block = html_entity_decode( $matches[3], ENT_QUOTES );
+		$open  = $matches[1] . $matches[2] . "\n";
+
+		return $open . $block . $matches[4];
+	}
+
+	/**
+	 * Restores any text preserved by $this->hash_block()
+	 *
+	 * @param  string $text Text that may have hashed preservation placeholders
+	 * @return string Text with hashed preseravtion placeholders replaced by original text
+	 */
+	protected function do_restore( $text ) {
+		// Reverse hashes to ensure nested blocks are restored.
+		$hashes = array_reverse( $this->preserve_text_hash, true );
+		foreach ( $hashes as $hash => $value ) {
+			$placeholder = $this->hash_maker( $hash );
+			$text        = str_replace( $placeholder, $value, $text );
+		}
+		// reset the hash
+		$this->preserve_text_hash = array();
+
+		return $text;
+	}
+
+	/**
+	 * Less glamorous than the Keymaker
+	 *
+	 * @param  string $hash An md5 hash
+	 * @return string A placeholder hash
+	 */
+	protected function hash_maker( $hash ) {
+		return 'MARKDOWN_HASH' . $hash . 'MARKDOWN_HASH';
+	}
 }
