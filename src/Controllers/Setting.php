@@ -673,6 +673,11 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'desc'    => githuber_load_view( 'example/gfm-task-list' ),
+					'type'    => 'html',
+				),
+
+				array(
 					'label'         => __( 'Githuber MD Extensions', 'wp-githuber-md' ),
 					'section_title' => true,
 				),
@@ -681,7 +686,6 @@ class Setting extends ControllerAbstract {
 					'name'    => 'support_html_figure',
 					'label'   => __( 'HTML5 Figure', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'example/html5-figure' ),
-					// <figure><img src="http://yoururl.com/test.jpg" alt="Alt text"><figcaption>Title text</figcaption></figure>
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no'
