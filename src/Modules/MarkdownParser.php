@@ -40,6 +40,12 @@ class MarkdownParser extends ParsedownExtra {
 
 		$this->InlineTypes['%'] = array( 'Figure' );
 		$this->inlineMarkerList = '!%"*_&[:<>`~\\';
+
+		$is_allow_shortcode = githuber_get_option( 'allow_shortcode', 'githuber_preferences' );
+
+		if ( 'no' === $is_allow_shortcode ) {
+			$this->preserve_shortcodes = false;
+		}
 	}
 
 	/**

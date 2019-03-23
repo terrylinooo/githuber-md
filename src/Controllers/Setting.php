@@ -705,6 +705,21 @@ class Setting extends ControllerAbstract {
 					)
 				),
 
+				array(
+					'name'    => 'allow_shortcode',
+					'label'   => __( 'Shortcode', 'wp-githuber-md' ),
+					'desc'    => __( 'Allow using shortcode in Markdown text.') . '<br />' . __( 'Please understand that shortcode is processed to HTML by PHP, not JavaScript, therefore live-preview panel does not support it.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'default' => 'yes',
+				),
+
+				array(
+					'name'    => 'smart_quotes',
+					'label'   => __( 'Smart Quotes', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'setting/smart-quotes' ),
+					'type'    => 'toggle',
+					'default' => 'yes',
+				),
 			),
 
 			'githuber_about' => array(

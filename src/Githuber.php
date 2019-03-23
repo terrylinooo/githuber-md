@@ -112,6 +112,10 @@ class Githuber {
 		 * Let's start setting user's perferences...
 		 */
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
+
+		if ( 'yes' !== githuber_get_option( 'smart_quotes', 'githuber_preferences' ) ) {
+			remove_filter( 'the_content', 'wptexturize' );
+		}
 	}
 
 	/**
