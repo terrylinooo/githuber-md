@@ -26,7 +26,7 @@ foreach ( $options_names as $option_name ) {
 	delete_site_option( $option_name );
 }
 
-delete_option(( 'githuber_migration_v162' );
+delete_option( 'githuber_migration_v162' );
 
 $post_meta_keys = array(
 	'_is_githuber_markdown',

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-24 06:18+0000\n"
+"POT-Creation-Date: 2019-03-24 06:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -474,7 +474,7 @@ msgstr ""
 
 #: src/Views/setting/markdown-editor-switcher.php:16
 msgid ""
-"Be careful of using this feature - If you switch back to Richer editor then "
+"Be careful of using this feature - If you switch back to Rich editor then "
 "save, Markdown text will be cleared. "
 msgstr ""
 
