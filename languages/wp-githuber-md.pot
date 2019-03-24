@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-23 18:57+0000\n"
+"POT-Creation-Date: 2019-03-24 06:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Happy Markdowning!"
 msgstr ""
 
-#: src/Controllers/Markdown.php:663
+#: src/Controllers/Markdown.php:671
 msgid "Enable Markdown"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgstr ""
 msgid "Highligh the syntax in your code snippets by Prism.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:405
+#: src/Controllers/Setting.php:405 src/Controllers/Setting.php:750
 msgid "Theme"
 msgstr ""
 
@@ -302,13 +302,6 @@ msgstr ""
 msgid "Markdown Extra"
 msgstr ""
 
-#: src/Controllers/Setting.php:661
-msgid ""
-"Support <a href=\"https://michelf.ca/projects/php-markdown/extra/\" "
-"target=\"_blank\">Markdown Extra</a>. (Require PHP version > 5.3.6 with "
-"module mb multibyte installed."
-msgstr ""
-
 #: src/Controllers/Setting.php:668
 msgid "GFM Task List"
 msgstr ""
@@ -359,32 +352,24 @@ msgstr ""
 msgid "GitHub Repository"
 msgstr ""
 
-#: src/Controllers/Setting.php:750
-msgid "Support"
-msgstr ""
-
-#: src/Controllers/Setting.php:757
-msgid "Changelog"
-msgstr ""
-
-#: src/Controllers/Setting.php:776
+#: src/Controllers/Setting.php:769
 msgid "WP Githuber MD "
 msgstr ""
 
 #. Name of the plugin
-#: src/Controllers/Setting.php:777
+#: src/Controllers/Setting.php:770
 msgid "WP Githuber MD"
 msgstr ""
 
-#: src/Controllers/Setting.php:814
+#: src/Controllers/Setting.php:807
 msgid "Settings"
 msgstr ""
 
-#: src/Controllers/Setting.php:832
+#: src/Controllers/Setting.php:825
 msgid "View GitHub project"
 msgstr ""
 
-#: src/Controllers/Setting.php:833
+#: src/Controllers/Setting.php:826
 msgid "Report issues"
 msgstr ""
 
@@ -426,14 +411,10 @@ msgid "Convert"
 msgstr ""
 
 #: src/Views/setting/about-and-support.php:17
+#: src/Views/setting/about-github-repo.php:17
 msgid ""
 "If you have any issues, or found any bugs, please report them in the "
 "following URL."
-msgstr ""
-
-#: src/Views/setting/about-github-repo.php:17
-msgid ""
-"If you like this plugin, syndicate it, star it, share it to your friends."
 msgstr ""
 
 #: src/Views/setting/html-to-markdown.php:17
@@ -497,6 +478,20 @@ msgid ""
 "save, Markdown text will be cleared. "
 msgstr ""
 
+#: src/Views/setting/markdown-extra.php:17
+msgid ""
+"Support <a href=\"https://michelf.ca/projects/php-markdown/extra/\" "
+"target=\"_blank\">Markdown Extra</a>."
+msgstr ""
+
+#: src/Views/setting/markdown-extra.php:23
+#: src/Views/message/php-libxml-warning.php:18
+msgid ""
+"Markdown Extra parser requires PHP module <strong>libxml</strong> and your "
+"system does not have <strong>libxml</strong> installed. Please disable "
+"Markdown Extra."
+msgstr ""
+
 #: src/Views/setting/smart-quotes.php:15
 msgid ""
 "This is WordPress default, you should not turn it off unless you know what "
@@ -507,17 +502,24 @@ msgstr ""
 msgid "(detail)"
 msgstr ""
 
-#: src/Views/setting/theme-description.php:19
+#: src/Views/setting/theme-description.php:21
 msgid ""
-"Theme option is geared towards <a href=\"https://github."
-"com/terrylinooo/mynote\" target=\"_blank\">Mynote theme</a> users, you might "
-"ignore this section if you are not using Mynote theme."
+"Mynote is a WordPress theme built for developer. Click <a href=\"https:"
+"//wordpress.org/themes/mynote/\" target=\"_blank\">here</a> to download it "
+"from WordPress theme dictionary."
 msgstr ""
 
 #: src/Views/message/jetpack-warning.php:18
 msgid ""
 "WP Gitbuber MD suggests you to disable Jetpack Markdown (or other Markdown "
 "plugins that use Jetpack Markdown module) to prevent conflicts."
+msgstr ""
+
+#: src/Views/message/php-mbstring-warning.php:18
+msgid ""
+"Markdown parser requires PHP module <strong>mbstring</strong> and your "
+"system does not have <strong>mbstring</strong> installed. Please ask for "
+"your web hosting provider to help you."
 msgstr ""
 
 #: src/Views/message/php-version-warning.php:18
