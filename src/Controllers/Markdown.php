@@ -328,7 +328,7 @@ class Markdown extends ControllerAbstract {
 	{
 		if ( ! self::$parser_instance ) {
 			
-			if ( 'yes' !== githuber_get_option( 'support_mardown_extra', 'githuber_preferences' ) ) {
+			if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_preferences' ) ) {
 				self::$parser_instance = new Module\MarkdownExtraParser();
 			} else {
 				self::$parser_instance = new Module\MarkdownParser();

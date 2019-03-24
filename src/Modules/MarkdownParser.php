@@ -36,7 +36,6 @@ class MarkdownParser extends Parsedown {
 	 * Constructer.
 	 */
 	public function __construct() {
-		parent::__construct();
 
 		$this->InlineTypes['%'] = array( 'Figure' );
 		$this->inlineMarkerList = '!%"*_&[:<>`~\\';
