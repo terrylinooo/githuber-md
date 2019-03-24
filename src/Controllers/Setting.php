@@ -658,7 +658,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_mardown_extra',
 					'label'   => __( 'Markdown Extra', 'wp-githuber-md' ),
-					'desc'    => __( 'Support <a href="https://michelf.ca/projects/php-markdown/extra/" target="_blank">Markdown Extra</a>. (Require PHP version > 5.3.6 with module mb multibyte installed.', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'setting/markdown-extra' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no'
@@ -746,16 +746,9 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'name'  => 'plugin_about_support',
-					'label' => __( 'Support', 'wp-githuber-md' ),
-					'desc'  => githuber_load_view( 'setting/about-and-support' ),
-					'type'  => 'html'
-				),
-
-				array(
-					'name'  => 'plugin_about_changelog',
-					'label' => __( 'Changelog', 'wp-githuber-md' ),
-					'desc'  => '<a href="https://github.com/terrylinooo/githuber-md/wiki/Changelog" target="_blank">https://github.com/terrylinooo/githuber-md/wiki/Changelog</a>',
+					'name'  => 'plugin_theme',
+					'label' => __( 'Theme', 'wp-githuber-md' ),
+					'desc'  => githuber_load_view( 'setting/theme-description' ),
 					'type'  => 'html'
 				),
 			),

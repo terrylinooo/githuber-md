@@ -186,6 +186,14 @@ GNU General Public License for more details.
 * Fix bug: Classic editor's visual mode is not showed after disabling post type option. (issue #15)
 * Imporve: Beautify Markdown switcher.
 
+= 1.7.0
+
+* Improve setting page UI.
+* Add examples in setting pages.
+* Issue #22 - footnote.
+* Feautue request #19 - Add support to shortcode.
+* And other issues...
+
 == Known Issues ==
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5

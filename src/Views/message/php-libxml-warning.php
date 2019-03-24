@@ -15,6 +15,6 @@ $php_version = phpversion();
 
 <div class="notice notice-error is-dismissible" style="margin-top: 15px;">
 	<p>
-		<?php printf( __( 'Markdown Extra parser requires PHP module <strong>libxml</strong> and your system does not have <strong>libxml</strong> installed. Please disable Markdown Extra.', 'wp-githuber-md' ), $php_version ) ?> <br>
+		<?php echo __( 'Markdown Extra parser requires PHP module <strong>libxml</strong> and your system does not have <strong>libxml</strong> installed. Please disable Markdown Extra.', 'wp-githuber-md' ); ?> <br>
 	</p>
 </div>
