@@ -50,52 +50,7 @@ class Githuber_Settings_API {
 		wp_enqueue_script( 'jquery' );
 
 		wp_enqueue_script( 'prettify-print', GITHUBER_PLUGIN_URL . 'assets/vendor/editor.md/lib/prettify.min.js', array( 'jquery' ), '1.0', true );
-
-		$script_toggle_js = '
-			( function( $ ) {
-				$( function() {
-					$( ".setting-toggle" ).each( function() {
-						var toggle_location = $( this ).attr( "data-location" );
-						if ( toggle_location ) {
-							$( this ).appendTo( $( "#" + toggle_location ) );
-						}
-					});
-
-					$( ".setting-toggle" ).each( function() {
-						check_toggle( $( this ) );
-					} );
-
-					$( ".setting-toggle" ).click( function () {
-						check_toggle( $( this ) );
-					} );
-
-					function check_toggle( obj ) {
-						if ( obj.hasClass( "has-child" ) ) {
-							var setting = obj.attr( "data-setting" );
-							var target  = obj.attr( "data-target" );
-						
-							var option_value = $( "input[type=checkbox][name=\'" + target + "\']" ).is(":checked");  
-
-							console.log(option_value);
-	
-							if ( option_value ) {
-								$( ".setting-has-parent[data-parent=" + setting + "]" ).each( function() {
-										$( this ).closest( "tr" ).fadeIn(500);
-								} );
-							} else {
-								$( ".setting-has-parent[data-parent=" + setting + "]" ).each( function() {
-										$( this ).closest( "tr" ).hide();
-								} );
-							}
-						}
-					}
-
-					PR.prettyPrint();
-				});
-			} )( jQuery );
-		';
-
-		wp_add_inline_script( 'jquery', $script_toggle_js );
+		wp_enqueue_script( 'setting-api', GITHUBER_PLUGIN_URL . 'assets/js/githuber-md-setting-api.js', array( 'jquery' ), GITHUBER_PLUGIN_VERSION, true );
 	}
 
 	/**
