@@ -7,14 +7,14 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.6.2
+ * @version 1.7.0
  */
 
 /**
  * Plugin Name: WP Githuber MD
  * Plugin URI:  https://github.com/terrylinooo/githuber-md
  * Description: An all-in-one Markdown plugin for your WordPress sites.
- * Version:     1.6.2
+ * Version:     1.7.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'GITHUBER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'GITHUBER_PLUGIN_VERSION', '1.6.2' );
+define( 'GITHUBER_PLUGIN_VERSION', '1.7.0' );
 define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
@@ -90,7 +90,28 @@ require_once GITHUBER_PLUGIN_DIR . 'src/helpers.php';
 // Composer autoloader.
 require_once GITHUBER_PLUGIN_DIR . 'vendor/autoload.php';
 
-if ( version_compare( phpversion(), '5.3.6', '>=' ) ) {
+if ( is_admin() ) {
+
+	if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
+		if ( ! class_exists( 'DOMDocument' ) ) {
+			add_action( 'admin_notices', 'githuber_md_warning_libxml' );
+	
+			function githuber_md_warning_libxml() {
+				echo githuber_load_view( 'message/php-libxml-warning' );
+			}
+		}
+	}
+	
+	if ( ! function_exists( 'mb_strlen' ) ) {
+		add_action( 'admin_notices', 'githuber_md_warning_mbstring' );
+
+		function githuber_md_warning_mbstring() {
+			echo githuber_load_view( 'message/php-mbstring-warning' );
+		}
+	}
+}
+
+if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {
 
 	// Load main launcher class of WP Githuber MD plugin.
 	$gitbuber = new Githuber();

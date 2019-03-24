@@ -293,15 +293,18 @@ class Markdown extends ControllerAbstract {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
-		/* @version 1.6.0 */
-		add_action( 'wp_ajax_githuber_markdown_this_post', array( $this, 'admin_githuber_markdown_this_post' ) );
+		if ( 'no' !== githuber_get_option( 'markdown_editor_switcher', 'githuber_markdown' ) ) {
 
-		// Add the sidebar metabox to posts.
-		$current_post_type = githuber_get_current_post_type();
+			/* @version 1.6.0 */
+			add_action( 'wp_ajax_githuber_markdown_this_post', array( $this, 'admin_githuber_markdown_this_post' ) );
 
-		// Only display metabox if current post-type supports Markdown.
-		if ( ! empty( $current_post_type) && post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
-			add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+			// Add the sidebar metabox to posts.
+			$current_post_type = githuber_get_current_post_type();
+
+			// Only display metabox if current post-type supports Markdown.
+			if ( ! empty( $current_post_type) && post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
+				add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+			}
 		}
 	}
 
@@ -324,7 +327,12 @@ class Markdown extends ControllerAbstract {
 	public static function get_parser()
 	{
 		if ( ! self::$parser_instance ) {
-			self::$parser_instance = new Module\MarkdownParser();
+			
+			if ( 'yes' !== githuber_get_option( 'support_mardown_extra', 'githuber_preferences' ) ) {
+				self::$parser_instance = new Module\MarkdownExtraParser();
+			} else {
+				self::$parser_instance = new Module\MarkdownParser();
+			}
 		}
 		return self::$parser_instance;
 	}

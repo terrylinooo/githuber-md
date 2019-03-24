@@ -465,7 +465,13 @@ class ParsedownExtra extends Parsedown
         $DOMDocument = new DOMDocument;
 
         # http://stackoverflow.com/q/11309194/200145
-        $elementMarkup = mb_convert_encoding($elementMarkup, 'HTML-ENTITIES', 'UTF-8');
+
+        // Modify by Terry Lin, for Githuber MD
+        if (function_exists('mb_convert_encoding')) {
+            $elementMarkup = mb_convert_encoding($elementMarkup, 'HTML-ENTITIES', 'UTF-8');
+        } else {
+            $elementMarkup = utf8_encode($elementMarkup);
+        }
 
         # http://stackoverflow.com/q/4879946/200145
         $DOMDocument->loadHTML($elementMarkup);

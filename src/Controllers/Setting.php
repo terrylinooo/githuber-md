@@ -673,8 +673,8 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'desc'    => githuber_load_view( 'example/gfm-task-list' ),
-					'type'    => 'html',
+					'desc' => githuber_load_view( 'example/gfm-task-list' ),
+					'type' => 'html',
 				),
 
 				array(
@@ -725,38 +725,38 @@ class Setting extends ControllerAbstract {
 			'githuber_about' => array(
 
 				array(
-					'name' => 'plugin_about_author',
-					'label'   => __( 'Author', 'wp-githuber-md' ),
-					'desc' => 'Terry L. @ Taiwan.',
-					'type' => 'html'
+					'name'  => 'plugin_about_author',
+					'label' => __( 'Author', 'wp-githuber-md' ),
+					'desc'  => 'Terry L. @ Taiwan.',
+					'type'  => 'html'
 				),
 
 				array(
-					'name' => 'plugin_about_version',
-					'label'   => __( 'Version', 'wp-githuber-md' ),
-					'desc' => GITHUBER_PLUGIN_VERSION,
-					'type' => 'html'
+					'name'  => 'plugin_about_version',
+					'label' => __( 'Version', 'wp-githuber-md' ),
+					'desc'  => GITHUBER_PLUGIN_VERSION,
+					'type'  => 'html'
 				),
 
 				array(
-					'name' => 'plugin_about_github',
-					'label'   => __( 'GitHub Repository', 'wp-githuber-md' ),
-					'desc' => githuber_load_view( 'setting/about-github-repo' ),
-					'type' => 'html'
+					'name'  => 'plugin_about_github',
+					'label' => __( 'GitHub Repository', 'wp-githuber-md' ),
+					'desc'  => githuber_load_view( 'setting/about-github-repo' ),
+					'type'  => 'html'
 				),
 
 				array(
-					'name' => 'plugin_about_support',
-					'label'   => __( 'Support', 'wp-githuber-md' ),
-					'desc' => githuber_load_view( 'setting/about-and-support' ),
-					'type' => 'html'
+					'name'  => 'plugin_about_support',
+					'label' => __( 'Support', 'wp-githuber-md' ),
+					'desc'  => githuber_load_view( 'setting/about-and-support' ),
+					'type'  => 'html'
 				),
 
 				array(
-					'name' => 'plugin_about_changelog',
-					'label'   => __( 'Changelog', 'wp-githuber-md' ),
-					'desc' => '<a href="https://github.com/terrylinooo/githuber-md/wiki/Changelog" target="_blank">https://github.com/terrylinooo/githuber-md/wiki/Changelog</a>',
-					'type' => 'html'
+					'name'  => 'plugin_about_changelog',
+					'label' => __( 'Changelog', 'wp-githuber-md' ),
+					'desc'  => '<a href="https://github.com/terrylinooo/githuber-md/wiki/Changelog" target="_blank">https://github.com/terrylinooo/githuber-md/wiki/Changelog</a>',
+					'type'  => 'html'
 				),
 			),
 		);
