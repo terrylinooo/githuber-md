@@ -1,8 +1,8 @@
-# Markdown editor plugin for WordPress - WP Githuber MD
+# Markdown editor plugin for WordPress
 
 ![Screenshot](./assets/images/wp-githuber-md-cover.png)
 
-An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as [Markdown editor](https://markdown-editor.github.io/), live-preivew, image-paste, HTML-to-Markdown helper, and more..
+An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
 
 
@@ -68,7 +68,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ## Features
 
-* All-in-one Markdown Editor.
+* All-in-one [Markdown editor](https://markdown-editor.github.io/).
 * Live preivew.
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
