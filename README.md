@@ -1,4 +1,4 @@
-# WP Githuber MD
+# Markdown editor plugin for WordPress - WP Githuber MD
 
 ![Screenshot](./assets/images/wp-githuber-md-cover.png)
 
