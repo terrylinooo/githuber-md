@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
-Read detailed document, please visit [Wiki](https://github.com/terrylinooo/githuber-md/wiki).
+Read detailed document, please visit [https://github.com/terrylinooo/githuber-md](https://github.com/terrylinooo/githuber-md).
 
 == Demo ==
 
@@ -50,7 +50,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 == Features ==
 
-* Markdown editor.
+* [Markdown editor](https://markdown-editor.github.io/).
 * Live preivew.
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
@@ -85,8 +85,10 @@ Simplified Chinese (zh_CN)
 6. KaTex.
 7. Flow Chart.
 8. Sequence Diagram.
-9. Setting Page 1.
-10. Setting page 2.
+9. Setting Page 1. (Markdown)
+10. Setting page 2. (Modules)
+10. Setting page 3. (Extensions)
+10. Setting page 4. (Preferences)
 
 == Copyright ==
 
@@ -193,6 +195,10 @@ GNU General Public License for more details.
 * Issue #22 - footnote.
 * Feautue request #19 - Add support to shortcode.
 * And other issues...
+
+= 1.7.1
+
+* Bug fix and a bit improvement.
 
 == Known Issues ==
 
