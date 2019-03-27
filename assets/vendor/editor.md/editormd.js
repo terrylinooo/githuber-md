@@ -194,7 +194,7 @@
         toolbarCustomIcons   : {               // using html tag create toolbar icon, unused default <a> tag.
             lowercase        : "<a href=\"javascript:;\" title=\"Lowercase\" unselectable=\"on\"><i class=\"fa\" name=\"lowercase\" style=\"font-size:24px;margin-top: -10px;\">a</i></a>",
             "ucwords"        : "<a href=\"javascript:;\" title=\"ucwords\" unselectable=\"on\"><i class=\"fa\" name=\"ucwords\" style=\"font-size:20px;margin-top: -3px;\">Aa</i></a>"
-        }, 
+        },
         toolbarIconsClass    : {
             undo             : "fa-undo",
             redo             : "fa-repeat",
@@ -230,7 +230,7 @@
             search           : "fa-search",
             fullscreen       : "fa-arrows-alt",
             clear            : "fa-eraser",
-            help             : "fa-question-circle",
+            help             : "fa-question",
             info             : "fa-info-circle"
         },        
         toolbarIconTexts     : {},

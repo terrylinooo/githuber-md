@@ -1,14 +1,14 @@
 /* Editor.md Dark theme */
 
-#{$prefix}theme-dark {
+.editormd-theme-dark {
     border-color: #1a1a17;
 
-    #{$prefix}toolbar {
+    .editormd-toolbar {
         background: #1A1A17;
         border-color: #1a1a17;
     }
 
-    #{$prefix}menu > li > a {
+    .editormd-menu > li > a {
         color: #777;
         border-color: #1a1a17;
 
@@ -18,7 +18,7 @@
         }
     }
 
-    #{$prefix}menu > li.divider {
+    .editormd-menu > li.divider {
         border-right: 1px solid #111;
     }
     

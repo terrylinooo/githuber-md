@@ -25,6 +25,7 @@ class Githuber {
 
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), 998 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ), 999 );
 
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
@@ -120,12 +121,27 @@ class Githuber {
 
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
-	 * @return void
 	 */
 	public function front_enqueue_styles() {
 		wp_enqueue_style( 'githuber-md-css', GITHUBER_PLUGIN_URL . 'assets/css/githuber-md.css', array(), GITHUBER_PLUGIN_VERSION, 'all' );
 	}
+
+	/**
+	 * Register JS files for frontend use.
+	 */
+	public function front_enqueue_scripts() {
+
+		if ( '_blank' === githuber_get_option( 'post_link_target_attribute', 'githuber_preferences' ) ) {
+			$frontend_settings['link_opening_method'] = '_blank';
+		} else {
+			$frontend_settings['link_opening_method'] = '_top';
+		}
+
+		// Register JS variables for the Editormd library uses.
+		wp_enqueue_script( 'githuber-md-js', GITHUBER_PLUGIN_URL . 'assets/js/githuber-md-frontend.js', array( 'jquery' ), GITHUBER_PLUGIN_VERSION, 'all' );
+		wp_localize_script( 'githuber-md-js', 'md_frontend_settings', $frontend_settings );
+	}
+	
 
 	/**
 	 * Load plugin textdomain.
@@ -139,19 +155,6 @@ class Githuber {
 	 */
 	public function front_print_footer_scripts() {
 
-		$html  = '<script id="module-preferences">';
-		$html .= '    (function($) {';
-		$html .= '        $(function() {';
-
-		if ( '_blank' === githuber_get_option( 'post_link_target_attribute', 'githuber_preferences' ) ) {
-			$html .= '$(".post a").attr("target", "_blank");';
-		}
-            
-		$html .= '        });';
-		$html .= '    })(jQuery);';
-		$html .= '</script>';
-
-		echo $html;
 	}
 }
 

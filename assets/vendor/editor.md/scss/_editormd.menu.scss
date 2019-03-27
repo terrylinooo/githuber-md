@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#{$prefix}menu {
+.editormd-menu {
     margin: 0;
     padding: 0;       
     list-style: none;
@@ -42,14 +42,14 @@
                 padding: 5px;
             }
 
-            > #{$prefix}bold {
+            > .editormd-bold {
                 padding: 5px 2px; 
                 display: inline-block;
                 font-weight: bold;
             }
         }
 
-        &:hover #{$prefix}dropdown-menu {
+        &:hover .editormd-dropdown-menu {
             display: block;
         }
     }
@@ -59,7 +59,7 @@
     }
 }
 
-#{$prefix}dropdown-menu { 
+.editormd-dropdown-menu { 
     display: none;
     background: #fff;
     border: 1px solid $borderColor;

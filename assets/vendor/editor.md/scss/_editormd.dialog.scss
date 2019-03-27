@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#{$prefix}dialog {
+.editormd-dialog {
     color: $color;
     position: fixed;
     z-index: 99999;
@@ -12,12 +12,34 @@
     font-size: 14px;
 }
 
-#{$prefix}dialog-container {
+.editormd-dialog-container {
     position: relative;
     padding: 20px;
     line-height: 1.4;
     overflow: hidden;
     display: block;
+
+    .editormd-html-entity-btn {
+        color: #222;
+        font-size: 13px;
+    }
+
+    .markdown-body {
+        width: 100% !important;
+        table, thead, tr {
+            width: 100% !important;
+        }
+        th {
+            background-color: #333333;
+            color: #ffffff;
+            font-weight: normal;
+            font-style: italic;
+            font-size: 12px;
+        }
+        td {
+            font-size: 12px;
+        }
+    }
 
     h1 {
         font-size: 24px;
@@ -43,7 +65,7 @@
     }
 }
 
-#{$prefix}dialog-close {
+.editormd-dialog-close {
     position: absolute;
     top: 12px;
     right: 15px;
@@ -56,7 +78,7 @@
     }
 } 
             
-#{$prefix}dialog-header {
+.editormd-dialog-header {
     padding: 11px 20px;    
     border-bottom: 1px solid #eee;
     @include transition(background 300ms ease-out);
@@ -66,27 +88,27 @@
     }
 }
 
-#{$prefix}dialog-title {
+.editormd-dialog-title {
     font-size: 14px;             
 }
             
-#{$prefix}dialog-footer {
+.editormd-dialog-footer {
     padding: 10px 0 0 0;
     text-align: right;
 }
 
-#{$prefix}dialog-info {
+.editormd-dialog-info {
     width: 420px;
     
     h1 {
         font-weight: normal;
     }
 
-    #{$prefix}dialog-container {
+    .editormd-dialog-container {
         padding: 20px 25px 25px;
     }
 
-    #{$prefix}dialog-close {
+    .editormd-dialog-close {
         top: 10px;
         right: 10px;
     } 
@@ -114,9 +136,9 @@
     }
 }
 
-#{$prefix}mask,
-#{$prefix}container-mask,
-#{$prefix}dialog-mask {
+.editormd-mask,
+.editormd-container-mask,
+.editormd-dialog-mask {
     display: none;
     width: 100%;
     height: 100%;
@@ -125,48 +147,48 @@
     left: 0;
 }
 
-#{$prefix}mask,
-#{$prefix}dialog-mask-bg {
+.editormd-mask,
+.editormd-dialog-mask-bg {
     background: #fff;
     opacity: 0.5;
     filter: alpha(opacity=50);
 }
 
-#{$prefix}mask {
+.editormd-mask {
     position: fixed;
     background: #000;
     @include opacity(0.2); 
     z-index: 99998;  
 }
 
-#{$prefix}container-mask, 
-#{$prefix}dialog-mask-con {
+.editormd-container-mask, 
+.editormd-dialog-mask-con {
     background: url(../images/loading.gif) no-repeat center center;
     @include background-size(32px 32px);
 }
 
-#{$prefix}container-mask {
+.editormd-container-mask {
     z-index: 20;  
     display: block;
     background-color: #fff;    
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-    #{$prefix}container-mask, 
-    #{$prefix}dialog-mask-con {
+    .editormd-container-mask, 
+    .editormd-dialog-mask-con {
         background-image: url(../images/loading@2x.gif);
     }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-device-pixel-ratio: 3) {
-    #{$prefix}container-mask,
-    #{$prefix}dialog-mask-con {
+    .editormd-container-mask,
+    .editormd-dialog-mask-con {
         background-image: url(../images/loading@3x.gif);
     }
 }
 
-#{$prefix}code-block-dialog, 
-#{$prefix}preformatted-text-dialog {
+.editormd-code-block-dialog, 
+.editormd-preformatted-text-dialog {
     textarea {
         width: 100%;
         height: 400px;
@@ -179,7 +201,7 @@
     }
 }
 
-#{$prefix}code-toolbar {
+.editormd-code-toolbar {
     color: #999;
     font-size: 14px;
     margin: -5px 0 10px;

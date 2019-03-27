@@ -5,13 +5,6 @@ var wp_editor_container = '#wp-content-editor-container';
 var wp_editor = 'wp-content-editor-container';
 var githuber_md_editor;
 
-onkeydown = function(e){
-    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
-      e.preventDefault();
-      //your saving code
-    }
-  };
-  
 (function($) {
     $(function() {
         var config = window.editormd_config;
@@ -48,7 +41,7 @@ onkeydown = function(e){
                     'h1', 'h2', 'h3', 'h4', '|',
                     'list-ul', 'list-ol', 'hr', '|',
                     'link', 'reference-link', 'image', 'code', 'code-block', 'table', 'datetime', 'html-entities', 'more', 'pagebreak', config.support_emoji == 'yes' ? 'emoji' : '' + '|',
-                    'watch', 'preview', 'fullscreen'
+                    'watch', 'preview', 'fullscreen', 'help'
                 ];
             },
             onfullscreen: function () {
@@ -85,15 +78,6 @@ onkeydown = function(e){
                     more: 'More'
                 }
             },
-            onload : function() {
-                var keyMap = {
-                    "Ctrl-T": function(cm) {
-                        alert("Ctrl+T");
-                    },
-            
-                };
-                this.addKeyMap(keyMap);
-            }
         };
 
         if ($(wp_editor_container).length == 1) {
@@ -104,7 +88,6 @@ onkeydown = function(e){
             //  githuber_md_editor = editormd(wp_editor, global_editormd_config);
         }
 
-        
         if (typeof image_insert_type !== 'undefined') {
             var image_insert_type = 'markdown';
         }

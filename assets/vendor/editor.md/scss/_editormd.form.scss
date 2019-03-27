@@ -2,7 +2,7 @@
 
 // Form
             
-#{$prefix}form {
+.editormd-form {
     color: $color;
     overflow: hidden;
     display: block;
@@ -73,11 +73,11 @@
     }
 }
 
-#{$prefix}form,
-#{$prefix}dialog-container,
-#{$prefix}dialog-footer {
+.editormd-form,
+.editormd-dialog-container,
+.editormd-dialog-footer {
 
-    input[type="submit"], #{$prefix}btn, button {
+    input[type="submit"], .editormd-btn, button {
         min-width: 75px;
         cursor: pointer;
         color: #555;
@@ -107,11 +107,11 @@
         }
     }
 
-    #{$prefix}btn {
+    .editormd-btn {
         padding: 5px 8px 4px\0;
     }
 
-    #{$prefix}btn + #{$prefix}btn {
+    .editormd-btn + .editormd-btn {
         margin-left: 8px;
     }
 
@@ -134,7 +134,7 @@
     }
 }
 
-#{$prefix}file-input {
+.editormd-file-input {
     width: 75px;
     height: 32px;
     margin-left: 8px;

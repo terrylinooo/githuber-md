@@ -9,7 +9,7 @@
 // github-markdown.css
 @import "markdown-theme-github.scss";  
 
-#{$prefix}preview-container, #{$prefix}html-preview {
+.editormd-preview-container, .editormd-html-preview {
     text-align: left;
     font-size: 14px;
     line-height: 1.6;
@@ -76,11 +76,11 @@
     .markdown-toc-list {
     } 
     
-    p#{$prefix}tex {
+    p.editormd-tex {
         text-align: center;
     }
     
-    span#{$prefix}tex {
+    span.editormd-tex {
         margin: 0 5px;
     }
     
@@ -112,7 +112,7 @@
 
 @import "prettify";
 
-#{$prefix}preview-container, #{$prefix}html-preview {
+.editormd-preview-container, .editormd-html-preview {
     pre.prettyprint { 
         padding: 10px; 
         border: 1px solid $borderColor; 
@@ -170,9 +170,9 @@
     */
 }    
 
-#{$prefix}preview-container, #{$prefix}html-preview {
+.editormd-preview-container, .editormd-html-preview {
 
-    #{$prefix}toc-menu {
+    .editormd-toc-menu {
         margin: 8px 0 12px 0;
         display: inline-block;
 
@@ -295,7 +295,7 @@
 }
 
 .markdown-body {
-    #{$prefix}toc-menu {
+    .editormd-toc-menu {
         ul {
             padding-left: 0; 
         }
@@ -320,7 +320,7 @@ hr.editormd-page-break {
     }
 }
 
-#{$prefix}html-preview {
+.editormd-html-preview {
     textarea {
         display : none;
     }
@@ -332,7 +332,7 @@ hr.editormd-page-break {
     }
 }
 
-#{$prefix}preview-close-btn {
+.editormd-preview-close-btn {
     color: #fff;
     padding: 4px 6px;
     font-size: 18px;

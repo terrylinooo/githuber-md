@@ -269,6 +269,26 @@
   overflow: hidden;
   display: block;
 }
+.editormd-dialog-container .editormd-html-entity-btn {
+  color: #222;
+  font-size: 13px;
+}
+.editormd-dialog-container .markdown-body {
+  width: 100% !important;
+}
+.editormd-dialog-container .markdown-body table, .editormd-dialog-container .markdown-body thead, .editormd-dialog-container .markdown-body tr {
+  width: 100% !important;
+}
+.editormd-dialog-container .markdown-body th {
+  background-color: #333333;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 12px;
+}
+.editormd-dialog-container .markdown-body td {
+  font-size: 12px;
+}
 .editormd-dialog-container h1 {
   font-size: 24px;
   margin-bottom: 10px;

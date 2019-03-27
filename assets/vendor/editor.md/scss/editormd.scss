@@ -32,16 +32,16 @@
     }            
 
     > textarea,
-    #{$prefix}html-textarea,
-    #{$prefix}markdown-textarea {
+    .editormd-html-textarea,
+    .editormd-markdown-textarea {
         width: 0;
         height: 0;
         outline: 0;
         resize:none;
     }
     
-    #{$prefix}html-textarea,
-    #{$prefix}markdown-textarea {
+    .editormd-html-textarea,
+    .editormd-markdown-textarea {
         display : none;
     }
 
@@ -73,11 +73,11 @@
     }
 }
             
-#{$prefix}user-unselect { 
+.editormd-user-unselect { 
     @include user-select(none); 
 }
 
-#{$prefix}toolbar {
+.editormd-toolbar {
     width: 100%;
     min-height: 37px;
     background: #fff;
@@ -89,7 +89,7 @@
     border-bottom: 1px solid $borderColor;
 }
 
-#{$prefix}toolbar-container {
+.editormd-toolbar-container {
     padding: 0 8px;
     min-height: 35px;
     @include user-select(none);
@@ -97,7 +97,7 @@
 
 @import "editormd.menu";
 
-#{$prefix}container {
+.editormd-container {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -116,8 +116,8 @@
 @import "editormd.preview";
 @import "editormd.preview.themes";
 
-#{$prefix}onlyread {
-    #{$prefix}toolbar {
+.editormd-onlyread {
+    .editormd-toolbar {
         display: none;
     }
 
@@ -125,12 +125,12 @@
         margin-top: 0;
     }
 
-    #{$prefix}preview {
+    .editormd-preview {
         top: 0;
     }
 }
 
-#{$prefix}fullscreen {
+.editormd-fullscreen {
     position: fixed; 
     top   : 0; 
     left  : 0; 

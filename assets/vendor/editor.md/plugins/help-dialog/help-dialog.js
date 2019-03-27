@@ -28,13 +28,12 @@
 
 			if (editor.find("." + dialogName).length < 1)
 			{			
-				var dialogContent = "<div class=\"markdown-body\" style=\"font-family:微软雅黑, Helvetica, Tahoma, STXihei,Arial;height:390px;overflow:auto;font-size:14px;border-bottom:1px solid #ddd;padding:0 20px 20px 0;\"></div>";
+				var dialogContent = "<div class=\"markdown-body\" style=\"height:390px;overflow:auto;font-size:14px;border-bottom:1px solid #ddd;padding:0;\"></div>";
 
 				dialog = this.createDialog({
 					name       : dialogName,
 					title      : dialogLang.title,
-					width      : 840,
-					height     : 540,
+					width      : 640,
 					mask       : settings.dialogShowMask,
 					drag       : settings.dialogDraggable,
 					content    : dialogContent,

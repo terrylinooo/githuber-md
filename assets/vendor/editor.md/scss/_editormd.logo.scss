@@ -14,15 +14,15 @@
 	font-style: normal;
 }
 
-#{$prefix}logo,
-#{$prefix}logo-1x,
-#{$prefix}logo-2x,
-#{$prefix}logo-3x,
-#{$prefix}logo-4x,
-#{$prefix}logo-5x,
-#{$prefix}logo-6x,
-#{$prefix}logo-7x,
-#{$prefix}logo-8x {
+.editormd-logo,
+.editormd-logo-1x,
+.editormd-logo-2x,
+.editormd-logo-3x,
+.editormd-logo-4x,
+.editormd-logo-5x,
+.editormd-logo-6x,
+.editormd-logo-7x,
+.editormd-logo-8x {
 	font-family: 'editormd-logo';
 	speak: none;
 	font-style: normal;
@@ -48,42 +48,42 @@
     }
 }
 
-#{$prefix}logo-1x {  
+.editormd-logo-1x {  
     font-size: 1em;           
 }
 
-#{$prefix}logo-lg {  
+.editormd-logo-lg {  
     font-size: 1.2em;           
 }
 
-#{$prefix}logo-2x {  
+.editormd-logo-2x {  
     font-size: 2em;           
 }
 
-#{$prefix}logo-3x {  
+.editormd-logo-3x {  
     font-size: 3em;           
 }
 
-#{$prefix}logo-4x {  
+.editormd-logo-4x {  
     font-size: 4em;           
 }
 
-#{$prefix}logo-5x {  
+.editormd-logo-5x {  
     font-size: 5em;      
 }
 
-#{$prefix}logo-6x {  
+.editormd-logo-6x {  
     font-size: 6em;      
 }
 
-#{$prefix}logo-7x {  
+.editormd-logo-7x {  
     font-size: 7em;      
 }
 
-#{$prefix}logo-8x {  
+.editormd-logo-8x {  
     font-size: 8em;   
 }
 
-#{$prefix}logo-color {
+.editormd-logo-color {
     color: $mainColor;
 }
