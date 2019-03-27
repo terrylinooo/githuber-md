@@ -700,15 +700,15 @@ class Setting extends ControllerAbstract {
 					'type'    => 'radio',
 					'default' => '_self',
 					'options' => array(
-						'_self' => 'Same window. (default)',
-						'_blank'  => 'New window.',
+						'_self'  => __( 'Same window. (default)', 'wp-githuber-md' ),
+						'_blank' => __( 'New window.', 'wp-githuber-md' ),
 					)
 				),
 
 				array(
 					'name'    => 'allow_shortcode',
 					'label'   => __( 'Shortcode', 'wp-githuber-md' ),
-					'desc'    => __( 'Allow using shortcode in Markdown text.') . '<br />' . __( 'Please understand that shortcode is processed to HTML by PHP, not JavaScript, therefore live-preview panel does not support it.', 'wp-githuber-md' ),
+					'desc'    => __( 'Allow using shortcode in Markdown text.', 'wp-githuber-md' ) . '<br />' . __( 'Please understand that shortcode is processed to HTML by PHP, not JavaScript, therefore live-preview panel does not support it.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'default' => 'yes',
 				),
