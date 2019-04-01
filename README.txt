@@ -1,9 +1,10 @@
 === WP Githuber MD - WordPress Markdown Editor ===
 Contributors: terrylin
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Githuber+MD&currency_code=USD&source=url
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -199,6 +200,11 @@ GNU General Public License for more details.
 = 1.7.1
 
 * Bug fix and a bit improvement.
+
+= 1.7.2
+
+* Fix issue: disable-revisions not working.
+* Add donation information.
 
 == Known Issues ==
 
