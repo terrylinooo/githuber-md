@@ -31,7 +31,7 @@ class Register extends ControllerAbstract {
 		$this->register_hooks();
 
 		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
-			add_action( 'init', array( $this , 'remove_revisions' ), 10 );
+			add_action( 'admin_init', array( $this , 'remove_revisions' ), 999 );
 		}
 
 		if ( 'yes' === githuber_get_option( 'disable_autosave', 'githuber_markdown' ) ) {
@@ -87,9 +87,9 @@ class Register extends ControllerAbstract {
 	 * Remove revisions.
 	 */
 	public function remove_revisions() {
-		remove_post_type_support( 'post', 'revisions' );
-		remove_post_type_support( 'page', 'revisions' );
-		remove_post_type_support( 'repository', 'revisions' );
+		foreach ( get_post_types() as $post_type ) {
+			remove_post_type_support( $post_type, 'revisions' );
+		}
 	}
 
 	/**
