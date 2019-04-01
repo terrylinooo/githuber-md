@@ -17,4 +17,8 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
         <img src="<?php echo GITHUBER_PLUGIN_URL . 'assets/images/donate_qr.png' ?>">
     </a>
 </div>
-<p><?php _e( 'If you think this plugin is useful to you, buy me a coffee.<br />Payment gateway provided by PayPal.', 'seo-search-permalink' ); ?></p>
+<p><?php _e( 'If you think this plugin is useful to you, buy me a coffee.<br />Payment gateway provided by PayPal.', 'wp-githuber-md' ); ?></p>
+<ol class="donate-note">
+    <li><?php printf( __( 'Top 5 donators, including their names or company name and URLs, will be listed on <a href="%s">my homepage</a>.', 'wp-githuber-md' ), 'https://terryl.in/'); ?></li>
+    <li><?php printf( __( 'All donators will be listed on  <a href="%s">Thank You</a> page.', 'wp-githuber-md' ), 'https://terryl.in/thank-you/'); ?></li>
+</ol>
