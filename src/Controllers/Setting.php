@@ -746,6 +746,13 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'name'  => 'plugin_about_donation',
+					'label' => __( 'Buy me a coffee', 'wp-githuber-md' ),
+					'desc'  => githuber_load_view( 'setting/about-donation' ),
+					'type'  => 'html'
+				),
+
+				array(
 					'name'  => 'plugin_theme',
 					'label' => __( 'Theme', 'wp-githuber-md' ),
 					'desc'  => githuber_load_view( 'setting/theme-description' ),
