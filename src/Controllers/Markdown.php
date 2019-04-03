@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.7.0
+ * @version 1.7.3
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -327,8 +327,10 @@ class Markdown extends ControllerAbstract {
 	public static function get_parser()
 	{
 		if ( ! self::$parser_instance ) {
-			
-			if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_preferences' ) ) {
+
+			$is_markdown_extra = githuber_get_option( 'support_mardown_extra', 'githuber_extensions' );
+
+			if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
 				self::$parser_instance = new Module\MarkdownExtraParser();
 			} else {
 				self::$parser_instance = new Module\MarkdownParser();
