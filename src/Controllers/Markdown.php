@@ -800,6 +800,7 @@ class Markdown extends ControllerAbstract {
 				add_action( 'wp_restore_post_revision', array( $this, 'wp_restore_post_revision' ), 10, 2 );
 				add_filter( '_wp_post_revision_fields', array( $this, '_wp_post_revision_fields' ) );
 				add_action( 'xmlrpc_call', array( $this, 'xmlrpc_actions' ) );
+				add_filter( 'content_save_pre', array( $this, 'preserve_code_blocks' ), 1 );
 				if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
 					$this->check_for_early_methods();
 				}
@@ -828,6 +829,7 @@ class Markdown extends ControllerAbstract {
 				remove_action( 'wp_restore_post_revision', array( $this, 'wp_restore_post_revision' ), 10, 2 );
 				remove_filter( '_wp_post_revision_fields', array( $this, '_wp_post_revision_fields' ) );
 				remove_action( 'xmlrpc_call', array( $this, 'xmlrpc_actions' ) );
+				remove_filter( 'content_save_pre', array( $this, 'preserve_code_blocks' ), 1 );
 				break;
 			case 'commenting':
 				remove_filter( 'pre_comment_content', array( $this, 'pre_comment_content' ), 9 );
@@ -928,6 +930,10 @@ class Markdown extends ControllerAbstract {
 				$post_data['post_content_filtered'] = '';
 			}
 
+			// we have no context to determine supported post types in the `post_content_pre` hook,
+			// which already ran to sanitize code blocks. Undo that.
+			$post_data['post_content'] = $this->restore_code_blocks( $post_data['post_content'] );
+
 			return $post_data;
 		}
 
@@ -1021,8 +1027,9 @@ class Markdown extends ControllerAbstract {
 	public function transform( $text, $args = array() ) {
 
 		$args = wp_parse_args( $args, array(
-			'id' => false,
-			'unslash' => true
+			'id'                 => false,
+			'unslash'            => true,
+			'decode_code_blocks' => false, // Fix: issue #30
 		) );
 
 		// probably need to unslash
@@ -1038,6 +1045,11 @@ class Markdown extends ControllerAbstract {
 
 		// sometimes we get an encoded > at start of line, breaking blockquotes
 		$text = preg_replace( '/^&gt;/m', '>', $text );
+
+		// If we're not using the code shortcode, prevent over-encoding.
+		if ( $args['decode_code_blocks'] ) {
+			$text = $this->restore_code_blocks( $text );
+		}
 
 		// Transform it!
 		$text = $this->get_parser()->transform( $text );
@@ -1185,6 +1197,9 @@ class Markdown extends ControllerAbstract {
 	protected function swap_for_editing( $post ) {
 		$markdown = $post->post_content_filtered;
 
+		// unencode encoded code blocks
+		$markdown = $this->restore_code_blocks( $markdown );
+
 		// restore beginning of line blockquotes
 		$markdown = preg_replace( '/^&gt; /m', '> ', $markdown );
 		$post->post_content_filtered = $post->post_content;
@@ -1230,5 +1245,25 @@ class Markdown extends ControllerAbstract {
 			}
 		}
 		return $posts;
+	}
+
+	/**
+	 * Preserve code blocks from being munged by KSES before they have a chance
+	 *
+	 * @param  string $text post content
+	 * @return string       post content with code blocks escaped
+	 */
+	public function preserve_code_blocks( $text ) {
+		return $this->get_parser()->codeblock_preserve( $text );
+	}
+
+	/**
+	 * Restore code blocks.
+	 *
+	 * @param  string $text post content
+	 * @return string       post content with code blocks unescaped
+	 */
+	public function restore_code_blocks( $text ) {
+		return $this->get_parser()->codeblock_restore( $text );
 	}
 }
