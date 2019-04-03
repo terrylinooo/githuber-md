@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -205,6 +205,11 @@ GNU General Public License for more details.
 
 * Fix issue: disable-revisions not working.
 * Add donation information.
+
+= 1.7.3
+
+* Fix issues: #29, issue #30 and issue #31.
+* Fix issue: Makrdown extra not working.
 
 == Known Issues ==
 
