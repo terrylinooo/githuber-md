@@ -211,6 +211,10 @@ GNU General Public License for more details.
 * Fix issues: #29, issue #30 and issue #31.
 * Fix issue: Makrdown extra not working.
 
+= 1.7.4
+
+* Fix Javascript syntax error (Link Opening Method).
+
 == Known Issues ==
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
