@@ -110,3 +110,17 @@ function githuber_get_current_post_type() {
 	}
 	return $post_type;
 }
+
+/**
+ * Load utility files.
+ *
+ * @param string $filename
+ * @return string
+ */
+function githuber_load_utility( $filename ) {
+	$include_path  = GITHUBER_PLUGIN_DIR . 'src/wp_utilities/class-' . $filename . '.php';
+
+	if ( ! empty( $include_path ) && is_readable( $include_path ) ) {
+		require $include_path;
+	}
+}
