@@ -27,7 +27,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $editormd_varsion = '1.5.0.6';
+	public $editormd_varsion = '1.5.0.7';
 
 	/**
 	 * The Post Type support from Markdown controller.

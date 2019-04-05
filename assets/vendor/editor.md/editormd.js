@@ -1782,7 +1782,7 @@
             var settings         = this.settings;
             
             if (!settings.syncScrolling) {
-                return this;
+            //    return this;
             }
             
             cm.on("change", function(_cm, changeObj) {
