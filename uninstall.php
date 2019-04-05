@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.7.0
+ * @version 1.7.5
  */
 
 // if uninstall.php is not called by WordPress, die.
@@ -16,9 +16,10 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
  
 $options_names = array(
-	'gihuber_markdown',
+	'githuber_markdown',
 	'githuber_modules',
-	'githuber_options',
+	'githuber_extensions',
+	'githuber_preferences',
 );
 
 foreach ( $options_names as $option_name ) {
