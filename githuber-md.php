@@ -7,14 +7,14 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.7.4
+ * @version 1.8.0
  */
 
 /**
  * Plugin Name: WP Githuber MD
  * Plugin URI:  https://github.com/terrylinooo/githuber-md
  * Description: An all-in-one Markdown plugin for your WordPress sites.
- * Version:     1.7.4
+ * Version:     1.8.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'GITHUBER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'GITHUBER_PLUGIN_VERSION', '1.7.4' );
+define( 'GITHUBER_PLUGIN_VERSION', '1.8.0' );
 define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
@@ -112,6 +112,47 @@ if ( is_admin() ) {
 }
 
 if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {
+
+	/**
+	 * Activate Githuber plugin.
+	 */
+	function githuber_activate_plugin() {
+		global $current_user;
+
+		$githuber_markdown = array(
+			'enable_markdown_for_post_types' => array( 'post', 'page' ),
+			'disable_revision'               => 'no',
+			'disable_autosave'               => 'yes',
+			'html_to_markdown'               => 'yes',
+			'markdown_editor_switcher'       => 'yes',
+			'editor_live_preview'            => 'yes',
+			'editor_sync_scrolling'          => 'yes',
+			'editor_html_decode'             => 'yes',
+			'editor_toolbar_theme'           => 'default',
+			'editor_editor_theme'            => 'default',
+		);
+
+		$setting_markdown = get_option( 'githuber_markdown' );
+
+		// Add default setting. Only execute this action at the first time activation.
+		if ( empty( $setting_markdown ) ) {
+			update_option( 'githuber_markdown', $githuber_markdown, '', 'yes' );
+		}
+	}
+
+	/**
+	 * Deactivate Githuber plugin.
+	 */
+	function githuber_deactivate_plugin() {
+		global $current_user;
+
+		// Turn on Rich-text editor.
+		update_user_option( $current_user->ID, 'rich_editing', 'true', true );
+		delete_user_option( $current_user->ID, 'dismissed_wp_pointers', true );
+	}
+
+	register_activation_hook( __FILE__, 'githuber_activate_plugin' );
+	register_deactivation_hook( __FILE__, 'githuber_deactivate_plugin' );
 
 	// Load main launcher class of WP Githuber MD plugin.
 	$gitbuber = new Githuber();

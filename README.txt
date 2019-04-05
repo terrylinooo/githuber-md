@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.7.4
+Stable tag: 1.8.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -214,6 +214,13 @@ GNU General Public License for more details.
 = 1.7.4
 
 * Fix Javascript syntax error (Link Opening Method).
+
+= 1.8.0
+
+* Fix issue #39: Live-preview doesn't react when Sync Scrolling is off.
+* Feature request #36: Image-paste - add suport to sm.ms (another image hosting service)
+* Fix bug: register_activation_hook does not implement when activating plugin at the first time.
+* Fix issue: incorrect variable name in unstall.php.
 
 == Known Issues ==
 
