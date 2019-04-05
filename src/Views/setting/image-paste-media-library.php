@@ -17,5 +17,5 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 <?php echo __( 'If you would like to simply copy and paste images into your article and don’t care about the image management, , please choose No.', 'wp-githuber-md' ); ?>
 <br />
 <span style="color: #0081ab">
-<?php echo __( 'Notice: This setting will not work if the Storage Space setting is chosen to `imgur.com`.', 'wp-githuber-md' ); ?>
+<?php echo __( 'Notice: This setting only works when Storage Space is set to `default`.', 'wp-githuber-md' ); ?>
 </span>

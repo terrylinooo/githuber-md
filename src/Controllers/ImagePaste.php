@@ -86,12 +86,31 @@ class ImagePaste extends ControllerAbstract {
 					if ( true === $data['success'] ) {
 						$response['filename'] = $data['data']['link'];
 					} else {
-						$response['error'] = __( 'Error while processing your request to Imgur!', 'wp-githuber-md' );
+						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Imgur' );
 					}
 				} else {
 					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
 				}
-			
+			} elseif ( 'smms' === $image_src ) {
+				
+				if ( function_exists( 'curl_init') ) {
+					$image    = $file['tmp_name'];
+					$filename = uniqid() . '.png';
+
+					$data  = $this->upload_to_smms( $image, $filename );
+
+					if ( 'success' === $data['code'] ) {
+						$response['filename'] = $data['data']['url'];
+					} else {
+						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'sm.ms' );
+
+						if ( ! empty( $data['msg'] ) ) {
+							$response['error'] .= $data['msg'];
+						}
+					}
+				} else {
+					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
+				}
 			} else {
 
 				if ( 'no' === $is_media_library ) {
@@ -136,6 +155,37 @@ class ImagePaste extends ControllerAbstract {
 		$ch = curl_init();
 
 		curl_setopt( $ch, CURLOPT_URL, 'https://api.imgur.com/3/image.json' );
+		curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)' );
+		curl_setopt( $ch, CURLOPT_POST, 1 );
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $post_data );
+		curl_setopt( $ch, CURLOPT_HTTPHEADER, $header_data );
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
+		
+		$result = curl_exec( $ch );
+		curl_close( $ch );
+
+		return json_decode( $result, true );
+	}
+
+	/**
+	 * Upload images to sm.ms 
+	 * 
+	 * @param string $image     Image binary string.
+	 * @param string $filename  Filename.
+	 * @return array Response from sm.ms image API.
+	 */
+	public function upload_to_smms( $image, $filename ) {
+
+		$image = curl_file_create( $image, 'image/png', $filename );
+
+		$post_data   = array( 'smfile' => $image );
+
+		$ch = curl_init();
+
+		curl_setopt( $ch, CURLOPT_URL, 'https://sm.ms/api/upload' );
 		curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)' );
 		curl_setopt( $ch, CURLOPT_POST, 1 );
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $post_data );

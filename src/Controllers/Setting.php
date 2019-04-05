@@ -628,6 +628,7 @@ class Setting extends ControllerAbstract {
 					'options' => array(
 						'default' => __( 'default', 'wp-githuber-md' ),
 						'imgur'   => __( 'imgur.com', 'wp-githuber-md' ),
+						'smms'    => __( 'sm.ms', 'wp-githuber-md' ),
 					)
 				),
 
