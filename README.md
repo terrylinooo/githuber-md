@@ -39,9 +39,9 @@ https://youtu.be/it1noNCTXa4
 
 ## Requirement
 
-* PHP version > 5.3.6
+* PHP version > 5.3.0
 * WordPress version > 4.0
-* Tested up to 5.0.3
+* Tested up to 5.1.1
 
 ## Download
 
@@ -74,8 +74,8 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Support Gutenberg editor.
 * Support custom post types.
 * [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
-* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
-* Syntax highlight.
+* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur and sm.ms)
+* Syntax highlight. (prism.js)
 * [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
 * [KaTex](https://terryl.in/en/githuber-md-katex/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
@@ -103,6 +103,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 - [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
 - [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
 - [Known issues](https://github.com/terrylinooo/githuber-md/wiki/Known-Issues)
+- [Donators](https://terryl.in/thank-you/)
 
 ### License
 
