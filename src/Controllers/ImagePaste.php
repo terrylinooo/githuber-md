@@ -120,7 +120,7 @@ class ImagePaste extends ControllerAbstract {
 
 					$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
 
-					if ( is_ssl()) {
+					if ( is_ssl() ) {
 						$online_path = str_replace( 'http://', 'https://', $online_path );
 					}
 
@@ -128,8 +128,14 @@ class ImagePaste extends ControllerAbstract {
 					$response['filename'] = $online_path . '/' . $filename;
 
 				} else {
+
 					$attachment_id = media_handle_upload( 'file', $_GET['post_id'] );
-					$response['filename'] = wp_get_attachment_url( $attachment_id );
+					$online_path   = wp_get_attachment_url( $attachment_id );
+
+					if ( is_ssl() ) {
+						$online_path = str_replace( 'http://', 'https://', $online_path );
+					}
+					$response['filename'] = $online_path;
 				}
 			}
 		} else {
