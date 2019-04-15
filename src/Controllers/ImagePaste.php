@@ -184,10 +184,8 @@ class ImagePaste extends ControllerAbstract {
 	 * @return array Response from sm.ms image API.
 	 */
 	public function upload_to_smms( $image, $filename ) {
-
-		$image = curl_file_create( $image, 'image/png', $filename );
-
-		$post_data   = array( 'smfile' => $image );
+		$image     = curl_file_create( $image, 'image/png', $filename );
+		$post_data = array( 'smfile' => $image );
 
 		$ch = curl_init();
 

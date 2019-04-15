@@ -160,7 +160,7 @@ class Markdown extends ControllerAbstract {
 		// Get post type from curren screen.
 		$current_post_type = githuber_get_current_post_type();
 
-		if ( ! empty( $current_post_type) && ! post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
+		if ( ! empty( $current_post_type ) && ! post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
 
 			// We enable Rich editor if user not enable Markdown for current post type!
 			$rich_editing = new RichEditing();
@@ -183,6 +183,9 @@ class Markdown extends ControllerAbstract {
 				}
 
 			} else {
+
+				// Tell YoastSEO, the Markdown is enable.
+				add_filter( 'wpseo_is_markdown_enabled', '__return_true' ); 
 
 				// Okay! User enable Markdown for current current post and it's post type.
 				$this->jetpack_code_snippets();
