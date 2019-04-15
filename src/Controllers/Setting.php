@@ -721,6 +721,14 @@ class Setting extends ControllerAbstract {
 					'type'    => 'toggle',
 					'default' => 'yes',
 				),
+
+				array(
+					'name'    => 'support_wpseo_analysis',
+					'label'   => __( 'Yoast SEO Analysis', 'wp-githuber-md' ),
+					'desc'    => __( "Support Yoast SEO readability analysis.", 'wp-githuber-md' ) . '<br /><span style="color: #b00000">' . __( "This is temporarily not working. Waiting for Yoast SEO community patch update.", 'wp-githuber-md' ) . '</span>',
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
 			),
 
 			'githuber_about' => array(

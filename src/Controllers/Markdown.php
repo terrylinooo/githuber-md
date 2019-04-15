@@ -185,7 +185,9 @@ class Markdown extends ControllerAbstract {
 			} else {
 
 				// Tell YoastSEO, the Markdown is enable.
-				add_filter( 'wpseo_is_markdown_enabled', '__return_true' ); 
+				if ( 'yes' === githuber_get_option( 'support_wpseo_analysis', 'githuber_preferences' ) ) {
+					add_filter( 'wpseo_is_markdown_enabled', '__return_true' );
+				}
 
 				// Okay! User enable Markdown for current current post and it's post type.
 				$this->jetpack_code_snippets();
