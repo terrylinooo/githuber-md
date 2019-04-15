@@ -184,23 +184,24 @@ class MarkdownParser extends Parsedown {
 	}
 
 	/**
-	 * Prevents blocks like <code>__this__</code> from turning into <code><strong>this</strong></code>
+	 * Preserve inline code block contents by HTML encoding them. Useful before getting to KSES stripping.
 	 *
 	 * @param  string $text Text that may need preserving
 	 * @return string Text that was preserved if needed
 	 */
+	
 	public function single_line_code_preserve( $text ) {
-		return preg_replace_callback( '|<code\b[^>]*>(.*?)</code>|', array( $this, 'do_single_line_code_preserve' ), $text );
+		return preg_replace_callback( "/[`]{1}([^\n].*?[^\n])[`]{1}/", array( $this, 'do_single_line_code_preserve' ), $text );
 	}
 
 	/**
 	 * Regex callback for inline code presevation
 	 *
 	 * @param  array $matches Regex matches
-	 * @return string Hashed content for later restoration
+	 * @return string Codeblock with escaped interior
 	 */
 	public function do_single_line_code_preserve( $matches ) {
-		return '<code>' . $this->hash_block( $matches[1] ) . '</code>';
+		return '<code>' . esc_html( $matches[1] ) . '</code>';
 	}
 
 	/**
