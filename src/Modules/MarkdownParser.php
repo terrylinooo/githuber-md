@@ -201,7 +201,7 @@ class MarkdownParser extends Parsedown {
 	 * @return string Codeblock with escaped interior
 	 */
 	public function do_single_line_code_preserve( $matches ) {
-		return '<code>' . esc_html( $matches[1] ) . '</code>';
+		return '<code>' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';
 	}
 
 	/**
