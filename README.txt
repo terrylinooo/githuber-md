@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -227,6 +227,10 @@ GNU General Public License for more details.
 * Fix issue: wp_get_attachment_url() doesn't distinguish whether a page request arrives via HTTP or HTTPS
 * Fix issue #38 - preserve inline code block.
 * Add Simplified Chinese language package.
+
+= 1.8.2
+
+* Fix issue #42: Markdown syntax takes effect in between two inline code blocks.
 
 == Known Issues ==
 
