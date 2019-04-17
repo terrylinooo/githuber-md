@@ -230,7 +230,7 @@ GNU General Public License for more details.
 
 = 1.8.2
 
-* Fix issue #42: Markdown syntax takes effect in between two inline code blocks.
+* Fix issue #42: Markdown syntax takes effect between two inline code blocks.
 
 == Known Issues ==
 

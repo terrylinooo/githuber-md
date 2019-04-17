@@ -8,7 +8,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.7.0
+ * @version 1.8.2
  */
 
 namespace Githuber\Module;
