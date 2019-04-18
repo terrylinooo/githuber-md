@@ -76,6 +76,15 @@ class ImagePaste extends ControllerAbstract {
 			$is_media_library = githuber_get_option( 'is_image_paste_media_library', 'githuber_modules' );
 
 			$file = $_FILES['file'];
+
+			$is_file_image = getimagesize( $file['tmp_name'] ) ? true : false;
+			$file_mimetype = mime_content_type( $file['tmp_name'] );
+
+			if ( ! $is_file_image || 'image/png' !== $file_mimetype ) {
+				$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Githuber MD' );
+				echo json_encode( $response );
+				wp_die();
+			}
 	
 			if ( 'imgur' === $image_src && ! empty( $imgur_client_id ) ) {
 				
