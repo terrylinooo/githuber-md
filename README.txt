@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.8.2
+Stable tag: 1.8.5
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -231,6 +231,11 @@ GNU General Public License for more details.
 = 1.8.2
 
 * Fix issue #42: Markdown syntax takes effect between two inline code blocks.
+
+= 1.8.5
+
+* Add feature: Githuber MD extensions - Inline code block with keyboard style. Example: `{ctrl}`
+* Fix issue: inline code block doesn't work on just one character, for example `a`. This issue is associated with issue #42
 
 == Known Issues ==
 
