@@ -38,8 +38,12 @@ class MarkdownExtraParser extends ParsedownExtra {
 	public function __construct() {
 		parent::__construct();
 
-		$this->InlineTypes['%'] = array( 'Figure' );
-		$this->inlineMarkerList = '!%"*_&[:<>`~\\';
+		$is_html5_figure = githuber_get_option( 'support_html_figure', 'githuber_extensions' );
+
+		if ( 'no' !== $is_html5_figure ) {
+			$this->InlineTypes['%'] = array( 'Figure' );
+			$this->inlineMarkerList = '!%"*_&[:<>`~\\';
+		}
 
 		$is_allow_shortcode = githuber_get_option( 'allow_shortcode', 'githuber_preferences' );
 
@@ -202,6 +206,12 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 * @return string Codeblock with escaped interior
 	 */
 	public function do_single_line_code_preserve( $matches ) {
+		
+		if ( 'yes' === githuber_get_option( 'support_inline_code_keyboard_style', 'githuber_extensions' ) ) {
+			if ( trim( $matches[1] ) !== $matches[1] ) {
+				return '<code class="kb-btn">' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';
+			}
+		}
 		return '<code>' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';
 	}
 

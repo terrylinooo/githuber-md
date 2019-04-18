@@ -691,6 +691,15 @@ class Setting extends ControllerAbstract {
 					'size'    => 'sm',
 					'default' => 'no'
 				),
+
+				array(
+					'name'    => 'support_inline_code_keyboard_style',
+					'label'   => __( 'Inline Code Block with Keyboard Style', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/inline_code_keyboard_style' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no'
+				),
 			),
 
 			'githuber_preferences' => array(

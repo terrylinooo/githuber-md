@@ -263,6 +263,7 @@ class Markdown extends ControllerAbstract {
 
 			$editormd_config_listp['extensions'] = array(
 				'support_task_list',
+				'support_inline_code_keyboard_style'
 			);
 
 			$editormd_localize = array();
