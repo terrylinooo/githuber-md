@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 04:59+0000\n"
+"POT-Creation-Date: 2019-04-18 09:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -36,11 +36,11 @@ msgstr ""
 msgid "Error while uploading file."
 msgstr ""
 
-#: src/Controllers/Markdown.php:277
+#: src/Controllers/Markdown.php:279
 msgid "Happy Markdowning!"
 msgstr ""
 
-#: src/Controllers/Markdown.php:678
+#: src/Controllers/Markdown.php:680
 msgid "Enable Markdown"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Highligh the syntax in your code snippets by Prism.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:405 src/Controllers/Setting.php:766
+#: src/Controllers/Setting.php:405 src/Controllers/Setting.php:775
 msgid "Theme"
 msgstr ""
 
@@ -323,88 +323,92 @@ msgstr ""
 msgid "HTML5 Figure"
 msgstr ""
 
-#: src/Controllers/Setting.php:699
+#: src/Controllers/Setting.php:697
+msgid "Inline Code Block with Keyboard Style"
+msgstr ""
+
+#: src/Controllers/Setting.php:708
 msgid "Link Opening Method"
 msgstr ""
 
-#: src/Controllers/Setting.php:700
+#: src/Controllers/Setting.php:709
 msgid "For links in posts, please specify where to open the linked document."
 msgstr ""
 
-#: src/Controllers/Setting.php:704
+#: src/Controllers/Setting.php:713
 msgid "Same window. (default)"
 msgstr ""
 
-#: src/Controllers/Setting.php:705
+#: src/Controllers/Setting.php:714
 msgid "New window."
 msgstr ""
 
-#: src/Controllers/Setting.php:711
+#: src/Controllers/Setting.php:720
 msgid "Shortcode"
 msgstr ""
 
-#: src/Controllers/Setting.php:712
+#: src/Controllers/Setting.php:721
 msgid "Allow using shortcode in Markdown text."
 msgstr ""
 
-#: src/Controllers/Setting.php:712
+#: src/Controllers/Setting.php:721
 msgid ""
 "Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
 " therefore live-preview panel does not support it."
 msgstr ""
 
-#: src/Controllers/Setting.php:719
+#: src/Controllers/Setting.php:728
 msgid "Smart Quotes"
 msgstr ""
 
-#: src/Controllers/Setting.php:727
+#: src/Controllers/Setting.php:736
 msgid "Yoast SEO Analysis"
 msgstr ""
 
-#: src/Controllers/Setting.php:728
+#: src/Controllers/Setting.php:737
 msgid "Support Yoast SEO readability analysis."
 msgstr ""
 
-#: src/Controllers/Setting.php:728
+#: src/Controllers/Setting.php:737
 msgid ""
 "This is temporarily not working. Waiting for Yoast SEO community patch "
 "update."
 msgstr ""
 
-#: src/Controllers/Setting.php:738
+#: src/Controllers/Setting.php:747
 msgid "Author"
 msgstr ""
 
-#: src/Controllers/Setting.php:745
+#: src/Controllers/Setting.php:754
 msgid "Version"
 msgstr ""
 
-#: src/Controllers/Setting.php:752
+#: src/Controllers/Setting.php:761
 msgid "GitHub Repository"
 msgstr ""
 
-#: src/Controllers/Setting.php:759
+#: src/Controllers/Setting.php:768
 msgid "Buy me a coffee"
 msgstr ""
 
-#: src/Controllers/Setting.php:785
+#: src/Controllers/Setting.php:794
 msgid "WP Githuber MD "
 msgstr ""
 
 #. Name of the plugin
-#: src/Controllers/Setting.php:786
+#: src/Controllers/Setting.php:795
 msgid "WP Githuber MD"
 msgstr ""
 
-#: src/Controllers/Setting.php:823
+#: src/Controllers/Setting.php:832
 msgid "Settings"
 msgstr ""
 
-#: src/Controllers/Setting.php:841
+#: src/Controllers/Setting.php:850
 msgid "View GitHub project"
 msgstr ""
 
-#: src/Controllers/Setting.php:842
+#: src/Controllers/Setting.php:851
 msgid "Report issues"
 msgstr ""
 
@@ -591,6 +595,7 @@ msgid "Block identification code:"
 msgstr ""
 
 #: src/Views/example/flowchart.php:30 src/Views/example/gfm-task-list.php:22
+#: src/Views/example/inline_code_keyboard_style.php:25
 #: src/Views/example/katex.php:33 src/Views/example/mermaid.php:33
 #: src/Views/example/sequence.php:25
 msgid "The Markdown text above will be rendered to:"
