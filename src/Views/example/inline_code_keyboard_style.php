@@ -14,11 +14,14 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 
 <pre class="prettyprint setting-example">
 <code class="language-markdown">
-` ctrl ` `alt` or `ctrl` + `f1`
+Happy Markdowning!!
+
+1. Use `{ctrl}`+`{c}` to copy text.
+2. Use `{ctrl}`+`{v}` to paste text.
+3. Open task manager: `{ctrl}`+`{alt}`+`{del}`
 </code>
 </pre>
 
 <p class="description"><?php echo __( 'The Markdown text above will be rendered to:', 'wp-githuber-md' ); ?></p>
 
 <pre class="setting-example"><img src="<?= GITHUBER_PLUGIN_URL ?>assets/images/demo_inline_keyboard.gif"></pre>
-

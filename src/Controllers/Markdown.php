@@ -27,7 +27,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $editormd_varsion = '1.5.0.7';
+	public $editormd_varsion = '1.5.0.8';
 
 	/**
 	 * The Post Type support from Markdown controller.
@@ -261,9 +261,10 @@ class Markdown extends ControllerAbstract {
 				'support_mermaid',
 			);
 
-			$editormd_config_listp['extensions'] = array(
+			$editormd_config_list['extensions'] = array(
 				'support_task_list',
-				'support_inline_code_keyboard_style'
+				'support_inline_code_keyboard_style',
+				'support_html_figure',
 			);
 
 			$editormd_localize = array();

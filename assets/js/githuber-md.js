@@ -4,10 +4,17 @@ var global_editormd_config = {};
 var wp_editor_container = '#wp-content-editor-container';
 var wp_editor = 'wp-content-editor-container';
 var githuber_md_editor;
+var is_support_inline_keyboard_style = false;
+var is_support_html_figure = false;
 
 (function($) {
     $(function() {
         var config = window.editormd_config;
+
+        console.log(config);
+
+        is_support_inline_keyboard_style = (config.support_inline_code_keyboard_style == 'yes');
+        is_support_html_figure = (config.support_html_figure == 'yes');
 
         global_editormd_config = {
             width: '100%',
@@ -30,7 +37,6 @@ var githuber_md_editor;
             lineNumbers: (config.editor_line_number == 'yes'),
             previewCodeLineNumber: (config.prism_line_number == 'yes'),
             toolbarAutoFixed: true,
-            inlineCodeKeyboardStyle: (config.support_inline_code_keyboard_style == 'yes'),
             tocm: false, 
             tocDropdown: false,    
             atLink: false,

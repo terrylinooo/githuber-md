@@ -206,10 +206,13 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 * @return string Codeblock with escaped interior
 	 */
 	public function do_single_line_code_preserve( $matches ) {
-		
+
 		if ( 'yes' === githuber_get_option( 'support_inline_code_keyboard_style', 'githuber_extensions' ) ) {
-			if ( trim( $matches[1] ) !== $matches[1] ) {
-				return '<code class="kb-btn">' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';
+			$first_char = substr( $matches[1], 0, 1 );
+			$last_char  = substr( $matches[1], -1 );
+			
+			if ( '{' === $first_char && '}' === $last_char ) {
+				return '<code class="kb-btn">' . $this->hash_block( esc_html( substr( $matches[1], 1, -1 ) ) ) . '</code>';
 			}
 		}
 		return '<code>' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';

@@ -578,7 +578,7 @@
 
                         _this.setToolbar();
 
-                        editormd.loadScript(loadPath + "marked.min.20190201", function() {
+                        editormd.loadScript(loadPath + "marked.min.20190418", function() {
 
                             editormd.$marked = marked;
                              
