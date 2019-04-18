@@ -189,9 +189,8 @@ class MarkdownParser extends Parsedown {
 	 * @param  string $text Text that may need preserving
 	 * @return string Text that was preserved if needed
 	 */
-	
 	public function single_line_code_preserve( $text ) {
-		return preg_replace_callback( "/[`]{1}([^\n].*?[^\n])[`]{1}/", array( $this, 'do_single_line_code_preserve' ), $text );
+		return preg_replace_callback( "/[`]{1}([^\n`]*?[^\n`])[`]{1}/", array( $this, 'do_single_line_code_preserve' ), $text );
 	}
 
 	/**
