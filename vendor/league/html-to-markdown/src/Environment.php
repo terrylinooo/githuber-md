@@ -19,6 +19,7 @@ use League\HTMLToMarkdown\Converter\ListItemConverter;
 use League\HTMLToMarkdown\Converter\ParagraphConverter;
 use League\HTMLToMarkdown\Converter\PreformattedConverter;
 use League\HTMLToMarkdown\Converter\TextConverter;
+use League\HTMLToMarkdown\Converter\TableConverter;
 
 final class Environment
 {
@@ -98,6 +99,7 @@ final class Environment
         $environment->addConverter(new ParagraphConverter());
         $environment->addConverter(new PreformattedConverter());
         $environment->addConverter(new TextConverter());
+        $environment->addConverter(new TableConverter());
 
         return $environment;
     }
