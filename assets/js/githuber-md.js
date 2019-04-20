@@ -99,6 +99,7 @@ var is_support_html_figure = false;
             var image_insert_type = 'markdown';
         }
         $(document).on('change', '.githuber_image_insert', function() {
+            // html or markdown
             image_insert_type = $(this).val();
         });
 
@@ -106,14 +107,34 @@ var is_support_html_figure = false;
             if (settings.url.indexOf('/wp-admin/admin-ajax.php') !== -1 && typeof data.data !== 'undefined') {
                 if (data.success && typeof data.data === 'string') {
                     var html_str = data.data;
+                    var new_content = '';
+                    var editor_content = githuber_md_editor.getValue();
+
+                    new_content += editor_content + "\n\n";
+
                     if (html_str.substring(0, 4) == '<img') {
                         var img_src = $(html_str).attr('src');
-                        var editor_content = githuber_md_editor.getValue();
+                        var img_alt = $(html_str).attr('alt');
 
                         if (image_insert_type === 'html') {
-                            var new_content = editor_content + "\n\n" + html_str;
+                            new_content += html_str;
                         } else {
-                            var new_content = editor_content + "\n\n![](" + img_src + ")\n\n";
+                            new_content += '![' + img_alt + '](' + img_src + ')';
+                        }
+                        githuber_md_editor.setValue(new_content);
+                        image_insert_type = 'markdown';
+                    }
+
+                    if (html_str.substring(0, 7) == '<a href' && -1 !== html_str.indexOf('<img')) {
+                        var a_href = $(html_str).attr('href');
+                        var img_src = $(html_str).find('img').attr('src');
+                        var img_alt = $(html_str).find('img').attr('alt');
+
+                        if (image_insert_type === 'html') {
+                            new_content += html_str;
+                        } else {
+                            // [![Alt text](/path/to/img.jpg)](http://example.net/)
+                            new_content += '[![' + img_alt + '](' + img_src + ')](' + a_href + ')';
                         }
                         githuber_md_editor.setValue(new_content);
                         image_insert_type = 'markdown';
@@ -122,7 +143,6 @@ var is_support_html_figure = false;
             }
         });
     });
-
 })(jQuery);
 
 
