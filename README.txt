@@ -240,7 +240,7 @@ GNU General Public License for more details.
 = 1.8.6
 
 * Fix issue #44: Unable to insert linked images.
-* Fix issue #45: HTML-to-Markdown doesn't tranform table as expected.
+* Fix issue #45: HTML-to-Markdown doesn't transform table as expected.
 
 == Known Issues ==
 
