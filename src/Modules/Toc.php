@@ -7,8 +7,8 @@
  * @link https://terryl.in/
  *
  * @package Githuber
- * @since 1.0.0
- * @version 1.0.0
+ * @since 1.9.0
+ * @version 1.9.0
  */
 
 namespace Githuber\Module;
@@ -52,5 +52,35 @@ class Toc extends ModuleAbstract {
 
 		';
 		echo $script;
+	}
+
+	/**
+	 * TOC parser
+	 *
+	 * @param string $html_string
+	 * @return string
+	 */
+	public function parser( $html_string ) {
+
+		preg_match_all('#<h[4-6]*[^>]*>.*?<\/h[4-6]>#', $html_string, $match);
+
+		$toc = implode( "\n", $match[0] );
+		$toc = str_replace( '<a name="', '<a href="#', $toc );
+		$toc = str_replace( '</a>', '', $toc );
+		$toc = preg_replace( '#<h([4-6])>#', '<li class="toc$1">',$toc );
+		$toc = preg_replace( '#<\/h[4-6]>#', '</a></li>',$toc );
+
+		$toc = '
+			<div class="post-toc"> 
+				<p class="post-toc-header">' . __( 'Table of Content', 'wp-githuber-md' ) . '</p>
+				<hr />
+				<ul>
+					'.$toc.'
+				</ul>
+			</div>
+			<br /><br />
+		';
+
+		return $toc;
 	}
 }
