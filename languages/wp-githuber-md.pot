@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 09:03+0000\n"
+"POT-Creation-Date: 2019-04-22 13:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -23,24 +23,25 @@ msgstr ""
 msgid "HTML to Markdown"
 msgstr ""
 
-#: src/Controllers/ImagePaste.php:89 src/Controllers/ImagePaste.php:105
+#: src/Controllers/ImagePaste.php:84 src/Controllers/ImagePaste.php:98
+#: src/Controllers/ImagePaste.php:114
 #, php-format
 msgid "Error while processing your request to %s!"
 msgstr ""
 
-#: src/Controllers/ImagePaste.php:92 src/Controllers/ImagePaste.php:112
+#: src/Controllers/ImagePaste.php:101 src/Controllers/ImagePaste.php:121
 msgid "PHP Curl is not installed on your system."
 msgstr ""
 
-#: src/Controllers/ImagePaste.php:142
+#: src/Controllers/ImagePaste.php:151
 msgid "Error while uploading file."
 msgstr ""
 
-#: src/Controllers/Markdown.php:279
+#: src/Controllers/Markdown.php:287
 msgid "Happy Markdowning!"
 msgstr ""
 
-#: src/Controllers/Markdown.php:680
+#: src/Controllers/Markdown.php:688
 msgid "Enable Markdown"
 msgstr ""
 
@@ -182,7 +183,7 @@ msgstr ""
 msgid "Highligh the syntax in your code snippets by Prism.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:405 src/Controllers/Setting.php:775
+#: src/Controllers/Setting.php:405 src/Controllers/Setting.php:843
 msgid "Theme"
 msgstr ""
 
@@ -283,7 +284,7 @@ msgid ""
 "However, you can use Imgur instead of the default place."
 msgstr ""
 
-#: src/Controllers/Setting.php:629
+#: src/Controllers/Setting.php:629 src/Controllers/Setting.php:700
 msgid "default"
 msgstr ""
 
@@ -303,112 +304,168 @@ msgstr ""
 msgid "Upload to Media Library?"
 msgstr ""
 
-#: src/Controllers/Setting.php:661
-msgid "Markdown Extra"
+#: src/Controllers/Setting.php:659 src/Modules/Toc.php:40
+msgid "Table of Content"
 msgstr ""
 
-#: src/Controllers/Setting.php:669
-msgid "GFM Task List"
+#: src/Controllers/Setting.php:665
+msgid "Support Table of Content."
 msgstr ""
 
-#: src/Controllers/Setting.php:670
-msgid "Support Github Flavored Markdown task lists."
+#: src/Controllers/Setting.php:674
+msgid "Widget"
 msgstr ""
 
-#: src/Controllers/Setting.php:682
-msgid "Githuber MD Extensions"
+#: src/Controllers/Setting.php:675
+msgid "Display a TOC in the widget area for single post."
 msgstr ""
 
-#: src/Controllers/Setting.php:688
-msgid "HTML5 Figure"
+#: src/Controllers/Setting.php:684
+msgid "Inside a Post"
 msgstr ""
 
-#: src/Controllers/Setting.php:697
-msgid "Inline Code Block with Keyboard Style"
+#: src/Controllers/Setting.php:685
+msgid "Insert a TOC inside a post header location."
+msgstr ""
+
+#: src/Controllers/Setting.php:694
+msgid "Float"
+msgstr ""
+
+#: src/Controllers/Setting.php:695
+msgid "Would you like to float the TOC in the post to left or right?"
+msgstr ""
+
+#: src/Controllers/Setting.php:701
+msgid "right"
+msgstr ""
+
+#: src/Controllers/Setting.php:702
+msgid "left"
 msgstr ""
 
 #: src/Controllers/Setting.php:708
-msgid "Link Opening Method"
+msgid "Border"
 msgstr ""
 
 #: src/Controllers/Setting.php:709
+msgid "Would you like to show the border of the TOC in the post?"
+msgstr ""
+
+#: src/Controllers/Setting.php:721
+msgid "Markdown Extra"
+msgstr ""
+
+#: src/Controllers/Setting.php:729
+msgid "GFM Task List"
+msgstr ""
+
+#: src/Controllers/Setting.php:730
+msgid "Support Github Flavored Markdown task lists."
+msgstr ""
+
+#: src/Controllers/Setting.php:742
+msgid "Githuber MD Extensions"
+msgstr ""
+
+#: src/Controllers/Setting.php:748
+msgid "HTML5 Figure"
+msgstr ""
+
+#: src/Controllers/Setting.php:757
+msgid "Inline Code Block with Keyboard Style"
+msgstr ""
+
+#: src/Controllers/Setting.php:768
+msgid "Link Opening Method"
+msgstr ""
+
+#: src/Controllers/Setting.php:769
 msgid "For links in posts, please specify where to open the linked document."
 msgstr ""
 
-#: src/Controllers/Setting.php:713
+#: src/Controllers/Setting.php:773
 msgid "Same window. (default)"
 msgstr ""
 
-#: src/Controllers/Setting.php:714
+#: src/Controllers/Setting.php:774
 msgid "New window."
 msgstr ""
 
-#: src/Controllers/Setting.php:720
+#: src/Controllers/Setting.php:780
 msgid "Shortcode"
 msgstr ""
 
-#: src/Controllers/Setting.php:721
+#: src/Controllers/Setting.php:781
 msgid "Allow using shortcode in Markdown text."
 msgstr ""
 
-#: src/Controllers/Setting.php:721
+#: src/Controllers/Setting.php:781
 msgid ""
 "Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
 " therefore live-preview panel does not support it."
 msgstr ""
 
-#: src/Controllers/Setting.php:728
+#: src/Controllers/Setting.php:788
 msgid "Smart Quotes"
 msgstr ""
 
-#: src/Controllers/Setting.php:736
+#: src/Controllers/Setting.php:796
+msgid "Ampersands in URL"
+msgstr ""
+
+#: src/Controllers/Setting.php:797
+msgid "Replace `&amp;` to `&` in URLs."
+msgstr ""
+
+#: src/Controllers/Setting.php:804
 msgid "Yoast SEO Analysis"
 msgstr ""
 
-#: src/Controllers/Setting.php:737
+#: src/Controllers/Setting.php:805
 msgid "Support Yoast SEO readability analysis."
 msgstr ""
 
-#: src/Controllers/Setting.php:737
+#: src/Controllers/Setting.php:805
 msgid ""
 "This is temporarily not working. Waiting for Yoast SEO community patch "
 "update."
 msgstr ""
 
-#: src/Controllers/Setting.php:747
+#: src/Controllers/Setting.php:815
 msgid "Author"
 msgstr ""
 
-#: src/Controllers/Setting.php:754
+#: src/Controllers/Setting.php:822
 msgid "Version"
 msgstr ""
 
-#: src/Controllers/Setting.php:761
+#: src/Controllers/Setting.php:829
 msgid "GitHub Repository"
 msgstr ""
 
-#: src/Controllers/Setting.php:768
+#: src/Controllers/Setting.php:836
 msgid "Buy me a coffee"
 msgstr ""
 
-#: src/Controllers/Setting.php:794
+#: src/Controllers/Setting.php:862
 msgid "WP Githuber MD "
 msgstr ""
 
 #. Name of the plugin
-#: src/Controllers/Setting.php:795
+#: src/Controllers/Setting.php:863
 msgid "WP Githuber MD"
 msgstr ""
 
-#: src/Controllers/Setting.php:832
+#: src/Controllers/Setting.php:900
 msgid "Settings"
 msgstr ""
 
-#: src/Controllers/Setting.php:850
+#: src/Controllers/Setting.php:918
 msgid "View GitHub project"
 msgstr ""
 
-#: src/Controllers/Setting.php:851
+#: src/Controllers/Setting.php:919
 msgid "Report issues"
 msgstr ""
 
@@ -615,6 +672,16 @@ msgstr ""
 
 #: src/Views/example/prism.php:28
 msgid "Check out this page to view full list."
+msgstr ""
+
+#: src/wp_utilities/class-widget-toc.php:25
+msgid ""
+"Add a Table of Content for your article. This widget is for single-post "
+"pages only."
+msgstr ""
+
+#: src/wp_utilities/class-widget-toc.php:29
+msgid "Githuber MD: TOC"
 msgstr ""
 
 #. Description of the plugin
