@@ -117,6 +117,15 @@ class Githuber {
 		if ( 'yes' !== githuber_get_option( 'smart_quotes', 'githuber_preferences' ) ) {
 			remove_filter( 'the_content', 'wptexturize' );
 		}
+
+		// Replace `&amp;` to `&` in URLs in post content.
+		if ( 'yes' === githuber_get_option( 'restore_ampersands', 'githuber_preferences' ) ) {
+			add_filter( 'the_content', function( $string ) {
+				return preg_replace_callback( '|<a\b([^>]*)>(.*?)</a>|', function( $matches ) {
+					return '<a' . str_replace( '&amp;', '&', $matches[1] ) . '>' . $matches[2] . '</a>';
+				}, $string );
+			}, 10, 1 );
+		}
 	}
 
 	/**

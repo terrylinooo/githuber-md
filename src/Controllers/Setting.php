@@ -732,6 +732,14 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'name'    => 'restore_ampersands',
+					'label'   => __( 'Ampersands in URL', 'wp-githuber-md' ),
+					'desc'    => __( 'Replace `&amp;` to `&` in URLs.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
+
+				array(
 					'name'    => 'support_wpseo_analysis',
 					'label'   => __( 'Yoast SEO Analysis', 'wp-githuber-md' ),
 					'desc'    => __( "Support Yoast SEO readability analysis.", 'wp-githuber-md' ) . '<br /><span style="color: #b00000">' . __( "This is temporarily not working. Waiting for Yoast SEO community patch update.", 'wp-githuber-md' ) . '</span>',
