@@ -242,6 +242,11 @@ GNU General Public License for more details.
 * Fix issue #44: Unable to insert linked images.
 * Fix issue #45: HTML-to-Markdown doesn't transform table as expected.
 
+= 1.9.0
+
+* Add feature: TOC (Table of content) module.
+* Add feature: Transform `&amp;` to `&` in URLs.
+
 == Known Issues ==
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
