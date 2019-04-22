@@ -40,13 +40,22 @@ class Githuber {
 			add_filter('use_block_editor_for_post', '__return_false', 5);
 		}
 
+		// Load TOC widget. // 
+		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+			if ( 'yes' == githuber_get_option( 'is_toc_widget', 'githuber_modules' ) ) {
+				add_action( 'widgets_init', function() {
+					register_widget( 'Githuber_Widget_Toc' );
+				} );
+			}
+		}
+
 		// Load core functions when `wp_loaded` is ready.
 		add_action( 'wp_loaded', array( $this, 'init' ) );
 
 		// Only use it in DEBUG mode.
 		Monolog::logger( 'Hook: wp_loaded', array( 'url' => $this->current_url ) );
 	}
-	
+
 	/**
 	 * Initialize everything the Githuber plugin needs.
 	 */
@@ -107,6 +116,12 @@ class Githuber {
 		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
 			$module_prism = new Module\Prism();
 			$module_prism->init();
+		}
+
+		// Replace `&amp;` to `&` in URLs in post content.
+		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+			$module_toc = new Module\Toc();
+			$module_toc->init();
 		}
 
 		/**

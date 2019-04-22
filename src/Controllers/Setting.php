@@ -609,9 +609,9 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'name'    => 'support_image_paste',
-					//'label'   => __( 'Image Paste', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'setting/image-paste' ),
+					'name'        => 'support_image_paste',
+					//'label'     => __( 'Image Paste', 'wp-githuber-md' ),
+					'desc'        => githuber_load_view( 'setting/image-paste' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'image-paste',
@@ -651,6 +651,66 @@ class Setting extends ControllerAbstract {
 					'size'    => 'sm',
 					'default' => 'yes',
 					'parent'  => 'support_image_paste',
+				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'table-of-content',
+					'label'         => __( 'Table of Content', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_toc',
+					//'label'     => __( 'Image Paste', 'wp-githuber-md' ),
+					'desc'        => __( 'Support Table of Content.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'table-of-content',
+					'default'     => 'no'
+				),
+
+				array(
+                    'name'    => 'is_toc_widget',
+					'label'   => __( 'Widget', 'wp-githuber-md' ),
+					'desc'    => __( 'Display a TOC in the widget area for single post.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'yes',
+					'parent'  => 'support_toc',
+				),
+
+				array(
+                    'name'    => 'display_toc_in_post',
+					'label'   => __( 'Inside a Post', 'wp-githuber-md' ),
+					'desc'    => __( 'Insert a TOC inside a post header location.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'yes',
+					'parent'  => 'support_toc',
+				),
+
+				array(
+					'name'    => 'post_toc_float',
+					'label'   => __( 'Float', 'wp-githuber-md' ),
+					'desc'    => __( 'Would you like to float the TOC in the post to left or right?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_toc',
+					'options' => array(
+						'default' => __( 'default', 'wp-githuber-md' ),
+						'right'   => __( 'right', 'wp-githuber-md' ),
+						'left'    => __( 'left', 'wp-githuber-md' ),
+					)
+				),
+
+				array(
+                    'name'    => 'post_toc_border',
+					'label'   => __( 'Border', 'wp-githuber-md' ),
+					'desc'    => __( 'Would you like to show the border of the TOC in the post?', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'yes',
+					'parent'  => 'support_toc',
 				),
 			),
 

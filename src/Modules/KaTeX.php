@@ -33,7 +33,7 @@ class KaTeX extends ModuleAbstract {
 	/**
 	 * Constants.
 	 */
-	const MD_POST_META_KATEX    = '_is_githuber_katex';
+	const MD_POST_META_KATEX = '_is_githuber_katex';
 
 	/**
 	 * Constructer.

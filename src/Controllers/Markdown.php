@@ -47,7 +47,6 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
-	const MD_POST_META_TOC      = '_githuber_toc';
 
 	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
@@ -87,6 +86,7 @@ class Markdown extends ControllerAbstract {
 	public $is_support_flowchart = false;
 	public $is_support_sequence  = false;
 	public $is_support_mermaid   = false;
+	public $is_support_toc       = false;
 
 	/**
 	 * Constructer.
@@ -120,6 +120,13 @@ class Markdown extends ControllerAbstract {
 
 		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
 			$this->is_support_mermaid = true;
+		}
+
+		// Load TOC widget. // 
+		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+			if ( 'yes' == githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
+				$this->is_support_toc = true;
+			}
 		}
 	}
 
@@ -372,7 +379,7 @@ class Markdown extends ControllerAbstract {
 	 * Detect the language is defined through the way recommended in the HTML5 draft: through a language-xxxx class.
 	 * Find out all of them, then put them into the post meta for frontend uses.
 	 *
-	 * @param int   $post_id       The post ID.
+	 * @param int    $post_id       The post ID.
 	 * @param string $post_content The post content.
 	 * @return void
 	 */

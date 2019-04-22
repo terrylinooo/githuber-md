@@ -22,6 +22,7 @@ spl_autoload_register( function( $class_name ) {
 	$wp_utils_mapping = array(         
 		'Githuber'              => '../Githuber',
 		'Githuber_Settings_API' => 'class-settings-api',
+		'Githuber_Widget_Toc'    => 'class-widget-toc',
 	);
 
 	if ( array_key_exists( $class_name, $wp_utils_mapping ) ) {

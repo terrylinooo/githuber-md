@@ -110,4 +110,6 @@ class Register extends ControllerAbstract {
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
 	}
+
+			
 }

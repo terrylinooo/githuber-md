@@ -23,9 +23,27 @@ class Toc extends ModuleAbstract {
 	}
 
 	public function init() {
-		// No ideas about Toc right now.
+		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
+		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
+
+		if ( 'yes' === githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
+
+			add_filter( 'the_content', function( $string ) {
+	
+				$css = githuber_get_option( 'post_toc_float', 'githuber_modules' );
+
+				if ( 'yes' === githuber_get_option( 'post_toc_border', 'githuber_modules' ) ) {
+					$css .= ' with-border';
+				}
+
+				return '<div class="post-toc-block float-' . $css . '"> 
+					<div class="post-toc-header">' . __( 'Table of Content', 'wp-githuber-md' ) . '</div>
+					<nav id="md-post-toc" class="md-post-toc"></nav>
+					</div>' . $string;
+			}, 10, 1 );
+		}
 	}
- 
+
 	/**
 	 * Register CSS style files for frontend use.
 	 * 
@@ -41,7 +59,8 @@ class Toc extends ModuleAbstract {
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
-
+		wp_register_script( 'githuber-toc', GITHUBER_PLUGIN_URL . 'assets/js/jquery.toc.min.js', array( 'jquery' ), '1.0.1' );
+		wp_enqueue_script( 'githuber-toc' );
 	}
 
 	/**
@@ -49,38 +68,47 @@ class Toc extends ModuleAbstract {
 	 */
 	public function front_print_footer_scripts() {
 		$script = '
+			<script id="module-toc">
+				(function($) {
+					$(function() {';
 
-		';
+		// Show TOC in post.
+		if ( 'yes' == githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
+			$script .= '
+				$("#md-post-toc").initTOC({
+					selector: "h2, h3, h4, h5, h6",
+					scope: ".post",
+				});
+
+				$("#md-post-toc a").click(function(e) {
+					e.preventDefault();
+					var aid = $( this ).attr( "href" );
+					$( "html, body" ).animate( { scrollTop: $(aid).offset().top - 80 }, "slow" );
+				});
+			';
+		}
+
+		// Show TOC in widget area.
+		if ( 'yes' == githuber_get_option( 'is_toc_widget', 'githuber_modules' ) ) {
+			$script .= '
+				$("#md-widget-toc").initTOC({
+					selector: "h2, h3, h4, h5, h6",
+					scope: ".post",
+				});
+
+				$("#md-widget-toc a").click(function(e) {
+					e.preventDefault();
+					var aid = $( this ).attr( "href" );
+					$( "html, body" ).animate( { scrollTop: $(aid).offset().top - 80 }, "slow" );
+				});
+			';
+		}
+
+		$script .= '
+					});
+				})(jQuery);
+			</script>';
+
 		echo $script;
-	}
-
-	/**
-	 * TOC parser
-	 *
-	 * @param string $html_string
-	 * @return string
-	 */
-	public function parser( $html_string ) {
-
-		preg_match_all('#<h[4-6]*[^>]*>.*?<\/h[4-6]>#', $html_string, $match);
-
-		$toc = implode( "\n", $match[0] );
-		$toc = str_replace( '<a name="', '<a href="#', $toc );
-		$toc = str_replace( '</a>', '', $toc );
-		$toc = preg_replace( '#<h([4-6])>#', '<li class="toc$1">',$toc );
-		$toc = preg_replace( '#<\/h[4-6]>#', '</a></li>',$toc );
-
-		$toc = '
-			<div class="post-toc"> 
-				<p class="post-toc-header">' . __( 'Table of Content', 'wp-githuber-md' ) . '</p>
-				<hr />
-				<ul>
-					' . $toc . '
-				</ul>
-			</div>
-			<br /><br />
-		';
-
-		return $toc;
 	}
 }
