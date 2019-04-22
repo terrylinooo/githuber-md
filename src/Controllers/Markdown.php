@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.7.5
+ * @version 1.9.0
  * 
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
@@ -47,6 +47,7 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
+	const MD_POST_META_TOC      = '_githuber_toc';
 
 	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';

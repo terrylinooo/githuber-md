@@ -75,7 +75,7 @@ class Toc extends ModuleAbstract {
 				<p class="post-toc-header">' . __( 'Table of Content', 'wp-githuber-md' ) . '</p>
 				<hr />
 				<ul>
-					'.$toc.'
+					' . $toc . '
 				</ul>
 			</div>
 			<br /><br />
