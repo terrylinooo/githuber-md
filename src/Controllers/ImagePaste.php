@@ -78,7 +78,7 @@ class ImagePaste extends ControllerAbstract {
 			$file = $_FILES['file'];
 
 			$is_file_image = getimagesize( $file['tmp_name'] ) ? true : false;
-			$file_mimetype = mime_content_type( $file['tmp_name'] );
+			$file_mimetype = $file['type'];
 
 			if ( ! $is_file_image || 'image/png' !== $file_mimetype ) {
 				$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Githuber MD' );
