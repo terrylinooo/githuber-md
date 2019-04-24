@@ -247,6 +247,11 @@ GNU General Public License for more details.
 * Add feature: TOC (Table of content) module.
 * Add feature: Transform `&amp;` to `&` in URLs.
 
+= 1.9.1
+
+* Fix issue #48: Because some systems don't have `php_fileinfo` installed, use `$_FILES['type']` instead.
+
+
 == Known Issues ==
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5

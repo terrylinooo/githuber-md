@@ -4,7 +4,7 @@
 
 An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
-
+[![RIPS CodeRisk](https://coderisk.com/wp/plugin/wp-githuber-md/badge "RIPS CodeRisk")](https://coderisk.com/wp/plugin/wp-githuber-md)
 
 ## How it works
 
