@@ -273,6 +273,17 @@ class Setting extends ControllerAbstract {
 					'default' => 'yes',
 				),
 
+				/*
+				array(
+					'name'    => 'editor_spell_check',
+					'label'   => __( 'Spell Check', 'wp-githuber-md' ),
+					'desc'    => __( 'Enable spellcheck on the input.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+				),
+				*/
+
 				array(
 					'name'    => 'editor_toolbar_theme',
 					'label'   => __( 'Toolbar', 'wp-githuber-md' ),

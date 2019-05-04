@@ -129,7 +129,7 @@
 		matchBrackets        : true,
 		indentWithTabs       : true,
 		styleSelectedText    : true,
-        matchWordHighlight   : true,           // options: true, false, "onselected"
+        matchWordHighlight   : "onselected",           // options: true, false, "onselected"
         styleActiveLine      : true,           // Highlight the current line
         dialogLockScreen     : true,
         dialogShowMask       : true,
@@ -178,6 +178,7 @@
         sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
         previewCodeHighlight : true,
         previewCodeLineNumber: false,
+        spellCheck           : false,
                 
         toolbar              : true,           // show/hide toolbar
         toolbarAutoFixed     : true,           // on window scroll auto fixed position
@@ -721,6 +722,7 @@
                 styleSelectedText         : settings.styleSelectedText,
                 autoCloseBrackets         : settings.autoCloseBrackets,
                 showTrailingSpace         : settings.showTrailingSpace,
+                spellcheck                : settings.spellCheck,
                 highlightSelectionMatches : ( (!settings.matchWordHighlight) ? false : { showToken: (settings.matchWordHighlight === "onselected") ? false : /\w/ } )
             };
 

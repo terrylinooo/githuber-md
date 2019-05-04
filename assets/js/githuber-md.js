@@ -36,6 +36,7 @@ var is_support_html_figure = false;
             mermaid: (config.support_mermaid == 'yes'),
             lineNumbers: (config.editor_line_number == 'yes'),
             previewCodeLineNumber: (config.prism_line_number == 'yes'),
+            spellCheck: (config.editor_spell_check == 'yes'),
             toolbarAutoFixed: true,
             tocm: false, 
             tocDropdown: false,    

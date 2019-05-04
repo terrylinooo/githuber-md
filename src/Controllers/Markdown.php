@@ -27,7 +27,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $editormd_varsion = '1.5.0.8';
+	public $editormd_varsion = '1.5.0.9';
 
 	/**
 	 * The Post Type support from Markdown controller.
@@ -258,6 +258,7 @@ class Markdown extends ControllerAbstract {
 				'editor_toolbar_theme',
 				'editor_editor_theme',
 				'editor_line_number',
+				'editor_spell_check',
 			);
 
 			$editormd_config_list['modules'] = array(
