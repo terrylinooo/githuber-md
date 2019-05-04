@@ -124,6 +124,12 @@ class Githuber {
 			$module_toc->init();
 		}
 
+		// Copy to Clipboard
+		if ( 'yes' === githuber_get_option( 'support_clipboard', 'githuber_modules' ) ) {
+			$module_clipboard = new Module\Clipboard();
+			$module_clipboard->init();
+		}
+
 		/**
 		 * Let's start setting user's perferences...
 		 */
@@ -161,11 +167,16 @@ class Githuber {
 			$frontend_settings['link_opening_method'] = '_top';
 		}
 
+		if ( 'yes' === githuber_get_option( 'support_clipboard', 'githuber_modules' ) ) {
+			$frontend_settings['copy_to_clipboard'] = 'yes';
+		} else {
+			$frontend_settings['copy_to_clipboard'] = 'no';
+		}
+
 		// Register JS variables for the Editormd library uses.
 		wp_enqueue_script( 'githuber-md-js', GITHUBER_PLUGIN_URL . 'assets/js/githuber-md-frontend.js', array( 'jquery' ), GITHUBER_PLUGIN_VERSION, 'all' );
 		wp_localize_script( 'githuber-md-js', 'md_frontend_settings', $frontend_settings );
 	}
-	
 
 	/**
 	 * Load plugin textdomain.
