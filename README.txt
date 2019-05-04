@@ -253,7 +253,7 @@ GNU General Public License for more details.
 
 = 1.10.0
 
-* Feature request #53: Add `Copy-to-Clipboard` button on syntax highligthting code blocks.
+* Feature request #53: Add `Copy-to-Clipboard` button on syntax highlighting code blocks.
 * Fix issue #52 - Remove auto-match highlighter.
 * Fix issue #57 - Preserve code blocks in a list.
 
