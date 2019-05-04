@@ -835,7 +835,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'restore_ampersands',
 					'label'   => __( 'Ampersands in URL', 'wp-githuber-md' ),
-					'desc'    => __( 'Replace `&amp;` to `&` in URLs.', 'wp-githuber-md' ),
+					'desc'    => __( 'Replace `&amp;amp;` to `&` in URLs.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'default' => 'no',
 				),

@@ -251,6 +251,12 @@ GNU General Public License for more details.
 
 * Fix issue #48: Because some systems don't have `php_fileinfo` installed, use `$_FILES['type']` instead.
 
+= 1.10.0
+
+* Feature request #53: Add `Copy-to-Clipboard` button on syntax highligthting code blocks.
+* Fix issue #52 - Remove auto-match highlighter.
+* Fix issue #57 - Preserve code blocks in a list.
+
 
 == Known Issues ==
 
