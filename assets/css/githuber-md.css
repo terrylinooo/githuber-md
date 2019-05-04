@@ -18,6 +18,9 @@
   padding: 0 !important;
 }
 
+pre {
+  position: relative;
+}
 pre .katex-container {
   font-size: 1.4em !important;
 }
@@ -94,4 +97,35 @@ code.kb-btn {
 }
 .md-widget-toc ol ul ol, .md-widget-toc ol ol ol, .md-post-toc ol ul ol, .md-post-toc ol ol ol {
   list-style-type: lower-alpha;
+}
+
+.copy-button {
+  cursor: pointer;
+  border: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 3px 6px 3px 6px;
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  overflow: hidden;
+  top: 5px;
+  right: 5px;
+  border-radius: 3px;
+}
+.copy-button:before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 3px;
+  background-size: contain;
+  background-image: url("copy.svg");
+  background-repeat: no-repeat;
+  position: relative;
+  top: 3px;
+}
+
+pre:hover .copy-button {
+  background-color: rgba(255, 255, 255, 0.9);
 }

@@ -22,6 +22,8 @@
 }
 
 pre {
+	position: relative;
+
 	.katex-container {
 		font-size: 1.4em !important;
 	}
@@ -113,6 +115,42 @@ code {
 
 		ul ol, ol ol {
 			list-style-type: lower-alpha;
+		}
+	}
+}
+
+.copy-button {
+	cursor: pointer;
+	border: 0;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 3px 6px 3px 6px;
+	background-color: rgba(255, 255, 255, 0.6);
+	position: absolute;
+	overflow: hidden;
+	top: 5px;
+	right: 5px;
+	border-radius: 3px;
+
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 3px;
+		background-size: contain;
+		background-image: url('copy.svg');
+		background-repeat: no-repeat;
+		position: relative;
+		top: 3px;
+	}
+}
+
+pre {
+	&:hover {
+		.copy-button {
+			background-color: rgba(255, 255, 255, 0.9);
 		}
 	}
 }
