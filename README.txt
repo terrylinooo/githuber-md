@@ -260,9 +260,9 @@ GNU General Public License for more details.
 = 1.10.1
 
 * Feature request #59: Move the front added .css and .js to the inline script section.
-* Issue #62: Fix add media button that is invalid for other type of media files such as audio.
+* Issue #62: Fix add media button that is invalid for other types of media files such as audio.
 * Fix incorrect link coloring in marked.js
-* Issue #49: Images are inserted in the end of document.
+* Issue #49: Images are inserted at the end of the document.
 
 == Known Issues ==
 
