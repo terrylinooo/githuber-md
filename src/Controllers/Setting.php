@@ -483,7 +483,7 @@ class Setting extends ControllerAbstract {
 					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
-					'parent'  => 'copy_to_clipbloard',
+					'parent'  => 'support_clipboard',
 					'options' => array(
 						'default'    => 'default',
 						'cloudflare' => 'cdnjs.cloudflare.com',

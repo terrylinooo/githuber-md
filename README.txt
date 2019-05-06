@@ -257,6 +257,12 @@ GNU General Public License for more details.
 * Fix issue #52 - Remove auto-match highlighter.
 * Fix issue #57 - Preserve code blocks in a list.
 
+= 1.10.1
+
+* Feature request #59: Move the front added .css and .js to the inline script section.
+* Issue #62: Fix add media button that is invalid for other type of media files such as audio.
+* Fix incorrect link coloring in marked.js
+* Issue #49: Images are inserted in the end of document.
 
 == Known Issues ==
 
