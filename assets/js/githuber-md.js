@@ -109,9 +109,6 @@ var is_support_html_figure = false;
                 if (data.success && typeof data.data === 'string') {
                     var html_str = data.data;
                     var new_content = '';
-                    var editor_content = githuber_md_editor.getValue();
-
-                    new_content += editor_content + "\n\n";
 
                     if (html_str.substring(0, 4) == '<img') {
                         var img_src = $(html_str).attr('src');
@@ -122,7 +119,8 @@ var is_support_html_figure = false;
                         } else {
                             new_content += '![' + img_alt + '](' + img_src + ')';
                         }
-                        githuber_md_editor.setValue(new_content);
+
+                        githuber_md_editor.replaceSelection(new_content);
                         image_insert_type = 'markdown';
                     }
 
@@ -137,7 +135,7 @@ var is_support_html_figure = false;
                             // [![Alt text](/path/to/img.jpg)](http://example.net/)
                             new_content += '[![' + img_alt + '](' + img_src + ')](' + a_href + ')';
                         }
-                        githuber_md_editor.setValue(new_content);
+                        githuber_md_editor.replaceSelection(new_content);
                         image_insert_type = 'markdown';
                     }
                 }
