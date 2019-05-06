@@ -67,13 +67,16 @@ class Toc extends ModuleAbstract {
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
+
 		$script = '
 			<script id="module-toc">
 				(function($) {
-					$(function() {';
+					$(function() {
+		';
 
 		// Show TOC in post.
 		if ( 'yes' == githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
+
 			$script .= '
 				$("#md-post-toc").initTOC({
 					selector: "h2, h3, h4, h5, h6",
@@ -90,6 +93,7 @@ class Toc extends ModuleAbstract {
 
 		// Show TOC in widget area.
 		if ( 'yes' == githuber_get_option( 'is_toc_widget', 'githuber_modules' ) ) {
+
 			$script .= '
 				$("#md-widget-toc").initTOC({
 					selector: "h2, h3, h4, h5, h6",
@@ -107,8 +111,9 @@ class Toc extends ModuleAbstract {
 		$script .= '
 					});
 				})(jQuery);
-			</script>';
+			</script>
+		';
 
-		echo $script;
+		echo preg_replace( '/\s+/', ' ', $script );
 	}
 }

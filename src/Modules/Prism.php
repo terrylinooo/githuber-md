@@ -223,7 +223,7 @@ class Prism extends ModuleAbstract {
 					})(jQuery);
 				</script>
 			';
-			echo $script;
+			echo preg_replace( '/\s+/', ' ', $script );
 		}
 	}
 }

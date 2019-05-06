@@ -36,18 +36,9 @@ class Clipboard extends ModuleAbstract {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
-		// add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
+		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
  
-	/**
-	 * Register CSS style files for frontend use.
-	 * 
-	 * @return void
-	 */
-	public function front_enqueue_styles() {
-
-	}
-
 	/**
 	 * Register JS files for frontend use.
 	 * 
@@ -71,14 +62,83 @@ class Clipboard extends ModuleAbstract {
                 break;
         } 
 
-        wp_enqueue_script( 'clipboard', $script_url, array(), $this->clipboard_version, true );
-		
+		wp_enqueue_script( 'clipboard', $script_url, array(), $this->clipboard_version, true );
+	}
+
+	/**
+	 * Register CSS style files for frontend use.
+	 */
+	public function front_enqueue_styles() {
+
 	}
 
 	/**
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
+		$script = '
+			<script id="module-clipboard">
 
+				(function($) {
+
+					$(function() {
+	
+						var pre = document.getElementsByTagName("pre");
+						var pasteContent = document.getElementById("paste-content");
+						var hasLanguage = false;
+		
+						for (var i = 0; i < pre.length; i++) {
+							var codeClass = pre[i].children[0].className;
+							var isLanguage = codeClass.indexOf("language-");
+		
+							var excludedCodeClassNames = [
+								"language-katex",
+								"language-seq",
+								"language-sequence",
+								"language-flow",
+								"language-flowchart",
+								"language-mermaid",
+							];
+		
+							var isExcluded = excludedCodeClassNames.indexOf(codeClass);
+		
+							if (isExcluded !== -1) {
+								isLanguage = -1;
+							}
+		
+							if (isLanguage !== -1) {
+								var button = document.createElement("button");
+								button.className = "copy-button";
+								button.textContent = "Copy";
+			
+								pre[i].appendChild(button);
+								hasLanguage = true;
+							}
+						};
+
+						if (hasLanguage) {
+							var copyCode = new ClipboardJS(".copy-button", {
+								target: function(trigger) {
+									return trigger.previousElementSibling;
+								}
+							});
+
+							copyCode.on("success", function(event) {
+								event.clearSelection();
+								event.trigger.textContent = "Copied";
+								window.setTimeout(function() {
+									event.trigger.textContent = "Copy";
+								}, 2000);
+							});
+
+						}
+					});
+
+				})(jQuery);
+
+			</script>
+		';
+
+		echo preg_replace( '/\s+/', ' ', $script );
 	}
 }

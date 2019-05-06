@@ -136,7 +136,7 @@ class KaTeX extends ModuleAbstract {
                 })(jQuery);
 			</script>
 		';
-		echo $script;
+		echo preg_replace( '/\s+/', ' ', $script );
 	}
 
 	/**
