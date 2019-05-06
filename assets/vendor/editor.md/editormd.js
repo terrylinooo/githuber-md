@@ -578,8 +578,8 @@
                         }
 
                         _this.setToolbar();
-
-                        editormd.loadScript(loadPath + "marked.min.20190418", function() {
+                        
+                        editormd.loadScript(loadPath + "marked.20190506.min", function() {
 
                             editormd.$marked = marked;
                              
