@@ -80,6 +80,11 @@ class Githuber {
 				$customMediaLibrary->init();
 			}
 
+			if ( 'yes' === githuber_get_option( 'editor_spell_check', 'githuber_markdown' ) ) {
+				$spellCheck = new Controller\SpellCheck();
+				$spellCheck->init();
+			}
+
 			$markdown = new Controller\Markdown();
 			$markdown->init();
 		}

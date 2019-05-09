@@ -143,6 +143,7 @@ pre.setting-example {
 	color: #0073aa;
 	background-color: #ffffff;
 }
+
 /*
 .nav-tab-active, .metabox-holder {
 	background-color: #ffffff;
@@ -152,4 +153,10 @@ pre.setting-example {
 	border-bottom: 1px solid #ffffff;
 }
 */
+
+.CodeMirror {
+	.cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+		background: rgba(255, 0, 0, .15);
+	}
+}
 

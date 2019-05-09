@@ -561,6 +561,8 @@
             }
 
             editormd.loadScript(loadPath + "codemirror/codemirror.min", function() {
+
+                // Load CodeMirror.js
                 editormd.$CodeMirror = CodeMirror;
                 
                 editormd.loadScript(loadPath + "codemirror/modes.min", function() {
@@ -699,7 +701,8 @@
             }
             
             var codeMirrorConfig = {
-                mode                      : settings.mode,
+                mode                      : "spell-checker",
+                backdrop                  : settings.mode,
                 theme                     : settings.editorTheme,
                 tabSize                   : settings.tabSize,
                 dragDrop                  : false,
@@ -725,6 +728,10 @@
                 spellcheck                : settings.spellCheck,
                 highlightSelectionMatches : ( (!settings.matchWordHighlight) ? false : { showToken: (settings.matchWordHighlight === "onselected") ? false : /\w/ } )
             };
+
+            CodeMirrorSpellChecker({
+                codeMirrorInstance: CodeMirror,
+            });
 
             this.codeEditor = this.cm        = editormd.$CodeMirror.fromTextArea(this.markdownTextarea[0], codeMirrorConfig);
             this.codeMirror = this.cmElement = editor.children(".CodeMirror");

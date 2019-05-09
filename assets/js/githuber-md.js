@@ -6,12 +6,13 @@ var wp_editor = 'wp-content-editor-container';
 var githuber_md_editor;
 var is_support_inline_keyboard_style = false;
 var is_support_html_figure = false;
+var spellcheck_dictionary_dir = '';
 
 (function($) {
     $(function() {
         var config = window.editormd_config;
 
-        console.log(config);
+        spellcheck_dictionary_dir = config.editor_modules_url + 'codemirror/addon/spellcheck/dict/en_US/';
 
         is_support_inline_keyboard_style = (config.support_inline_code_keyboard_style == 'yes');
         is_support_html_figure = (config.support_html_figure == 'yes');
@@ -86,7 +87,14 @@ var is_support_html_figure = false;
                     more: 'More'
                 }
             },
+            onchange : function() {
+                if (config.editor_spell_check == 'yes') {
+                    console.log('dsfsa');
+                    $('.CodeMirror span').attr('contenteditable', 'true').attr('spellcheck', 'true').attr('role', 'textbox');
+                }
+            }
         };
+
 
         if ($(wp_editor_container).length == 1) {
             githuber_md_editor = editormd(wp_editor, global_editormd_config);

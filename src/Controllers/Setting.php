@@ -273,7 +273,6 @@ class Setting extends ControllerAbstract {
 					'default' => 'yes',
 				),
 
-				/*
 				array(
 					'name'    => 'editor_spell_check',
 					'label'   => __( 'Spell Check', 'wp-githuber-md' ),
@@ -282,7 +281,6 @@ class Setting extends ControllerAbstract {
 					'size'    => 'sm',
 					'default' => 'no',
 				),
-				*/
 
 				array(
 					'name'    => 'editor_toolbar_theme',
