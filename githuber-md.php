@@ -92,21 +92,24 @@ require_once GITHUBER_PLUGIN_DIR . 'vendor/autoload.php';
 
 if ( is_admin() ) {
 
-	if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
-		if ( ! class_exists( 'DOMDocument' ) ) {
-			add_action( 'admin_notices', 'githuber_md_warning_libxml' );
-	
-			function githuber_md_warning_libxml() {
-				echo githuber_load_view( 'message/php-libxml-warning' );
+	if ( 'yes' !== githuber_get_option( 'disable_compatibility_warning', 'githuber_preferences' ) ) {
+
+		if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
+			if ( ! class_exists( 'DOMDocument' ) ) {
+				add_action( 'admin_notices', 'githuber_md_warning_libxml' );
+		
+				function githuber_md_warning_libxml() {
+					echo githuber_load_view( 'message/php-libxml-warning' );
+				}
 			}
 		}
-	}
-	
-	if ( ! function_exists( 'mb_strlen' ) ) {
-		add_action( 'admin_notices', 'githuber_md_warning_mbstring' );
+		
+		if ( ! function_exists( 'mb_strlen' ) ) {
+			add_action( 'admin_notices', 'githuber_md_warning_mbstring' );
 
-		function githuber_md_warning_mbstring() {
-			echo githuber_load_view( 'message/php-mbstring-warning' );
+			function githuber_md_warning_mbstring() {
+				echo githuber_load_view( 'message/php-mbstring-warning' );
+			}
 		}
 	}
 }

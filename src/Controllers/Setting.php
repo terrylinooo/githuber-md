@@ -546,158 +546,6 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'section_title' => true,
-					'location_id'   => 'katex',
-					'label'         => __( 'KaTex', 'wp-githuber-md' ),
-					'desc'          => __( 'KaTex.js', 'wp-githuber-md' ),
-				),
-
-				array(
-					'name'        => 'support_katex',
-					//'label'     => __( 'KaTeX', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-katax/" target="_blank">KaTeX</a> math typesetting.', 'wp-githuber-md' ),
-					'type'        => 'toggle',
-					'has_child'   => true,
-					'default'     => 'no',
-					'location_id' => 'katex',
-				),
-
-				array(
-					'name'    => 'katex_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
-					'type'    => 'radio',
-					'default' => 'default',
-					'parent'  => 'support_katex',
-					'options' => array(
-						'default'    => 'default',
-						'cloudflare' => 'cdnjs.cloudflare.com',
-						'jsdelivr'   => 'cdn.jsdelivr.net',
-					)
-				),
-
-				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/katex' ),
-					'type'    => 'html',
-					'parent'  => 'support_katex',
-				),
-
-				array(
-					'section_title' => true,
-					'location_id'   => 'flowchart',
-					'label'         => __( 'Flow Chart', 'wp-githuber-md' ),
-					'desc'          => __( 'flowchart.js', 'wp-githuber-md' ),
-				),
-
-				array(
-					'name'        => 'support_flowchart',
-					//'label'     => __( 'Flow Chart', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', 'wp-githuber-md' ),
-					'type'        => 'toggle',
-					'has_child'   => true,
-					'location_id' => 'flowchart',
-					'default'     => 'no',
-				),
-
-				array(
-					'name'    => 'flowchart_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
-					'type'    => 'radio',
-					'default' => 'default',
-					'parent'  => 'support_flowchart',
-					'options' => array(
-						'default'    => 'default',
-						'cloudflare' => 'cdnjs.cloudflare.com',
-						'jsdelivr'   => 'cdn.jsdelivr.net',
-					)
-				),
-
-				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/flowchart' ),
-					'type'    => 'html',
-					'parent'  => 'support_flowchart',
-				),
-
-				array(
-					'section_title' => true,
-					'location_id'   => 'sequence-diagram',
-					'label'         => __( 'Sequence Diagrams', 'wp-githuber-md' ),
-					'desc'          => __( 'sequence-diagrams.js', 'wp-githuber-md' ),
-				),
-
-				array(
-					'name'        => 'support_sequence_diagram',
-					//'label'     => __( 'Sequence Diagrams', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', 'wp-githuber-md' ),
-					'type'        => 'toggle',
-					'has_child'   => true,
-					'location_id' => 'sequence-diagram',
-					'default'     => 'no',
-				),
-
-				array(
-					'name'    => 'sequence_diagram_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
-					'type'    => 'radio',
-					'default' => 'default',
-					'parent'  => 'support_sequence_diagram',
-					'options' => array(
-						'default'    => 'default',
-						'cloudflare' => 'cdnjs.cloudflare.com',
-						'jsdelivr'   => 'cdn.jsdelivr.net',
-					)
-				),
-
-				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/sequence' ),
-					'type'    => 'html',
-					'parent'  => 'support_sequence_diagram',
-				),
-
-				array(
-					'section_title' => true,
-					'location_id'   => 'mermaid',
-					'label'         => __( 'Mermaid', 'wp-githuber-md' ),
-					'desc'          => __( 'mermaid.js', 'wp-githuber-md' ),
-				),
-
-				array(
-					'name'        => 'support_mermaid',
-					//'label'     => __( 'Mermaid', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-mermaid/" target="_blank">Mermaid.js</a>, a Markdownish Syntax for Generating Charts.', 'wp-githuber-md' ),
-					'type'        => 'toggle',
-					'location_id' => 'mermaid',
-					'has_child'   => true,
-					'default'     => 'no'
-				),
-
-				array(
-					'name'    => 'mermaid_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
-					'type'    => 'radio',
-					'default' => 'default',
-					'parent'  => 'support_mermaid',
-					'options' => array(
-						'default'    => 'default',
-						'cloudflare' => 'cdnjs.cloudflare.com',
-						'jsdelivr'   => 'cdn.jsdelivr.net',
-					)
-				),
-
-				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/mermaid' ),
-					'type'    => 'html',
-					'parent'  => 'support_mermaid',
-				),
-
-				array(
-					'section_title' => true,
 					'location_id'   => 'image-paste',
 					'label'         => __( 'Image Paste', 'wp-githuber-md' ),
 				),
@@ -806,6 +654,158 @@ class Setting extends ControllerAbstract {
 					'default' => 'yes',
 					'parent'  => 'support_toc',
 				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'katex',
+					'label'         => __( 'KaTex', 'wp-githuber-md' ),
+					'desc'          => __( 'KaTex.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_katex',
+					//'label'     => __( 'KaTeX', 'wp-githuber-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-katax/" target="_blank">KaTeX</a> math typesetting.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'default'     => 'no',
+					'location_id' => 'katex',
+				),
+
+				array(
+					'name'    => 'katex_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_katex',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/katex' ),
+					'type'    => 'html',
+					'parent'  => 'support_katex',
+				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'mermaid',
+					'label'         => __( 'Mermaid', 'wp-githuber-md' ),
+					'desc'          => __( 'mermaid.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_mermaid',
+					//'label'     => __( 'Mermaid', 'wp-githuber-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-mermaid/" target="_blank">Mermaid.js</a>, a Markdownish Syntax for Generating Charts.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'location_id' => 'mermaid',
+					'has_child'   => true,
+					'default'     => 'no'
+				),
+
+				array(
+					'name'    => 'mermaid_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_mermaid',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/mermaid' ),
+					'type'    => 'html',
+					'parent'  => 'support_mermaid',
+				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'flowchart',
+					'label'         => __( 'Flow Chart', 'wp-githuber-md' ),
+					'desc'          => __( 'flowchart.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_flowchart',
+					//'label'     => __( 'Flow Chart', 'wp-githuber-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'flowchart',
+					'default'     => 'no',
+				),
+
+				array(
+					'name'    => 'flowchart_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_flowchart',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/flowchart' ),
+					'type'    => 'html',
+					'parent'  => 'support_flowchart',
+				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'sequence-diagram',
+					'label'         => __( 'Sequence Diagrams', 'wp-githuber-md' ),
+					'desc'          => __( 'sequence-diagrams.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_sequence_diagram',
+					//'label'     => __( 'Sequence Diagrams', 'wp-githuber-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'sequence-diagram',
+					'default'     => 'no',
+				),
+
+				array(
+					'name'    => 'sequence_diagram_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_sequence_diagram',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/sequence' ),
+					'type'    => 'html',
+					'parent'  => 'support_sequence_diagram',
+				),
 			),
 
 			'githuber_extensions' => array(
@@ -896,7 +896,23 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_wpseo_analysis',
 					'label'   => __( 'Yoast SEO Analysis', 'wp-githuber-md' ),
-					'desc'    => __( "Support Yoast SEO readability analysis.", 'wp-githuber-md' ) . '<br /><span style="color: #b00000">' . __( "This is temporarily not working. Waiting for Yoast SEO community patch update.", 'wp-githuber-md' ) . '</span>',
+					'desc'    => __( "Support Yoast SEO readability analysis.", 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
+
+				array(
+					'name'    => 'disable_compatibility_warning',
+					'label'   => __( 'Disable Compatibility Warning', 'wp-githuber-md' ),
+					'desc'    => __( 'You can disable compatibility warning if you think that it is a misjudgment.', 'wp-githuber-md' ) . '<br /><span style="color: #b00000">' . __( 'Do not turn it on unless you know what you do.', 'wp-githuber-md' ) . '</span>',
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
+
+				array(
+					'name'    => 'clear_all_settings',
+					'label'   => __( 'Clear all Settings', 'wp-githuber-md' ),
+					'desc'    => __( 'Clear all setting when uninstalling WP GitHuber MD.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'default' => 'no',
 				),

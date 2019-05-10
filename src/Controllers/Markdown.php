@@ -232,8 +232,10 @@ class Markdown extends ControllerAbstract {
 		} else {
 			// Jetpack Markdown should not be turned on with Githuber MD at the same time.
 			// We should notice users to turn it off.
-			if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
-				add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
+			if ( 'yes' !== githuber_get_option( 'disable_compatibility_warning', 'githuber_preferences' ) ) {
+				if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
+					add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
+				}
 			}
 
 			wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
