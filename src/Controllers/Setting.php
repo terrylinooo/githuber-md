@@ -912,7 +912,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'clear_all_settings',
 					'label'   => __( 'Clear all Settings', 'wp-githuber-md' ),
-					'desc'    => __( 'Clear all setting when uninstalling WP GitHuber MD.', 'wp-githuber-md' ),
+					'desc'    => __( 'Clear all settings when uninstalling WP GitHuber MD.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'default' => 'no',
 				),

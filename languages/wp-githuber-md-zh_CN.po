@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 11:10+0000\n"
-"PO-Revision-Date: 2019-05-04 11:12+0000\n"
+"POT-Creation-Date: 2019-05-10 07:23+0000\n"
+"PO-Revision-Date: 2019-05-10 07:28+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.0; wp-5.1.1"
+"X-Loco-Version: 2.2.0; wp-5.2"
 
 #: src/Controllers/CustomMediaLibrary.php:63
 msgid "Code type"
@@ -36,11 +36,11 @@ msgstr "系统尚未安装 PHP Curl 模组。"
 msgid "Error while uploading file."
 msgstr "上传档案时发生错误。"
 
-#: src/Controllers/Markdown.php:288
+#: src/Controllers/Markdown.php:291
 msgid "Happy Markdowning!"
 msgstr "快乐的使用 Markdown 吧！"
 
-#: src/Controllers/Markdown.php:689
+#: src/Controllers/Markdown.php:692
 msgid "Enable Markdown"
 msgstr "启用 Markdown"
 
@@ -106,135 +106,237 @@ msgid ""
 msgstr "如果觉得自动储存功能妨碍写作，请停用这项功能。"
 
 #: src/Controllers/Setting.php:212
+msgid "Spell Check"
+msgstr "拼写检查"
+
+#: src/Controllers/Setting.php:213
+msgid ""
+"Enable spell check on the input. (This feature does not apply to code blocks."
+")"
+msgstr "启用对输入的拼写检查。 （此功能不适用于代码块。）"
+
+#: src/Controllers/Setting.php:221
+msgid "Language"
+msgstr "语言"
+
+#: src/Controllers/Setting.php:222
+msgid "Please specify your language for spell check in the setting below."
+msgstr "请在下面的设置中指定拼写检查的语言。"
+
+#: src/Controllers/Setting.php:276
 msgid "Meta Boxes"
 msgstr "自订区块"
 
-#: src/Controllers/Setting.php:218
+#: src/Controllers/Setting.php:282
 msgid "HTML-to-Markdown"
 msgstr "HTML 转换成 Markdown"
 
-#: src/Controllers/Setting.php:228
+#: src/Controllers/Setting.php:292
 msgid "Markdown Editor Switcher"
 msgstr "Markdown Editor 切换器"
 
-#: src/Controllers/Setting.php:237
+#: src/Controllers/Setting.php:301
 msgid "Markdown Editor"
 msgstr "Markdown 编辑器"
 
-#: src/Controllers/Setting.php:242
+#: src/Controllers/Setting.php:306
 msgid "Live Preview"
 msgstr "即时预览"
 
-#: src/Controllers/Setting.php:243
+#: src/Controllers/Setting.php:307
 msgid ""
 "Split editor into two panes to display a live preview when editing post."
 msgstr "将编辑器分割为两个窗格以显示即时预览内容。"
 
-#: src/Controllers/Setting.php:251
+#: src/Controllers/Setting.php:315
 msgid "Sync Scrolling"
 msgstr "同步卷动"
 
-#: src/Controllers/Setting.php:252
+#: src/Controllers/Setting.php:316
 msgid "Synchronize scrolling of two editor panes by content."
 msgstr "在两个编辑器窗格中同步卷动观看内容。"
 
-#: src/Controllers/Setting.php:260
+#: src/Controllers/Setting.php:324
 msgid "HTML Decode"
 msgstr "HTML 解码"
 
-#: src/Controllers/Setting.php:261
+#: src/Controllers/Setting.php:325
 msgid "Allow all HTML tags and attributes in the Markdown Editor."
 msgstr "在 Markdown 编辑器中开放使用全部 HTML 标签及属性。"
 
-#: src/Controllers/Setting.php:269 src/Controllers/Setting.php:435
+#: src/Controllers/Setting.php:333 src/Controllers/Setting.php:488
 msgid "Line Number"
 msgstr "行号"
 
-#: src/Controllers/Setting.php:270
+#: src/Controllers/Setting.php:334
 msgid "Display line number in the Markdown Editor."
 msgstr "在 Markdown 编辑器中显示行号。"
 
-#: src/Controllers/Setting.php:289
+#: src/Controllers/Setting.php:342
 msgid "Toolbar"
 msgstr "工具列"
 
-#: src/Controllers/Setting.php:290
+#: src/Controllers/Setting.php:343
 msgid "Choose a perferred style for the Editor's toolbar."
 msgstr "为编辑器工具列选取偏好"
 
-#: src/Controllers/Setting.php:301
+#: src/Controllers/Setting.php:354
 msgid "Editing Area"
 msgstr "编辑区域"
 
-#: src/Controllers/Setting.php:302
+#: src/Controllers/Setting.php:355
 msgid "Choose a perferred style for the Editor's editing area."
 msgstr "为编辑器的编辑区选取偏好的样式。"
 
-#: src/Controllers/Setting.php:398
+#: src/Controllers/Setting.php:451
 msgid "Syntax Highlight"
 msgstr "代码高亮"
 
-#: src/Controllers/Setting.php:401
+#: src/Controllers/Setting.php:454
 msgid "prism.js"
 msgstr "prism.js"
 
-#: src/Controllers/Setting.php:407
+#: src/Controllers/Setting.php:460
 msgid "Highligh the syntax in your code snippets by Prism.js"
 msgstr "启用这项设定后，便能使用 Prism.js 为程式码片段中的语法标示高亮提示。"
 
-#: src/Controllers/Setting.php:416 src/Controllers/Setting.php:884
+#: src/Controllers/Setting.php:469 src/Controllers/Setting.php:953
 msgid "Theme"
 msgstr "布景主题"
 
-#: src/Controllers/Setting.php:417
+#: src/Controllers/Setting.php:470
 msgid "Choose a perferred theme for the syntax highlighter."
 msgstr "为语法高亮提示选取偏好的布景主题。"
 
-#: src/Controllers/Setting.php:436
+#: src/Controllers/Setting.php:489
 msgid "Show line number in code area?"
 msgstr "设定是否显示编辑区行号。"
 
-#: src/Controllers/Setting.php:445 src/Controllers/Setting.php:482
-#: src/Controllers/Setting.php:513 src/Controllers/Setting.php:551
-#: src/Controllers/Setting.php:589 src/Controllers/Setting.php:627
+#: src/Controllers/Setting.php:498 src/Controllers/Setting.php:535
+#: src/Controllers/Setting.php:677 src/Controllers/Setting.php:715
+#: src/Controllers/Setting.php:753 src/Controllers/Setting.php:791
 msgid "File Host"
 msgstr "档案托管设定"
 
-#: src/Controllers/Setting.php:446 src/Controllers/Setting.php:483
-#: src/Controllers/Setting.php:514 src/Controllers/Setting.php:552
-#: src/Controllers/Setting.php:590 src/Controllers/Setting.php:628
+#: src/Controllers/Setting.php:499 src/Controllers/Setting.php:536
+#: src/Controllers/Setting.php:678 src/Controllers/Setting.php:716
+#: src/Controllers/Setting.php:754 src/Controllers/Setting.php:792
 msgid "Use this library with a CDN service or self-hosted (default)?"
 msgstr "设定使用托管于 CDN 服务或自主托管 (默认值) 的函式库。"
 
-#: src/Controllers/Setting.php:458 src/Controllers/Setting.php:526
-#: src/Controllers/Setting.php:564 src/Controllers/Setting.php:602
-#: src/Controllers/Setting.php:640
+#: src/Controllers/Setting.php:511 src/Controllers/Setting.php:690
+#: src/Controllers/Setting.php:728 src/Controllers/Setting.php:766
+#: src/Controllers/Setting.php:804
 msgid "Example"
 msgstr "示范"
 
-#: src/Controllers/Setting.php:467
+#: src/Controllers/Setting.php:520
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
-#: src/Controllers/Setting.php:468
+#: src/Controllers/Setting.php:521
 msgid "clipboard.js"
 msgstr "clipboard.js"
 
-#: src/Controllers/Setting.php:473
+#: src/Controllers/Setting.php:526
 msgid ""
 "Display a `Copy` button on the highlighting code block. Copy the text into "
 "clipboard by clicking the button."
 msgstr "在代码高亮的区块上显示 `复制` 按钮。单击按钮将本文复制到剪贴板。"
 
-#: src/Controllers/Setting.php:497
+#: src/Controllers/Setting.php:550
+msgid "Image Paste"
+msgstr "图片随贴"
+
+#: src/Controllers/Setting.php:565
+msgid "Storage Space"
+msgstr "储存空间"
+
+#: src/Controllers/Setting.php:566
+msgid ""
+"Images are stored in WordPress's <strong>uploads</strong> folder by default. "
+"However, you can use Imgur instead of the default place."
+msgstr ""
+"图片预设储存在 WordPress 的 <strong>uploads</strong> 资料夹。网站管理员可以选择使用 Imgur "
+"图床服务取代预设储存位置。"
+
+#: src/Controllers/Setting.php:571 src/Controllers/Setting.php:642
+msgid "default"
+msgstr "默认"
+
+#: src/Controllers/Setting.php:572
+msgid "imgur.com"
+msgstr "imgur.com"
+
+#: src/Controllers/Setting.php:573
+msgid "sm.ms"
+msgstr "sm.ms"
+
+#: src/Controllers/Setting.php:579
+msgid "Imgur Client ID"
+msgstr "Imgur Client ID"
+
+#: src/Controllers/Setting.php:590
+msgid "Upload to Media Library?"
+msgstr "上传至媒体库"
+
+#: src/Controllers/Setting.php:601 src/Modules/Toc.php:40
+msgid "Table of Content"
+msgstr "内容纲要"
+
+#: src/Controllers/Setting.php:607
+msgid "Support Table of Content."
+msgstr " 支持内容纲要。"
+
+#: src/Controllers/Setting.php:616
+msgid "Widget"
+msgstr "小工具"
+
+#: src/Controllers/Setting.php:617
+msgid "Display a TOC in the widget area for single post."
+msgstr "在小工具区域中显示文章的内容纲要。"
+
+#: src/Controllers/Setting.php:626
+msgid "Inside a Post"
+msgstr "在文章里"
+
+#: src/Controllers/Setting.php:627
+msgid "Insert a TOC inside a post header location."
+msgstr "在文章头部位置插入内容纲要。"
+
+#: src/Controllers/Setting.php:636
+msgid "Float"
+msgstr "浮动"
+
+#: src/Controllers/Setting.php:637
+msgid "Would you like to float the TOC in the post to left or right?"
+msgstr "你想将内容纲要漂浮在左侧还是右侧？"
+
+#: src/Controllers/Setting.php:643
+msgid "right"
+msgstr "右"
+
+#: src/Controllers/Setting.php:644
+msgid "left"
+msgstr "左"
+
+#: src/Controllers/Setting.php:650
+msgid "Border"
+msgstr "边框线"
+
+#: src/Controllers/Setting.php:651
+msgid "Would you like to show the border of the TOC in the post?"
+msgstr "你想显示文章纲要的边框线吗？"
+
+#: src/Controllers/Setting.php:661
 msgid "KaTex"
 msgstr "KaTex"
 
-#: src/Controllers/Setting.php:498
+#: src/Controllers/Setting.php:662
 msgid "KaTex.js"
 msgstr "KaTex.js"
 
-#: src/Controllers/Setting.php:504
+#: src/Controllers/Setting.php:668
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
 "target=\"_blank\">KaTeX</a> math typesetting."
@@ -242,15 +344,31 @@ msgstr ""
 "启用这项设定后，便能使用<a href=\"https://terryl.in/en/githuber-md-katax/\" "
 "target=\"_blank\">KaTeX</a> 数学公式排版语法。"
 
-#: src/Controllers/Setting.php:535
+#: src/Controllers/Setting.php:699
+msgid "Mermaid"
+msgstr "Mermaid"
+
+#: src/Controllers/Setting.php:700
+msgid "mermaid.js"
+msgstr "mermaid.js"
+
+#: src/Controllers/Setting.php:706
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
+msgstr ""
+"启用这项设定后，便能使用 <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"target=\"_blank\">Mermaid.js</a>这种与 Markdown 类似的语法产生图表。"
+
+#: src/Controllers/Setting.php:737
 msgid "Flow Chart"
 msgstr "流程图"
 
-#: src/Controllers/Setting.php:536
+#: src/Controllers/Setting.php:738
 msgid "flowchart.js"
 msgstr "flowchart.js"
 
-#: src/Controllers/Setting.php:542
+#: src/Controllers/Setting.php:744
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
@@ -258,15 +376,15 @@ msgstr ""
 "启用这项设定后，便能使用<a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</ a> 画出简易的SVG 向量流程图。"
 
-#: src/Controllers/Setting.php:573
+#: src/Controllers/Setting.php:775
 msgid "Sequence Diagrams"
 msgstr "顺序图表"
 
-#: src/Controllers/Setting.php:574
+#: src/Controllers/Setting.php:776
 msgid "sequence-diagrams.js"
 msgstr "sequence-diagrams.js"
 
-#: src/Controllers/Setting.php:580
+#: src/Controllers/Setting.php:782
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
 "target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
@@ -275,221 +393,136 @@ msgstr ""
 "启用这项设定后，便能使用<a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
 "target=\"_blank\">js-sequence-diagrams </a> 将文字转换成向量UML 顺序图表。"
 
-#: src/Controllers/Setting.php:611
-msgid "Mermaid"
-msgstr "Mermaid"
-
-#: src/Controllers/Setting.php:612
-msgid "mermaid.js"
-msgstr "mermaid.js"
-
-#: src/Controllers/Setting.php:618
-msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
-"target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
-msgstr ""
-"启用这项设定后，便能使用 <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
-"target=\"_blank\">Mermaid.js</a>这种与 Markdown 类似的语法产生图表。"
-
-#: src/Controllers/Setting.php:649
-msgid "Image Paste"
-msgstr "图片随贴"
-
-#: src/Controllers/Setting.php:664
-msgid "Storage Space"
-msgstr "储存空间"
-
-#: src/Controllers/Setting.php:665
-msgid ""
-"Images are stored in WordPress's <strong>uploads</strong> folder by default. "
-"However, you can use Imgur instead of the default place."
-msgstr ""
-"图片预设储存在 WordPress 的 <strong>uploads</strong> 资料夹。网站管理员可以选择使用 Imgur "
-"图床服务取代预设储存位置。"
-
-#: src/Controllers/Setting.php:670 src/Controllers/Setting.php:741
-msgid "default"
-msgstr "默认"
-
-#: src/Controllers/Setting.php:671
-msgid "imgur.com"
-msgstr "imgur.com"
-
-#: src/Controllers/Setting.php:672
-msgid "sm.ms"
-msgstr "sm.ms"
-
-#: src/Controllers/Setting.php:678
-msgid "Imgur Client ID"
-msgstr "Imgur Client ID"
-
-#: src/Controllers/Setting.php:689
-msgid "Upload to Media Library?"
-msgstr "上传至媒体库"
-
-#: src/Controllers/Setting.php:700 src/Modules/Toc.php:40
-msgid "Table of Content"
-msgstr "内容纲要"
-
-#: src/Controllers/Setting.php:706
-msgid "Support Table of Content."
-msgstr " 支持内容纲要。"
-
-#: src/Controllers/Setting.php:715
-msgid "Widget"
-msgstr "小工具"
-
-#: src/Controllers/Setting.php:716
-msgid "Display a TOC in the widget area for single post."
-msgstr "在小工具区域中显示文章的内容纲要。"
-
-#: src/Controllers/Setting.php:725
-msgid "Inside a Post"
-msgstr "在文章里"
-
-#: src/Controllers/Setting.php:726
-msgid "Insert a TOC inside a post header location."
-msgstr "在文章头部位置插入内容纲要。"
-
-#: src/Controllers/Setting.php:735
-msgid "Float"
-msgstr "浮动"
-
-#: src/Controllers/Setting.php:736
-msgid "Would you like to float the TOC in the post to left or right?"
-msgstr "你想将内容纲要漂浮在左侧还是右侧？"
-
-#: src/Controllers/Setting.php:742
-msgid "right"
-msgstr "右"
-
-#: src/Controllers/Setting.php:743
-msgid "left"
-msgstr "左"
-
-#: src/Controllers/Setting.php:749
-msgid "Border"
-msgstr "边框线"
-
-#: src/Controllers/Setting.php:750
-msgid "Would you like to show the border of the TOC in the post?"
-msgstr "你想显示文章纲要的边框线吗？"
-
-#: src/Controllers/Setting.php:762
+#: src/Controllers/Setting.php:815
 msgid "Markdown Extra"
 msgstr "Markdown Extra"
 
-#: src/Controllers/Setting.php:770
+#: src/Controllers/Setting.php:823
 msgid "GFM Task List"
 msgstr "GFM 工作清单"
 
-#: src/Controllers/Setting.php:771
+#: src/Controllers/Setting.php:824
 msgid "Support Github Flavored Markdown task lists."
 msgstr "启用这项设定后，便能使用 Github Flavored Markdown (GFM) 的工作清单功能。"
 
-#: src/Controllers/Setting.php:783
+#: src/Controllers/Setting.php:836
 msgid "Githuber MD Extensions"
 msgstr "Githuber MD 扩充功能"
 
-#: src/Controllers/Setting.php:789
+#: src/Controllers/Setting.php:842
 msgid "HTML5 Figure"
 msgstr "HTML5 Figure 标签"
 
-#: src/Controllers/Setting.php:798
+#: src/Controllers/Setting.php:851
 msgid "Inline Code Block with Keyboard Style"
 msgstr "使用键盘样式的行间代码区块"
 
-#: src/Controllers/Setting.php:809
+#: src/Controllers/Setting.php:862
 msgid "Link Opening Method"
 msgstr "链结开启方式"
 
-#: src/Controllers/Setting.php:810
+#: src/Controllers/Setting.php:863
 msgid "For links in posts, please specify where to open the linked document."
 msgstr "这项设定能为文章中的链结设定开启链结目标的方式。"
 
-#: src/Controllers/Setting.php:814
+#: src/Controllers/Setting.php:867
 msgid "Same window. (default)"
 msgstr "在同一视窗开启 (默认)"
 
-#: src/Controllers/Setting.php:815
+#: src/Controllers/Setting.php:868
 msgid "New window."
 msgstr "在新视窗中开启"
 
-#: src/Controllers/Setting.php:821
+#: src/Controllers/Setting.php:874
 msgid "Shortcode"
 msgstr "短代码"
 
-#: src/Controllers/Setting.php:822
+#: src/Controllers/Setting.php:875
 msgid "Allow using shortcode in Markdown text."
 msgstr "允许在 Markdown 内文中使用短代码。"
 
-#: src/Controllers/Setting.php:822
+#: src/Controllers/Setting.php:875
 msgid ""
 "Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
 " therefore live-preview panel does not support it."
 msgstr ""
 "请了解短代码是透过 PHP 处理成前端可检视的 HTML 结果，而不是透过 JavaScript，因此短代码的结果无法显示于即时检视面板。\""
 
-#: src/Controllers/Setting.php:829
+#: src/Controllers/Setting.php:882
 msgid "Smart Quotes"
 msgstr "智慧型引号"
 
-#: src/Controllers/Setting.php:837
+#: src/Controllers/Setting.php:890
 msgid "Ampersands in URL"
 msgstr "URL中的＆符号"
 
-#: src/Controllers/Setting.php:838
+#: src/Controllers/Setting.php:891
 msgid "Replace `&amp;amp;` to `&` in URLs."
 msgstr "用 `&` 取代在 URL 中的 `&amp;amp;` 。"
 
-#: src/Controllers/Setting.php:845
+#: src/Controllers/Setting.php:898
 msgid "Yoast SEO Analysis"
 msgstr "Yoast SEO 分析"
 
-#: src/Controllers/Setting.php:846
+#: src/Controllers/Setting.php:899
 msgid "Support Yoast SEO readability analysis."
 msgstr "支持 Yoast SEO 的可读性分析。"
 
-#: src/Controllers/Setting.php:846
-msgid ""
-"This is temporarily not working. Waiting for Yoast SEO community patch "
-"update."
-msgstr "目前暂取无法使用，正等待 Yoast SEO 的更新档。"
+#: src/Controllers/Setting.php:906
+msgid "Disable Compatibility Warning"
+msgstr "兼容性警告"
 
-#: src/Controllers/Setting.php:856
+#: src/Controllers/Setting.php:907
+msgid ""
+"You can disable compatibility warning if you think that it is a misjudgment."
+msgstr "如果您认为这是一个误判，您可以停用兼容性警告。"
+
+#: src/Controllers/Setting.php:907
+msgid "Do not turn it on unless you know what you do."
+msgstr "除非你知道你做什么，否则不要打开它。"
+
+#: src/Controllers/Setting.php:914
+msgid "Clear all Settings"
+msgstr "清除所有设置"
+
+#: src/Controllers/Setting.php:915
+msgid "Clear all setting when uninstalling WP GitHuber MD."
+msgstr "卸载 WP Githuber MD 时清除所有设置。"
+
+#: src/Controllers/Setting.php:925
 msgid "Author"
 msgstr "作者"
 
-#: src/Controllers/Setting.php:863
+#: src/Controllers/Setting.php:932
 msgid "Version"
 msgstr "版本"
 
-#: src/Controllers/Setting.php:870
+#: src/Controllers/Setting.php:939
 msgid "GitHub Repository"
 msgstr "GitHub 存放库"
 
-#: src/Controllers/Setting.php:877
+#: src/Controllers/Setting.php:946
 msgid "Buy me a coffee"
 msgstr "赞助开发工作"
 
-#: src/Controllers/Setting.php:903
+#: src/Controllers/Setting.php:972
 msgid "WP Githuber MD "
 msgstr "WP Githuber MD"
 
 #. Name of the plugin
-#: src/Controllers/Setting.php:904
+#: src/Controllers/Setting.php:973
 msgid "WP Githuber MD"
 msgstr "WP Githuber MD"
 
-#: src/Controllers/Setting.php:941
+#: src/Controllers/Setting.php:1010
 msgid "Settings"
 msgstr "设定"
 
-#: src/Controllers/Setting.php:959
+#: src/Controllers/Setting.php:1028
 msgid "View GitHub project"
 msgstr "检视 GitHub 专案"
 
-#: src/Controllers/Setting.php:960
+#: src/Controllers/Setting.php:1029
 msgid "Report issues"
 msgstr "回报问题"
 
