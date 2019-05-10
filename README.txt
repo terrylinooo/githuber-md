@@ -264,6 +264,11 @@ GNU General Public License for more details.
 * Fix incorrect link coloring in marked.js
 * Issue #49: Images are inserted at the end of the document.
 
+= 1.11.0
+
+* Feature request #65: Spell check.
+* Add new settings in the Preferences tab.
+
 == Known Issues ==
 
 * #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
