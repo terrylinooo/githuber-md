@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 1.10.1
+Stable tag: 1.11.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -53,6 +53,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 * [Markdown editor](https://markdown-editor.github.io/).
 * Live preview.
+* Spell check.
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
 * Support custom post types.

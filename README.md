@@ -70,6 +70,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 * All-in-one [Markdown editor](https://markdown-editor.github.io/).
 * Live preview.
+* Spell check.
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
 * Support custom post types.
