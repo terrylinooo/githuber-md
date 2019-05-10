@@ -287,6 +287,9 @@ class Githuber {
 				.md-post-toc {
 					font-size: 0.9em;
 				}
+				.post h2 {
+					overflow: hidden;
+				}
 				.post-toc-block {
 					margin: 0 10px 20px 10px;
 					overflow: hidden;
