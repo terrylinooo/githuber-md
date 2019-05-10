@@ -1,4 +1,4 @@
-// Use strict mode (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
+
 "use strict";
 
 // Create function
@@ -12,7 +12,6 @@ function CodeMirrorSpellChecker(options) {
 		console.log("CodeMirror Spell Checker: You must provide an instance of CodeMirror via the option `codeMirrorInstance`");
 		return;
 	}
-
 
 	// Because some browsers don't support this functionality yet
 	if(!String.prototype.includes) {
@@ -28,14 +27,14 @@ function CodeMirrorSpellChecker(options) {
 		if(!CodeMirrorSpellChecker.aff_loading) {
 			CodeMirrorSpellChecker.aff_loading = true;
 			var xhr_aff = new XMLHttpRequest();
-			xhr_aff.open("GET", spellcheck_dictionary_dir + 'en_US.aff', true);
+			xhr_aff.open("GET", spellcheck_dictionary_dir + spellcheck_lang + '.aff', true);
 			xhr_aff.onload = function() {
 				if(xhr_aff.readyState === 4 && xhr_aff.status === 200) {
 					CodeMirrorSpellChecker.aff_data = xhr_aff.responseText;
 					CodeMirrorSpellChecker.num_loaded++;
 
 					if(CodeMirrorSpellChecker.num_loaded == 2) {
-						CodeMirrorSpellChecker.typo = new Typo("en_US", CodeMirrorSpellChecker.aff_data, CodeMirrorSpellChecker.dic_data, {
+						CodeMirrorSpellChecker.typo = new Typo(spellcheck_lang, CodeMirrorSpellChecker.aff_data, CodeMirrorSpellChecker.dic_data, {
 							platform: "any"
 						});
 					}
@@ -47,14 +46,14 @@ function CodeMirrorSpellChecker(options) {
 		if(!CodeMirrorSpellChecker.dic_loading) {
 			CodeMirrorSpellChecker.dic_loading = true;
 			var xhr_dic = new XMLHttpRequest();
-			xhr_dic.open("GET", spellcheck_dictionary_dir + 'en_US.dic', true);
+			xhr_dic.open("GET", spellcheck_dictionary_dir + spellcheck_lang +'.dic', true);
 			xhr_dic.onload = function() {
 				if(xhr_dic.readyState === 4 && xhr_dic.status === 200) {
 					CodeMirrorSpellChecker.dic_data = xhr_dic.responseText;
 					CodeMirrorSpellChecker.num_loaded++;
 
 					if(CodeMirrorSpellChecker.num_loaded == 2) {
-						CodeMirrorSpellChecker.typo = new Typo("en_US", CodeMirrorSpellChecker.aff_data, CodeMirrorSpellChecker.dic_data, {
+						CodeMirrorSpellChecker.typo = new Typo(spellcheck_lang, CodeMirrorSpellChecker.aff_data, CodeMirrorSpellChecker.dic_data, {
 							platform: "any"
 						});
 					}
@@ -63,10 +62,8 @@ function CodeMirrorSpellChecker(options) {
 			xhr_dic.send(null);
 		}
 
-
 		// Define what separates a word
 		var rx_word = "!\"#$%&()*+,-./:;<=>?@[\\]^_`{|}~ ";
-
 
 		// Create the overlay and such
 		var overlay = {
@@ -99,7 +96,6 @@ function CodeMirrorSpellChecker(options) {
 	});
 }
 
-
 // Initialize data globally to reduce memory consumption
 CodeMirrorSpellChecker.num_loaded = 0;
 CodeMirrorSpellChecker.aff_loading = false;
@@ -107,7 +103,6 @@ CodeMirrorSpellChecker.dic_loading = false;
 CodeMirrorSpellChecker.aff_data = "";
 CodeMirrorSpellChecker.dic_data = "";
 CodeMirrorSpellChecker.typo;
-
 
 // Export
 //module.exports = CodeMirrorSpellChecker;

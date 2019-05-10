@@ -259,6 +259,7 @@ class Markdown extends ControllerAbstract {
 				'editor_editor_theme',
 				'editor_line_number',
 				'editor_spell_check',
+				'editor_spell_check_lang',
 			);
 
 			$editormd_config_list['modules'] = array(

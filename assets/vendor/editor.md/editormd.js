@@ -699,9 +699,19 @@
             {
                 editormd.loadCSS(settings.path + "codemirror/theme/" + settings.editorTheme);
             }
+
+            if (settings.spellCheck) {
+                var primaryMode = 'spell-checker';
+
+                CodeMirrorSpellChecker({
+                    codeMirrorInstance: CodeMirror,
+                });
+            } else {
+                var primaryMode = settings.mode;
+            }
             
             var codeMirrorConfig = {
-                mode                      : "spell-checker",
+                mode                      : primaryMode,
                 backdrop                  : settings.mode,
                 theme                     : settings.editorTheme,
                 tabSize                   : settings.tabSize,
@@ -729,9 +739,7 @@
                 highlightSelectionMatches : ( (!settings.matchWordHighlight) ? false : { showToken: (settings.matchWordHighlight === "onselected") ? false : /\w/ } )
             };
 
-            CodeMirrorSpellChecker({
-                codeMirrorInstance: CodeMirror,
-            });
+
 
             this.codeEditor = this.cm        = editormd.$CodeMirror.fromTextArea(this.markdownTextarea[0], codeMirrorConfig);
             this.codeMirror = this.cmElement = editor.children(".CodeMirror");
@@ -740,9 +748,7 @@
                 inlineAttachment.defaults.uploadUrl = settings.imagePasteCallback;
                 inlineAttachment.editors.codemirror4.attach(this.codeEditor);
             }
-
-            
-            
+ 
             if (settings.value !== "")
             {
                 this.cm.setValue(settings.value);

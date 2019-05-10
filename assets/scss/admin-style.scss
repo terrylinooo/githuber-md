@@ -155,8 +155,10 @@ pre.setting-example {
 */
 
 .CodeMirror {
-	.cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
-		background: rgba(255, 0, 0, .15);
+	.cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word):not(.cm-tag):not(.cm-property):not(.cm-variable):not(.cm-variable-2):not(.cm-string):not(.cm-link):not(.cm-def):not(.cm-atom):not(.cm-operator) {
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUXCToH00Y1UgAAACFJREFUCNdjPMDBUc/AwNDAAAFMTAwMDA0OP34wQgX/AQBYgwYEx4f9lQAAAABJRU5ErkJggg==);
+		background-position: bottom left;
+		background-repeat: repeat-x;
 	}
 }
 

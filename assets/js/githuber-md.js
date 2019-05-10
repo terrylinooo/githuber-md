@@ -7,12 +7,14 @@ var githuber_md_editor;
 var is_support_inline_keyboard_style = false;
 var is_support_html_figure = false;
 var spellcheck_dictionary_dir = '';
+var spellcheck_lang = 'en_US';
 
 (function($) {
     $(function() {
         var config = window.editormd_config;
 
-        spellcheck_dictionary_dir = config.editor_modules_url + 'codemirror/addon/spellcheck/dict/en_US/';
+        spellcheck_lang = config.editor_spell_check_lang;
+        spellcheck_dictionary_dir = 'https://spellcheck-dictionaries.github.io/' + spellcheck_lang + '/';
 
         is_support_inline_keyboard_style = (config.support_inline_code_keyboard_style == 'yes');
         is_support_html_figure = (config.support_html_figure == 'yes');
@@ -87,12 +89,6 @@ var spellcheck_dictionary_dir = '';
                     more: 'More'
                 }
             },
-            onchange : function() {
-                if (config.editor_spell_check == 'yes') {
-                    console.log('dsfsa');
-                    $('.CodeMirror span').attr('contenteditable', 'true').attr('spellcheck', 'true').attr('role', 'textbox');
-                }
-            }
         };
 
 
