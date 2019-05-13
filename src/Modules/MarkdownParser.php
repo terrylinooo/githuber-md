@@ -231,11 +231,15 @@ class MarkdownParser extends Parsedown {
 	 */
 	public function do_codeblock_preserve( $matches ) {
 		$block = stripslashes( $matches[3] );
+
+		// check `
+		$block = str_replace('`', '%|%|%', $block);
 		$block = esc_html( $block );
 		$block = str_replace( '\\', '\\\\', $block );
 		$open  = $matches[1] . $matches[2] . "\n";
+		$end   =  "\n" . $matches[4];
 
-		return $open . $block . $matches[4];
+		return $open . $block . $end;
 	}
 
 	/**
@@ -256,9 +260,11 @@ class MarkdownParser extends Parsedown {
 	 */
 	public function do_codeblock_restore( $matches ) {
 		$block = html_entity_decode( $matches[3], ENT_QUOTES );
+		$block = str_replace('%|%|%', '`', $block);
 		$open  = $matches[1] . $matches[2] . "\n";
+		$end   =  "\n" . $matches[4];
 
-		return $open . $block . $matches[4];
+		return $open . $block . $end;
 	}
 
 	/**
@@ -276,6 +282,9 @@ class MarkdownParser extends Parsedown {
 		}
 		// reset the hash
 		$this->preserve_text_hash = array();
+
+		// Restore "`"
+		$text = str_replace('%|%|%', '`', $text);
 
 		return $text;
 	}

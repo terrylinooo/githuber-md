@@ -225,7 +225,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 * @return string       Markdown/HTML content with escaped code blocks
 	 */
 	public function codeblock_preserve( $text ) {
-		return preg_replace_callback( "/^(\s*[`~]{3})([^`\n]+)?\n([^`~]+)(\\1)/m", array( $this, 'do_codeblock_preserve' ), $text );
+		return preg_replace_callback( "/^(\s*[`~]{3})([^`\n]+)?\n([\s\S]*?)\n(\s*[`~]{3})/m", array( $this, 'do_codeblock_preserve' ), $text );
 	}
 
 	/**
@@ -236,11 +236,15 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 */
 	public function do_codeblock_preserve( $matches ) {
 		$block = stripslashes( $matches[3] );
+
+		// check `
+		$block = str_replace('`', '%|%|%', $block);
 		$block = esc_html( $block );
 		$block = str_replace( '\\', '\\\\', $block );
 		$open  = $matches[1] . $matches[2] . "\n";
+		$end   =  "\n" . $matches[4];
 
-		return $open . $block . $matches[4];
+		return $open . $block . $end;
 	}
 
 	/**
@@ -250,7 +254,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 * @return string Markdown/HTML content
 	 */
 	public function codeblock_restore( $text ) {
-		return preg_replace_callback( "/^(\s*[`~]{3})([^`\n]+)?\n([^`~]+)(\\1)/m", array( $this, 'do_codeblock_restore' ), $text );
+		return preg_replace_callback( "/^(\s*[`~]{3})([^`\n]+)?\n([\s\S]*?)\n(\s*[`~]{3})/m", array( $this, 'do_codeblock_restore' ), $text );
 	}
 
 	/**
@@ -261,9 +265,11 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 */
 	public function do_codeblock_restore( $matches ) {
 		$block = html_entity_decode( $matches[3], ENT_QUOTES );
+		$block = str_replace('%|%|%', '`', $block);
 		$open  = $matches[1] . $matches[2] . "\n";
+		$end   =  "\n" . $matches[4];
 
-		return $open . $block . $matches[4];
+		return $open . $block . $end;
 	}
 
 	/**
@@ -281,6 +287,9 @@ class MarkdownExtraParser extends ParsedownExtra {
 		}
 		// reset the hash
 		$this->preserve_text_hash = array();
+
+		// Restore "`"
+		$text = str_replace('%|%|%', '`', $text);
 
 		return $text;
 	}
