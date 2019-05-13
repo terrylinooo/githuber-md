@@ -23,12 +23,18 @@ class Toc extends ModuleAbstract {
 	}
 
 	public function init() {
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 
 		if ( 'yes' === githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
 
 			add_filter( 'the_content', function( $string ) {
+
+				// Only single page will display TOC.
+				if ( ! is_single() ) {
+					return $string;
+				}
 	
 				$css = githuber_get_option( 'post_toc_float', 'githuber_modules' );
 
@@ -59,6 +65,12 @@ class Toc extends ModuleAbstract {
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
+	
+		// Only single page will display TOC.
+		if ( ! is_single() ) {
+			return;
+		}
+
 		wp_register_script( 'githuber-toc', GITHUBER_PLUGIN_URL . 'assets/js/jquery.toc.min.js', array( 'jquery' ), '1.0.1' );
 		wp_enqueue_script( 'githuber-toc' );
 	}
@@ -67,6 +79,11 @@ class Toc extends ModuleAbstract {
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
+
+		// Only single page will display TOC.
+		if ( ! is_single() ) {
+			return;
+		}
 
 		$script = '
 			<script id="module-toc">
