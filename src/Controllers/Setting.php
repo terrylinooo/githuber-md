@@ -212,7 +212,7 @@ class Setting extends ControllerAbstract {
 
 		if ( array_key_exists( $system_lang, $spellcheck_lang_list ) ) {
 			$default_spellcheck_lang = $system_lang;
-			$spellcheck_warning      = '<br />' . __( 'Your system langauge is supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')';
+			$spellcheck_warning      = '<br /><span style="color: #0081ab">' . __( 'Your system langauge is supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
 		} else {
 			$spellcheck_warning = '<br /><span style="color: #b00000">' . __( 'Your system langauge is not supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
 		}

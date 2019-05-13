@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.0
+Stable tag: 1.11.1
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -269,6 +269,13 @@ GNU General Public License for more details.
 
 * Feature request #65: Spell check.
 * Add new settings in the Preferences tab.
+
+= 1.11.1
+
+* Fix issue #68: Cannot display javascript template text correctly on code blocks.
+* Fix issue: TOC should not be displayed on homepage and archive pages.
+* Improve: Spellcheck compatibility check.
+* Improve: Allow Markdown syntax in code blocks.
 
 == Known Issues ==
 

@@ -17,4 +17,7 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 echo __( 'If you have any issues, or found any bugs, please report them in the following URL.', 'wp-githuber-md' );
 
 ?><br />
-<a href="https://github.com/terrylinooo/githuber-md" target="_blank">https://github.com/terrylinooo/githuber-md</a>
+<a href="https://github.com/terrylinooo/githuber-md" target="_blank">https://github.com/terrylinooo/githuber-md</a><br /><br />
+
+<?php echo __( 'Spellcheck dictionaries:', 'wp-githuber-md' ); ?><br />
+<a href="https://spellcheck-dictionaries.github.io/" target="_blank">https://spellcheck-dictionaries.github.io/</a>

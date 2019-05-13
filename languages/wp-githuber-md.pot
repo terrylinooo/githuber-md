@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-10 07:23+0000\n"
+"POT-Creation-Date: 2019-05-13 07:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -45,474 +45,482 @@ msgstr ""
 msgid "Enable Markdown"
 msgstr ""
 
-#: src/Controllers/Setting.php:118
+#: src/Controllers/Setting.php:119
 #: src/Views/metabox/custom-media-library.php:16
 msgid "Markdown"
 msgstr ""
 
-#: src/Controllers/Setting.php:123
+#: src/Controllers/Setting.php:124
 msgid "Modules"
 msgstr ""
 
-#: src/Controllers/Setting.php:128
+#: src/Controllers/Setting.php:129
 msgid "Extensions"
 msgstr ""
 
-#: src/Controllers/Setting.php:133
+#: src/Controllers/Setting.php:134
 msgid "Preferences"
 msgstr ""
 
-#: src/Controllers/Setting.php:138
+#: src/Controllers/Setting.php:139
 msgid "About"
 msgstr ""
 
-#: src/Controllers/Setting.php:166
+#: src/Controllers/Setting.php:215
+msgid "Your system langauge is supported."
+msgstr ""
+
+#: src/Controllers/Setting.php:217
+msgid "Your system langauge is not supported."
+msgstr ""
+
+#: src/Controllers/Setting.php:226
 msgid "Writing"
 msgstr ""
 
-#: src/Controllers/Setting.php:171
+#: src/Controllers/Setting.php:231
 msgid "Enable"
 msgstr ""
 
-#: src/Controllers/Setting.php:172
+#: src/Controllers/Setting.php:232
 msgid "Which post types you would like to enable Markdown editor for."
 msgstr ""
 
-#: src/Controllers/Setting.php:184
+#: src/Controllers/Setting.php:244
 msgid "Enable Markdown for comments."
 msgstr ""
 
-#: src/Controllers/Setting.php:187
+#: src/Controllers/Setting.php:247
 msgid "Comments"
 msgstr ""
 
-#: src/Controllers/Setting.php:193
+#: src/Controllers/Setting.php:253
 msgid "Disable Revision"
 msgstr ""
 
-#: src/Controllers/Setting.php:194
+#: src/Controllers/Setting.php:254
 msgid ""
 "If you think the revision function is annoying when you're writing, you can "
 "to disable it."
 msgstr ""
 
-#: src/Controllers/Setting.php:203
+#: src/Controllers/Setting.php:263
 msgid "Disable Auto-save"
 msgstr ""
 
-#: src/Controllers/Setting.php:204
+#: src/Controllers/Setting.php:264
 msgid ""
 "If you think the auto-save function is annoying when you're writing, you can "
 "to disable it."
 msgstr ""
 
-#: src/Controllers/Setting.php:212
+#: src/Controllers/Setting.php:272
 msgid "Spell Check"
 msgstr ""
 
-#: src/Controllers/Setting.php:213
+#: src/Controllers/Setting.php:273
 msgid ""
 "Enable spell check on the input. (This feature does not apply to code blocks."
 ")"
 msgstr ""
 
-#: src/Controllers/Setting.php:221
+#: src/Controllers/Setting.php:281
 msgid "Language"
 msgstr ""
 
-#: src/Controllers/Setting.php:222
-msgid "Please specify your language for spell check in the setting below."
+#: src/Controllers/Setting.php:282
+msgid "Please specify your language for spell check in the setting above."
 msgstr ""
 
-#: src/Controllers/Setting.php:276
+#: src/Controllers/Setting.php:290
 msgid "Meta Boxes"
 msgstr ""
 
-#: src/Controllers/Setting.php:282
+#: src/Controllers/Setting.php:296
 msgid "HTML-to-Markdown"
 msgstr ""
 
-#: src/Controllers/Setting.php:292
+#: src/Controllers/Setting.php:306
 msgid "Markdown Editor Switcher"
 msgstr ""
 
-#: src/Controllers/Setting.php:301
+#: src/Controllers/Setting.php:315
 msgid "Markdown Editor"
 msgstr ""
 
-#: src/Controllers/Setting.php:306
+#: src/Controllers/Setting.php:320
 msgid "Live Preview"
 msgstr ""
 
-#: src/Controllers/Setting.php:307
+#: src/Controllers/Setting.php:321
 msgid ""
 "Split editor into two panes to display a live preview when editing post."
 msgstr ""
 
-#: src/Controllers/Setting.php:315
+#: src/Controllers/Setting.php:329
 msgid "Sync Scrolling"
 msgstr ""
 
-#: src/Controllers/Setting.php:316
+#: src/Controllers/Setting.php:330
 msgid "Synchronize scrolling of two editor panes by content."
 msgstr ""
 
-#: src/Controllers/Setting.php:324
+#: src/Controllers/Setting.php:338
 msgid "HTML Decode"
 msgstr ""
 
-#: src/Controllers/Setting.php:325
+#: src/Controllers/Setting.php:339
 msgid "Allow all HTML tags and attributes in the Markdown Editor."
 msgstr ""
 
-#: src/Controllers/Setting.php:333 src/Controllers/Setting.php:488
+#: src/Controllers/Setting.php:347 src/Controllers/Setting.php:502
 msgid "Line Number"
 msgstr ""
 
-#: src/Controllers/Setting.php:334
+#: src/Controllers/Setting.php:348
 msgid "Display line number in the Markdown Editor."
 msgstr ""
 
-#: src/Controllers/Setting.php:342
+#: src/Controllers/Setting.php:356
 msgid "Toolbar"
 msgstr ""
 
-#: src/Controllers/Setting.php:343
+#: src/Controllers/Setting.php:357
 msgid "Choose a perferred style for the Editor's toolbar."
 msgstr ""
 
-#: src/Controllers/Setting.php:354
+#: src/Controllers/Setting.php:368
 msgid "Editing Area"
 msgstr ""
 
-#: src/Controllers/Setting.php:355
+#: src/Controllers/Setting.php:369
 msgid "Choose a perferred style for the Editor's editing area."
 msgstr ""
 
-#: src/Controllers/Setting.php:451
+#: src/Controllers/Setting.php:465
 msgid "Syntax Highlight"
 msgstr ""
 
-#: src/Controllers/Setting.php:454
+#: src/Controllers/Setting.php:468
 msgid "prism.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:460
+#: src/Controllers/Setting.php:474
 msgid "Highligh the syntax in your code snippets by Prism.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:469 src/Controllers/Setting.php:953
+#: src/Controllers/Setting.php:483 src/Controllers/Setting.php:967
 msgid "Theme"
 msgstr ""
 
-#: src/Controllers/Setting.php:470
+#: src/Controllers/Setting.php:484
 msgid "Choose a perferred theme for the syntax highlighter."
 msgstr ""
 
-#: src/Controllers/Setting.php:489
+#: src/Controllers/Setting.php:503
 msgid "Show line number in code area?"
 msgstr ""
 
-#: src/Controllers/Setting.php:498 src/Controllers/Setting.php:535
-#: src/Controllers/Setting.php:677 src/Controllers/Setting.php:715
-#: src/Controllers/Setting.php:753 src/Controllers/Setting.php:791
+#: src/Controllers/Setting.php:512 src/Controllers/Setting.php:549
+#: src/Controllers/Setting.php:691 src/Controllers/Setting.php:729
+#: src/Controllers/Setting.php:767 src/Controllers/Setting.php:805
 msgid "File Host"
 msgstr ""
 
-#: src/Controllers/Setting.php:499 src/Controllers/Setting.php:536
-#: src/Controllers/Setting.php:678 src/Controllers/Setting.php:716
-#: src/Controllers/Setting.php:754 src/Controllers/Setting.php:792
+#: src/Controllers/Setting.php:513 src/Controllers/Setting.php:550
+#: src/Controllers/Setting.php:692 src/Controllers/Setting.php:730
+#: src/Controllers/Setting.php:768 src/Controllers/Setting.php:806
 msgid "Use this library with a CDN service or self-hosted (default)?"
 msgstr ""
 
-#: src/Controllers/Setting.php:511 src/Controllers/Setting.php:690
-#: src/Controllers/Setting.php:728 src/Controllers/Setting.php:766
-#: src/Controllers/Setting.php:804
+#: src/Controllers/Setting.php:525 src/Controllers/Setting.php:704
+#: src/Controllers/Setting.php:742 src/Controllers/Setting.php:780
+#: src/Controllers/Setting.php:818
 msgid "Example"
 msgstr ""
 
-#: src/Controllers/Setting.php:520
+#: src/Controllers/Setting.php:534
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: src/Controllers/Setting.php:521
+#: src/Controllers/Setting.php:535
 msgid "clipboard.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:526
+#: src/Controllers/Setting.php:540
 msgid ""
 "Display a `Copy` button on the highlighting code block. Copy the text into "
 "clipboard by clicking the button."
 msgstr ""
 
-#: src/Controllers/Setting.php:550
+#: src/Controllers/Setting.php:564
 msgid "Image Paste"
 msgstr ""
 
-#: src/Controllers/Setting.php:565
+#: src/Controllers/Setting.php:579
 msgid "Storage Space"
 msgstr ""
 
-#: src/Controllers/Setting.php:566
+#: src/Controllers/Setting.php:580
 msgid ""
 "Images are stored in WordPress's <strong>uploads</strong> folder by default. "
 "However, you can use Imgur instead of the default place."
 msgstr ""
 
-#: src/Controllers/Setting.php:571 src/Controllers/Setting.php:642
+#: src/Controllers/Setting.php:585 src/Controllers/Setting.php:656
 msgid "default"
 msgstr ""
 
-#: src/Controllers/Setting.php:572
+#: src/Controllers/Setting.php:586
 msgid "imgur.com"
 msgstr ""
 
-#: src/Controllers/Setting.php:573
+#: src/Controllers/Setting.php:587
 msgid "sm.ms"
 msgstr ""
 
-#: src/Controllers/Setting.php:579
+#: src/Controllers/Setting.php:593
 msgid "Imgur Client ID"
 msgstr ""
 
-#: src/Controllers/Setting.php:590
+#: src/Controllers/Setting.php:604
 msgid "Upload to Media Library?"
 msgstr ""
 
-#: src/Controllers/Setting.php:601 src/Modules/Toc.php:40
+#: src/Controllers/Setting.php:615 src/Modules/Toc.php:46
 msgid "Table of Content"
 msgstr ""
 
-#: src/Controllers/Setting.php:607
+#: src/Controllers/Setting.php:621
 msgid "Support Table of Content."
 msgstr ""
 
-#: src/Controllers/Setting.php:616
+#: src/Controllers/Setting.php:630
 msgid "Widget"
 msgstr ""
 
-#: src/Controllers/Setting.php:617
+#: src/Controllers/Setting.php:631
 msgid "Display a TOC in the widget area for single post."
 msgstr ""
 
-#: src/Controllers/Setting.php:626
+#: src/Controllers/Setting.php:640
 msgid "Inside a Post"
 msgstr ""
 
-#: src/Controllers/Setting.php:627
+#: src/Controllers/Setting.php:641
 msgid "Insert a TOC inside a post header location."
 msgstr ""
 
-#: src/Controllers/Setting.php:636
+#: src/Controllers/Setting.php:650
 msgid "Float"
 msgstr ""
 
-#: src/Controllers/Setting.php:637
+#: src/Controllers/Setting.php:651
 msgid "Would you like to float the TOC in the post to left or right?"
 msgstr ""
 
-#: src/Controllers/Setting.php:643
+#: src/Controllers/Setting.php:657
 msgid "right"
 msgstr ""
 
-#: src/Controllers/Setting.php:644
+#: src/Controllers/Setting.php:658
 msgid "left"
 msgstr ""
 
-#: src/Controllers/Setting.php:650
+#: src/Controllers/Setting.php:664
 msgid "Border"
 msgstr ""
 
-#: src/Controllers/Setting.php:651
+#: src/Controllers/Setting.php:665
 msgid "Would you like to show the border of the TOC in the post?"
 msgstr ""
 
-#: src/Controllers/Setting.php:661
+#: src/Controllers/Setting.php:675
 msgid "KaTex"
 msgstr ""
 
-#: src/Controllers/Setting.php:662
+#: src/Controllers/Setting.php:676
 msgid "KaTex.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:668
+#: src/Controllers/Setting.php:682
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
 "target=\"_blank\">KaTeX</a> math typesetting."
 msgstr ""
 
-#: src/Controllers/Setting.php:699
+#: src/Controllers/Setting.php:713
 msgid "Mermaid"
 msgstr ""
 
-#: src/Controllers/Setting.php:700
+#: src/Controllers/Setting.php:714
 msgid "mermaid.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:706
+#: src/Controllers/Setting.php:720
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
 "target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
 msgstr ""
 
-#: src/Controllers/Setting.php:737
+#: src/Controllers/Setting.php:751
 msgid "Flow Chart"
 msgstr ""
 
-#: src/Controllers/Setting.php:738
+#: src/Controllers/Setting.php:752
 msgid "flowchart.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:744
+#: src/Controllers/Setting.php:758
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
 msgstr ""
 
-#: src/Controllers/Setting.php:775
+#: src/Controllers/Setting.php:789
 msgid "Sequence Diagrams"
 msgstr ""
 
-#: src/Controllers/Setting.php:776
+#: src/Controllers/Setting.php:790
 msgid "sequence-diagrams.js"
 msgstr ""
 
-#: src/Controllers/Setting.php:782
+#: src/Controllers/Setting.php:796
 msgid ""
 "Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
 "target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
 "sequence diagrams."
 msgstr ""
 
-#: src/Controllers/Setting.php:815
+#: src/Controllers/Setting.php:829
 msgid "Markdown Extra"
 msgstr ""
 
-#: src/Controllers/Setting.php:823
+#: src/Controllers/Setting.php:837
 msgid "GFM Task List"
 msgstr ""
 
-#: src/Controllers/Setting.php:824
+#: src/Controllers/Setting.php:838
 msgid "Support Github Flavored Markdown task lists."
 msgstr ""
 
-#: src/Controllers/Setting.php:836
+#: src/Controllers/Setting.php:850
 msgid "Githuber MD Extensions"
 msgstr ""
 
-#: src/Controllers/Setting.php:842
+#: src/Controllers/Setting.php:856
 msgid "HTML5 Figure"
 msgstr ""
 
-#: src/Controllers/Setting.php:851
+#: src/Controllers/Setting.php:865
 msgid "Inline Code Block with Keyboard Style"
 msgstr ""
 
-#: src/Controllers/Setting.php:862
+#: src/Controllers/Setting.php:876
 msgid "Link Opening Method"
 msgstr ""
 
-#: src/Controllers/Setting.php:863
+#: src/Controllers/Setting.php:877
 msgid "For links in posts, please specify where to open the linked document."
 msgstr ""
 
-#: src/Controllers/Setting.php:867
+#: src/Controllers/Setting.php:881
 msgid "Same window. (default)"
 msgstr ""
 
-#: src/Controllers/Setting.php:868
+#: src/Controllers/Setting.php:882
 msgid "New window."
 msgstr ""
 
-#: src/Controllers/Setting.php:874
+#: src/Controllers/Setting.php:888
 msgid "Shortcode"
 msgstr ""
 
-#: src/Controllers/Setting.php:875
+#: src/Controllers/Setting.php:889
 msgid "Allow using shortcode in Markdown text."
 msgstr ""
 
-#: src/Controllers/Setting.php:875
+#: src/Controllers/Setting.php:889
 msgid ""
 "Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
 " therefore live-preview panel does not support it."
 msgstr ""
 
-#: src/Controllers/Setting.php:882
+#: src/Controllers/Setting.php:896
 msgid "Smart Quotes"
 msgstr ""
 
-#: src/Controllers/Setting.php:890
+#: src/Controllers/Setting.php:904
 msgid "Ampersands in URL"
 msgstr ""
 
-#: src/Controllers/Setting.php:891
+#: src/Controllers/Setting.php:905
 msgid "Replace `&amp;amp;` to `&` in URLs."
 msgstr ""
 
-#: src/Controllers/Setting.php:898
+#: src/Controllers/Setting.php:912
 msgid "Yoast SEO Analysis"
 msgstr ""
 
-#: src/Controllers/Setting.php:899
+#: src/Controllers/Setting.php:913
 msgid "Support Yoast SEO readability analysis."
 msgstr ""
 
-#: src/Controllers/Setting.php:906
+#: src/Controllers/Setting.php:920
 msgid "Disable Compatibility Warning"
 msgstr ""
 
-#: src/Controllers/Setting.php:907
+#: src/Controllers/Setting.php:921
 msgid ""
 "You can disable compatibility warning if you think that it is a misjudgment."
 msgstr ""
 
-#: src/Controllers/Setting.php:907
+#: src/Controllers/Setting.php:921
 msgid "Do not turn it on unless you know what you do."
 msgstr ""
 
-#: src/Controllers/Setting.php:914
+#: src/Controllers/Setting.php:928
 msgid "Clear all Settings"
 msgstr ""
 
-#: src/Controllers/Setting.php:915
-msgid "Clear all setting when uninstalling WP GitHuber MD."
-msgstr ""
-
-#: src/Controllers/Setting.php:925
-msgid "Author"
-msgstr ""
-
-#: src/Controllers/Setting.php:932
-msgid "Version"
+#: src/Controllers/Setting.php:929
+msgid "Clear all settings when uninstalling WP GitHuber MD."
 msgstr ""
 
 #: src/Controllers/Setting.php:939
-msgid "GitHub Repository"
+msgid "Author"
 msgstr ""
 
 #: src/Controllers/Setting.php:946
+msgid "Version"
+msgstr ""
+
+#: src/Controllers/Setting.php:953
+msgid "GitHub Repository"
+msgstr ""
+
+#: src/Controllers/Setting.php:960
 msgid "Buy me a coffee"
 msgstr ""
 
-#: src/Controllers/Setting.php:972
+#: src/Controllers/Setting.php:986
 msgid "WP Githuber MD "
 msgstr ""
 
 #. Name of the plugin
-#: src/Controllers/Setting.php:973
+#: src/Controllers/Setting.php:987
 msgid "WP Githuber MD"
 msgstr ""
 
-#: src/Controllers/Setting.php:1010
+#: src/Controllers/Setting.php:1024
 msgid "Settings"
 msgstr ""
 
-#: src/Controllers/Setting.php:1028
+#: src/Controllers/Setting.php:1042
 msgid "View GitHub project"
 msgstr ""
 
-#: src/Controllers/Setting.php:1029
+#: src/Controllers/Setting.php:1043
 msgid "Report issues"
 msgstr ""
 
@@ -553,13 +561,6 @@ msgstr ""
 msgid "Convert"
 msgstr ""
 
-#: src/Views/setting/about-and-support.php:17
-#: src/Views/setting/about-github-repo.php:17
-msgid ""
-"If you have any issues, or found any bugs, please report them in the "
-"following URL."
-msgstr ""
-
 #: src/Views/setting/about-donation.php:20
 msgid ""
 "If you think this plugin is useful to you, buy me a coffee.<br />Payment "
@@ -576,6 +577,16 @@ msgstr ""
 #: src/Views/setting/about-donation.php:23
 #, php-format
 msgid "All donators will be listed on  <a href=\"%s\">Thank You</a> page."
+msgstr ""
+
+#: src/Views/setting/about-github-repo.php:17
+msgid ""
+"If you have any issues, or found any bugs, please report them in the "
+"following URL."
+msgstr ""
+
+#: src/Views/setting/about-github-repo.php:22
+msgid "Spellcheck dictionaries:"
 msgstr ""
 
 #: src/Views/setting/html-to-markdown.php:17
