@@ -111,6 +111,7 @@ class Setting extends ControllerAbstract {
 	 * @return array
 	 */
 	public function get_sections() {
+
 		return array(
 
 			array(
@@ -155,6 +156,65 @@ class Setting extends ControllerAbstract {
 			if( 'attachment' !== $post_type->name ) {
 				$post_type_options[ $post_type->name ] = $post_type->label;
 			}
+		}
+
+		$system_lang             = get_locale();
+		$default_spellcheck_lang = 'en_GB';
+		$spellcheck_warning      = '';
+
+		$spellcheck_lang_list = array(
+			'af_ZA' => 'af_ZA',
+			'bg_BG' => 'bg_BG',
+			'ca_ES' => 'ca_ES',
+			'cs_CZ' => 'cs_CZ',
+			'cy_GB' => 'cy_GB',
+			'da_DK' => 'da_DK',
+			'de_DE' => 'de_DE',
+			'el_GR' => 'el_GR',
+			'en_AU' => 'en_AU',
+			'en_CA' => 'en_CA',
+			'en_GB' => 'en_GB',
+			'en_US' => 'en_US',
+			'es_ES' => 'es_ES',
+			'et_EE' => 'et_EE',
+			'fa_IR' => 'fa_IR',
+			'fr_FR' => 'fr_FR',
+			'he_IL' => 'he_IL',
+			'hi_IN' => 'hi_IN',
+			'hr_HR' => 'hr_HR',
+			'hu_HU' => 'hu_HU',
+			'hy'    => 'hy',
+			'id_ID' => 'id_ID',
+			'it_IT' => 'it_IT',
+			'ko'    => 'ko',
+			'lt_LT' => 'lt_LT',
+			'lv_LV' => 'lv_LV',
+			'nb_NO' => 'nb_NO',
+			'nl_NL' => 'nl_NL',
+			'pl_PL' => 'pl_PL',
+			'pt_BR' => 'pt_BR',
+			'pt_PT' => 'pt_PT',
+			'ro_RO' => 'ro_RO',
+			'ru_RU' => 'ru_RU',
+			'sh'    => 'sh',
+			'sk_SK' => 'sk_SK',
+			'sl_SL' => 'sl_SL',
+			'sq'    => 'sq',
+			'sr'    => 'sr',
+			'sv_SE' => 'sv_SE',
+			'ta_IN' => 'ta_IN',
+			'tg_TG' => 'tg_TG',
+			'tr'    => 'tr',
+			'uk_UA' => 'uk_UA',
+			'vi_VI' => 'vi_VI',
+			'vi_VN' => 'vi_VN',
+		);
+
+		if ( array_key_exists( $system_lang, $spellcheck_lang_list ) ) {
+			$default_spellcheck_lang = $system_lang;
+			$spellcheck_warning      = '<br />' . __( 'Your system langauge is supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')';
+		} else {
+			$spellcheck_warning = '<br /><span style="color: #b00000">' . __( 'Your system langauge is not supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
 		}
 
 		return array(
@@ -219,56 +279,10 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'editor_spell_check_lang',
 					'label'   => __( 'Language', 'wp-githuber-md' ),
-					'desc'    => __( 'Please specify your language for spell check in the setting below.', 'wp-githuber-md' ),
+					'desc'    => __( 'Please specify your language for spell check in the setting above.', 'wp-githuber-md' ) . $spellcheck_warning,
 					'type'    => 'select',
-					'default' => 'en_US',
-					'options' => array(
-						'af_ZA' => 'af_ZA',
-						'bg_BG' => 'bg_BG',
-						'ca_ES' => 'ca_ES',
-						'cs_CZ' => 'cs_CZ',
-						'cy_GB' => 'cy_GB',
-						'da_DK' => 'da_DK',
-						'de_DE' => 'de_DE',
-						'el_GR' => 'el_GR',
-						'en_AU' => 'en_AU',
-						'en_CA' => 'en_CA',
-						'en_GB' => 'en_GB',
-						'en_US' => 'en_US',
-						'es_ES' => 'es_ES',
-						'et_EE' => 'et_EE',
-						'fa_IR' => 'fa_IR',
-						'fr_FR' => 'fr_FR',
-						'he_IL' => 'he_IL',
-						'hi_IN' => 'hi_IN',
-						'hr_HR' => 'hr_HR',
-						'hu_HU' => 'hu_HU',
-						'hy'    => 'hy',
-						'id_ID' => 'id_ID',
-						'it_IT' => 'it_IT',
-						'ko'    => 'ko',
-						'lt_LT' => 'lt_LT',
-						'lv_LV' => 'lv_LV',
-						'nb_NO' => 'nb_NO',
-						'nl_NL' => 'nl_NL',
-						'pl_PL' => 'pl_PL',
-						'pt_BR' => 'pt_BR',
-						'pt_PT' => 'pt_PT',
-						'ro_RO' => 'ro_RO',
-						'ru_RU' => 'ru_RU',
-						'sh'    => 'sh',
-						'sk_SK' => 'sk_SK',
-						'sl_SL' => 'sl_SL',
-						'sq'    => 'sq',
-						'sr'    => 'sr',
-						'sv_SE' => 'sv_SE',
-						'ta_IN' => 'ta_IN',
-						'tg_TG' => 'tg_TG',
-						'tr'    => 'tr',
-						'uk_UA' => 'uk_UA',
-						'vi_VI' => 'vi_VI',
-						'vi_VN' => 'vi_VN',
-					),
+					'default' => $default_spellcheck_lang,
+					'options' => $spellcheck_lang_list,
 				),
 
 				array(
