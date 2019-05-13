@@ -10,7 +10,7 @@
  * @version 1.10.2
  * 
  * Hunspell dictories source:
- * https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries
+ * https://spellcheck-dictionaries.github.io/
  * 
  */
 
