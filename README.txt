@@ -279,7 +279,7 @@ GNU General Public License for more details.
 
 = 1.11.2
 
-* Fix issue #31 - This issue occured again because of the modification of #57.
+* Fix issue #31 - This issue occurred again because of the modification of #57.
 
 == Known Issues ==
 
