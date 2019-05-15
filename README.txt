@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.1
+Stable tag: 1.11.2
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -276,6 +276,10 @@ GNU General Public License for more details.
 * Fix issue: TOC should not be displayed on homepage and archive pages.
 * Improve: Spellcheck compatibility check.
 * Improve: Allow Markdown syntax in code blocks.
+
+= 1.11.2
+
+* Fix issue #31 - This issue occured again because of the modification of #57.
 
 == Known Issues ==
 
