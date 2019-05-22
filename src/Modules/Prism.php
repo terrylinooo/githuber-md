@@ -50,6 +50,7 @@ class Prism extends ModuleAbstract {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), $this->css_priority );
+		add_action( 'wp_print_footer_scripts', array( $this, 'auto_loader_config_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
@@ -118,15 +119,8 @@ class Prism extends ModuleAbstract {
 						$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.min.js';
 					}
 
-					if ( ! empty( $prism_meta_array ) ) {
-						foreach (  array_reverse( $prism_meta_array ) as $component_name ) {
-
-							// Those componets are already included in code.js
-							if ( ! $this->is_component_already_loaded ( $component_name ) ) {
-								$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/components/prism-' . $component_name . '.min.js';
-							}
-						}
-					}
+					// AutoLoader plugin
+					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/autoloader/prism-autoloader.min.js';
 
 					break;
 
@@ -138,15 +132,8 @@ class Prism extends ModuleAbstract {
 						$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.min.js';
 					}
 
-					if ( ! empty( $prism_meta_array ) ) {
-						foreach ( array_reverse( $prism_meta_array ) as $component_name ) {
-
-							// Those componets are already included in code.js
-							if ( ! $this->is_component_already_loaded ( $component_name ) ) {
-								$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/components/prism-' . $component_name . '.min.js';
-							}
-						}
-					}
+					// AutoLoader plugin
+					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/autoloader/prism-autoloader.min.js';
 
 					break;
 
@@ -158,15 +145,8 @@ class Prism extends ModuleAbstract {
 						$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.min.js';
 					}
 
-					if ( ! empty( $prism_meta_array ) ) {
-						foreach ( array_reverse( $prism_meta_array ) as $component_name ) {
-
-							// Those componets are already included in code.js
-							if ( ! $this->is_component_already_loaded ( $component_name ) ) {
-								$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/components/prism-' . $component_name . '.min.js';
-							}
-						}
-					}
+					// AutoLoader plugin
+					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/autoloader/prism-autoloader.min.js';
 
 					break;
 			}
@@ -178,26 +158,38 @@ class Prism extends ModuleAbstract {
 	}
 
 	/**
-	 * Check if component is already loaded or not.
-	 * Those scripts are already included in prism.js, so we do not need to load those scripts again.
-	 *
-	 * @param string $name Prism component name.
-	 * @return boolean
+	 * Configure auto loader path.
 	 */
-	public function is_component_already_loaded( $name ) {
-		switch ( $name ) {
-			case 'markup':
-			case 'xml':
-			case 'html':
-			case 'mathml':
-			case 'svg':
-			case 'clike':
-			case 'javascript':
-			case 'js':
-				return true;
-				break;
-			default:
-				return false;
+	public function auto_loader_config_scripts() {
+		if ( $this->is_module_should_be_loaded( self::MD_POST_META_PRISM ) ) {
+			$prism_src = githuber_get_option( 'prism_src', 'githuber_modules' );
+
+			switch ( $prism_src ) {
+				case 'cloudflare':
+					$script_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/components/';
+
+					break;
+
+				case 'jsdelivr':
+					$script_path = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/components/';
+
+					break;
+
+				default: 
+					$script_path = $this->githuber_plugin_url . 'assets/vendor/prism/components/';
+
+					break;
+			}
+
+			$script = '
+				<script id="auto_loader_config_scripts">
+					Prism.plugins.autoloader.languages_path = "' . $script_path . '";
+				</script>
+			';
+
+			echo preg_replace( '/\s+/', ' ', $script );
+		} else {
+			echo "";
 		}
 	}
 
