@@ -283,7 +283,7 @@ GNU General Public License for more details.
 
 = 1.11.3
 
-* Fix issue #70: Bug occurrs when adding featured image.
+* Fix issue #70: Bug occurs when adding featured image.
 * Fix issue #71: Support Shortcodes Ultimate plugin.
 
 == Known Issues ==
