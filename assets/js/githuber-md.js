@@ -40,6 +40,7 @@ var spellcheck_lang = 'en_US';
             lineNumbers: (config.editor_line_number == 'yes'),
             previewCodeLineNumber: (config.prism_line_number == 'yes'),
             spellCheck: (config.editor_spell_check == 'yes'),
+            matchWordHighlight: (config.editor_match_highlighter == 'yes') ? 'onselected' : false,
             toolbarAutoFixed: true,
             tocm: false, 
             tocDropdown: false,    

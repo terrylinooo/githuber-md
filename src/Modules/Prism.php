@@ -132,7 +132,7 @@ class Prism extends ModuleAbstract {
 						$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.min.js';
 					}
 
-					// AutoLoader plugin
+					// AutoLoader plugin (Add since 1.11.4)
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/autoloader/prism-autoloader.min.js';
 
 					break;
@@ -145,8 +145,20 @@ class Prism extends ModuleAbstract {
 						$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.min.js';
 					}
 
-					// AutoLoader plugin
+					// AutoLoader plugin (Add since 1.11.4)
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/autoloader/prism-autoloader.min.js';
+
+					/* (Deprecated since 1.11.4)
+
+					if ( ! empty( $prism_meta_array ) ) {
+						foreach ( array_reverse( $prism_meta_array ) as $component_name ) {
+
+							// Those componets are already included in code.js
+							if ( ! $this->is_component_already_loaded ( $component_name ) ) {
+								$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/components/prism-' . $component_name . '.min.js';
+							}
+						}
+					} */
 
 					break;
 			}
@@ -159,6 +171,8 @@ class Prism extends ModuleAbstract {
 
 	/**
 	 * Configure auto loader path.
+	 * 
+	 * @since 1.11.4
 	 */
 	public function auto_loader_config_scripts() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_PRISM ) ) {
@@ -188,8 +202,6 @@ class Prism extends ModuleAbstract {
 			';
 
 			echo preg_replace( '/\s+/', ' ', $script );
-		} else {
-			echo "";
 		}
 	}
 
@@ -216,6 +228,34 @@ class Prism extends ModuleAbstract {
 				</script>
 			';
 			echo preg_replace( '/\s+/', ' ', $script );
+		}
+	}
+
+	/**
+	 * (Deprecated since 1.11.4) (Use auto-loader instead)
+	 * 
+	 *
+	 * Check if component is already loaded or not.
+	 * Those scripts are already included in prism.js, so we do not need to load those scripts again.
+	 *
+	 * @param string $name Prism component name.
+	 *
+	 * @return boolean
+	 */
+	public function is_component_already_loaded( $name ) {
+		switch ( $name ) {
+			case 'markup':
+			case 'xml':
+			case 'html':
+			case 'mathml':
+			case 'svg':
+			case 'clike':
+			case 'javascript':
+			case 'js':
+				return true;
+				break;
+			default:
+				return false;
 		}
 	}
 }

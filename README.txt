@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.3
+Stable tag: 1.11.4
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -285,6 +285,11 @@ GNU General Public License for more details.
 
 * Fix issue #70: Bug occurs when adding featured image.
 * Fix issue #71: Support Shortcodes Ultimate plugin.
+
+= 1.11.4
+
+* Fix issue #72: Syntax highlight - use prism autoloader plugin instead.
+* Feature request #74: Add an option for match highlighter.
 
 == Known Issues ==
 

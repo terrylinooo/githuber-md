@@ -286,6 +286,14 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'name'    => 'editor_match_highlighter',
+					'label'   => __( 'Match Highlighter', 'wp-githuber-md' ),
+					'desc'    => __( 'Everywhere else in your text where <strong>current word</strong> appears will automatically illuminate.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
+
+				array(
 					'section_title' => true,
 					'label' => __( 'Meta Boxes', 'wp-githuber-md' ),
 				),
