@@ -1,0 +1,6 @@
+phpunit
+phpunit.xml.dist
+.travis.yml
+.phpcs.xml.dist
+tests
+bin
