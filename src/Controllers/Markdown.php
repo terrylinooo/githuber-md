@@ -8,7 +8,7 @@
  * @package Githuber
  * @since 1.0.0
  * @version 1.11.0
- * 
+ *
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
  */
@@ -122,7 +122,7 @@ class Markdown extends ControllerAbstract {
 			$this->is_support_mermaid = true;
 		}
 
-		// Load TOC widget. // 
+		// Load TOC widget. //
 		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
 			if ( 'yes' == githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
 				$this->is_support_toc = true;
@@ -174,7 +174,7 @@ class Markdown extends ControllerAbstract {
 			$rich_editing = new RichEditing();
 			$rich_editing->enable();
 
-			// Custom post types are not supporting Gutenberg by default for now, so 
+			// Custom post types are not supporting Gutenberg by default for now, so
 			// We only enable Gutenberg for `post` and `page`...
 			if ( 'post' === $current_post_type || 'page' === $current_post_type ) {
 				$rich_editing->enable_gutenberg();
@@ -199,7 +199,7 @@ class Markdown extends ControllerAbstract {
 
 				// Okay! User enable Markdown for current current post and it's post type.
 				$this->jetpack_code_snippets();
-	
+
 				if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
 					$html2markdown = new Controller\HtmlToMarkdown();
 					$html2markdown->init();
@@ -619,7 +619,7 @@ class Markdown extends ControllerAbstract {
 		$is_katex     = false;
 
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
-			
+
 			foreach ( $matches[1] as $match ) {
 				if ( ! empty( $prism_codes[ $match ] ) ) {
 					$prism_meta_array[ $match ] = $match;
@@ -628,7 +628,7 @@ class Markdown extends ControllerAbstract {
 				// Check if this componets requires the parent components or not.
 				if ( ! empty( $prism_component_parent[ $match ] ) ) {
 					foreach ( $prism_component_parent[ $match ] as $parent ) {
-						
+
 						// If it need a parent componet, add it to the $paris_meta_array.
 						if ( empty( $prism_meta_array[ $parent ] ) ) {
 							$prism_meta_array[ $parent ] = $parent;
@@ -683,7 +683,7 @@ class Markdown extends ControllerAbstract {
 	 * Register the `HtmlToMarkdown` meta box in the post-editor.
 	 */
 	public function add_meta_box() {
-		
+
 		if ( ! githuber_current_user_can( 'edit_posts' ) ) {
 			return false;
 		}
@@ -697,7 +697,7 @@ class Markdown extends ControllerAbstract {
 			'high'
 		);
 	}
-	
+
 	/**
 	 * Show `HtmlToMarkdown` meta box.
 	 */
@@ -706,7 +706,7 @@ class Markdown extends ControllerAbstract {
 		$post_id             = githuber_get_current_post_id();
 		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
-		Monolog::logger( 'Show meta box.', array( 
+		Monolog::logger( 'Show meta box.', array(
 			'post_id'            => $post_id,
 			'markdown_this_post' => $markdown_this_post,
 		) );
@@ -743,14 +743,14 @@ class Markdown extends ControllerAbstract {
 				'post_id' => $post_id,
 			);
 
-			Monolog::logger( 'Post data is gotten.', array( 
+			Monolog::logger( 'Post data is gotten.', array(
 				'post_id' => $_POST['post_id'],
 				'markdown_this_post' => $_POST['markdown_this_post'],
 			) );
 		}
 
 		header('Content-type: application/json');
-		
+
 		echo json_encode( $response );
 
 		// To avoid wp_ajax return "0" string to break the vaild json string.
@@ -760,7 +760,7 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * The below methods are from Jetpack: Markdown modular
 	 * And we modified it for our needs.
-	 * 
+	 *
 	 * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
 	 * @license GPL
 	 */
@@ -986,7 +986,7 @@ class Markdown extends ControllerAbstract {
 		} else {
 			$this->monitoring['content'] = wp_unslash( $post_data['post_content'] );
 		}
-			
+
 		if ( 'revision' === $postarr['post_type'] && $this->has_markdown( $postarr['post_parent'] ) ) {
 			$this->monitoring['parent'][ $postarr['post_parent'] ] = true;
 		}
@@ -1123,10 +1123,10 @@ class Markdown extends ControllerAbstract {
 
 			// Yes, we put it in post_content, because our wp_insert_post_data() expects that
 			$post['post_content'] = $revision['post_content_filtered'];
-			
+
 			// set this flag so we can restore the post_content_filtered on the last revision later
 			$this->monitoring['restore'] = true;
-			
+
 			// let's not make a revision of our fixing update
 			add_filter( 'wp_revisions_to_keep', '__return_false', 99 );
 			wp_update_post( $post );
