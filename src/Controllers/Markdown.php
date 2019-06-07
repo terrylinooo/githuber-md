@@ -48,7 +48,6 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
 
-	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
 
 	/**
@@ -134,6 +133,9 @@ class Markdown extends ControllerAbstract {
 	 * Initialize.
 	 */
 	public function init() {
+
+		// Force-disable Jetpack's Markdown module if it is active.
+		add_filter( 'option_jetpack_active_modules', array( $this, 'admin_githuber_disable_jetpack_markdown' ) );
 
 		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
 
@@ -230,14 +232,6 @@ class Markdown extends ControllerAbstract {
 		if ( $markdown_this_post === 'no' ) {
 
 		} else {
-			// Jetpack Markdown should not be turned on with Githuber MD at the same time.
-			// We should notice users to turn it off.
-			if ( 'yes' !== githuber_get_option( 'disable_compatibility_warning', 'githuber_preferences' ) ) {
-				if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
-					add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
-				}
-			}
-
 			wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
 			wp_enqueue_script( 'githuber-md', $this->githuber_plugin_url . 'assets/js/githuber-md.js', array( 'editormd' ), $this->version, true );
 
@@ -332,13 +326,6 @@ class Markdown extends ControllerAbstract {
 
 	}
 
-	/**
-	 * Display a warning, when Jetpack Markdown is on.
-	 */
-	public function jetpack_warning() {
-		echo githuber_load_view( 'message/jetpack-warning' );
-	}
-	
 	/**
 	 * Markdown parser.
 	 *
@@ -1287,5 +1274,20 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function restore_code_blocks( $text ) {
 		return $this->get_parser()->codeblock_restore( $text );
+	}
+
+	/**
+	 * Force-disable Jetpack's Markdown module if it is active.
+	 *
+	 * @param array $modules Array of active Jetpack modules.
+	 *
+	 * @return array $modules Array of active Jetpack modules.
+	 */
+	public function admin_githuber_disable_jetpack_markdown( $modules ) {
+		$found = array_search( 'markdown', $modules, true );
+		if ( false !== $found ) {
+			unset( $modules[ $found ] );
+		}
+		return $modules;
 	}
 }
