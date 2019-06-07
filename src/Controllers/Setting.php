@@ -41,7 +41,7 @@ class Setting extends ControllerAbstract {
 			self::$setting_api = new \Githuber_Settings_API();
 		}
 	}
-	
+
 	/**
 	 * Initialize.
 	 */
@@ -98,7 +98,7 @@ class Setting extends ControllerAbstract {
 		}
 
 		self::$setting_api->set_fields( $settings );
-	 
+
 		// initialize them.
 		self::$setting_api->admin_init();
 
@@ -118,7 +118,7 @@ class Setting extends ControllerAbstract {
 				'id'    => 'githuber_markdown',
 				'title' => __( 'Markdown', 'wp-githuber-md' ),
 			),
-			
+
 			array(
 				'id'    => 'githuber_modules',
 				'title' => __( 'Modules', 'wp-githuber-md' ),
@@ -243,7 +243,7 @@ class Setting extends ControllerAbstract {
 					'label'   => '',
 					'desc'    => __( 'Enable Markdown for comments.', 'wp-githuber-md' ),
 					'type'    => 'multicheck',
-					'options' => array( 
+					'options' => array(
 						'commenting' => __( 'Comments', 'wp-githuber-md' )
 					)
 				),
@@ -924,14 +924,6 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'name'    => 'disable_compatibility_warning',
-					'label'   => __( 'Disable Compatibility Warning', 'wp-githuber-md' ),
-					'desc'    => __( 'You can disable compatibility warning if you think that it is a misjudgment.', 'wp-githuber-md' ) . '<br /><span style="color: #b00000">' . __( 'Do not turn it on unless you know what you do.', 'wp-githuber-md' ) . '</span>',
-					'type'    => 'toggle',
-					'default' => 'no',
-				),
-
-				array(
 					'name'    => 'clear_all_settings',
 					'label'   => __( 'Clear all Settings', 'wp-githuber-md' ),
 					'desc'    => __( 'Clear all settings when uninstalling WP GitHuber MD.', 'wp-githuber-md' ),
@@ -994,7 +986,7 @@ class Setting extends ControllerAbstract {
 					__( 'WP Githuber MD ', 'wp-githuber-md' ),
 					__( 'WP Githuber MD', 'wp-githuber-md' ),
 					'manage_options',
-					$this->menu_slug, 
+					$this->menu_slug,
 					array( $this, 'setting_plugin_page' ),
 					'dashicons-edit'
 				);
@@ -1009,10 +1001,10 @@ class Setting extends ControllerAbstract {
 
 		echo '<div class="wrap">';
 		settings_errors();
-	
+
 		self::$setting_api->show_navigation();
 		self::$setting_api->show_forms();
-	
+
 		echo '</div>';
 	}
 

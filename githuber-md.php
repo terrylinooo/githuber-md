@@ -26,7 +26,7 @@
 /**
  * Any issues, or would like to request a feature, please visit.
  * https://github.com/terrylinooo/githuber-md/issues
- * 
+ *
  * Welcome to contribute your code here:
  * https://github.com/terrylinooo/githuber-md
  *
@@ -40,9 +40,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * CONSTANTS
- * 
+ *
  * Those below constants will be assigned to: `/Controllers/ControllerAstruct.php`
- * 
+ *
  * GITHUBER_PLUGIN_NAME          : Plugin's name.
  * GITHUBER_PLUGIN_DIR           : The absolute path of the Githuber plugin directory.
  * GITHUBER_PLUGIN_URL           : The URL of the Githuber plugin directory.
@@ -50,9 +50,9 @@ if ( ! defined( 'WPINC' ) ) {
  * GITHUBER_PLUGIN_LANGUAGE_PACK : Translation Language pack.
  * GITHUBER_PLUGIN_VERSION       : Githuber plugin version number
  * GITHUBER_PLUGIN_TEXT_DOMAIN   : Githuber plugin text domain
- * 
+ *
  * Expected values:
- * 
+ *
  * GITHUBER_PLUGIN_DIR           : {absolute_path}/wp-content/plugins/wp-githuber-md/
  * GITHUBER_PLUGIN_URL           : {protocal}://{domain_name}/wp-content/plugins/wp-githuber-md/
  * GITHUBER_PLUGIN_PATH          : {absolute_path}/wp-content/plugins/wp-githuber-md/wp-githuber-md.php
@@ -69,10 +69,10 @@ define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
  * Developer only.
- * 
+ *
  * Turnning this option on, you have to install Monolog first.
  * Run: `composer require monolog/monolog` to install Monolog.
- * 
+ *
  * After finishing debugging, run: `composer remove monolog/monolog` to remove it.
  */
 define( 'GITHUBER_DEBUG_MODE', false );
@@ -91,25 +91,21 @@ require_once GITHUBER_PLUGIN_DIR . 'src/helpers.php';
 require_once GITHUBER_PLUGIN_DIR . 'vendor/autoload.php';
 
 if ( is_admin() ) {
+	if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
+		if ( ! class_exists( 'DOMDocument' ) ) {
+			add_action( 'admin_notices', 'githuber_md_warning_libxml' );
 
-	if ( 'yes' !== githuber_get_option( 'disable_compatibility_warning', 'githuber_preferences' ) ) {
-
-		if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
-			if ( ! class_exists( 'DOMDocument' ) ) {
-				add_action( 'admin_notices', 'githuber_md_warning_libxml' );
-		
-				function githuber_md_warning_libxml() {
-					echo githuber_load_view( 'message/php-libxml-warning' );
-				}
+			function githuber_md_warning_libxml() {
+				echo githuber_load_view( 'message/php-libxml-warning' );
 			}
 		}
-		
-		if ( ! function_exists( 'mb_strlen' ) ) {
-			add_action( 'admin_notices', 'githuber_md_warning_mbstring' );
+	}
 
-			function githuber_md_warning_mbstring() {
-				echo githuber_load_view( 'message/php-mbstring-warning' );
-			}
+	if ( ! function_exists( 'mb_strlen' ) ) {
+		add_action( 'admin_notices', 'githuber_md_warning_mbstring' );
+
+		function githuber_md_warning_mbstring() {
+			echo githuber_load_view( 'message/php-mbstring-warning' );
 		}
 	}
 }

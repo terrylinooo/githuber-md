@@ -8,7 +8,7 @@
  * @package Githuber
  * @since 1.0.0
  * @version 1.11.0
- * 
+ *
  * A lot of code snippets are from Jetpack Markdown module, we don't reinvent the wheel, however, we modify it for our needs.
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
  */
@@ -48,7 +48,6 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_KATEX    = '_is_githuber_katex';
 	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
 
-	const JETPACK_MD_POST_TYPE  = 'wpcom-markdown';
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
 
 	/**
@@ -122,7 +121,7 @@ class Markdown extends ControllerAbstract {
 			$this->is_support_mermaid = true;
 		}
 
-		// Load TOC widget. // 
+		// Load TOC widget. //
 		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
 			if ( 'yes' == githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
 				$this->is_support_toc = true;
@@ -134,6 +133,9 @@ class Markdown extends ControllerAbstract {
 	 * Initialize.
 	 */
 	public function init() {
+
+		// Force-disable Jetpack's Markdown module if it is active.
+		add_filter( 'option_jetpack_active_modules', array( $this, 'admin_githuber_disable_jetpack_markdown' ) );
 
 		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
 
@@ -174,7 +176,7 @@ class Markdown extends ControllerAbstract {
 			$rich_editing = new RichEditing();
 			$rich_editing->enable();
 
-			// Custom post types are not supporting Gutenberg by default for now, so 
+			// Custom post types are not supporting Gutenberg by default for now, so
 			// We only enable Gutenberg for `post` and `page`...
 			if ( 'post' === $current_post_type || 'page' === $current_post_type ) {
 				$rich_editing->enable_gutenberg();
@@ -199,7 +201,7 @@ class Markdown extends ControllerAbstract {
 
 				// Okay! User enable Markdown for current current post and it's post type.
 				$this->jetpack_code_snippets();
-	
+
 				if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
 					$html2markdown = new Controller\HtmlToMarkdown();
 					$html2markdown->init();
@@ -230,14 +232,6 @@ class Markdown extends ControllerAbstract {
 		if ( $markdown_this_post === 'no' ) {
 
 		} else {
-			// Jetpack Markdown should not be turned on with Githuber MD at the same time.
-			// We should notice users to turn it off.
-			if ( 'yes' !== githuber_get_option( 'disable_compatibility_warning', 'githuber_preferences' ) ) {
-				if ( post_type_supports( get_current_screen()->post_type, self::JETPACK_MD_POST_TYPE ) ) {
-					add_action( 'admin_notices', array( $this, 'jetpack_warning' ) );
-				}
-			}
-
 			wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
 			wp_enqueue_script( 'githuber-md', $this->githuber_plugin_url . 'assets/js/githuber-md.js', array( 'editormd' ), $this->version, true );
 
@@ -332,13 +326,6 @@ class Markdown extends ControllerAbstract {
 
 	}
 
-	/**
-	 * Display a warning, when Jetpack Markdown is on.
-	 */
-	public function jetpack_warning() {
-		echo githuber_load_view( 'message/jetpack-warning' );
-	}
-	
 	/**
 	 * Markdown parser.
 	 *
@@ -619,7 +606,7 @@ class Markdown extends ControllerAbstract {
 		$is_katex     = false;
 
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
-			
+
 			foreach ( $matches[1] as $match ) {
 				if ( ! empty( $prism_codes[ $match ] ) ) {
 					$prism_meta_array[ $match ] = $match;
@@ -628,7 +615,7 @@ class Markdown extends ControllerAbstract {
 				// Check if this componets requires the parent components or not.
 				if ( ! empty( $prism_component_parent[ $match ] ) ) {
 					foreach ( $prism_component_parent[ $match ] as $parent ) {
-						
+
 						// If it need a parent componet, add it to the $paris_meta_array.
 						if ( empty( $prism_meta_array[ $parent ] ) ) {
 							$prism_meta_array[ $parent ] = $parent;
@@ -683,7 +670,7 @@ class Markdown extends ControllerAbstract {
 	 * Register the `HtmlToMarkdown` meta box in the post-editor.
 	 */
 	public function add_meta_box() {
-		
+
 		if ( ! githuber_current_user_can( 'edit_posts' ) ) {
 			return false;
 		}
@@ -697,7 +684,7 @@ class Markdown extends ControllerAbstract {
 			'high'
 		);
 	}
-	
+
 	/**
 	 * Show `HtmlToMarkdown` meta box.
 	 */
@@ -706,7 +693,7 @@ class Markdown extends ControllerAbstract {
 		$post_id             = githuber_get_current_post_id();
 		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
-		Monolog::logger( 'Show meta box.', array( 
+		Monolog::logger( 'Show meta box.', array(
 			'post_id'            => $post_id,
 			'markdown_this_post' => $markdown_this_post,
 		) );
@@ -743,14 +730,14 @@ class Markdown extends ControllerAbstract {
 				'post_id' => $post_id,
 			);
 
-			Monolog::logger( 'Post data is gotten.', array( 
+			Monolog::logger( 'Post data is gotten.', array(
 				'post_id' => $_POST['post_id'],
 				'markdown_this_post' => $_POST['markdown_this_post'],
 			) );
 		}
 
 		header('Content-type: application/json');
-		
+
 		echo json_encode( $response );
 
 		// To avoid wp_ajax return "0" string to break the vaild json string.
@@ -760,7 +747,7 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * The below methods are from Jetpack: Markdown modular
 	 * And we modified it for our needs.
-	 * 
+	 *
 	 * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
 	 * @license GPL
 	 */
@@ -986,7 +973,7 @@ class Markdown extends ControllerAbstract {
 		} else {
 			$this->monitoring['content'] = wp_unslash( $post_data['post_content'] );
 		}
-			
+
 		if ( 'revision' === $postarr['post_type'] && $this->has_markdown( $postarr['post_parent'] ) ) {
 			$this->monitoring['parent'][ $postarr['post_parent'] ] = true;
 		}
@@ -1123,10 +1110,10 @@ class Markdown extends ControllerAbstract {
 
 			// Yes, we put it in post_content, because our wp_insert_post_data() expects that
 			$post['post_content'] = $revision['post_content_filtered'];
-			
+
 			// set this flag so we can restore the post_content_filtered on the last revision later
 			$this->monitoring['restore'] = true;
-			
+
 			// let's not make a revision of our fixing update
 			add_filter( 'wp_revisions_to_keep', '__return_false', 99 );
 			wp_update_post( $post );
@@ -1287,5 +1274,20 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function restore_code_blocks( $text ) {
 		return $this->get_parser()->codeblock_restore( $text );
+	}
+
+	/**
+	 * Force-disable Jetpack's Markdown module if it is active.
+	 *
+	 * @param array $modules Array of active Jetpack modules.
+	 *
+	 * @return array $modules Array of active Jetpack modules.
+	 */
+	public function admin_githuber_disable_jetpack_markdown( $modules ) {
+		$found = array_search( 'markdown', $modules, true );
+		if ( false !== $found ) {
+			unset( $modules[ $found ] );
+		}
+		return $modules;
 	}
 }
