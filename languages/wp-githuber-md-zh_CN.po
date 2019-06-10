@@ -105,7 +105,7 @@ msgstr "如果觉得内容修订功能妨碍写作，请停用这项功能。"
 
 #: src/Controllers/Setting.php:263
 msgid "Disable Auto-save"
-msgstr "停用自动储"
+msgstr "停用自动储存"
 
 #: src/Controllers/Setting.php:264
 msgid ""
@@ -224,13 +224,13 @@ msgstr "设定是否显示编辑区行号。"
 #: src/Controllers/Setting.php:691 src/Controllers/Setting.php:729
 #: src/Controllers/Setting.php:767 src/Controllers/Setting.php:805
 msgid "File Host"
-msgstr "档案托管设定"
+msgstr "文件托管设定"
 
 #: src/Controllers/Setting.php:513 src/Controllers/Setting.php:550
 #: src/Controllers/Setting.php:692 src/Controllers/Setting.php:730
 #: src/Controllers/Setting.php:768 src/Controllers/Setting.php:806
 msgid "Use this library with a CDN service or self-hosted (default)?"
-msgstr "设定使用托管于 CDN 服务或自主托管 (默认值) 的函式库。"
+msgstr "设定使用托管于 CDN 服务或自主托管 (默认值) 的库。"
 
 #: src/Controllers/Setting.php:525 src/Controllers/Setting.php:704
 #: src/Controllers/Setting.php:742 src/Controllers/Setting.php:780
@@ -254,7 +254,7 @@ msgstr "在代码高亮的区块上显示 `复制` 按钮。单击按钮将本�
 
 #: src/Controllers/Setting.php:564
 msgid "Image Paste"
-msgstr "图片随贴"
+msgstr "图片粘贴"
 
 #: src/Controllers/Setting.php:579
 msgid "Storage Space"
