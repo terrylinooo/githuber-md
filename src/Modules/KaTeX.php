@@ -150,7 +150,7 @@ class KaTeX extends ModuleAbstract {
 	 */
 	public static function katex_inline_markup( $content ) {
 
-		$regex = '%<code>\$\$*((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$*\$<\/code>%ix';
+		$regex = '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix';
 		$content = preg_replace_callback( $regex, function() {
 			$matches = func_get_arg(0);
 
