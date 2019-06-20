@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.4
+Stable tag: 1.11.5
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+An all-in-on WordPress Markdown Plugin provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
 Read detailed document, please visit [https://github.com/terrylinooo/githuber-md](https://github.com/terrylinooo/githuber-md).
 
@@ -290,6 +290,12 @@ GNU General Public License for more details.
 
 * Fix issue #72: Syntax highlight - use prism autoloader plugin instead.
 * Feature request #74: Add an option for match highlighter.
+
+= 1.11.5
+
+- Jetpack compatibility #80, #81, thanks @jeherve 
+- Fix issue #92
+- Remove donation information - I think nobody will donate to me. Special thanks to Norton Torga (from Brasil) who is the only one person donated to me.
 
 == Known Issues ==
 
