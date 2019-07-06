@@ -639,6 +639,10 @@ class Markdown extends ControllerAbstract {
 					$is_katex = true;
 				}
 			}
+		} elseif ( preg_match( '/<code class="language-([a-z\-0-9]+)\s([a-z\-0-9]+)-inline"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
+			if ('katex' === $matches[1] && 'katex' === $matches[2]) {
+				$is_katex = true;
+			}
 		}
 
 		// Combine array into a string.
@@ -647,22 +651,32 @@ class Markdown extends ControllerAbstract {
 		// Store the string to post meta, for identifying what the syntax languages are used in current post.
 		if ( $this->is_support_prism && ! empty( $prism_meta_array ) ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_PRISM, $prism_meta_string );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_PRISM, '' );
 		}
 
 		if ( $this->is_support_sequence && $is_sequence ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_SEQUENCE, true );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_SEQUENCE, false );
 		}
 
 		if ( $this->is_support_flowchart && $is_flowchart ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_FLOW, true );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_FLOW, false );
 		}
 
 		if ( $this->is_support_mermaid && $is_mermaid ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_MERMAID, true );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_MERMAID, false );
 		}
 
 		if ( $this->is_support_katex && $is_katex ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, true );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, false );
 		}
 	}
 
