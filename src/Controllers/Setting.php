@@ -930,6 +930,14 @@ class Setting extends ControllerAbstract {
 					'type'    => 'toggle',
 					'default' => 'no',
 				),
+
+				array(
+					'name'    => 'decode_code_blocks',
+					'label'   => __( 'Decode Code Blocks', 'wp-githuber-md' ),
+					'desc'    => sprintf( __( 'If you have met issues similar to issue #30, <a href="%s" target="_blank">#89</a>, try enabling this.', 'wp-githuber-md' ), 'https://github.com/terrylinooo/githuber-md/issues/89' ),
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
 			),
 
 			'githuber_about' => array(

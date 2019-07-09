@@ -337,7 +337,7 @@ class Markdown extends ControllerAbstract {
 
 			$is_markdown_extra = githuber_get_option( 'support_mardown_extra', 'githuber_extensions' );
 
-			if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
+			if ( 'yes' === $is_markdown_extra ) {
 				self::$parser_instance = new Module\MarkdownExtraParser();
 			} else {
 				self::$parser_instance = new Module\MarkdownParser();
@@ -1049,10 +1049,13 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function transform( $text, $args = array() ) {
 
+		$is_decode_code_blocks = ( 'yes' === githuber_get_option( 'decode_code_blocks', 'githuber_preferences' ) ) ? true : false;
+
 		$args = wp_parse_args( $args, array(
 			'id'                 => false,
 			'unslash'            => true,
-			'decode_code_blocks' => false, // Fix: issue #30
+			'decode_code_blocks' => $is_decode_code_blocks, // Fix: issue #30
+			//'decode_code_blocks' => false, // Fix: issue #30
 		) );
 
 		// probably need to unslash

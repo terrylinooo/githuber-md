@@ -15,9 +15,6 @@
  */
 
 namespace Githuber\Controller;
-use Githuber\Controller as Controller;
-use Githuber\Module as Module;
-use Githuber\Model as Model;
 
 class SpellCheck extends ControllerAbstract {
 
