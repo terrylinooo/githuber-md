@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.5
+Stable tag: 1.11.6
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -295,7 +295,12 @@ GNU General Public License for more details.
 
 - Jetpack compatibility #80, #81, thanks @jeherve 
 - Fix issue #92
-- Remove donation information - I think nobody will donate to me. Special thanks to Norton Torga (from Brasil) who is the only one person donated to me.
+- Remove donation information.
+
+= 1.11.6
+
+- Fix issue #89 - Code block parsing problems.
+- Fix issue #96 - KaTex not working when using only inline syntax.
 
 == Known Issues ==
 
