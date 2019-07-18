@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.6
+Stable tag: 1.11.7
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -301,6 +301,12 @@ GNU General Public License for more details.
 
 - Fix issue #89 - Code block parsing problems.
 - Fix issue #96 - KaTex not working when using only inline syntax.
+
+= 1.11.7
+
+- Fix issue #99 - a CSS conflict in menu page.
+- Fix issue #91 - post_id check.
+- Feature request #98 - Add a new option in Preferences.
 
 == Known Issues ==
 
