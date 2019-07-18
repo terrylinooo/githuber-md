@@ -33,6 +33,7 @@ function githuber_get_option( $option, $section, $default = '' ) {
  * @return int
  */
 function githuber_get_current_post_id() {
+
 	global $post;
 
 	$post_id = null;
@@ -41,8 +42,8 @@ function githuber_get_current_post_id() {
 		$post_id = $post->ID;
 	} elseif ( ! empty( $_REQUEST['post'] ) ) {
 		$post_id = $_REQUEST['post'];
-	} else {
-
+	} elseif ( ! empty( $_REQUEST['post_ID'] ) ) {
+		$post_id = $_REQUEST['post_ID'];
 	}
 	
 	return $post_id;
