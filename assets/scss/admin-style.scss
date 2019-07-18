@@ -71,12 +71,10 @@
 	}
 }
 
-.metabox-holder {
-	border: 0px solid #ccc;
-	border-top: 0;
-    margin: 0;
-    padding: 10px 20px 20px 20px;
-	line-height: inherit;
+.plugins_page_githuber-md, .plugins_page_wp-githuber-md {
+	.metabox-holder {
+		padding: 10px 20px 20px 20px;
+	}
 }
 
 .wrap div.updated {
