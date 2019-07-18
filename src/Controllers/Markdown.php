@@ -87,6 +87,8 @@ class Markdown extends ControllerAbstract {
 	public $is_support_mermaid   = false;
 	public $is_support_toc       = false;
 
+	public $markdown_this_post = true;
+
 	/**
 	 * Constructer.
 	 */
@@ -170,6 +172,21 @@ class Markdown extends ControllerAbstract {
 		// Get post type from curren screen.
 		$current_post_type = githuber_get_current_post_type();
 
+		// Feature request #98
+		if ( 'yes' === githuber_get_option( 'richeditor_by_default', 'githuber_preferences' ) ) {
+
+			if ( empty( $markdown_this_post ) || 'yes' !== $markdown_this_post ) {
+				$rich_editing = new RichEditing();
+				$rich_editing->enable();
+
+				if ( empty( $current_post_type ) || 'post' === $current_post_type || 'page' === $current_post_type ) {
+					$rich_editing->enable_gutenberg();
+				}
+
+				$this->markdown_this_post = false;
+			}
+		}
+
 		if ( ! empty( $current_post_type ) && ! post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
 
 			// We enable Rich editor if user not enable Markdown for current post type!
@@ -229,7 +246,7 @@ class Markdown extends ControllerAbstract {
 		$post_id = githuber_get_current_post_id();
 		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
-		if ( $markdown_this_post === 'no' ) {
+		if ( 'no' === $markdown_this_post || ! $this->markdown_this_post ) {
 
 		} else {
 			wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
@@ -304,6 +321,7 @@ class Markdown extends ControllerAbstract {
 	 * Initalize to WP `admin_init` hook.
 	 */
 	public function admin_init() {
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
@@ -704,8 +722,8 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function show_meta_box() {
 
-		$post_id             = githuber_get_current_post_id();
-		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
+		$post_id               = githuber_get_current_post_id();
+		$markdown_this_post    = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
 		Monolog::logger( 'Show meta box.', array(
 			'post_id'            => $post_id,
@@ -713,6 +731,8 @@ class Markdown extends ControllerAbstract {
 		) );
 
 		$data['markdown_this_post_choice'] = $markdown_this_post;
+		$data['is_markdown_this_post']     = $this->markdown_this_post;
+
 		echo githuber_load_view( 'metabox/markdown-per-post', $data );
 	}
 

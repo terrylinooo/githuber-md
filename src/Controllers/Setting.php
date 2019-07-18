@@ -938,6 +938,14 @@ class Setting extends ControllerAbstract {
 					'type'    => 'toggle',
 					'default' => 'no',
 				),
+
+				array(
+					'name'    => 'richeditor_by_default',
+					'label'   => __( 'Default: Rich Editor', 'wp-githuber-md' ),
+					'desc'    => __( 'Notice: Your users might be confused because that if they swith to Markdown editor then switch back to Rich editor or Gutenberg, they will lost Markdown text. That is because that Rich editor and Markdown editor use differnt field to store data.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'default' => 'no',
+				),
 			),
 
 			'githuber_about' => array(
