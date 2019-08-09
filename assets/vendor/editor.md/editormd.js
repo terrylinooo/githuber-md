@@ -1949,7 +1949,7 @@ if (typeof mermaid_counter === 'undefined') {
                             editormd.kaTeXLoaded = !0,
                             _this.katexRender()
                     }) : (editormd.$katex = katex,
-                        this.katexRender())),
+                        _this.katexRender())),
                     settings.mermaid && "undefined" != typeof mermaid && (mermaid_counter > 1 && mermaid.init(),
                         mermaid_counter++),
                     (settings.flowChart || settings.sequenceDiagram) && (flowchartTimer = setTimeout(function () {
