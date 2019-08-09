@@ -117,7 +117,7 @@ class KaTeX extends ModuleAbstract {
 					$(function() {
 						if (typeof katex !== "undefined") {
                             if ($(".language-katex").length > 0) {
-								$(".language-katex").parent("pre").attr("style", "text-align: center; background: none;");
+								$(".language-katex").parent("pre").attr("style", "text-align: center; background: none; overflow-y: hidden");
 								$(".language-katex").addClass("katex-container").removeClass("language-katex");
 								$(".katex-container").each(function() {
 									var katexText = $(this).text();
