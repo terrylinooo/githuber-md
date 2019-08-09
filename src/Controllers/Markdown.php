@@ -130,7 +130,8 @@ class Markdown extends ControllerAbstract {
 				$this->is_support_toc = true;
 			}
 		}
-	}
+
+    }
 
 	/**
 	 * Initialize.
@@ -324,6 +325,8 @@ class Markdown extends ControllerAbstract {
 	 * Initalize to WP `admin_init` hook.
 	 */
 	public function admin_init() {
+
+
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -1057,6 +1060,8 @@ class Markdown extends ControllerAbstract {
 	protected function comment_hash( $content ) {
 		return 'c-' . substr( md5( $content ), 0, 8 );
 	}
+
+
 
 	/**
 	 * Markdown conversion. Some DRYness for repetitive tasks.

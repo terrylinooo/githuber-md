@@ -50,9 +50,9 @@ class Prism extends ModuleAbstract {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), $this->css_priority );
-		add_action( 'wp_print_footer_scripts', array( $this, 'auto_loader_config_scripts' ) );
+		add_action( 'wp_print_footer_scripts', array( $this, 'auto_loader_config_scripts' ));
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
-		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
+		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ));
 	}
  
 	/**

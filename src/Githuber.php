@@ -17,7 +17,7 @@ use Githuber\Controller\Monolog as Monolog;
 class Githuber {
 
 	public $current_url;
-
+    public $markdown = null;
 	/**
 	 * Constructer.
 	 */
@@ -55,11 +55,28 @@ class Githuber {
 		// Only use it in DEBUG mode.
 		Monolog::logger( 'Hook: wp_loaded', array( 'url' => $this->current_url ) );
 	}
+    public function convertMarkdownInit()
+    {
+        register_rest_route('githuber', 'convert', array(
+            'methods'   => 'POST',
+            'callback'  => array($this,'convertMarkdown')
+        ));
+    }
+    public function convertMarkdown($request)
+    {
+        if($this->markdown == null)
+        {
+            $this->markdown = new Controller\Markdown();
+            $this->markdown->init();
+        }
+        return $this->markdown->transform($request['text'], array("unslash" => false));
+    }
 
 	/**
 	 * Initialize everything the Githuber plugin needs.
 	 */
 	public function init() {
+        add_action( 'rest_api_init', array($this,'convertMarkdownInit'));
 
 		// Only load controllers in backend.
 		if ( is_admin() ) {
@@ -69,7 +86,7 @@ class Githuber {
 
 			$setting = new Controller\Setting();
 			$setting->init();
-	
+
 			if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_modules' ) ) {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
@@ -85,11 +102,12 @@ class Githuber {
 				$spellCheck->init();
 			}
 
-			$markdown = new Controller\Markdown();
-			$markdown->init();
+			$this->markdown = new Controller\Markdown();
+			$this->markdown->init();
 		}
 
-		/**
+
+        /**
 		 * Let's start loading frontend modules.
 		 */ 
 
@@ -152,6 +170,10 @@ class Githuber {
 				}, $string );
 			}, 10, 1 );
 		}
+		if(is_admin())
+        {
+            wp_print_scripts();
+        }
 	}
 
 	/**
