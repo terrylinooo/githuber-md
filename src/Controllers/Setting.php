@@ -707,13 +707,33 @@ class Setting extends ControllerAbstract {
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
 				),
-
+                array(
+                    'name'              => 'katex_inline_prefix',
+                    'label'             => __( 'Inline pre/postfix', 'wp-githuber-md' ),
+                    'desc'              => githuber_load_view( 'setting/katex-inline-prefix' ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+                    'default'           => '$$',
+                    'parent'            => 'support_katex',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                array(
+                    'name'              => 'katex_display_prefix',
+                    'label'             => __( 'Display pre/postfix', 'wp-githuber-md' ),
+                    'desc'              => githuber_load_view( 'setting/katex-display-prefix' ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+                    'default'           => '$$$',
+                    'parent'            => 'support_katex',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
 				array(
 					'label'   => __( 'Example', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'example/katex' ),
 					'type'    => 'html',
 					'parent'  => 'support_katex',
 				),
+
 
 				array(
 					'section_title' => true,

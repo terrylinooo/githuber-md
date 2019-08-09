@@ -3635,29 +3635,35 @@
             
             return text;
         };
-
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+        }
         markedRenderer.paragraph = function(text) {
-            var isTeXInline     = /\$\$(.*)\$\$/g.test(text);
-            var isTeXLine       = /^\$\$(.*)\$\$$/.test(text);
-            var isTeXAddClass   = (isTeXLine)     ? " class=\"" + editormd.classNames.tex + "\"" : "";
             var isToC           = (settings.tocm) ? /^(\[TOC\]|\[TOCM\])$/.test(text) : /^\[TOC\]$/.test(text);
             var isToCMenu       = /^\[TOCM\]$/.test(text);
-            
-            if (!isTeXLine && isTeXInline) 
-            {
-                text = text.replace(/(\$\$([^\$]*)\$\$)+/g, function($1, $2) {
-                    return "<span class=\"" + editormd.classNames.tex + "\">" + $2.replace(/\$/g, "") + "</span>";
-                });
-            } 
-            else 
-            {
-                text = (isTeXLine) ? text.replace(/\$/g, "") : text;
-            }
-            
+
+            var inlinePrefix = global_editormd_config.texInlinePrefix, displayPrefix = global_editormd_config.texDisplayPrefix;
+
+            text = text.replace(eval('/' + escapeRegExp(displayPrefix) + '([^\$]*?)'+  escapeRegExp(displayPrefix)  + '/g'), function($1, $2) {
+                return "<span class=\"" + editormd.classNames.tex + "\">\\displaystyle " + $2 + "</span>";
+            });
+
+            text = text.replace(eval('/' + escapeRegExp(inlinePrefix) + '([^\$]*?)'+  escapeRegExp(inlinePrefix)  + '/g'), function($1, $2) {
+                    return "<span class=\"" + editormd.classNames.tex + "\">" + $2 + "</span>";
+            });
+
+
             var tocHTML = "<div class=\"markdown-toc editormd-markdown-toc\">" + text + "</div>";
-            
-            return (isToC) ? ( (isToCMenu) ? "<div class=\"editormd-toc-menu\">" + tocHTML + "</div><br/>" : tocHTML )
-                           : ( (pageBreakReg.test(text)) ? this.pageBreak(text) : "<p" + isTeXAddClass + ">" + this.atLink(this.emoji(text)) + "</p>\n" );
+
+            if (isToC) {
+                return (isToCMenu) ? "<div class=\"editormd-toc-menu\">" + tocHTML + "</div><br/>" : tocHTML;
+            } else {
+                if (pageBreakReg.test(text)) {
+                    return this.pageBreak(text);
+                } else {
+                    return "<p" + editormd.classNames.tex + ">" + this.atLink(this.emoji(text)) + "</p>\n";
+                }
+            }
         };
 
         markedRenderer.code = function (code, lang, escaped) { 
@@ -3676,7 +3682,7 @@
             } 
             else if ( lang === "math" || lang === "latex" || lang === "katex")
             {
-                return "<p class=\"" + editormd.classNames.tex + "\">" + code + "</p>";
+                return "<p class=\"" + editormd.classNames.tex + "\">\\displaystyle " + code + "</p>";
             } 
             else 
             {
@@ -3824,7 +3830,7 @@
 
                         if (firstA.children(".fa").length < 1)
                         {
-                            firstA.append( $(icon).css({ float:"right", paddingTop:"4px" }) );
+                            firstA.append( $(icon).css('float:"right"; paddingTop:"4px"') );
                         }
                     }
 

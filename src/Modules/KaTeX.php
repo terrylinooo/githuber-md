@@ -149,8 +149,8 @@ class KaTeX extends ModuleAbstract {
 	 * @return void
 	 */
 	public static function katex_inline_markup( $content ) {
-
-		$regex = '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix';
+        $prefix = $postfix = githuber_get_option('katex_inline_prefix', 'githuber_modules');
+        $regex = '%'.preg_quote($prefix).'((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)'.preg_quote($postfix).'%ix';
 		$content = preg_replace_callback( $regex, function() {
 			$matches = func_get_arg(0);
 
@@ -160,7 +160,29 @@ class KaTeX extends ModuleAbstract {
 				return '<code class="language-katex katex-inline">' . trim( $katex ) . '</code>';
 			}
 		}, $content );
-
 		return $content;
 	}
+    /**
+     * Katex Display Markup
+     *
+     * Ex.
+     * `$$ x_{1,2} = {-b\pm\sqrt{b^2 - 4ac} \over 2a}.$$`
+     *
+     * @param string  $content HTML or Markdown content.
+     * @return void
+     */
+    public static function katex_display_markup( $content ) {
+        $prefix = $postfix = githuber_get_option('katex_display_prefix', 'githuber_modules');
+        $regex = '%'.preg_quote($prefix).'((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)'.preg_quote($postfix).'%ix';
+        $content = preg_replace_callback( $regex, function() {
+            $matches = func_get_arg(0);
+
+            if ( ! empty( $matches[1] ) ) {
+                $katex = $matches[1];
+                $katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
+                return '<code class="language-katex katex-inline">\displaystyle ' . trim( $katex ) . '</code>';
+            }
+        }, $content );
+        return $content;
+    }
 }

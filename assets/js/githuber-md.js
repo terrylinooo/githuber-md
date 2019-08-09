@@ -41,6 +41,8 @@ var spellcheck_lang = 'en_US';
             previewCodeLineNumber: (config.prism_line_number == 'yes'),
             spellCheck: (config.editor_spell_check == 'yes'),
             matchWordHighlight: (config.editor_match_highlighter == 'yes') ? 'onselected' : false,
+            texInlinePrefix: config.katex_inline_prefix,
+            texDisplayPrefix: config.katex_display_prefix,
             toolbarAutoFixed: true,
             tocm: false, 
             tocDropdown: false,    

@@ -15,6 +15,7 @@
 
 namespace Githuber\Controller;
 use Githuber\Controller as Controller;
+use Githuber\Controller\Monolog as Monolog;
 use Githuber\Module as Module;
 use Githuber\Model as Model;
 
@@ -277,12 +278,14 @@ class Markdown extends ControllerAbstract {
 			);
 
 			$editormd_config_list['modules'] = array(
-				//'support_toc',
-				//'support_emoji',
+				'support_toc',
+				'support_emoji',
 				'support_katex',
 				'support_flowchart',
 				'support_sequence_diagram',
 				'support_mermaid',
+                'katex_inline_prefix',
+                'katex_display_prefix'
 			);
 
 			$editormd_config_list['extensions'] = array(
@@ -1105,8 +1108,10 @@ class Markdown extends ControllerAbstract {
 			$text = Module\TaskList::parse_gfm_task_list( $text );
 		}
 
-		// Render KaTeX inline markup.
+		// Render KaTeX inline&display markup.
 		if ( $this->is_support_katex ) {
+//            Monolog::warn("raw: " . $text);
+            $text = Module\KaTeX::katex_display_markup( $text );
 			$text = Module\KaTeX::katex_inline_markup( $text );
 		}
 

@@ -75,7 +75,7 @@ define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
  *
  * After finishing debugging, run: `composer remove monolog/monolog` to remove it.
  */
-define( 'GITHUBER_DEBUG_MODE', false );
+define( 'GITHUBER_DEBUG_MODE', true );
 
 /**
  * Start to run Githuber plugin cores.

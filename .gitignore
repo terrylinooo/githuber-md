@@ -5,3 +5,6 @@ tests
 bin
 build_release.sh
 .vscode
+.idea
+githuber-md.iml
+*.log
