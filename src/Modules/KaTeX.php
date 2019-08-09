@@ -124,7 +124,7 @@ class KaTeX extends ModuleAbstract {
 									var el = $(this).get(0);
 									if ($(this).parent("code").length == 0) {
 										try {
-											katex.render(katexText, el)
+											katex.render("\\\\displaystyle " + katexText, el)
 										} catch (err) {
 											$(this).html("<span class=\'err\'>" + err)
 										}
