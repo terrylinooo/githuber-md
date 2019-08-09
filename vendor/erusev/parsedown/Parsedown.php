@@ -17,7 +17,7 @@ class Parsedown
 {
     # ~
 
-    const version = '1.7.2';
+    const version = '1.7.3';
 
     # ~
 
@@ -167,12 +167,7 @@ class Parsedown
 
                 foreach ($parts as $part)
                 {
-                    // Modify by Terry Lin, for Githuber MD
-                    if (function_exists('mb_strlen')) {
-                        $shortage = 4 - mb_strlen($line, 'utf-8') % 4;
-                    } else {
-                        $shortage = 4 - strlen($line) % 4;
-                    }
+                    $shortage = 4 - mb_strlen($line, 'utf-8') % 4;
 
                     $line .= str_repeat(' ', $shortage);
                     $line .= $part;
@@ -1509,8 +1504,7 @@ class Parsedown
             }
             else
             {
-                //$markup .= self::escape($Element['text'], true);
-                $markup .= $Element['text'];
+                $markup .= self::escape($Element['text'], true);
             }
 
             $markup .= '</'.$Element['name'].'>';

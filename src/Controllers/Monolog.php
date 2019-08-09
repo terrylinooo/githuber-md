@@ -12,8 +12,6 @@
 
 namespace Githuber\Controller;
 
-use Monolog\Logger;
-
 class Monolog
 {
 
