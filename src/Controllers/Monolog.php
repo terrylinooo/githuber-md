@@ -82,6 +82,7 @@ class Monolog
             self::get_instance()->addRecord($SEVERITY, $message . "\n", $info_data);
         }
     }
+
     /**
      * Record Markdown processing logs for debug propose.
      *
@@ -91,7 +92,8 @@ class Monolog
      */
     public static function info($message, $data = array())
     {
-        self::log(Logger::INFO, $message, $data);
+        if (GITHUBER_DEBUG_MODE)
+            self::log(Logger::INFO, $message, $data);
     }
 
     /**
@@ -103,7 +105,8 @@ class Monolog
      */
     public static function debug($message, $data = array())
     {
-        self::log(Logger::DEBUG, $message, $data);
+        if (GITHUBER_DEBUG_MODE)
+            self::log(Logger::DEBUG, $message, $data);
     }
 
     /**
@@ -115,7 +118,8 @@ class Monolog
      */
     public static function warn($message, $data = array())
     {
-        self::log(Logger::WARNING, $message, $data);
+        if (GITHUBER_DEBUG_MODE)
+            self::log(Logger::WARNING, $message, $data);
     }
 
 
@@ -128,7 +132,7 @@ class Monolog
      */
     public static function error($message, $data = array())
     {
-
-        self::log(Logger::ERROR, $message, $data);
+        if (GITHUBER_DEBUG_MODE)
+            self::log(Logger::ERROR, $message, $data);
     }
 }
