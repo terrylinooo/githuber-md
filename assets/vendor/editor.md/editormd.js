@@ -1454,11 +1454,6 @@ if (typeof mermaid_counter === 'undefined') {
          */
 
         katexRender: function () {
-
-            if (timer === null) {
-                return this;
-            }
-
             this.previewContainer.find("." + editormd.classNames.tex).each(function () {
                 var tex = $(this);
                 editormd.$katex.render(tex.text(), tex[0]);
@@ -1930,8 +1925,8 @@ if (typeof mermaid_counter === 'undefined') {
 
             if (settings.watch || (!settings.watch && state.preview)) {
                 $.post('/?rest_route=/githuber/convert', {'text': cmValue}, function (data, resp) {
-                    data = data.replace(/<code class="language-katex katex-inline">(.+?)<\/code>/g, function (substring) {
-                        return "<span class=\"" + editormd.classNames.tex + "\">" + substring+ "</span>";
+                    data = data.replace(/<code class="language-katex katex-inline">(.+?)<\/code>/g, function ($0, $1) {
+                        return "<span class=\"" + editormd.classNames.tex + "\">" + $1+ "</span>";
                     });
                     previewContainer.html(data);
                     _this.previewCodeHighlight();
