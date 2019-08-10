@@ -1899,31 +1899,14 @@ if (typeof mermaid_counter === 'undefined') {
                 return this;
             }
 
-            var marked = editormd.$marked;
             var markdownToC = this.markdownToC = [];
-            var rendererOptions = this.markedRendererOptions = {
-                toc: settings.toc,
-                tocm: settings.tocm,
-                tocStartLevel: settings.tocStartLevel,
-                pageBreak: settings.pageBreak,
-                taskList: settings.taskList,
-                emoji: settings.emoji,
-                tex: settings.tex,
-                atLink: settings.atLink,           // for @link
-                emailLink: settings.emailLink,        // for mail address auto link
-                flowChart: settings.flowChart,
-                sequenceDiagram: settings.sequenceDiagram,
-                previewCodeHighlight: settings.previewCodeHighlight,
-                previewCodeLineNumber: settings.previewCodeLineNumber,
-            };
-
 
             var newMarkdownDoc = editormd.filterHTMLTags(cmValue, settings.htmlDecode);
 
             //console.error("cmValue", cmValue, newMarkdownDoc);
 
             this.markdownTextarea.text(cmValue);
-
+            $('.word-count').text(cmValue.length);
             cm.save();
 
             if (settings.saveHTMLToTextarea) {
