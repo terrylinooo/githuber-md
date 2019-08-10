@@ -1454,11 +1454,19 @@ if (typeof mermaid_counter === 'undefined') {
          */
 
         katexRender: function () {
-            this.previewContainer.find("." + editormd.classNames.tex).each(function () {
-                var tex = $(this);
+
+
+            this.previewContainer.find(".language-katex").each(function (ind, ele) {
+                var tex = $(ele);
                 editormd.$katex.render(tex.text(), tex[0]);
 
-                tex.find(".katex").css("font-size", "1.6em");
+                // 为了去掉黑框
+                var html = ele.outerHTML;
+                html = html.replace("<code", "<span");
+                html = html.replace("</code>", "</span>");
+                ele.outerHTML = html;
+
+                // tex.find(".katex").css("font-size", "1.6em");
             });
 
             return this;
@@ -1925,9 +1933,9 @@ if (typeof mermaid_counter === 'undefined') {
 
             if (settings.watch || (!settings.watch && state.preview)) {
                 $.post('/?rest_route=/githuber/convert', {'text': cmValue}, function (data, resp) {
-                    data = data.replace(/<code class="language-katex katex-inline">(.+?)<\/code>/g, function ($0, $1) {
-                        return "<span class=\"" + editormd.classNames.tex + "\">" + $1+ "</span>";
-                    });
+                    // data = data.replace(/<code class="language-katex katex-inline">(.+?)<\/code>/g, function ($0, $1) {
+                    //     return "<span class=\"" + editormd.classNames.tex + "\">" + $1+ "</span>";
+                    // });
                     previewContainer.html(data);
                     _this.previewCodeHighlight();
                     if (settings.toc) {

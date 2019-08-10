@@ -629,7 +629,7 @@ class Markdown extends ControllerAbstract {
 		$is_mermaid   = false;
 		$is_katex     = false;
 
-		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
+		if ( preg_match_all( '/language-([a-z\-0-9]+)/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
 
 			foreach ( $matches[1] as $match ) {
 				if ( ! empty( $prism_codes[ $match ] ) ) {
@@ -662,10 +662,6 @@ class Markdown extends ControllerAbstract {
 				if ( 'katex' === $match ) {
 					$is_katex = true;
 				}
-			}
-		} elseif ( preg_match( '/<code class="language-([a-z\-0-9]+)\s([a-z\-0-9]+)-inline"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
-			if ('katex' === $matches[1] && 'katex' === $matches[2]) {
-				$is_katex = true;
 			}
 		}
 
@@ -1108,17 +1104,18 @@ class Markdown extends ControllerAbstract {
 		// Transform it!
 		$text = $this->get_parser()->transform( $text );
 
-		// Render Github Flavored Markdown task lists if this module is enabled.
-		if ( $this->is_support_task_list ) {
-			$text = Module\TaskList::parse_gfm_task_list( $text );
-		}
-
 		// Render KaTeX inline&display markup.
 		if ( $this->is_support_katex ) {
 //            Monolog::warn("raw: " . $text);
             $text = Module\KaTeX::katex_display_markup( $text );
 			$text = Module\KaTeX::katex_inline_markup( $text );
 		}
+
+		// Render Github Flavored Markdown task lists if this module is enabled.
+		if ( $this->is_support_task_list ) {
+			$text = Module\TaskList::parse_gfm_task_list( $text );
+		}
+
 
 		// Markdown inserts extra spaces to make itself work. Buh-bye.
 		$text = rtrim( $text );
