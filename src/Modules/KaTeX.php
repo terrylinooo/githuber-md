@@ -150,8 +150,8 @@ class KaTeX extends ModuleAbstract {
 	 */
 	public static function katex_inline_markup( $content ) {
         $prefix = $postfix = githuber_get_option('katex_inline_prefix', 'githuber_modules');
-        $regex = '%'.preg_quote($prefix).'((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)'.preg_quote($postfix).'%ix';
-		$content = preg_replace_callback( $regex, function() {
+        $regex = '%'.preg_quote($prefix).'((?:[^'.preg_quote($prefix).'\\n]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)'.preg_quote($postfix).'%ix';
+        $content = preg_replace_callback( $regex, function() {
 			$matches = func_get_arg(0);
 
 			if ( ! empty( $matches[1] ) ) {
