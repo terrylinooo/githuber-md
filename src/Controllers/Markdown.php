@@ -533,6 +533,7 @@ class Markdown extends ControllerAbstract {
 			'scss'              => 'Sass (Scss)',
 			'scala'             => 'Scala',
 			'scheme'            => 'Scheme',
+            'shell'             => 'Bash',
 			'smalltalk'         => 'Smalltalk',
 			'smarty'            => 'Smarty',
 			'sql'               => 'SQL',

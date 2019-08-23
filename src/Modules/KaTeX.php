@@ -150,7 +150,8 @@ class KaTeX extends ModuleAbstract {
 	 */
 	public static function katex_inline_markup( $content ) {
         $prefix = $postfix = githuber_get_option('katex_inline_prefix', 'githuber_modules');
-        $regex = '%'.preg_quote($prefix).'((?:[^'.preg_quote($prefix).'\\n]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)'.preg_quote($postfix).'%ix';
+
+        $regex = '/'.preg_quote($prefix).'([^\n]+?)'.preg_quote($postfix).'/';
         $content = preg_replace_callback( $regex, function() {
 			$matches = func_get_arg(0);
 
@@ -159,6 +160,7 @@ class KaTeX extends ModuleAbstract {
 				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
 				return '<code class="language-katex katex-inline">' . trim( $katex ) . '</code>';
 			}
+
 		}, $content );
 		return $content;
 	}
@@ -173,7 +175,7 @@ class KaTeX extends ModuleAbstract {
      */
     public static function katex_display_markup( $content ) {
         $prefix = $postfix = githuber_get_option('katex_display_prefix', 'githuber_modules');
-        $regex = '%'.preg_quote($prefix).'((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)'.preg_quote($postfix).'%ix';
+        $regex = '/'.preg_quote($prefix).'(.+?)'.preg_quote($postfix).'/';
         $content = preg_replace_callback( $regex, function() {
             $matches = func_get_arg(0);
 
