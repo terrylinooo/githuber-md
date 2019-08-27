@@ -311,8 +311,7 @@ GNU General Public License for more details.
 = 1.11.8
 
 - Fix issue #107 - Fix parsing inline KaTax syntax.
-- Fix issue #104 - UL list not displays correctly in preview panel.
-
+- Fix issue #104 - UL list does not display correctly in the preview panel.
 
 == Upgrade Notice ==
 
