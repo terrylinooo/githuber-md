@@ -657,10 +657,11 @@ class Markdown extends ControllerAbstract {
 					$is_katex = true;
 				}
 			}
-		} elseif ( preg_match( '/<code class="language-([a-z\-0-9]+)\s([a-z\-0-9]+)-inline"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
-			if ('katex' === $matches[1] && 'katex' === $matches[2]) {
-				$is_katex = true;
-			}
+		} 
+		
+		// If we find inline KaTex syntax.
+		if ( strpos( $post_content, '<code class="katex-inline">' ) !== false ) {
+			$is_katex = true;
 		}
 
 		// Combine array into a string.

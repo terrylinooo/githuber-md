@@ -130,7 +130,20 @@ class KaTeX extends ModuleAbstract {
 										}
 									}
 								});
-                            }
+							}
+							if ($(".katex-inline").length > 0) {
+								$(".katex-inline").each(function() {
+									var katexText = $(this).text();
+									var el = $(this).get(0);
+									if ($(this).parent("code").length == 0) {
+										try {
+											katex.render(katexText, el)
+										} catch (err) {
+											$(this).html("<span class=\'err\'>" + err)
+										}
+									}
+								});
+							}
 						}
 					});
                 })(jQuery);
@@ -157,7 +170,7 @@ class KaTeX extends ModuleAbstract {
 			if ( ! empty( $matches[1] ) ) {
 				$katex = $matches[1];
 				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
-				return '<code class="language-katex katex-inline">' . trim( $katex ) . '</code>';
+				return '<code class="katex-inline">' . trim( $katex ) . '</code>';
 			}
 		}, $content );
 

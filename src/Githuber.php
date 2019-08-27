@@ -205,6 +205,10 @@ class Githuber {
 				pre .katex-container {
 					font-size: 1.4em !important;
 				}
+				.katex-inline {
+					background: none !important;
+					margin: 0 3px;
+				}
 			';
 		}
 

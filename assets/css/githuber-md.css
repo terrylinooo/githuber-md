@@ -18,6 +18,10 @@
   padding: 0 !important;
 }
 
+.katex-inline {
+  background: none;
+}
+
 pre {
   position: relative;
 }
