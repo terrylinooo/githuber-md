@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
-Stable tag: 1.11.7
+Stable tag: 1.11.8
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -308,9 +308,11 @@ GNU General Public License for more details.
 - Fix issue #91 - post_id check.
 - Feature request #98 - Add a new option in Preferences.
 
-== Known Issues ==
+= 1.11.8
 
-* #1 - Sequence Diagram: this feature is only available in WordPress version > 4.5, because it uses underscore.js, and it has confict issues with WordPress' plupload uploader in early version. You can use Mermaid instead of it. We have already hidden this option in setting while an user uses that version < 4.5
+- Fix issue #107 - Fix parsing inline KaTax syntax.
+- Fix issue #104 - UL list not displays correctly in preview panel.
+
 
 == Upgrade Notice ==
 

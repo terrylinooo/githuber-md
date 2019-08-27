@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.11.0
+ * @version 1.11.8
  */
 
 use Githuber\Controller as Controller;
