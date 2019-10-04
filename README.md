@@ -2,7 +2,7 @@
 
 ![Screenshot](./assets/images/wp-future-md-cover.png)
 
-An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-future-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-future-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, Math support, and more..
 
 [![RIPS CodeRisk](https://coderisk.com/wp/plugin/wp-future-md/badge "RIPS CodeRisk")](https://coderisk.com/wp/plugin/wp-future-md)
 
@@ -110,5 +110,9 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 GPLv3 or later
 
+### Todo list
+- [ ] maybe replace marked with markdown-it
+- [ ] improve editor experience 
+- [ ] reform code structure
 
 
