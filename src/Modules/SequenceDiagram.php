@@ -6,12 +6,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.0.0
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 
 class SequenceDiagram extends ModuleAbstract {
 
@@ -46,7 +46,7 @@ class SequenceDiagram extends ModuleAbstract {
 	/**
 	 * Constants.
 	 */
-	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
+	const MD_POST_META_SEQUENCE = '_is_future_sequence';
 
 	/**
 	 * Initialize.
@@ -74,7 +74,7 @@ class SequenceDiagram extends ModuleAbstract {
 	 */
 	public function front_enqueue_scripts() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_SEQUENCE ) ) {
-			$option = githuber_get_option( 'flowchart_src', 'githuber_modules' );
+			$option = future_get_option( 'flowchart_src', 'future_modules' );
 
 			switch ( $option ) {
 				case 'cloudflare':
@@ -90,9 +90,9 @@ class SequenceDiagram extends ModuleAbstract {
 					break;
 
 				default:
-					$script_url[0] = $this->githuber_plugin_url . 'assets/vendor/raphael/raphael.min.js';
-					$script_url[1] = $this->githuber_plugin_url . 'assets/vendor/underscore/underscore.min.js';
-					$script_url[2] = $this->githuber_plugin_url . 'assets/vendor/js-sequence-diagrams/sequence-diagram.min.js';
+					$script_url[0] = $this->future_plugin_url . 'assets/vendor/raphael/raphael.min.js';
+					$script_url[1] = $this->future_plugin_url . 'assets/vendor/underscore/underscore.min.js';
+					$script_url[2] = $this->future_plugin_url . 'assets/vendor/js-sequence-diagrams/sequence-diagram.min.js';
 					break;
 			} 
 

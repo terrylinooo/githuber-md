@@ -7,14 +7,14 @@
 
         $('#btn-html2markdown').click(function() {
 
-            var h2m_post_content = githuber_md_editor.getValue();
+            var h2m_post_content = future_md_editor.getValue();
 
             $.ajax({
                 url: h2m.ajax_url,
                 type: 'post',
                 dataType: 'json',
                 data: {
-                    action: 'githuber_html2markdown',
+                    action: 'future_html2markdown',
                     strip_tags: h2m_strip_tags,
                     line_break: h2m_line_break,
                     post_id: h2m.post_id,
@@ -22,7 +22,7 @@
                 },
                 success: function(data) {
                     if (data.success) {
-                        githuber_md_editor.setValue(data.result);
+                        future_md_editor.setValue(data.result);
                     }
                 }
             });

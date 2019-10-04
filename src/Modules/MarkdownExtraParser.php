@@ -6,12 +6,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.7.0
  * @version 1.11.2
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 use ParsedownExtra;
 
 class MarkdownExtraParser extends ParsedownExtra {
@@ -38,14 +38,14 @@ class MarkdownExtraParser extends ParsedownExtra {
 	public function __construct() {
 		parent::__construct();
 
-		$is_html5_figure = githuber_get_option( 'support_html_figure', 'githuber_extensions' );
+		$is_html5_figure = future_get_option( 'support_html_figure', 'future_extensions' );
 
 		if ( 'no' !== $is_html5_figure ) {
 			$this->InlineTypes['%'] = array( 'Figure' );
 			$this->inlineMarkerList = '!%"*_&[:<>`~\\';
 		}
 
-		$is_allow_shortcode = githuber_get_option( 'allow_shortcode', 'githuber_preferences' );
+		$is_allow_shortcode = future_get_option( 'allow_shortcode', 'future_preferences' );
 
 		if ( 'no' === $is_allow_shortcode ) {
 			$this->preserve_shortcodes = false;
@@ -207,7 +207,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 */
 	public function do_single_line_code_preserve( $matches ) {
 
-		if ( 'yes' === githuber_get_option( 'support_inline_code_keyboard_style', 'githuber_extensions' ) ) {
+		if ( 'yes' === future_get_option( 'support_inline_code_keyboard_style', 'future_extensions' ) ) {
 			$first_char = substr( $matches[1], 0, 1 );
 			$last_char  = substr( $matches[1], -1 );
 			

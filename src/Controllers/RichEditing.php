@@ -5,17 +5,17 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.6.0
  * @version 1.6.0
  */
 
-namespace Githuber\Controller;
-use Githuber\Controller\Monolog as Monolog;
+namespace Future\Controller;
+use Future\Controller\Monolog as Monolog;
 
 class RichEditing {
 
-	const MD_POST_META_ENABLED  = '_is_githuber_markdown_enabled';
+	const MD_POST_META_ENABLED  = '_is_future_markdown_enabled';
 
 	/**
 	 * Constructer.

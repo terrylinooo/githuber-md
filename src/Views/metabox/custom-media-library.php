@@ -1,18 +1,18 @@
 <?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+if ( ! defined('FUTURE_PLUGIN_NAME') ) die;
 /**
  * View for Controller/CustomMediaLibrary
  *
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.6.2
  * @version 1.6.2
  */
 
 ?>
-<select class="githuber_image_insert" name="githuber_image_insert">
-    <option value="markdown" selected><?php echo __( 'Markdown', 'wp-githuber-md'  ); ?></option>
-    <option value="html"><?php echo __( 'HTML', 'wp-githuber-md'  ); ?></option>
+<select class="future_image_insert" name="future_image_insert">
+    <option value="markdown" selected><?php echo __( 'Markdown', 'wp-future-md'  ); ?></option>
+    <option value="html"><?php echo __( 'HTML', 'wp-future-md'  ); ?></option>
 </select>

@@ -5,12 +5,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.6.0
  * @version 1.6.0
  */
 
-namespace Githuber\Controller;
+namespace Future\Controller;
 
 class Monolog
 {
@@ -23,8 +23,8 @@ class Monolog
         if (!isset(self::$instance)) {
 
             $settings = array(
-                'name' => 'githuber-md',
-                'path' => GITHUBER_PLUGIN_DIR . 'logs/markdown.log',
+                'name' => 'future-md',
+                'path' => FUTURE_PLUGIN_DIR . 'logs/markdown.log',
                 'level' => \Monolog\Logger::DEBUG,
             );
 
@@ -58,13 +58,13 @@ class Monolog
     public static function log($SEVERITY, $message, $data = array())
     {
 
-        if (GITHUBER_DEBUG_MODE) {
+        if (FUTURE_DEBUG_MODE) {
             $trace = debug_backtrace();
 
             $caller_class = $trace[1]['class'];
             $caller_method = $trace[1]['function'];
 
-            $caller_class = str_replace('Githuber\\', '', $caller_class);
+            $caller_class = str_replace('Future\\', '', $caller_class);
             $caller_class = str_replace('\\', '/', $caller_class);
 
             $caller_info = array(
@@ -92,7 +92,7 @@ class Monolog
      */
     public static function info($message, $data = array())
     {
-        if (GITHUBER_DEBUG_MODE)
+        if (FUTURE_DEBUG_MODE)
             self::log(Logger::INFO, $message, $data);
     }
 
@@ -105,7 +105,7 @@ class Monolog
      */
     public static function debug($message, $data = array())
     {
-        if (GITHUBER_DEBUG_MODE)
+        if (FUTURE_DEBUG_MODE)
             self::log(Logger::DEBUG, $message, $data);
     }
 
@@ -118,7 +118,7 @@ class Monolog
      */
     public static function warn($message, $data = array())
     {
-        if (GITHUBER_DEBUG_MODE)
+        if (FUTURE_DEBUG_MODE)
             self::log(Logger::WARNING, $message, $data);
     }
 
@@ -132,7 +132,7 @@ class Monolog
      */
     public static function error($message, $data = array())
     {
-        if (GITHUBER_DEBUG_MODE)
+        if (FUTURE_DEBUG_MODE)
             self::log(Logger::ERROR, $message, $data);
     }
 }

@@ -1,12 +1,12 @@
 <?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+if ( ! defined('FUTURE_PLUGIN_NAME') ) die;
 /**
  * View for Controller/HtmlToMarkdown
  *
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.6.0
  * @version 1.6.0
  */

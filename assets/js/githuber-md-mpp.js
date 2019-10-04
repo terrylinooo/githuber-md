@@ -15,7 +15,7 @@
                 type: 'post',
                 dataType: 'json',
                 data: {
-                    action: 'githuber_markdown_this_post',
+                    action: 'future_markdown_this_post',
                     post_id: md_this_post.post_id,
                     markdown_this_post: markdown_this_post
                 },

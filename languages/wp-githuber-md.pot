@@ -1,7 +1,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Githuber MD\n"
+"Project-Id-Version: WP Future MD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-13 07:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -345,7 +345,7 @@ msgstr ""
 
 #: src/Controllers/Setting.php:682
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"Support <a href=\"https://terryl.in/en/future-md-katax/\" "
 "target=\"_blank\">KaTeX</a> math typesetting."
 msgstr ""
 
@@ -359,7 +359,7 @@ msgstr ""
 
 #: src/Controllers/Setting.php:720
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"Support <a href=\"https://terryl.in/en/future-md-mermaid/\" "
 "target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
 msgstr ""
 
@@ -373,7 +373,7 @@ msgstr ""
 
 #: src/Controllers/Setting.php:758
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"Support <a href=\"https://terryl.in/en/future-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
 msgstr ""
 
@@ -387,7 +387,7 @@ msgstr ""
 
 #: src/Controllers/Setting.php:796
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"Support <a href=\"https://terryl.in/en/future-md-sequence-diagrams/\" "
 "target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
 "sequence diagrams."
 msgstr ""
@@ -405,7 +405,7 @@ msgid "Support Github Flavored Markdown task lists."
 msgstr ""
 
 #: src/Controllers/Setting.php:850
-msgid "Githuber MD Extensions"
+msgid "Future MD Extensions"
 msgstr ""
 
 #: src/Controllers/Setting.php:856
@@ -484,7 +484,7 @@ msgid "Clear all Settings"
 msgstr ""
 
 #: src/Controllers/Setting.php:929
-msgid "Clear all settings when uninstalling WP GitHuber MD."
+msgid "Clear all settings when uninstalling WP Future MD."
 msgstr ""
 
 #: src/Controllers/Setting.php:939
@@ -504,12 +504,12 @@ msgid "Buy me a coffee"
 msgstr ""
 
 #: src/Controllers/Setting.php:986
-msgid "WP Githuber MD "
+msgid "WP Future MD "
 msgstr ""
 
 #. Name of the plugin
 #: src/Controllers/Setting.php:987
-msgid "WP Githuber MD"
+msgid "WP Future MD"
 msgstr ""
 
 #: src/Controllers/Setting.php:1024
@@ -631,7 +631,7 @@ msgstr ""
 
 #: src/Views/setting/image-paste.php:17
 msgid ""
-"Easily <a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"Easily <a href=\"https://terryl.in/en/future-md-image-paste/\" "
 "target=\"_blank\">paste image from clipboard</a> directly into the post "
 "content."
 msgstr ""
@@ -695,12 +695,12 @@ msgstr ""
 #: src/Views/message/php-version-warning.php:18
 #, php-format
 msgid ""
-"The minimum required PHP version for WP Githuber MD is PHP <strong>5.3."
+"The minimum required PHP version for WP Future MD is PHP <strong>5.3."
 "6</strong>, and yours is <strong>%1s</strong>."
 msgstr ""
 
 #: src/Views/message/php-version-warning.php:19
-msgid "Please remove WP Githuber MD or upgrade your PHP version."
+msgid "Please remove WP Future MD or upgrade your PHP version."
 msgstr ""
 
 #: src/Views/example/flowchart.php:29 src/Views/example/katex.php:24
@@ -739,7 +739,7 @@ msgid ""
 msgstr ""
 
 #: src/wp_utilities/class-widget-toc.php:29
-msgid "Githuber MD: TOC"
+msgid "Future MD: TOC"
 msgstr ""
 
 #. Description of the plugin
@@ -747,7 +747,7 @@ msgid "An all-in-one Markdown plugin for your WordPress sites."
 msgstr ""
 
 #. URI of the plugin
-msgid "https://github.com/terrylinooo/githuber-md"
+msgid "https://github.com/terrylinooo/future-md"
 msgstr ""
 
 #. Author of the plugin

@@ -1,6 +1,6 @@
 <?php
 /**
- * Githuber_Widget_Toc
+ * Future_Widget_Toc
  * Add a Table of Content for your article. This widget is for single-post pages only.
  *
  * @package   WordPress
@@ -11,34 +11,34 @@
  */
 
 /**
- * Githuber_Widget_Toc
+ * Future_Widget_Toc
  */
-class Githuber_Widget_Toc extends WP_Widget {
+class Future_Widget_Toc extends WP_Widget {
 
 	/**
-	 * Sets up a new Githuber TOC widget instance.
+	 * Sets up a new Future TOC widget instance.
 	 */
 	public function __construct() {
 
 		$widget_ops = array(
-			'classname'                   => 'widget_githuber_toc',
-			'description'                 => __( 'Add a Table of Content for your article. This widget is for single-post pages only.', 'wp-githuber-md' ),
+			'classname'                   => 'widget_future_toc',
+			'description'                 => __( 'Add a Table of Content for your article. This widget is for single-post pages only.', 'wp-future-md' ),
 			'customize_selective_refresh' => true,
 		);
 
-		parent::__construct( 'githuber-toc', __( 'Githuber MD: TOC', 'wp-githuber-md' ), $widget_ops );
-		$this->alt_option_name = 'widget_githuber_toc';
+		parent::__construct( 'future-toc', __( 'Future MD: TOC', 'wp-future-md' ), $widget_ops );
+		$this->alt_option_name = 'widget_future_toc';
 	}
 
 	/**
 	 * Initial TOC .
 	 */
-	public function githuber_toc_inline_js() {
+	public function future_toc_inline_js() {
 
 	}
 
 	/**
-	 * Outputs the content for the Githuber TOC instance.
+	 * Outputs the content for the Future TOC instance.
 	 */
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
@@ -74,7 +74,7 @@ class Githuber_Widget_Toc extends WP_Widget {
 	}
 
 	/**
-	 * Flushes the Githuber TOC widget cache.
+	 * Flushes the Future TOC widget cache.
 	 */
 	public function flush_widget_cache() {
 		_deprecated_function( __METHOD__, '4.4.0' );

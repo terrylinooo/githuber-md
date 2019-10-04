@@ -34,7 +34,7 @@ If applicable, add screenshots to help explain your problem.
 **Server environment**
 
  - WordPress version [ e.g. 5.0.1 ]
- - WP Githuber MD plugin version [ e.g. 1.9.0 ]
+ - WP Future MD plugin version [ e.g. 1.9.0 ]
  - PHP version [ e.g. 5.3.6 ]
 
 **User environment**

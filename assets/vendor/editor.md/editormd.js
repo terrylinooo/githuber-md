@@ -1915,7 +1915,7 @@ if (typeof mermaid_counter === 'undefined') {
             }
 
             if (settings.watch || (!settings.watch && state.preview)) {
-                $.post('/?rest_route=/githuber/convert', {'text': cmValue}, function (data, resp) {
+                $.post('/?rest_route=/future/convert', {'text': cmValue}, function (data, resp) {
                     // data = data.replace(/<code class="language-katex katex-inline">(.+?)<\/code>/g, function ($0, $1) {
                     //     return "<span class=\"" + editormd.classNames.tex + "\">" + $1+ "</span>";
                     // });

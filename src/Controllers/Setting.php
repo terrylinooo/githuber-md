@@ -5,12 +5,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.7.0
  */
 
-namespace Githuber\Controller;
+namespace Future\Controller;
 
 class Setting extends ControllerAbstract {
 
@@ -18,7 +18,7 @@ class Setting extends ControllerAbstract {
 	public static $setting_api;
 
 	/**
-	 * Where the Githuber MD's setting menu displays on.
+	 * Where the Future MD's setting menu displays on.
 	 *
 	 * @var string
 	 */
@@ -29,7 +29,7 @@ class Setting extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $menu_slug = 'githuber-md';
+	public $menu_slug = 'future-md';
 
 	/**
 	 * Constructer.
@@ -38,7 +38,7 @@ class Setting extends ControllerAbstract {
 		parent::__construct();
 
 		if ( ! self::$setting_api ) {
-			self::$setting_api = new \Githuber_Settings_API();
+			self::$setting_api = new \Future_Settings_API();
 		}
 	}
 
@@ -49,19 +49,19 @@ class Setting extends ControllerAbstract {
 		add_action( 'admin_init', array( $this, 'setting_admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'setting_admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
-		add_filter( 'plugin_action_links_' . $this->githuber_plugin_name, array( $this, 'plugin_action_links' ), 10, 5 );
+		add_filter( 'plugin_action_links_' . $this->future_plugin_name, array( $this, 'plugin_action_links' ), 10, 5 );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_extend_links' ), 10, 2 );
 	}
 
 	/**
-	 * Load specfic CSS file for the Githuber setting page.
+	 * Load specfic CSS file for the Future setting page.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 
-		if ( false === strpos( $hook_suffix, 'githuber-md' ) ) {
+		if ( false === strpos( $hook_suffix, 'future-md' ) ) {
 			return;
 		}
-		//wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
+		//wp_enqueue_style( 'custom_wp_admin_css', $this->future_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Setting extends ControllerAbstract {
 	}
 
 	/**
-	 * The Githuber setting page, sections and fields.
+	 * The Future setting page, sections and fields.
 	 */
 	public function setting_admin_init() {
 
@@ -84,15 +84,15 @@ class Setting extends ControllerAbstract {
 		if ( $GLOBALS['wp_version'] < '4.5' ) {
 			// sequence_diagram uses underscore.js, and it has some conflict issues with WordPress's plupload uploader in older vision.
 			// So, we hide this option in older version.
-			foreach ( $settings['githuber_markdown'] as $k => $v ) {
+			foreach ( $settings['future_markdown'] as $k => $v ) {
 				if ( 'support_sequence_diagram' === $v['name'] ) {
-					unset( $settings['githuber_markdown'][ $k ] );
+					unset( $settings['future_markdown'][ $k ] );
 				}
 			}
-			foreach ( $settings['githuber_modules'] as $k => $v ) {
+			foreach ( $settings['future_modules'] as $k => $v ) {
 				if ( 'sequence_diagram_src' === $v['name'] ) {
-					unset( $settings['githuber_modules'][ $k-1 ] );
-					unset( $settings['githuber_modules'][ $k ] );
+					unset( $settings['future_modules'][ $k-1 ] );
+					unset( $settings['future_modules'][ $k ] );
 				}
 			}
 		}
@@ -115,28 +115,28 @@ class Setting extends ControllerAbstract {
 		return array(
 
 			array(
-				'id'    => 'githuber_markdown',
-				'title' => __( 'Markdown', 'wp-githuber-md' ),
+				'id'    => 'future_markdown',
+				'title' => __( 'Markdown', 'wp-future-md' ),
 			),
 
 			array(
-				'id'    => 'githuber_modules',
-				'title' => __( 'Modules', 'wp-githuber-md' ),
+				'id'    => 'future_modules',
+				'title' => __( 'Modules', 'wp-future-md' ),
 			),
 
 			array(
-				'id'    => 'githuber_extensions',
-				'title' => __( 'Extensions', 'wp-githuber-md' ),
+				'id'    => 'future_extensions',
+				'title' => __( 'Extensions', 'wp-future-md' ),
 			),
 
 			array(
-				'id'    => 'githuber_preferences',
-				'title' => __( 'Preferences', 'wp-githuber-md' ),
+				'id'    => 'future_preferences',
+				'title' => __( 'Preferences', 'wp-future-md' ),
 			),
 
 			array(
-				'id'    => 'githuber_about',
-				'title' => __( 'About', 'wp-githuber-md' ),
+				'id'    => 'future_about',
+				'title' => __( 'About', 'wp-future-md' ),
 			),
 		);
 	}
@@ -212,24 +212,24 @@ class Setting extends ControllerAbstract {
 
 		if ( array_key_exists( $system_lang, $spellcheck_lang_list ) ) {
 			$default_spellcheck_lang = $system_lang;
-			$spellcheck_warning      = '<br /><span style="color: #0081ab">' . __( 'Your system langauge is supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
+			$spellcheck_warning      = '<br /><span style="color: #0081ab">' . __( 'Your system langauge is supported.', 'wp-future-md' ) . ' (' . $system_lang . ')</span>';
 		} else {
-			$spellcheck_warning = '<br /><span style="color: #b00000">' . __( 'Your system langauge is not supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
+			$spellcheck_warning = '<br /><span style="color: #b00000">' . __( 'Your system langauge is not supported.', 'wp-future-md' ) . ' (' . $system_lang . ')</span>';
 		}
 
 		return array(
 
-			'githuber_markdown' => array(
+			'future_markdown' => array(
 
 				array(
 					'section_title' => true,
-					'label' => __( 'Writing', 'wp-githuber-md' ),
+					'label' => __( 'Writing', 'wp-future-md' ),
 				),
 
 				array(
 					'name'    => 'enable_markdown_for_post_types',
-					'label'   => __( 'Enable', 'wp-githuber-md' ),
-					'desc'    => __( 'Which post types you would like to enable Markdown editor for.', 'wp-githuber-md' ),
+					'label'   => __( 'Enable', 'wp-future-md' ),
+					'desc'    => __( 'Which post types you would like to enable Markdown editor for.', 'wp-future-md' ),
 					'type'    => 'multicheck',
 					'options' => $post_type_options,
 					'default' => array(
@@ -241,17 +241,17 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'enable_markdown_for_comment',
 					'label'   => '',
-					'desc'    => __( 'Enable Markdown for comments.', 'wp-githuber-md' ),
+					'desc'    => __( 'Enable Markdown for comments.', 'wp-future-md' ),
 					'type'    => 'multicheck',
 					'options' => array(
-						'commenting' => __( 'Comments', 'wp-githuber-md' )
+						'commenting' => __( 'Comments', 'wp-future-md' )
 					)
 				),
 
 				array(
 					'name'    => 'disable_revision',
-					'label'   => __( 'Disable Revision', 'wp-githuber-md' ),
-					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
+					'label'   => __( 'Disable Revision', 'wp-future-md' ),
+					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable it.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',
@@ -260,8 +260,8 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'disable_autosave',
 					'class'   => 'disable_autosave',
-					'label'   => __( 'Disable Auto-save', 'wp-githuber-md' ),
-					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
+					'label'   => __( 'Disable Auto-save', 'wp-future-md' ),
+					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable it.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -269,8 +269,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_spell_check',
-					'label'   => __( 'Spell Check', 'wp-githuber-md' ),
-					'desc'    => __( 'Enable spell check on the input. (This feature does not apply to code blocks.)', 'wp-githuber-md' ),
+					'label'   => __( 'Spell Check', 'wp-future-md' ),
+					'desc'    => __( 'Enable spell check on the input. (This feature does not apply to code blocks.)', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',
@@ -278,8 +278,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_spell_check_lang',
-					'label'   => __( 'Language', 'wp-githuber-md' ),
-					'desc'    => __( 'Please specify your language for spell check in the setting above.', 'wp-githuber-md' ) . $spellcheck_warning,
+					'label'   => __( 'Language', 'wp-future-md' ),
+					'desc'    => __( 'Please specify your language for spell check in the setting above.', 'wp-future-md' ) . $spellcheck_warning,
 					'type'    => 'select',
 					'default' => $default_spellcheck_lang,
 					'options' => $spellcheck_lang_list,
@@ -287,22 +287,22 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_match_highlighter',
-					'label'   => __( 'Match Highlighter', 'wp-githuber-md' ),
-					'desc'    => __( 'Everywhere else in your text where <strong>current word</strong> appears will automatically illuminate.', 'wp-githuber-md' ),
+					'label'   => __( 'Match Highlighter', 'wp-future-md' ),
+					'desc'    => __( 'Everywhere else in your text where <strong>current word</strong> appears will automatically illuminate.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'default' => 'no',
 				),
 
 				array(
 					'section_title' => true,
-					'label' => __( 'Meta Boxes', 'wp-githuber-md' ),
+					'label' => __( 'Meta Boxes', 'wp-future-md' ),
 				),
 
 				array(
 					'name'    => 'html_to_markdown',
 					'class'   => 'html_to_markdown',
-					'label'   => __( 'HTML-to-Markdown', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'setting/html-to-markdown' ),
+					'label'   => __( 'HTML-to-Markdown', 'wp-future-md' ),
+					'desc'    => future_load_view( 'setting/html-to-markdown' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -311,8 +311,8 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'markdown_editor_switcher',
 					'class'   => 'markdown_editor_switcher',
-					'label'   => __( 'Markdown Editor Switcher', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'setting/markdown-editor-switcher' ),
+					'label'   => __( 'Markdown Editor Switcher', 'wp-future-md' ),
+					'desc'    => future_load_view( 'setting/markdown-editor-switcher' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -320,13 +320,13 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'section_title' => true,
-					'label' => __( 'Markdown Editor', 'wp-githuber-md' ),
+					'label' => __( 'Markdown Editor', 'wp-future-md' ),
 				),
 
 				array(
 					'name'    => 'editor_live_preview',
-					'label'   => __( 'Live Preview', 'wp-githuber-md' ),
-					'desc'    => __( 'Split editor into two panes to display a live preview when editing post.', 'wp-githuber-md' ),
+					'label'   => __( 'Live Preview', 'wp-future-md' ),
+					'desc'    => __( 'Split editor into two panes to display a live preview when editing post.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -334,8 +334,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_sync_scrolling',
-					'label'   => __( 'Sync Scrolling', 'wp-githuber-md' ),
-					'desc'    => __( 'Synchronize scrolling of two editor panes by content.', 'wp-githuber-md' ),
+					'label'   => __( 'Sync Scrolling', 'wp-future-md' ),
+					'desc'    => __( 'Synchronize scrolling of two editor panes by content.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -343,8 +343,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_html_decode',
-					'label'   => __( 'HTML Decode', 'wp-githuber-md' ),
-					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor.', 'wp-githuber-md' ),
+					'label'   => __( 'HTML Decode', 'wp-future-md' ),
+					'desc'    => __( 'Allow all HTML tags and attributes in the Markdown Editor.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -352,8 +352,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_line_number',
-					'label'   => __( 'Line Number', 'wp-githuber-md' ),
-					'desc'    => __( 'Display line number in the Markdown Editor.', 'wp-githuber-md' ),
+					'label'   => __( 'Line Number', 'wp-future-md' ),
+					'desc'    => __( 'Display line number in the Markdown Editor.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -361,8 +361,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_toolbar_theme',
-					'label'   => __( 'Toolbar', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred style for the Editor\'s toolbar.', 'wp-githuber-md' ),
+					'label'   => __( 'Toolbar', 'wp-future-md' ),
+					'desc'    => __( 'Choose a perferred style for the Editor\'s toolbar.', 'wp-future-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -373,8 +373,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'editor_editor_theme',
-					'label'   => __( 'Editing Area', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred style for the Editor\'s editing area.', 'wp-githuber-md' ),
+					'label'   => __( 'Editing Area', 'wp-future-md' ),
+					'desc'    => __( 'Choose a perferred style for the Editor\'s editing area.', 'wp-future-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -440,25 +440,25 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'support_toc',
-					'label'   => __( 'Table of Content', 'wp-githuber-md' ),
-					'desc'    => __( 'Display a TOC in the every first section.', 'wp-githuber-md' ),
+					'label'   => __( 'Table of Content', 'wp-future-md' ),
+					'desc'    => __( 'Display a TOC in the every first section.', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' )
+						'yes' => __( 'Yes', 'wp-future-md' ),
+						'no'  => __( 'No', 'wp-future-md' )
 					)
 				),
 
 				array(
 					'name'    => 'support_emoji',
-					'label'   => __( 'Emoji', 'wp-githuber-md' ),
-					'desc'    => __( 'Support Emoji in posts.', 'wp-githuber-md' ),
+					'label'   => __( 'Emoji', 'wp-future-md' ),
+					'desc'    => __( 'Support Emoji in posts.', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
 					'options' => array(
-						'yes' => __( 'Yes', 'wp-githuber-md' ),
-						'no'  => __( 'No', 'wp-githuber-md' )
+						'yes' => __( 'Yes', 'wp-future-md' ),
+						'no'  => __( 'No', 'wp-future-md' )
 					)
 				),
 
@@ -467,19 +467,19 @@ class Setting extends ControllerAbstract {
 
 			),
 
-			'githuber_modules' =>  array(
+			'future_modules' =>  array(
 
 				array(
-					'label'         => __( 'Syntax Highlight', 'wp-githuber-md' ),
+					'label'         => __( 'Syntax Highlight', 'wp-future-md' ),
 					'section_title' => true,
 					'location_id'   => 'syntax-highlight',
-					'desc'          => __( 'prism.js', 'wp-githuber-md' ),
+					'desc'          => __( 'prism.js', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_prism',
-					//'label'     => __( 'Syntax Highlight', 'wp-githuber-md' ),
-					'desc'        => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-githuber-md' ),
+					//'label'     => __( 'Syntax Highlight', 'wp-future-md' ),
+					'desc'        => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'syntax-highlight',
@@ -488,8 +488,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'prism_theme',
-					'label'   => __( 'Theme', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', 'wp-githuber-md' ),
+					'label'   => __( 'Theme', 'wp-future-md' ),
+					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', 'wp-future-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'parent'  => 'support_prism',
@@ -507,8 +507,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'prism_line_number',
-					'label'   => __( 'Line Number', 'wp-githuber-md' ),
-					'desc'    => __( 'Show line number in code area?', 'wp-githuber-md' ),
+					'label'   => __( 'Line Number', 'wp-future-md' ),
+					'desc'    => __( 'Show line number in code area?', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',
@@ -517,8 +517,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'prism_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'label'   => __( 'File Host', 'wp-future-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_prism',
@@ -530,8 +530,8 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/prism' ),
+					'label'   => __( 'Example', 'wp-future-md' ),
+					'desc'    => future_load_view( 'example/prism' ),
 					'type'    => 'html',
 					'parent'  => 'support_prism',
 				),
@@ -539,13 +539,13 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'clipboard',
-					'label'         => __( 'Copy to Clipboard', 'wp-githuber-md' ),
-					'desc'          => __( 'clipboard.js', 'wp-githuber-md' ),
+					'label'         => __( 'Copy to Clipboard', 'wp-future-md' ),
+					'desc'          => __( 'clipboard.js', 'wp-future-md' ),
 				),
 
 				array(
 					'name'    => 'support_clipboard',
-					'desc'    => __( 'Display a `Copy` button on the highlighting code block. Copy the text into clipboard by clicking the button.', 'wp-githuber-md' ),
+					'desc'    => __( 'Display a `Copy` button on the highlighting code block. Copy the text into clipboard by clicking the button.', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'default'     => 'no',
@@ -554,8 +554,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'clipboard_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'label'   => __( 'File Host', 'wp-future-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_clipboard',
@@ -569,13 +569,13 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'image-paste',
-					'label'         => __( 'Image Paste', 'wp-githuber-md' ),
+					'label'         => __( 'Image Paste', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_image_paste',
-					//'label'     => __( 'Image Paste', 'wp-githuber-md' ),
-					'desc'        => githuber_load_view( 'setting/image-paste' ),
+					//'label'     => __( 'Image Paste', 'wp-future-md' ),
+					'desc'        => future_load_view( 'setting/image-paste' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'image-paste',
@@ -584,22 +584,22 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'image_paste_src',
-					'label'   => __( 'Storage Space', 'wp-githuber-md' ),
-					'desc'    => __( 'Images are stored in WordPress\'s <strong>uploads</strong> folder by default. However, you can use Imgur instead of the default place.', 'wp-githuber-md' ),
+					'label'   => __( 'Storage Space', 'wp-future-md' ),
+					'desc'    => __( 'Images are stored in WordPress\'s <strong>uploads</strong> folder by default. However, you can use Imgur instead of the default place.', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_image_paste',
 					'options' => array(
-						'default' => __( 'default', 'wp-githuber-md' ),
-						'imgur'   => __( 'imgur.com', 'wp-githuber-md' ),
-						'smms'    => __( 'sm.ms', 'wp-githuber-md' ),
+						'default' => __( 'default', 'wp-future-md' ),
+						'imgur'   => __( 'imgur.com', 'wp-future-md' ),
+						'smms'    => __( 'sm.ms', 'wp-future-md' ),
 					)
 				),
 
 				array(
                     'name'              => 'imgur_client_id',
-					'label'             => __( 'Imgur Client ID', 'wp-githuber-md' ),
-					'desc'              => githuber_load_view( 'setting/image-paste-imgur' ),
+					'label'             => __( 'Imgur Client ID', 'wp-future-md' ),
+					'desc'              => future_load_view( 'setting/image-paste-imgur' ),
                     'placeholder'       => '',
                     'type'              => 'text',
 					'default'           => '',
@@ -609,8 +609,8 @@ class Setting extends ControllerAbstract {
 
 				array(
                     'name'    => 'is_image_paste_media_library',
-					'label'   => __( 'Upload to Media Library?', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'setting/image-paste-media-library' ),
+					'label'   => __( 'Upload to Media Library?', 'wp-future-md' ),
+					'desc'    => future_load_view( 'setting/image-paste-media-library' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -620,13 +620,13 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'table-of-content',
-					'label'         => __( 'Table of Content', 'wp-githuber-md' ),
+					'label'         => __( 'Table of Content', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_toc',
-					//'label'     => __( 'Image Paste', 'wp-githuber-md' ),
-					'desc'        => __( 'Support Table of Content.', 'wp-githuber-md' ),
+					//'label'     => __( 'Image Paste', 'wp-future-md' ),
+					'desc'        => __( 'Support Table of Content.', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'table-of-content',
@@ -635,8 +635,8 @@ class Setting extends ControllerAbstract {
 
 				array(
                     'name'    => 'is_toc_widget',
-					'label'   => __( 'Widget', 'wp-githuber-md' ),
-					'desc'    => __( 'Display a TOC in the widget area for single post.', 'wp-githuber-md' ),
+					'label'   => __( 'Widget', 'wp-future-md' ),
+					'desc'    => __( 'Display a TOC in the widget area for single post.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -645,8 +645,8 @@ class Setting extends ControllerAbstract {
 
 				array(
                     'name'    => 'display_toc_in_post',
-					'label'   => __( 'Inside a Post', 'wp-githuber-md' ),
-					'desc'    => __( 'Insert a TOC inside a post header location.', 'wp-githuber-md' ),
+					'label'   => __( 'Inside a Post', 'wp-future-md' ),
+					'desc'    => __( 'Insert a TOC inside a post header location.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -655,22 +655,22 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'post_toc_float',
-					'label'   => __( 'Float', 'wp-githuber-md' ),
-					'desc'    => __( 'Would you like to float the TOC in the post to left or right?', 'wp-githuber-md' ),
+					'label'   => __( 'Float', 'wp-future-md' ),
+					'desc'    => __( 'Would you like to float the TOC in the post to left or right?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_toc',
 					'options' => array(
-						'default' => __( 'default', 'wp-githuber-md' ),
-						'right'   => __( 'right', 'wp-githuber-md' ),
-						'left'    => __( 'left', 'wp-githuber-md' ),
+						'default' => __( 'default', 'wp-future-md' ),
+						'right'   => __( 'right', 'wp-future-md' ),
+						'left'    => __( 'left', 'wp-future-md' ),
 					)
 				),
 
 				array(
                     'name'    => 'post_toc_border',
-					'label'   => __( 'Border', 'wp-githuber-md' ),
-					'desc'    => __( 'Would you like to show the border of the TOC in the post?', 'wp-githuber-md' ),
+					'label'   => __( 'Border', 'wp-future-md' ),
+					'desc'    => __( 'Would you like to show the border of the TOC in the post?', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -680,14 +680,14 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'katex',
-					'label'         => __( 'KaTex', 'wp-githuber-md' ),
-					'desc'          => __( 'KaTex.js', 'wp-githuber-md' ),
+					'label'         => __( 'KaTex', 'wp-future-md' ),
+					'desc'          => __( 'KaTex.js', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_katex',
-					//'label'     => __( 'KaTeX', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-katax/" target="_blank">KaTeX</a> math typesetting.', 'wp-githuber-md' ),
+					//'label'     => __( 'KaTeX', 'wp-future-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/future-md-katax/" target="_blank">KaTeX</a> math typesetting.', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'default'     => 'no',
@@ -696,8 +696,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'katex_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'label'   => __( 'File Host', 'wp-future-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_katex',
@@ -709,8 +709,8 @@ class Setting extends ControllerAbstract {
 				),
                 array(
                     'name'              => 'katex_inline_prefix',
-                    'label'             => __( 'Inline pre/postfix', 'wp-githuber-md' ),
-                    'desc'              => githuber_load_view( 'setting/katex-inline-prefix' ),
+                    'label'             => __( 'Inline pre/postfix', 'wp-future-md' ),
+                    'desc'              => future_load_view( 'setting/katex-inline-prefix' ),
                     'placeholder'       => '',
                     'type'              => 'text',
                     'default'           => '$$',
@@ -719,8 +719,8 @@ class Setting extends ControllerAbstract {
                 ),
                 array(
                     'name'              => 'katex_display_prefix',
-                    'label'             => __( 'Display pre/postfix', 'wp-githuber-md' ),
-                    'desc'              => githuber_load_view( 'setting/katex-display-prefix' ),
+                    'label'             => __( 'Display pre/postfix', 'wp-future-md' ),
+                    'desc'              => future_load_view( 'setting/katex-display-prefix' ),
                     'placeholder'       => '',
                     'type'              => 'text',
                     'default'           => '$$$',
@@ -728,8 +728,8 @@ class Setting extends ControllerAbstract {
                     'sanitize_callback' => 'sanitize_text_field',
                 ),
 				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/katex' ),
+					'label'   => __( 'Example', 'wp-future-md' ),
+					'desc'    => future_load_view( 'example/katex' ),
 					'type'    => 'html',
 					'parent'  => 'support_katex',
 				),
@@ -738,14 +738,14 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'mermaid',
-					'label'         => __( 'Mermaid', 'wp-githuber-md' ),
-					'desc'          => __( 'mermaid.js', 'wp-githuber-md' ),
+					'label'         => __( 'Mermaid', 'wp-future-md' ),
+					'desc'          => __( 'mermaid.js', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_mermaid',
-					//'label'     => __( 'Mermaid', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-mermaid/" target="_blank">Mermaid.js</a>, a Markdownish Syntax for Generating Charts.', 'wp-githuber-md' ),
+					//'label'     => __( 'Mermaid', 'wp-future-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/future-md-mermaid/" target="_blank">Mermaid.js</a>, a Markdownish Syntax for Generating Charts.', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'location_id' => 'mermaid',
 					'has_child'   => true,
@@ -754,8 +754,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'mermaid_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'label'   => __( 'File Host', 'wp-future-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_mermaid',
@@ -767,8 +767,8 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/mermaid' ),
+					'label'   => __( 'Example', 'wp-future-md' ),
+					'desc'    => future_load_view( 'example/mermaid' ),
 					'type'    => 'html',
 					'parent'  => 'support_mermaid',
 				),
@@ -776,14 +776,14 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'flowchart',
-					'label'         => __( 'Flow Chart', 'wp-githuber-md' ),
-					'desc'          => __( 'flowchart.js', 'wp-githuber-md' ),
+					'label'         => __( 'Flow Chart', 'wp-future-md' ),
+					'desc'          => __( 'flowchart.js', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_flowchart',
-					//'label'     => __( 'Flow Chart', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', 'wp-githuber-md' ),
+					//'label'     => __( 'Flow Chart', 'wp-future-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/future-md-flow-chart/" target="_blank">flowchart.js</a> to draws simple SVG flow chart diagrams.', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'flowchart',
@@ -792,8 +792,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'flowchart_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'label'   => __( 'File Host', 'wp-future-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_flowchart',
@@ -805,8 +805,8 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/flowchart' ),
+					'label'   => __( 'Example', 'wp-future-md' ),
+					'desc'    => future_load_view( 'example/flowchart' ),
 					'type'    => 'html',
 					'parent'  => 'support_flowchart',
 				),
@@ -814,14 +814,14 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'sequence-diagram',
-					'label'         => __( 'Sequence Diagrams', 'wp-githuber-md' ),
-					'desc'          => __( 'sequence-diagrams.js', 'wp-githuber-md' ),
+					'label'         => __( 'Sequence Diagrams', 'wp-future-md' ),
+					'desc'          => __( 'sequence-diagrams.js', 'wp-future-md' ),
 				),
 
 				array(
 					'name'        => 'support_sequence_diagram',
-					//'label'     => __( 'Sequence Diagrams', 'wp-githuber-md' ),
-					'desc'        => __( 'Support <a href="https://terryl.in/en/githuber-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', 'wp-githuber-md' ),
+					//'label'     => __( 'Sequence Diagrams', 'wp-future-md' ),
+					'desc'        => __( 'Support <a href="https://terryl.in/en/future-md-sequence-diagrams/" target="_blank">js-sequence-diagrams</a> to turn text into vector UML sequence diagrams.', 'wp-future-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'sequence-diagram',
@@ -830,8 +830,8 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'sequence_diagram_src',
-					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'label'   => __( 'File Host', 'wp-future-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-future-md' ),
 					'type'    => 'radio',
 					'default' => 'default',
 					'parent'  => 'support_sequence_diagram',
@@ -843,39 +843,39 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'label'   => __( 'Example', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/sequence' ),
+					'label'   => __( 'Example', 'wp-future-md' ),
+					'desc'    => future_load_view( 'example/sequence' ),
 					'type'    => 'html',
 					'parent'  => 'support_sequence_diagram',
 				),
 			),
 
-			'githuber_extensions' => array(
+			'future_extensions' => array(
 
 				array(
 					'name'    => 'support_mardown_extra',
-					'label'   => __( 'Markdown Extra', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'setting/markdown-extra' ),
+					'label'   => __( 'Markdown Extra', 'wp-future-md' ),
+					'desc'    => future_load_view( 'setting/markdown-extra' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no'
 				),
 				array(
 					'name'    => 'support_task_list',
-					'label'   => __( 'GFM Task List', 'wp-githuber-md' ),
-					'desc'    => __( 'Support Github Flavored Markdown task lists.', 'wp-githuber-md' ),
+					'label'   => __( 'GFM Task List', 'wp-future-md' ),
+					'desc'    => __( 'Support Github Flavored Markdown task lists.', 'wp-future-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no'
 				),
 
 				array(
-					'desc' => githuber_load_view( 'example/gfm-task-list' ),
+					'desc' => future_load_view( 'example/gfm-task-list' ),
 					'type' => 'html',
 				),
 
 				array(
-					'label'         => __( 'Githuber MD Extensions', 'wp-githuber-md' ),
+					'label'         => __( 'Future MD Extensions', 'wp-future-md' ),
 					'section_title' => true,
 				),
 
@@ -980,7 +980,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'  => 'plugin_about_version',
 					'label' => __( 'Version', 'wp-githuber-md' ),
-					'desc'  => GITHUBER_PLUGIN_VERSION,
+					'desc'  => FUTURE_PLUGIN_VERSION,
 					'type'  => 'html'
 				),
 
@@ -1012,8 +1012,8 @@ class Setting extends ControllerAbstract {
 			default:
 				$menu_function = 'add_' . $this->menu_position . '_page';
 				$menu_function(
-					__( 'WP Githuber MD ', 'wp-githuber-md' ),
-					__( 'WP Githuber MD', 'wp-githuber-md' ),
+					__( 'WP Future MD ', 'wp-githuber-md' ),
+					__( 'WP Future MD', 'wp-githuber-md' ),
 					'manage_options',
 					$this->menu_slug,
 					array( $this, 'setting_plugin_page' ),

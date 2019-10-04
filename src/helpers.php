@@ -5,7 +5,7 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.2.0
  */
@@ -18,7 +18,7 @@
 * @param string $default default text if it's not found.
 * @return mixed
 */
-function githuber_get_option( $option, $section, $default = '' ) {
+function future_get_option( $option, $section, $default = '' ) {
 	$options = get_option( $section );
 
 	if ( isset( $options[ $option ] ) ) {
@@ -32,7 +32,7 @@ function githuber_get_option( $option, $section, $default = '' ) {
  *
  * @return int
  */
-function githuber_get_current_post_id() {
+function future_get_current_post_id() {
 
 	global $post;
 
@@ -55,7 +55,7 @@ function githuber_get_current_post_id() {
  * @param string $action User action.
  * @return bool
  */
-function githuber_current_user_can( $action ) {
+function future_current_user_can( $action ) {
 	global $post;
 
 	if ( current_user_can( $action, $post->ID ) ) {
@@ -71,8 +71,8 @@ function githuber_current_user_can( $action ) {
  * @param array  $data              Data is being passed to.
  * @return string
  */
-function githuber_load_view( $template_path, $data = array() ) {
-	$view_file_path = GITHUBER_PLUGIN_DIR . 'src/Views/' . $template_path . '.php';
+function future_load_view( $template_path, $data = array() ) {
+	$view_file_path = FUTURE_PLUGIN_DIR . 'src/Views/' . $template_path . '.php';
 
 	if ( ! empty( $data ) ) {
 		extract( $data );
@@ -93,7 +93,7 @@ function githuber_load_view( $template_path, $data = array() ) {
  *
  * @return string
  */
-function githuber_get_current_post_type() {
+function future_get_current_post_type() {
 	global $post, $typenow, $current_screen;
 
 	$post_type = null;
@@ -118,8 +118,8 @@ function githuber_get_current_post_type() {
  * @param string $filename
  * @return string
  */
-function githuber_load_utility( $filename ) {
-	$include_path  = GITHUBER_PLUGIN_DIR . 'src/wp_utilities/class-' . $filename . '.php';
+function future_load_utility( $filename ) {
+	$include_path  = FUTURE_PLUGIN_DIR . 'src/wp_utilities/class-' . $filename . '.php';
 
 	if ( ! empty( $include_path ) && is_readable( $include_path ) ) {
 		require $include_path;

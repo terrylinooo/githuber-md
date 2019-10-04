@@ -6,12 +6,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.5.2
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 
 class KaTeX extends ModuleAbstract {
 
@@ -33,7 +33,7 @@ class KaTeX extends ModuleAbstract {
 	/**
 	 * Constants.
 	 */
-	const MD_POST_META_KATEX = '_is_githuber_katex';
+	const MD_POST_META_KATEX = '_is_future_katex';
 
 	/**
 	 * Constructer.
@@ -61,7 +61,7 @@ class KaTeX extends ModuleAbstract {
 	public function front_enqueue_styles() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_KATEX ) ) {
 			
-			$option = githuber_get_option( 'katex_src', 'githuber_modules' );
+			$option = future_get_option( 'katex_src', 'future_modules' );
 
 			switch ( $option ) {
 				case 'cloudflare':
@@ -73,7 +73,7 @@ class KaTeX extends ModuleAbstract {
 					break;
 
 				default:
-					$style_url = $this->githuber_plugin_url . 'assets/vendor/katex/katex.min.css';
+					$style_url = $this->future_plugin_url . 'assets/vendor/katex/katex.min.css';
 					break;
 			} 
 			wp_enqueue_style( 'katex', $style_url, array(), $this->katex_version, 'all' );
@@ -88,7 +88,7 @@ class KaTeX extends ModuleAbstract {
 	public function front_enqueue_scripts() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_KATEX ) ) {
 
-			$option = githuber_get_option( 'katex_src', 'githuber_modules' );
+			$option = future_get_option( 'katex_src', 'future_modules' );
 
 			switch ( $option ) {
 				case 'cloudflare':
@@ -100,7 +100,7 @@ class KaTeX extends ModuleAbstract {
 					break;
 
 				default:
-					$script_url = $this->githuber_plugin_url . 'assets/vendor/katex/katex.min.js';
+					$script_url = $this->future_plugin_url . 'assets/vendor/katex/katex.min.js';
 					break;
 			} 
 			wp_enqueue_script( 'katex', $script_url, array(), $this->katex_version, true );
@@ -149,7 +149,7 @@ class KaTeX extends ModuleAbstract {
 	 * @return void
 	 */
 	public static function katex_inline_markup( $content ) {
-        $prefix = $postfix = githuber_get_option('katex_inline_prefix', 'githuber_modules');
+        $prefix = $postfix = future_get_option('katex_inline_prefix', 'future_modules');
 
         $regex = '/'.preg_quote($prefix).'([^\n]+?)'.preg_quote($postfix).'/';
         $content = preg_replace_callback( $regex, function() {
@@ -174,7 +174,7 @@ class KaTeX extends ModuleAbstract {
      * @return void
      */
     public static function katex_display_markup( $content ) {
-        $prefix = $postfix = githuber_get_option('katex_display_prefix', 'githuber_modules');
+        $prefix = $postfix = future_get_option('katex_display_prefix', 'future_modules');
         $regex = '/'.preg_quote($prefix).'(.+?)'.preg_quote($postfix).'/';
         $content = preg_replace_callback( $regex, function() {
             $matches = func_get_arg(0);

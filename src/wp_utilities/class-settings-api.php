@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Githuber MD Settings API wrapper class
+ * Future MD Settings API wrapper class
  *
  * @author Terry Lin
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.7.0
  * @license GPLv3
  *
  * Notice:
- * This script is modified a lot by Terry L. for Githuber MD plugin use.
+ * This script is modified a lot by Terry L. for Future MD plugin use.
  * If you're looking for original code, go visit https://github.com/tareq1988/wordpress-settings-api-class
  *
  * @version 1.3 (27-Sep-2016)
@@ -19,7 +19,7 @@
  * @license MIT
  */
 
-class Githuber_Settings_API {
+class Future_Settings_API {
 
 	/**
 	 * settings sections array
@@ -49,8 +49,8 @@ class Githuber_Settings_API {
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'jquery' );
 
-		wp_enqueue_script( 'prettify-print', GITHUBER_PLUGIN_URL . 'assets/vendor/editor.md/lib/prettify.min.js', array( 'jquery' ), '1.0', true );
-		wp_enqueue_script( 'setting-api', GITHUBER_PLUGIN_URL . 'assets/js/githuber-md-setting-api.js', array( 'jquery' ), GITHUBER_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'prettify-print', FUTURE_PLUGIN_URL . 'assets/vendor/editor.md/lib/prettify.min.js', array( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'setting-api', FUTURE_PLUGIN_URL . 'assets/js/future-md-setting-api.js', array( 'jquery' ), FUTURE_PLUGIN_VERSION, true );
 	}
 
 	/**

@@ -1,20 +1,20 @@
 <?php
 /**
- * Class Githuber
+ * Class Future
  *
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.11.0
  */
 
-use Githuber\Controller as Controller;
-use Githuber\Module as Module;
-use Githuber\Controller\Monolog as Monolog;
+use Future\Controller as Controller;
+use Future\Module as Module;
+use Future\Controller\Monolog as Monolog;
 
-class Githuber {
+class Future {
 
 	public $current_url;
     public $markdown = null;
@@ -30,7 +30,7 @@ class Githuber {
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 		// Only use it in DEBUG mode.
-		Monolog::logger( 'Hello, Githuber MD.', array(
+		Monolog::logger( 'Hello, Future MD.', array(
 			'wp_version'  => $GLOBALS['wp_version'],
 			'php_version' => phpversion(),
 		) );
@@ -41,10 +41,10 @@ class Githuber {
 		}
 
 		// Load TOC widget. // 
-		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
-			if ( 'yes' == githuber_get_option( 'is_toc_widget', 'githuber_modules' ) ) {
+		if ( 'yes' == future_get_option( 'support_toc', 'future_modules' ) ) {
+			if ( 'yes' == future_get_option( 'is_toc_widget', 'future_modules' ) ) {
 				add_action( 'widgets_init', function() {
-					register_widget( 'Githuber_Widget_Toc' );
+					register_widget( 'Future_Widget_Toc' );
 				} );
 			}
 		}
@@ -57,7 +57,7 @@ class Githuber {
 	}
     public function convertMarkdownInit()
     {
-        register_rest_route('githuber', 'convert', array(
+        register_rest_route('future', 'convert', array(
             'methods'   => 'POST',
             'callback'  => array($this,'convertMarkdown')
         ));
@@ -73,7 +73,7 @@ class Githuber {
     }
 
 	/**
-	 * Initialize everything the Githuber plugin needs.
+	 * Initialize everything the Future plugin needs.
 	 */
 	public function init() {
         add_action( 'rest_api_init', array($this,'convertMarkdownInit'));
@@ -87,17 +87,17 @@ class Githuber {
 			$setting = new Controller\Setting();
 			$setting->init();
 
-			if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_modules' ) ) {
+			if ( 'yes' === future_get_option( 'support_image_paste', 'future_modules' ) ) {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
 			}
 
-			if ( 'yes' === githuber_get_option( 'editor_html_decode', 'githuber_markdown' ) ) {
+			if ( 'yes' === future_get_option( 'editor_html_decode', 'future_markdown' ) ) {
 				$customMediaLibrary = new Controller\CustomMediaLibrary();
 				$customMediaLibrary->init();
 			}
 
-			if ( 'yes' === githuber_get_option( 'editor_spell_check', 'githuber_markdown' ) ) {
+			if ( 'yes' === future_get_option( 'editor_spell_check', 'future_markdown' ) ) {
 				$spellCheck = new Controller\SpellCheck();
 				$spellCheck->init();
 			}
@@ -112,43 +112,43 @@ class Githuber {
 		 */ 
 
 		// Module Name: FlowChart
-		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_flowchart', 'future_modules' ) ) {
 			$module_flowchart = new Module\FlowChart();
 			$module_flowchart->init();
 		}
 
 		// Module Name: KaTeX
-		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_katex', 'future_modules' ) ) {
 			$module_katex = new Module\KaTeX();
 			$module_katex->init();
 		}
 
 		// Module Name: Sequence Diagram
-		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_sequence_diagram', 'future_modules' ) ) {
 			$module_sequence = new Module\SequenceDiagram();
 			$module_sequence->init();
 		}
 
 		// Module Name: Mermaid
-		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_mermaid', 'future_modules' ) ) {
 			$module_mermaid = new Module\Mermaid();
 			$module_mermaid->init();
 		}
 
 		// Module Name: Prism
-		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_prism', 'future_modules' ) ) {
 			$module_prism = new Module\Prism();
 			$module_prism->init();
 		}
 
 		// Replace `&amp;` to `&` in URLs in post content.
-		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+		if ( 'yes' == future_get_option( 'support_toc', 'future_modules' ) ) {
 			$module_toc = new Module\Toc();
 			$module_toc->init();
 		}
 
 		// Copy to Clipboard
-		if ( 'yes' === githuber_get_option( 'support_clipboard', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_clipboard', 'future_modules' ) ) {
 			$module_clipboard = new Module\Clipboard();
 			$module_clipboard->init();
 		}
@@ -158,12 +158,12 @@ class Githuber {
 		 */
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 
-		if ( 'yes' !== githuber_get_option( 'smart_quotes', 'githuber_preferences' ) ) {
+		if ( 'yes' !== future_get_option( 'smart_quotes', 'future_preferences' ) ) {
 			remove_filter( 'the_content', 'wptexturize' );
 		}
 
 		// Replace `&amp;` to `&` in URLs in post content.
-		if ( 'yes' === githuber_get_option( 'restore_ampersands', 'githuber_preferences' ) ) {
+		if ( 'yes' === future_get_option( 'restore_ampersands', 'future_preferences' ) ) {
 			add_filter( 'the_content', function( $string ) {
 				return preg_replace_callback( '|<a\b([^>]*)>(.*?)</a>|', function( $matches ) {
 					return '<a' . str_replace( '&amp;', '&', $matches[1] ) . '>' . $matches[2] . '</a>';
@@ -180,7 +180,7 @@ class Githuber {
 	 * Load plugin textdomain.
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( GITHUBER_PLUGIN_TEXT_DOMAIN, false, GITHUBER_PLUGIN_LANGUAGE_PACK ); 
+		load_plugin_textdomain( FUTURE_PLUGIN_TEXT_DOMAIN, false, FUTURE_PLUGIN_LANGUAGE_PACK );
 	}
 
 	/**
@@ -198,7 +198,7 @@ class Githuber {
 
 		$custom_css = '';
 
-		if ( 'yes' === githuber_get_option( 'support_task_list', 'githuber_extensions' ) ) {
+		if ( 'yes' === future_get_option( 'support_task_list', 'future_extensions' ) ) {
 	
 			$custom_css .= '
 				.gfm-task-list {
@@ -211,7 +211,7 @@ class Githuber {
 			';
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_katex', 'future_modules' ) ) {
 		
 			$custom_css .= '
 				.katex-container {
@@ -230,7 +230,7 @@ class Githuber {
 			';
 		}
 
-		if ( '_blank' === githuber_get_option( 'post_link_target_attribute', 'githuber_preferences' ) ) {
+		if ( '_blank' === future_get_option( 'post_link_target_attribute', 'future_preferences' ) ) {
 		  
 			$custom_css .= '
 				code.kb-btn {
@@ -253,7 +253,7 @@ class Githuber {
 			';
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_clipboard', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_clipboard', 'future_modules' ) ) {
 
 			$svg = "data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='16px' height='16px' viewBox='888 888 16 16' enable-background='new 888 888 16 16' xml:space='preserve'%3E %3Cpath fill='%23333333' d='M903.143,891.429c0.238,0,0.44,0.083,0.607,0.25c0.167,0.167,0.25,0.369,0.25,0.607v10.857 c0,0.238-0.083,0.44-0.25,0.607s-0.369,0.25-0.607,0.25h-8.571c-0.238,0-0.44-0.083-0.607-0.25s-0.25-0.369-0.25-0.607v-2.571 h-4.857c-0.238,0-0.44-0.083-0.607-0.25s-0.25-0.369-0.25-0.607v-6c0-0.238,0.06-0.5,0.179-0.786s0.262-0.512,0.428-0.679 l3.643-3.643c0.167-0.167,0.393-0.309,0.679-0.428s0.547-0.179,0.786-0.179h3.714c0.238,0,0.44,0.083,0.607,0.25 c0.166,0.167,0.25,0.369,0.25,0.607v2.929c0.404-0.238,0.785-0.357,1.143-0.357H903.143z M898.286,893.331l-2.67,2.669h2.67V893.331 z M892.571,889.902l-2.669,2.669h2.669V889.902z M894.321,895.679l2.821-2.822v-3.714h-3.428v3.714c0,0.238-0.083,0.441-0.25,0.607 s-0.369,0.25-0.607,0.25h-3.714v5.714h4.571v-2.286c0-0.238,0.06-0.5,0.179-0.786C894.012,896.071,894.155,895.845,894.321,895.679z M902.857,902.857v-10.286h-3.429v3.714c0,0.238-0.083,0.441-0.25,0.607c-0.167,0.167-0.369,0.25-0.607,0.25h-3.714v5.715H902.857z' /%3E %3C/svg%3E";
 			$svg = addslashes($svg);
@@ -294,7 +294,7 @@ class Githuber {
 			';
 		}
 
-		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+		if ( 'yes' == future_get_option( 'support_toc', 'future_modules' ) ) {
 			$custom_css .= '
 				.md-widget-toc {
 					padding: 15px;
@@ -362,7 +362,7 @@ class Githuber {
 	public function front_print_footer_scripts() {
 		$script = '';
 
-		if ( '_blank' === githuber_get_option( 'post_link_target_attribute', 'githuber_preferences' ) ) {
+		if ( '_blank' === future_get_option( 'post_link_target_attribute', 'future_preferences' ) ) {
 			$script = '
 				<script id="preference-link-target">
 					(function($) {

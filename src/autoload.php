@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Githuber Class autoloader.
+ * Future Class autoloader.
  *
- * @package   Githuber
+ * @package   Future
  * @author    Terry Lin <terrylinooo>
  * @license   GPLv3 (or later)
  * @link      https://terryl.in
@@ -20,19 +20,19 @@ spl_autoload_register( function( $class_name ) {
 	$class_name = ltrim( $class_name, '\\' );
 
 	$wp_utils_mapping = array(         
-		'Githuber'              => '../Githuber',
-		'Githuber_Settings_API' => 'class-settings-api',
-		'Githuber_Widget_Toc'    => 'class-widget-toc',
+		'Future'              => '../Future',
+		'Future_Settings_API' => 'class-settings-api',
+		'Future_Widget_Toc'    => 'class-widget-toc',
 	);
 
 	if ( array_key_exists( $class_name, $wp_utils_mapping ) ) {
 
-		$include_path = GITHUBER_PLUGIN_DIR . 'src/wp_utilities/' . $wp_utils_mapping[ $class_name ] . '.php';
+		$include_path = FUTURE_PLUGIN_DIR . 'src/wp_utilities/' . $wp_utils_mapping[ $class_name ] . '.php';
 
 	} else {
 		
 		if ( false !== strpos( $class_name, '\\' ) ) {
-			if ( false === strpos( $class_name, 'Githuber' ) ) {
+			if ( false === strpos( $class_name, 'Future' ) ) {
 				return false;
 			}
 
@@ -43,10 +43,10 @@ spl_autoload_register( function( $class_name ) {
 			$last_ns_pos = strrpos( $class_name, '\\' );
 			$namespace = substr( $class_name, 0, $last_ns_pos );
 			$class_name = substr( $class_name, $last_ns_pos + 1 );
-			$filename  = GITHUBER_PLUGIN_DIR . '/src/' . str_replace( '\\', '/', $namespace ) . '/';
+			$filename  = FUTURE_PLUGIN_DIR . '/src/' . str_replace( '\\', '/', $namespace ) . '/';
 			$filename .= str_replace( '_', '/', $class_name ) . '.php';
 	
-			$include_path = str_replace( 'Githuber/', '', $filename );
+			$include_path = str_replace( 'Future/', '', $filename );
 		}
 	}
 

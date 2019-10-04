@@ -5,12 +5,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.1
  * @version 1.6.1
  */
 
-namespace Githuber\Controller;
+namespace Future\Controller;
 
 class ImagePaste extends ControllerAbstract {
 
@@ -45,7 +45,7 @@ class ImagePaste extends ControllerAbstract {
 		// For security reasons, only authorized logged-in users can upload images.
 		if ( array_intersect( $allowed_roles, $user->roles ) || is_super_admin() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-			add_action( 'wp_ajax_githuber_image_paste', array( $this, 'admin_githuber_image_paste' ) );
+			add_action( 'wp_ajax_future_image_paste', array( $this, 'admin_future_image_paste' ) );
 		}
 	}
 
@@ -60,20 +60,20 @@ class ImagePaste extends ControllerAbstract {
 	 * Register JS files.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
-		wp_enqueue_script( 'image-paste', $this->githuber_plugin_url . 'assets/vendor/inline-attachment/inline-attachment.min.js', array(), $this->imagepaste_version, true );
-		wp_enqueue_script( 'image-paste-codemirror', $this->githuber_plugin_url . 'assets/vendor/inline-attachment/codemirror-4.inline-attachment.min.js', array(), $this->imagepaste_version, true );
+		wp_enqueue_script( 'image-paste', $this->future_plugin_url . 'assets/vendor/inline-attachment/inline-attachment.min.js', array(), $this->imagepaste_version, true );
+		wp_enqueue_script( 'image-paste-codemirror', $this->future_plugin_url . 'assets/vendor/inline-attachment/codemirror-4.inline-attachment.min.js', array(), $this->imagepaste_version, true );
 	}
 
 	/**
 	 * Do action hook for image paste.
 	 */
-	public function admin_githuber_image_paste() {
+	public function admin_future_image_paste() {
 		$response    = array();
 		
 		if ( isset( $_FILES['file'], $_GET['_wpnonce'], $_GET['post_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'image_paste_action_' . $_GET['post_id'] ) && current_user_can( 'edit_post', $_GET['post_id'] ) ) {
-			$image_src        = githuber_get_option( 'image_paste_src', 'githuber_modules' );
-			$imgur_client_id  = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
-			$is_media_library = githuber_get_option( 'is_image_paste_media_library', 'githuber_modules' );
+			$image_src        = future_get_option( 'image_paste_src', 'future_modules' );
+			$imgur_client_id  = future_get_option( 'imgur_client_id', 'future_modules' );
+			$is_media_library = future_get_option( 'is_image_paste_media_library', 'future_modules' );
 
 			$file = $_FILES['file'];
 
@@ -81,7 +81,7 @@ class ImagePaste extends ControllerAbstract {
 			$file_mimetype = $file['type'];
 
 			if ( ! $is_file_image || 'image/png' !== $file_mimetype ) {
-				$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Githuber MD' );
+				$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-future-md' ), 'Future MD' );
 				echo json_encode( $response );
 				wp_die();
 			}
@@ -95,10 +95,10 @@ class ImagePaste extends ControllerAbstract {
 					if ( true === $data['success'] ) {
 						$response['filename'] = $data['data']['link'];
 					} else {
-						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Imgur' );
+						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-future-md' ), 'Imgur' );
 					}
 				} else {
-					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
+					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-future-md' );
 				}
 			} elseif ( 'smms' === $image_src ) {
 				
@@ -111,14 +111,14 @@ class ImagePaste extends ControllerAbstract {
 					if ( 'success' === $data['code'] ) {
 						$response['filename'] = $data['data']['url'];
 					} else {
-						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'sm.ms' );
+						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-future-md' ), 'sm.ms' );
 
 						if ( ! empty( $data['msg'] ) ) {
 							$response['error'] .= $data['msg'];
 						}
 					}
 				} else {
-					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
+					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-future-md' );
 				}
 			} else {
 
@@ -148,7 +148,7 @@ class ImagePaste extends ControllerAbstract {
 				}
 			}
 		} else {
-			$response['error'] = __( 'Error while uploading file.', 'wp-githuber-md' );
+			$response['error'] = __( 'Error while uploading file.', 'wp-future-md' );
 		}
 		echo json_encode( $response );
 

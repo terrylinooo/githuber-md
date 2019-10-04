@@ -6,12 +6,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.0.0
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 
 class FlowChart extends ModuleAbstract {
 
@@ -32,7 +32,7 @@ class FlowChart extends ModuleAbstract {
 	/**
 	 * Constants.
 	 */
-	const MD_POST_META_FLOW = '_is_githuber_flow_chart';
+	const MD_POST_META_FLOW = '_is_future_flow_chart';
 
 	/**
 	 * Constructer.
@@ -69,7 +69,7 @@ class FlowChart extends ModuleAbstract {
 
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_FLOW ) ) {
 
-			$option  = githuber_get_option( 'flowchart_src', 'githuber_modules' );
+			$option  = future_get_option( 'flowchart_src', 'future_modules' );
 
 			switch ( $option ) {
 				case 'cloudflare':
@@ -83,8 +83,8 @@ class FlowChart extends ModuleAbstract {
 					break;
 
 				default:
-					$script_url[0] = $this->githuber_plugin_url . 'assets/vendor/raphael/raphael.min.js';
-					$script_url[1] = $this->githuber_plugin_url . 'assets/vendor/flowchart/flowchart.min.js';
+					$script_url[0] = $this->future_plugin_url . 'assets/vendor/raphael/raphael.min.js';
+					$script_url[1] = $this->future_plugin_url . 'assets/vendor/flowchart/flowchart.min.js';
 					break;
 			} 
 			wp_enqueue_script( 'raphael', $script_url[0], array(), $this->raphael_version, true );

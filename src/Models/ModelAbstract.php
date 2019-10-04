@@ -8,12 +8,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.0.0
  */
 
-namespace Githuber\Model;
+namespace Future\Model;
 
 abstract class ModelAbstract {
 

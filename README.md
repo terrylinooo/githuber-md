@@ -1,14 +1,14 @@
 # Markdown editor plugin for WordPress
 
-![Screenshot](./assets/images/wp-githuber-md-cover.png)
+![Screenshot](./assets/images/wp-future-md-cover.png)
 
-An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-future-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
-[![RIPS CodeRisk](https://coderisk.com/wp/plugin/wp-githuber-md/badge "RIPS CodeRisk")](https://coderisk.com/wp/plugin/wp-githuber-md)
+[![RIPS CodeRisk](https://coderisk.com/wp/plugin/wp-future-md/badge "RIPS CodeRisk")](https://coderisk.com/wp/plugin/wp-future-md)
 
 ## How it works
 
-1. WP Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
+1. WP future MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
 2. Parse the Markdown to HTML, save the parsed HTML content into `wp_posts`.`post_content`.
 
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
@@ -47,15 +47,15 @@ https://youtu.be/it1noNCTXa4
 
 | source | download | 
 | --- | --- | 
-| WordPress | https://wordpress.org/plugins/wp-githuber-md |
-| GitHub repository | https://github.com/terrylinooo/githuber-md/releases | 
-| PHP Composer | `composer create-project terrylinooo/githuber-md wp-githuber-md` |
+| WordPress | https://wordpress.org/plugins/wp-future-md |
+| GitHub repository | https://github.com/terrylinooo/future-md/releases | 
+| PHP Composer | `composer create-project terrylinooo/future-md wp-future-md` |
 
 ## Installation
 
-1. Upload the plugin files to the `/wp-content/plugins/wp-githuber-md` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/wp-future-md` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the `Plugins` screen in WordPress.
-3. Go to the `WP Githuber MD` menu in Plugins and set your Markdown options.
+3. Go to the `WP future MD` menu in Plugins and set your Markdown options.
 
 ## Suggestions
 
@@ -74,13 +74,13 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
 * Support custom post types.
-* [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
-* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur and sm.ms)
+* [HTML-to-Markdown helper](https://terryl.in/en/future-md-html2markdown/).
+* [Image copy & paste](https://terryl.in/en/future-md-image-paste/). (support uploading to Imgur and sm.ms)
 * Syntax highlight. (prism.js)
-* [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
-* [KaTex](https://terryl.in/en/githuber-md-katex/).
-* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
-* [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
+* [Flow chart](https://terryl.in/en/future-md-flow-chart/).
+* [KaTex](https://terryl.in/en/future-md-katex/).
+* [Sequence diagram](https://terryl.in/en/future-md-sequence-diagrams/). (Known issue #1)
+* [Mermaid](https://terryl.in/en/future-md-mermaid/).
 * Github flavored Markdown task list.
 * Markdown extra...
 
@@ -101,9 +101,9 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 ### Notes
 
-- [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
-- [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
-- [Known issues](https://github.com/terrylinooo/githuber-md/wiki/Known-Issues)
+- [Changelog](https://github.com/terrylinooo/future-md/wiki/Changelog) 
+- [Translations](https://github.com/terrylinooo/future-md/wiki/Translations)
+- [Known issues](https://github.com/terrylinooo/future-md/wiki/Known-Issues)
 - [Donators](https://terryl.in/thank-you/)
 
 ### License

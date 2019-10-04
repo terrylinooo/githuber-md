@@ -3,7 +3,7 @@
 var global_editormd_config = {};
 var wp_editor_container = '#wp-content-editor-container';
 var wp_editor = 'wp-content-editor-container';
-var githuber_md_editor;
+var future_md_editor;
 var is_support_inline_keyboard_style = false;
 var is_support_html_figure = false;
 var spellcheck_dictionary_dir = '';
@@ -70,7 +70,7 @@ var spellcheck_lang = 'en_US';
                     'position': 'relative',
                     'z-index': 'auto'
                 });
-                reload_githuber_md();
+                reload_future_md();
             },
 
             toolbarIconsClass: {
@@ -96,17 +96,17 @@ var spellcheck_lang = 'en_US';
 
 
         if ($(wp_editor_container).length == 1) {
-            githuber_md_editor = editormd(wp_editor, global_editormd_config);
+            future_md_editor = editormd(wp_editor, global_editormd_config);
         }
 
-        function reload_githuber_md() {
-            //  githuber_md_editor = editormd(wp_editor, global_editormd_config);
+        function reload_future_md() {
+            //  future_md_editor = editormd(wp_editor, global_editormd_config);
         }
 
         if (typeof image_insert_type !== 'undefined') {
             var image_insert_type = 'markdown';
         }
-        $(document).on('change', '.githuber_image_insert', function() {
+        $(document).on('change', '.future_image_insert', function() {
             // html or markdown
             image_insert_type = $(this).val();
         });
@@ -136,7 +136,7 @@ var spellcheck_lang = 'en_US';
                     new_content += '![' + img_alt + '](' + img_src + ')';
                 }
 
-                githuber_md_editor.replaceSelection(new_content);
+                future_md_editor.replaceSelection(new_content);
                 image_insert_type = 'markdown';
 
             } else if (html_str.substring(0, 7) == '<a href' && -1 !== html_str.indexOf('<img')) {
@@ -151,13 +151,13 @@ var spellcheck_lang = 'en_US';
                     new_content += '[![' + img_alt + '](' + img_src + ')](' + a_href + ')';
                 }
 
-                githuber_md_editor.replaceSelection(new_content);
+                future_md_editor.replaceSelection(new_content);
                 image_insert_type = 'markdown';
         
             } else if (html_str.substring(0, 1) == '[' && html_str.slice(-1) == ']') {
 
                 new_content += html_str;
-                githuber_md_editor.replaceSelection(new_content);
+                future_md_editor.replaceSelection(new_content);
             }
         }
     });

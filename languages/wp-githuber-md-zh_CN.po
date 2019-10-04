@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Githuber MD\n"
+"Project-Id-Version: WP Future MD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-13 07:33+0000\n"
 "PO-Revision-Date: 2019-05-13 07:35+0000\n"
@@ -346,10 +346,10 @@ msgstr "KaTex.js"
 
 #: src/Controllers/Setting.php:682
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"Support <a href=\"https://terryl.in/en/future-md-katax/\" "
 "target=\"_blank\">KaTeX</a> math typesetting."
 msgstr ""
-"启用这项设定后，便能使用<a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"启用这项设定后，便能使用<a href=\"https://terryl.in/en/future-md-katax/\" "
 "target=\"_blank\">KaTeX</a> 数学公式排版语法。"
 
 #: src/Controllers/Setting.php:713
@@ -362,10 +362,10 @@ msgstr "mermaid.js"
 
 #: src/Controllers/Setting.php:720
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"Support <a href=\"https://terryl.in/en/future-md-mermaid/\" "
 "target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
 msgstr ""
-"启用这项设定后，便能使用 <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"启用这项设定后，便能使用 <a href=\"https://terryl.in/en/future-md-mermaid/\" "
 "target=\"_blank\">Mermaid.js</a>这种与 Markdown 类似的语法产生图表。"
 
 #: src/Controllers/Setting.php:751
@@ -378,10 +378,10 @@ msgstr "flowchart.js"
 
 #: src/Controllers/Setting.php:758
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"Support <a href=\"https://terryl.in/en/future-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
 msgstr ""
-"启用这项设定后，便能使用<a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"启用这项设定后，便能使用<a href=\"https://terryl.in/en/future-md-flow-chart/\" "
 "target=\"_blank\">flowchart.js</ a> 画出简易的SVG 向量流程图。"
 
 #: src/Controllers/Setting.php:789
@@ -394,11 +394,11 @@ msgstr "sequence-diagrams.js"
 
 #: src/Controllers/Setting.php:796
 msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"Support <a href=\"https://terryl.in/en/future-md-sequence-diagrams/\" "
 "target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
 "sequence diagrams."
 msgstr ""
-"启用这项设定后，便能使用<a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"启用这项设定后，便能使用<a href=\"https://terryl.in/en/future-md-sequence-diagrams/\" "
 "target=\"_blank\">js-sequence-diagrams </a> 将文字转换成向量UML 顺序图表。"
 
 #: src/Controllers/Setting.php:829
@@ -414,8 +414,8 @@ msgid "Support Github Flavored Markdown task lists."
 msgstr "启用这项设定后，便能使用 Github Flavored Markdown (GFM) 的工作清单功能。"
 
 #: src/Controllers/Setting.php:850
-msgid "Githuber MD Extensions"
-msgstr "Githuber MD 扩充功能"
+msgid "Future MD Extensions"
+msgstr "Future MD 扩充功能"
 
 #: src/Controllers/Setting.php:856
 msgid "HTML5 Figure"
@@ -494,8 +494,8 @@ msgid "Clear all Settings"
 msgstr "清除所有设置"
 
 #: src/Controllers/Setting.php:929
-msgid "Clear all settings when uninstalling WP GitHuber MD."
-msgstr "卸载WP GitHuber MD时清除所有设置。"
+msgid "Clear all settings when uninstalling WP Future MD."
+msgstr "卸载WP Future MD时清除所有设置。"
 
 #: src/Controllers/Setting.php:939
 msgid "Author"
@@ -514,13 +514,13 @@ msgid "Buy me a coffee"
 msgstr "赞助开发工作"
 
 #: src/Controllers/Setting.php:986
-msgid "WP Githuber MD "
-msgstr "WP Githuber MD"
+msgid "WP Future MD "
+msgstr "WP Future MD"
 
 #. Name of the plugin
 #: src/Controllers/Setting.php:987
-msgid "WP Githuber MD"
-msgstr "WP Githuber MD"
+msgid "WP Future MD"
+msgstr "WP Future MD"
 
 #: src/Controllers/Setting.php:1024
 msgid "Settings"
@@ -650,11 +650,11 @@ msgstr "请注意，这项设定仅有 [储存空间] 设定为 [默认] 时才�
 
 #: src/Views/setting/image-paste.php:17
 msgid ""
-"Easily <a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"Easily <a href=\"https://terryl.in/en/future-md-image-paste/\" "
 "target=\"_blank\">paste image from clipboard</a> directly into the post "
 "content."
 msgstr ""
-"启用这项设定后，便能轻松<a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"启用这项设定后，便能轻松<a href=\"https://terryl.in/en/future-md-image-paste/\" "
 "target=\"_blank\">从剪贴簿直接将图片贴上</a>至文章内容中。"
 
 #: src/Views/setting/markdown-editor-switcher.php:15
@@ -728,15 +728,15 @@ msgstr ""
 #: src/Views/message/php-version-warning.php:18
 #, php-format
 msgid ""
-"The minimum required PHP version for WP Githuber MD is PHP <strong>5.3."
+"The minimum required PHP version for WP Future MD is PHP <strong>5.3."
 "6</strong>, and yours is <strong>%1s</strong>."
 msgstr ""
-"WP Githuber MD 的 PHP 最低版本版本为 PHP <strong>5.3.6</strong>，而这个网站使用的版本为 <strong>"
+"WP Future MD 的 PHP 最低版本版本为 PHP <strong>5.3.6</strong>，而这个网站使用的版本为 <strong>"
 "%1s</strong>。"
 
 #: src/Views/message/php-version-warning.php:19
-msgid "Please remove WP Githuber MD or upgrade your PHP version."
-msgstr "请移除 WP Githuber MD 或升级这个网站的 PHP 版本。"
+msgid "Please remove WP Future MD or upgrade your PHP version."
+msgstr "请移除 WP Future MD 或升级这个网站的 PHP 版本。"
 
 #: src/Views/example/flowchart.php:29 src/Views/example/katex.php:24
 #: src/Views/example/mermaid.php:32 src/Views/example/prism.php:26
@@ -774,16 +774,16 @@ msgid ""
 msgstr "为您的文章添加内容纲要。此小工具仅适用于文章页面。"
 
 #: src/wp_utilities/class-widget-toc.php:29
-msgid "Githuber MD: TOC"
-msgstr "Githuber MD: 内容纲要"
+msgid "Future MD: TOC"
+msgstr "Future MD: 内容纲要"
 
 #. Description of the plugin
 msgid "An all-in-one Markdown plugin for your WordPress sites."
 msgstr "一个为 WordPress 网站提供全功能 Markdown 语法的插件。"
 
 #. URI of the plugin
-msgid "https://github.com/terrylinooo/githuber-md"
-msgstr "https://github.com/terrylinooo/githuber-md"
+msgid "https://github.com/qiujiangkun/wp-future-md"
+msgstr "https://github.com/terrylinooo/wp-future-md"
 
 #. Author of the plugin
 msgid "Terry Lin"

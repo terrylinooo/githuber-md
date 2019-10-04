@@ -1,6 +1,6 @@
-=== WP Githuber MD - WordPress Markdown Editor ===
+=== WP Future MD - WordPress Markdown Editor ===
 Contributors: terrylin
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Githuber+MD&currency_code=USD&source=url
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Future+MD&currency_code=USD&source=url
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.2.0
@@ -13,7 +13,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 An all-in-on WordPress Markdown Plugin provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
 
-Read detailed document, please visit [https://github.com/terrylinooo/githuber-md](https://github.com/terrylinooo/githuber-md).
+Read detailed document, please visit [https://github.com/terrylinooo/future-md](https://github.com/terrylinooo/future-md).
 
 == Demo ==
 
@@ -28,7 +28,7 @@ The Video shows you the following steps:
 
 == How it works ==
 
-1. WP Githuber MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
+1. WP Future MD will save your Markdown content into `wp_posts`.`post_content_filtered`.
 2. Parse the Markdown to HTML, save the parsed HTML content into `wp_posts`.`post_content`.
 
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
@@ -47,7 +47,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 
 1. Upload the plugin files to the `/wp-content/plugins/wp-githuber-md` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to the WP Githuber MD menu in Plugins and set your Markdown options.
+3. Go to the WP Future MD menu in Plugins and set your Markdown options.
 
 == Features ==
 
@@ -58,19 +58,19 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Support Gutenberg editor.
 * Support custom post types.
 * Syntax highlighting.
-* [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
-* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur)
-* [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
-* [KaTex](https://terryl.in/en/githuber-md-katax/).
-* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
-* [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
+* [HTML-to-Markdown helper](https://terryl.in/en/future-md-html2markdown/).
+* [Image copy & paste](https://terryl.in/en/future-md-image-paste/). (support uploading to Imgur)
+* [Flow chart](https://terryl.in/en/future-md-flow-chart/).
+* [KaTex](https://terryl.in/en/future-md-katax/).
+* [Sequence diagram](https://terryl.in/en/future-md-sequence-diagrams/). (#1)
+* [Mermaid](https://terryl.in/en/future-md-mermaid/).
 * Github flavored Markdown task list.
-* Githuber MD extended Markdown.
+* Future MD extended Markdown.
 * Markdown extra...
 
 == Frequently Asked Questions ==
 
-You'll find answers to many of your questions on [Report issues](https://github.com/terrylinooo/githuber-md/issues).
+You'll find answers to many of your questions on [Report issues](https://github.com/terrylinooo/future-md/issues).
 
 == Translations ==
 
@@ -94,8 +94,8 @@ Simplified Chinese (zh_CN)
 
 == Copyright ==
 
-WP Githuber MD, Copyright 2018 TerryL.in
-WP Githuber MD is distributed under the terms of the GNU GPL
+WP Future MD, Copyright 2018 TerryL.in
+WP Future MD is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -120,7 +120,7 @@ GNU General Public License for more details.
 = 1.2.0
 
 * Image paste - Provide an option that allows you directly upload to Imgur.com.
-* Rename plugin name from "Githuber MD" to "WP Githuber MD".
+* Rename plugin name from "Future MD" to "WP Future MD".
 * Add new settings.
 
 = 1.2.5
@@ -235,7 +235,7 @@ GNU General Public License for more details.
 
 = 1.8.5
 
-* Add feature: Githuber MD extensions - Inline code block with keyboard style. Example: `{ctrl}`
+* Add feature: Future MD extensions - Inline code block with keyboard style. Example: `{ctrl}`
 * Fix issue: inline code block doesn't work on just one character, for example `a`. This issue is associated with issue #42
 
 = 1.8.6

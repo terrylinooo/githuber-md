@@ -5,12 +5,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.4.3
  */
 
-namespace Githuber\Model;
+namespace Future\Model;
 
 class Markdown extends ModelAbstract {
 

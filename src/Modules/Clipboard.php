@@ -6,12 +6,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.9.2
  * @version 1.10.1
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 
 class Clipboard extends ModuleAbstract {
 
@@ -46,7 +46,7 @@ class Clipboard extends ModuleAbstract {
 	 */
 	public function front_enqueue_scripts() {
 	
-        $clipboard_src = githuber_get_option( 'clipboard_src', 'githuber_modules' );
+        $clipboard_src = future_get_option( 'clipboard_src', 'future_modules' );
 
         switch ( $clipboard_src ) {
             case 'cloudflare':
@@ -58,7 +58,7 @@ class Clipboard extends ModuleAbstract {
                 break;
 
             default:
-                $script_url = $this->githuber_plugin_url . 'assets/vendor/clipboard/clipboard.min.js';
+                $script_url = $this->future_plugin_url . 'assets/vendor/clipboard/clipboard.min.js';
                 break;
         } 
 

@@ -8,12 +8,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.0.0
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 
 abstract class ModuleAbstract {
 
@@ -22,7 +22,7 @@ abstract class ModuleAbstract {
 	 *
 	 * @var string
 	 */
-	public $githuber_plugin_url;
+	public $future_plugin_url;
 
 	/**
 	 * Post Id.
@@ -40,7 +40,7 @@ abstract class ModuleAbstract {
 		/**
 		 * Basic plugin information. Mapping from the Constant in the plugin loader script.
 		 */
-		$this->githuber_plugin_url  = GITHUBER_PLUGIN_URL;
+		$this->future_plugin_url  = FUTURE_PLUGIN_URL;
 	}
 
 	/**
@@ -77,7 +77,7 @@ abstract class ModuleAbstract {
 	public function is_module_should_be_loaded( $meta_name ) {
 		if ( empty( self::$front_post_id ) ) {
 			// Get current post ID if an user is viewing a post.
-			self::$front_post_id = githuber_get_current_post_id();
+			self::$front_post_id = future_get_current_post_id();
 		} 
 		
 		if ( ! empty( self::$front_post_id ) ) {

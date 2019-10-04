@@ -1,12 +1,12 @@
 <?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+if ( ! defined('FUTURE_PLUGIN_NAME') ) die;
 /**
  * View for Controller/Setting
  *
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.2.0
  * @version 1.2.0
  */

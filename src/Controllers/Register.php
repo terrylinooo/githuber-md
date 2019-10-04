@@ -5,12 +5,12 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.7.0
  */
 
-namespace Githuber\Controller;
+namespace Future\Controller;
 
 class Register extends ControllerAbstract {
 
@@ -28,11 +28,11 @@ class Register extends ControllerAbstract {
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
+		if ( 'yes' === future_get_option( 'disable_revision', 'future_markdown' ) ) {
 			add_action( 'admin_init', array( $this , 'remove_revisions' ), 999 );
 		}
 
-		if ( 'yes' === githuber_get_option( 'disable_autosave', 'githuber_markdown' ) ) {
+		if ( 'yes' === future_get_option( 'disable_autosave', 'future_markdown' ) ) {
 			add_action( 'wp_print_scripts', array( $this , 'remove_autosave' ), 10 );
 		}
 
@@ -58,26 +58,26 @@ class Register extends ControllerAbstract {
 	 */
 	public function version_migration() {
 
-		$migration_v162 = get_option( 'githuber_migration_v162');
+		$migration_v162 = get_option( 'future_migration_v162');
 
 		if ( empty( $migration_v162 ) ) {
 
-			$githuber_modules = array(
-				'support_prism'            => githuber_get_option( 'support_prism', 'githuber_markdown' ),
-				'support_katex'            => githuber_get_option( 'support_katex', 'githuber_markdown' ),
-				'support_flowchart'        => githuber_get_option( 'support_flowchart', 'githuber_markdown' ),
-				'support_sequence_diagram' => githuber_get_option( 'support_sequence_diagram', 'githuber_markdown' ),
-				'support_mermaid'          => githuber_get_option( 'support_mermaid', 'githuber_markdown' ),
-				'support_image_paste'      => githuber_get_option( 'support_image_paste', 'githuber_markdown' ),
+			$future_modules = array(
+				'support_prism'            => future_get_option( 'support_prism', 'future_markdown' ),
+				'support_katex'            => future_get_option( 'support_katex', 'future_markdown' ),
+				'support_flowchart'        => future_get_option( 'support_flowchart', 'future_markdown' ),
+				'support_sequence_diagram' => future_get_option( 'support_sequence_diagram', 'future_markdown' ),
+				'support_mermaid'          => future_get_option( 'support_mermaid', 'future_markdown' ),
+				'support_image_paste'      => future_get_option( 'support_image_paste', 'future_markdown' ),
 			);
 
-			$githuber_extensions = array(
-				'support_task_list' => githuber_get_option( 'support_task_list', 'githuber_markdown' ),
+			$future_extensions = array(
+				'support_task_list' => future_get_option( 'support_task_list', 'future_markdown' ),
 			);
 
-			update_option( 'githuber_modules', $githuber_modules, '', 'yes' );
-			update_option( 'githuber_extensions', $githuber_extensions, '', 'yes' );
-			update_option( 'githuber_migration_v162', 'yes', '', 'yes' );
+			update_option( 'future_modules', $future_modules, '', 'yes' );
+			update_option( 'future_extensions', $future_extensions, '', 'yes' );
+			update_option( 'future_migration_v162', 'yes', '', 'yes' );
 		}
 	}
 
@@ -101,7 +101,7 @@ class Register extends ControllerAbstract {
 	 * Register CSS style files.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
-		wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'custom_wp_admin_css', $this->future_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
 	}
 
 	/**

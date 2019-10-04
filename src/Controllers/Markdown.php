@@ -5,7 +5,7 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.11.0
  *
@@ -13,11 +13,11 @@
  * @link https://github.com/Automattic/jetpack/blob/master/modules/markdown/easy-markdown.php
  */
 
-namespace Githuber\Controller;
-use Githuber\Controller as Controller;
-use Githuber\Controller\Monolog as Monolog;
-use Githuber\Module as Module;
-use Githuber\Model as Model;
+namespace Future\Controller;
+use Future\Controller as Controller;
+use Future\Controller\Monolog as Monolog;
+use Future\Module as Module;
+use Future\Model as Model;
 
 class Markdown extends ControllerAbstract {
 
@@ -40,14 +40,14 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * Constants.
 	 */
-	const MD_POST_TYPE          = 'githuber_markdown';
-	const MD_POST_META          = '_is_githuber_markdown';
-	const MD_POST_META_ENABLED  = '_is_githuber_markdown_enabled';
-	const MD_POST_META_PRISM    = '_githuber_prismjs';
-	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
-	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
-	const MD_POST_META_KATEX    = '_is_githuber_katex';
-	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
+	const MD_POST_TYPE          = 'future_markdown';
+	const MD_POST_META          = '_is_future_markdown';
+	const MD_POST_META_ENABLED  = '_is_future_markdown_enabled';
+	const MD_POST_META_PRISM    = '_future_prismjs';
+	const MD_POST_META_SEQUENCE = '_is_future_sequence';
+	const MD_POST_META_FLOW     = '_is_future_flow_chart';
+	const MD_POST_META_KATEX    = '_is_future_katex';
+	const MD_POST_META_MERMAID  = '_is_future_mermaid';
 
 	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
 
@@ -100,33 +100,33 @@ class Markdown extends ControllerAbstract {
 			self::$model_instance = new Model\Markdown();
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_prism', 'future_modules' ) ) {
 			$this->is_support_prism = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_task_list', 'githuber_extensions' ) ) {
+		if ( 'yes' === future_get_option( 'support_task_list', 'future_extensions' ) ) {
 			$this->is_support_task_list = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_katex', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_katex', 'future_modules' ) ) {
 			$this->is_support_katex = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_flowchart', 'future_modules' ) ) {
 			$this->is_support_flowchart = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_sequence_diagram', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_sequence_diagram', 'future_modules' ) ) {
 			$this->is_support_sequence = true;
 		}
 
-		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
+		if ( 'yes' === future_get_option( 'support_mermaid', 'future_modules' ) ) {
 			$this->is_support_mermaid = true;
 		}
 
 		// Load TOC widget. //
-		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
-			if ( 'yes' == githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
+		if ( 'yes' == future_get_option( 'support_toc', 'future_modules' ) ) {
+			if ( 'yes' == future_get_option( 'display_toc_in_post', 'future_modules' ) ) {
 				$this->is_support_toc = true;
 			}
 		}
@@ -139,9 +139,9 @@ class Markdown extends ControllerAbstract {
 	public function init() {
 
 		// Force-disable Jetpack's Markdown module if it is active.
-		add_filter( 'option_jetpack_active_modules', array( $this, 'admin_githuber_disable_jetpack_markdown' ) );
+		add_filter( 'option_jetpack_active_modules', array( $this, 'admin_future_disable_jetpack_markdown' ) );
 
-		$enabled_post_types = githuber_get_option( 'enable_markdown_for_post_types', 'githuber_markdown' );
+		$enabled_post_types = future_get_option( 'enable_markdown_for_post_types', 'future_markdown' );
 
 		if ( empty( $enabled_post_types ) ) {
 			$enabled_post_types = array(
@@ -154,7 +154,7 @@ class Markdown extends ControllerAbstract {
 			$support_post_types[] = $post_type;
 		}
 
-		$support_post_types = apply_filters( 'githuber_md_suppot_post_types', $support_post_types );
+		$support_post_types = apply_filters( 'future_md_suppot_post_types', $support_post_types );
 
 		array_push( $support_post_types , 'revision');
 
@@ -167,15 +167,15 @@ class Markdown extends ControllerAbstract {
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-		$post_id = githuber_get_current_post_id();
+		$post_id = future_get_current_post_id();
 
 		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
 		// Get post type from curren screen.
-		$current_post_type = githuber_get_current_post_type();
+		$current_post_type = future_get_current_post_type();
 
 		// Feature request #98
-		if ( 'yes' === githuber_get_option( 'richeditor_by_default', 'githuber_preferences' ) ) {
+		if ( 'yes' === future_get_option( 'richeditor_by_default', 'future_preferences' ) ) {
 
 			if ( empty( $markdown_this_post ) || 'yes' !== $markdown_this_post ) {
 				$rich_editing = new RichEditing();
@@ -189,7 +189,7 @@ class Markdown extends ControllerAbstract {
 			}
 		}
 
-		if ( ! empty( $current_post_type ) && ! post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
+		if ( ! empty( $current_post_type ) && ! post_type_supports( future_get_current_post_type(), self::MD_POST_TYPE ) ) {
 
 			// We enable Rich editor if user not enable Markdown for current post type!
 			$rich_editing = new RichEditing();
@@ -214,14 +214,14 @@ class Markdown extends ControllerAbstract {
 			} else {
 
 				// Tell YoastSEO, the Markdown is enable.
-				if ( 'yes' === githuber_get_option( 'support_wpseo_analysis', 'githuber_preferences' ) ) {
+				if ( 'yes' === future_get_option( 'support_wpseo_analysis', 'future_preferences' ) ) {
 					add_filter( 'wpseo_is_markdown_enabled', '__return_true' );
 				}
 
 				// Okay! User enable Markdown for current current post and it's post type.
 				$this->jetpack_code_snippets();
 
-				if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
+				if ( 'yes' === future_get_option( 'html_to_markdown', 'future_markdown' ) ) {
 					$html2markdown = new Controller\HtmlToMarkdown();
 					$html2markdown->init();
 				}
@@ -233,7 +233,7 @@ class Markdown extends ControllerAbstract {
 	 * Register CSS style files.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
-		wp_enqueue_style( 'editmd', $this->githuber_plugin_url . '/assets/vendor/editor.md/css/editormd.min.css', array(), $this->editormd_varsion, 'all' );
+		wp_enqueue_style( 'editmd', $this->future_plugin_url . '/assets/vendor/editor.md/css/editormd.min.css', array(), $this->editormd_varsion, 'all' );
 	}
 
 	/**
@@ -245,24 +245,24 @@ class Markdown extends ControllerAbstract {
 			return;
 		}
 
-		$post_id = githuber_get_current_post_id();
+		$post_id = future_get_current_post_id();
 		$markdown_this_post = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
 		if ( 'no' === $markdown_this_post || ! $this->markdown_this_post ) {
 
 		} else {
-			wp_enqueue_script( 'editormd', $this->githuber_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
-			wp_enqueue_script( 'githuber-md', $this->githuber_plugin_url . 'assets/js/githuber-md.js', array( 'editormd' ), $this->version, true );
+			wp_enqueue_script( 'editormd', $this->future_plugin_url . 'assets/vendor/editor.md/editormd.min.js', array( 'jquery' ), $this->editormd_varsion, true );
+			wp_enqueue_script( 'future-md', $this->future_plugin_url . 'assets/js/future-md.js', array( 'editormd' ), $this->version, true );
 
 			switch ( get_bloginfo( 'language' ) ) {
 				case 'zh-TW':
 				case 'zh-CN':
-					wp_enqueue_script( 'editor-md-lang', $this->githuber_plugin_url . 'assets/vendor/editor.md/languages/zh-tw.js', array(), $this->editormd_varsion, true );
+					wp_enqueue_script( 'editor-md-lang', $this->future_plugin_url . 'assets/vendor/editor.md/languages/zh-tw.js', array(), $this->editormd_varsion, true );
 					break;
 
 				case 'en-US':
 				default:
-					wp_enqueue_script( 'editor-md-lang', $this->githuber_plugin_url . 'assets/vendor/editor.md/languages/en.js', array(), $this->editormd_varsion, true );
+					wp_enqueue_script( 'editor-md-lang', $this->future_plugin_url . 'assets/vendor/editor.md/languages/en.js', array(), $this->editormd_varsion, true );
 			}
 
 			$editormd_config_list['markdown'] = array(
@@ -299,26 +299,26 @@ class Markdown extends ControllerAbstract {
 
 			foreach ( $editormd_config_list as $key => $value ) {
 				foreach ( $value as $setting_name ) {
-					$editormd_localize[ $setting_name ] = githuber_get_option( $setting_name, 'githuber_' . $key );
+					$editormd_localize[ $setting_name ] = future_get_option( $setting_name, 'future_' . $key );
 				}
 			}
 
-			$editormd_localize['editor_modules_url']   = $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/';
-			$editormd_localize['editor_placeholder']   = __( 'Happy Markdowning!', 'wp-githuber-md' );
-			$editormd_localize['image_paste_callback'] = admin_url( 'admin-ajax.php?action=githuber_image_paste&post_id=' . $post_id . '&_wpnonce=' . wp_create_nonce( 'image_paste_action_' . $post_id ) );
-			$editormd_localize['prism_line_number']    = githuber_get_option( 'prism_line_number', 'githuber_modules' );
+			$editormd_localize['editor_modules_url']   = $this->future_plugin_url . 'assets/vendor/editor.md/lib/';
+			$editormd_localize['editor_placeholder']   = __( 'Happy Markdowning!', 'wp-future-md' );
+			$editormd_localize['image_paste_callback'] = admin_url( 'admin-ajax.php?action=future_image_paste&post_id=' . $post_id . '&_wpnonce=' . wp_create_nonce( 'image_paste_action_' . $post_id ) );
+			$editormd_localize['prism_line_number']    = future_get_option( 'prism_line_number', 'future_modules' );
 
 			// Register JS variables for the Editormd library uses.
-			wp_localize_script( 'githuber-md', 'editormd_config', $editormd_localize );
+			wp_localize_script( 'future-md', 'editormd_config', $editormd_localize );
 		}
 
 		/* @version 1.6.0 */
-		wp_enqueue_script( 'githuber-md-mpp', $this->githuber_plugin_url . 'assets/js/githuber-md-mpp.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'future-md-mpp', $this->future_plugin_url . 'assets/js/future-md-mpp.js', array( 'jquery' ), $this->version, true );
 
 		$metabox_data['ajax_url'] = admin_url( 'admin-ajax.php' );
-		$metabox_data['post_id']  = githuber_get_current_post_id();
+		$metabox_data['post_id']  = future_get_current_post_id();
 
-		wp_localize_script( 'githuber-md-mpp', 'markdown_this_post_config', $metabox_data );
+		wp_localize_script( 'future-md-mpp', 'markdown_this_post_config', $metabox_data );
 	}
 
 	/**
@@ -331,16 +331,16 @@ class Markdown extends ControllerAbstract {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
-		if ( 'no' !== githuber_get_option( 'markdown_editor_switcher', 'githuber_markdown' ) ) {
+		if ( 'no' !== future_get_option( 'markdown_editor_switcher', 'future_markdown' ) ) {
 
 			/* @version 1.6.0 */
-			add_action( 'wp_ajax_githuber_markdown_this_post', array( $this, 'admin_githuber_markdown_this_post' ) );
+			add_action( 'wp_ajax_future_markdown_this_post', array( $this, 'admin_future_markdown_this_post' ) );
 
 			// Add the sidebar metabox to posts.
-			$current_post_type = githuber_get_current_post_type();
+			$current_post_type = future_get_current_post_type();
 
 			// Only display metabox if current post-type supports Markdown.
-			if ( ! empty( $current_post_type) && post_type_supports( githuber_get_current_post_type(), self::MD_POST_TYPE ) ) {
+			if ( ! empty( $current_post_type) && post_type_supports( future_get_current_post_type(), self::MD_POST_TYPE ) ) {
 				add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 			}
 		}
@@ -359,7 +359,7 @@ class Markdown extends ControllerAbstract {
 	{
 		if ( ! self::$parser_instance ) {
 
-			$is_markdown_extra = githuber_get_option( 'support_mardown_extra', 'githuber_extensions' );
+			$is_markdown_extra = future_get_option( 'support_mardown_extra', 'future_extensions' );
 
 			if ( 'yes' === $is_markdown_extra ) {
 				self::$parser_instance = new Module\MarkdownExtraParser();
@@ -382,7 +382,7 @@ class Markdown extends ControllerAbstract {
 				return true;
 				break;
 			case 'commeting':
-				$setting = githuber_get_option( 'enable_markdown_for_comment', 'githuber_markdown' );
+				$setting = future_get_option( 'enable_markdown_for_comment', 'future_markdown' );
 				if ( isset( $setting[ $post_action_type ] ) && $setting[ $post_action_type ] === $post_action_type ) {
 					return true;
 				}
@@ -706,13 +706,13 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function add_meta_box() {
 
-		if ( ! githuber_current_user_can( 'edit_posts' ) ) {
+		if ( ! future_current_user_can( 'edit_posts' ) ) {
 			return false;
 		}
 
 		add_meta_box(
 			'markdown_this_post_meta_box',
-			__( 'Enable Markdown', 'wp-githuber-md' ),
+			__( 'Enable Markdown', 'wp-future-md' ),
 			array( $this, 'show_meta_box' ),
 			null,
 			'side',
@@ -725,7 +725,7 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function show_meta_box() {
 
-		$post_id               = githuber_get_current_post_id();
+		$post_id               = future_get_current_post_id();
 		$markdown_this_post    = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
 		Monolog::logger( 'Show meta box.', array(
@@ -736,13 +736,13 @@ class Markdown extends ControllerAbstract {
 		$data['markdown_this_post_choice'] = $markdown_this_post;
 		$data['is_markdown_this_post']     = $this->markdown_this_post;
 
-		echo githuber_load_view( 'metabox/markdown-per-post', $data );
+		echo future_load_view( 'metabox/markdown-per-post', $data );
 	}
 
 	/**
 	 * Do action hook for per post Markdown control.
 	 */
-	public function admin_githuber_markdown_this_post() {
+	public function admin_future_markdown_this_post() {
 
 		Monolog::logger( 'Start an Ajax call.');
 
@@ -1074,7 +1074,7 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function transform( $text, $args = array() ) {
 
-		$is_decode_code_blocks = ( 'yes' === githuber_get_option( 'decode_code_blocks', 'githuber_preferences' ) ) ? true : false;
+		$is_decode_code_blocks = ( 'yes' === future_get_option( 'decode_code_blocks', 'future_preferences' ) ) ? true : false;
 
 		$args = wp_parse_args( $args, array(
 			'id'                 => false,
@@ -1328,7 +1328,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @return array $modules Array of active Jetpack modules.
 	 */
-	public function admin_githuber_disable_jetpack_markdown( $modules ) {
+	public function admin_future_disable_jetpack_markdown( $modules ) {
 		$found = array_search( 'markdown', $modules, true );
 		if ( false !== $found ) {
 			unset( $modules[ $found ] );

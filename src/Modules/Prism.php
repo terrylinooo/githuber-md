@@ -6,13 +6,13 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.0.0
  * @version 1.4.0
  * 
  */
 
-namespace Githuber\Module;
+namespace Future\Module;
 
 class Prism extends ModuleAbstract {
 
@@ -34,7 +34,7 @@ class Prism extends ModuleAbstract {
 	/**
 	 * Constant. Should be same as `Markdown::MD_POST_META_PRISM`.
 	 */
-	const MD_POST_META_PRISM = '_githuber_prismjs';
+	const MD_POST_META_PRISM = '_future_prismjs';
 	
 	/**
 	 * Constructer.
@@ -63,9 +63,9 @@ class Prism extends ModuleAbstract {
 	public function front_enqueue_styles() {
 
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_PRISM ) ) {
-			$prism_src         = githuber_get_option( 'prism_src', 'githuber_modules' );
-			$prism_theme       = githuber_get_option( 'prism_theme', 'githuber_modules' );
-			$prism_line_number = githuber_get_option( 'prism_line_number', 'githuber_modules' );
+			$prism_src         = future_get_option( 'prism_src', 'future_modules' );
+			$prism_theme       = future_get_option( 'prism_theme', 'future_modules' );
+			$prism_line_number = future_get_option( 'prism_line_number', 'future_modules' );
 			$theme             = ( 'default' === $prism_theme || empty( $prism_theme ) ) ? 'prism' : 'prism-' . $prism_theme;
 
 			switch ( $prism_src ) {
@@ -84,9 +84,9 @@ class Prism extends ModuleAbstract {
 					break;
 
 				default:
-					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/themes/' . $theme . '.min.css';
+					$style_url[] = $this->future_plugin_url . 'assets/vendor/prism/themes/' . $theme . '.min.css';
 					if ( 'yes' === $prism_line_number ) {
-						$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.css';
+						$style_url[] = $this->future_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.css';
 					}
 					break;
 			}
@@ -104,9 +104,9 @@ class Prism extends ModuleAbstract {
 	 */
 	public function front_enqueue_scripts() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_PRISM ) ) {
-			$prism_src         = githuber_get_option( 'prism_src', 'githuber_modules' );
-			$prism_line_number = githuber_get_option( 'prism_line_number', 'githuber_modules' );
-			$post_id           = githuber_get_current_post_id();
+			$prism_src         = future_get_option( 'prism_src', 'future_modules' );
+			$prism_line_number = future_get_option( 'prism_line_number', 'future_modules' );
+			$post_id           = future_get_current_post_id();
 			$prism_meta_string = get_metadata( 'post', $post_id, self::MD_POST_META_PRISM );
 			$prism_meta_array  = explode( ',', $prism_meta_string[0] );
 
@@ -138,15 +138,15 @@ class Prism extends ModuleAbstract {
 					break;
 
 				default: 
-					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/components/prism-core.min.js';
-					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/prism.min.js';
+					$script_url[] = $this->future_plugin_url . 'assets/vendor/prism/components/prism-core.min.js';
+					$script_url[] = $this->future_plugin_url . 'assets/vendor/prism/prism.min.js';
 
 					if ( 'yes' === $prism_line_number ) {
-						$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.min.js';
+						$script_url[] = $this->future_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.min.js';
 					}
 
 					// AutoLoader plugin (Add since 1.11.4)
-					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/autoloader/prism-autoloader.min.js';
+					$script_url[] = $this->future_plugin_url . 'assets/vendor/prism/plugins/autoloader/prism-autoloader.min.js';
 
 					/* (Deprecated since 1.11.4)
 
@@ -155,7 +155,7 @@ class Prism extends ModuleAbstract {
 
 							// Those componets are already included in code.js
 							if ( ! $this->is_component_already_loaded ( $component_name ) ) {
-								$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/components/prism-' . $component_name . '.min.js';
+								$script_url[] = $this->future_plugin_url . 'assets/vendor/prism/components/prism-' . $component_name . '.min.js';
 							}
 						}
 					} */
@@ -176,7 +176,7 @@ class Prism extends ModuleAbstract {
 	 */
 	public function auto_loader_config_scripts() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_PRISM ) ) {
-			$prism_src = githuber_get_option( 'prism_src', 'githuber_modules' );
+			$prism_src = future_get_option( 'prism_src', 'future_modules' );
 
 			switch ( $prism_src ) {
 				case 'cloudflare':
@@ -190,7 +190,7 @@ class Prism extends ModuleAbstract {
 					break;
 
 				default: 
-					$script_path = $this->githuber_plugin_url . 'assets/vendor/prism/components/';
+					$script_path = $this->future_plugin_url . 'assets/vendor/prism/components/';
 
 					break;
 			}
@@ -209,7 +209,7 @@ class Prism extends ModuleAbstract {
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
-		$prism_line_number = githuber_get_option( 'prism_line_number', 'githuber_modules' );
+		$prism_line_number = future_get_option( 'prism_line_number', 'future_modules' );
 
 		if ( 'yes' === $prism_line_number ) {
 			$script = '

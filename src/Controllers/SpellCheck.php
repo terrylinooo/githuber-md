@@ -5,7 +5,7 @@
  * @author Terry Lin
  * @link https://terryl.in/
  *
- * @package Githuber
+ * @package Future
  * @since 1.10.2
  * @version 1.10.2
  * 
@@ -14,7 +14,7 @@
  * 
  */
 
-namespace Githuber\Controller;
+namespace Future\Controller;
 
 class SpellCheck extends ControllerAbstract {
 
@@ -59,7 +59,7 @@ class SpellCheck extends ControllerAbstract {
 	 * Register JS files.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
-        wp_enqueue_script( 'githuber-md-typo-check', $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/typo.js', array( 'editormd' ), $this->spellcheck_varsion, true );
-        wp_enqueue_script( 'githuber-md-spell-check', $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/spell-checker.js', array( 'editormd' ), $this->spellcheck_varsion, true );
+        wp_enqueue_script( 'future-md-typo-check', $this->future_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/typo.js', array( 'editormd' ), $this->spellcheck_varsion, true );
+        wp_enqueue_script( 'future-md-spell-check', $this->future_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/spell-checker.js', array( 'editormd' ), $this->spellcheck_varsion, true );
 	}
 }

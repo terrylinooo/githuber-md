@@ -6,5 +6,5 @@ bin
 build_release.sh
 .vscode
 .idea
-githuber-md.iml
+WP-Future-MD.iml
 *.log
