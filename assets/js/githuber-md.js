@@ -16,31 +16,31 @@ var spellcheck_lang = 'en_US';
         spellcheck_lang = config.editor_spell_check_lang;
         spellcheck_dictionary_dir = 'https://spellcheck-dictionaries.github.io/' + spellcheck_lang + '/';
 
-        is_support_inline_keyboard_style = (config.support_inline_code_keyboard_style == 'yes');
-        is_support_html_figure = (config.support_html_figure == 'yes');
+        is_support_inline_keyboard_style = (config.support_inline_code_keyboard_style === 'yes');
+        is_support_html_figure = (config.support_html_figure === 'yes');
 
         global_editormd_config = {
             width: '100%',
             height: 640,
             path: config.editor_modules_url,
             placeholder: config.placeholder,
-            syncScrolling: (config.editor_sync_scrolling == 'yes'),
-            watch: (config.editor_live_preview == 'yes'),        
-            htmlDecode: (config.editor_html_decode == 'yes'),
+            syncScrolling: (config.editor_sync_scrolling === 'yes'),
+            watch: (config.editor_live_preview === 'yes'),
+            htmlDecode: (config.editor_html_decode === 'yes'),
             theme: config.editor_toolbar_theme, 
             previewTheme: 'default',
             editorTheme: config.editor_editor_theme, 
-            tocContainer: (config.support_toc == 'yes') ? '' : false,
-            emoji: (config.support_emoji == 'yes'),   
-            tex: (config.support_katex == 'yes'),
-            flowChart: (config.support_flowchart == 'yes'),  
-            sequenceDiagram: (config.support_sequence_diagram == 'yes'), 
-            taskList: (config.support_task_list == 'yes'),
-            mermaid: (config.support_mermaid == 'yes'),
-            lineNumbers: (config.editor_line_number == 'yes'),
-            previewCodeLineNumber: (config.prism_line_number == 'yes'),
-            spellCheck: (config.editor_spell_check == 'yes'),
-            matchWordHighlight: (config.editor_match_highlighter == 'yes') ? 'onselected' : false,
+            tocContainer: (config.support_toc === 'yes') ? '' : false,
+            emoji: (config.support_emoji === 'yes'),
+            tex: (config.support_katex === 'yes'),
+            flowChart: (config.support_flowchart === 'yes'),
+            sequenceDiagram: (config.support_sequence_diagram === 'yes'),
+            taskList: (config.support_task_list === 'yes'),
+            mermaid: (config.support_mermaid === 'yes'),
+            lineNumbers: (config.editor_line_number === 'yes'),
+            previewCodeLineNumber: (config.prism_line_number === 'yes'),
+            spellCheck: (config.editor_spell_check === 'yes'),
+            matchWordHighlight: (config.editor_match_highlighter === 'yes') ? 'onselected' : false,
             toolbarAutoFixed: true,
             tocm: false, 
             tocDropdown: false,    
@@ -52,7 +52,7 @@ var spellcheck_lang = 'en_US';
                     'bold', 'del', 'italic', 'quote', '|',
                     'h1', 'h2', 'h3', 'h4', '|',
                     'list-ul', 'list-ol', 'hr', '|',
-                    'link', 'reference-link', 'image', 'code', 'code-block', 'table', 'datetime', 'html-entities', 'more', 'pagebreak', config.support_emoji == 'yes' ? 'emoji' : '' + '|',
+                    'link', 'reference-link', 'image', 'code', 'code-block', 'table', 'datetime', 'html-entities', 'more', 'pagebreak', config.support_emoji === 'yes' ? 'emoji' : '' + '|',
                     'watch', 'preview', 'fullscreen', 'help'
                 ];
             },
@@ -93,7 +93,7 @@ var spellcheck_lang = 'en_US';
         };
 
 
-        if ($(wp_editor_container).length == 1) {
+        if ($(wp_editor_container).length === 1) {
             githuber_md_editor = editormd(wp_editor, global_editormd_config);
         }
 
@@ -123,7 +123,7 @@ var spellcheck_lang = 'en_US';
             //console.log(html_str);
             var new_content = '';
 
-            if (html_str.substring(0, 4) == '<img') {
+            if (html_str.substring(0, 4) === '<img') {
     
                 var img_src = $(html_str).attr('src');
                 var img_alt = $(html_str).attr('alt');
@@ -137,7 +137,7 @@ var spellcheck_lang = 'en_US';
                 githuber_md_editor.replaceSelection(new_content);
                 image_insert_type = 'markdown';
 
-            } else if (html_str.substring(0, 7) == '<a href' && -1 !== html_str.indexOf('<img')) {
+            } else if (html_str.substring(0, 7) === '<a href' && -1 !== html_str.indexOf('<img')) {
 
                 var a_href = $(html_str).attr('href');
                 var img_src = $(html_str).find('img').attr('src');
@@ -148,14 +148,24 @@ var spellcheck_lang = 'en_US';
                 } else {
                     new_content += '[![' + img_alt + '](' + img_src + ')](' + a_href + ')';
                 }
-
                 githuber_md_editor.replaceSelection(new_content);
                 image_insert_type = 'markdown';
-        
-            } else if (html_str.substring(0, 1) == '[' && html_str.slice(-1) == ']') {
-
+            } else if (html_str.substring(0, 1) === '[' && html_str.slice(-1) === ']') {
                 new_content += html_str;
                 githuber_md_editor.replaceSelection(new_content);
+            } else if ((html_str.substring(0, 7) === '<a href')) {
+                var ahref = $(html_str).attr('href');
+                var inicio_txt = html_str.indexOf('>');
+                var fin_txt = html_str.indexOf('<', inicio_txt);
+                var txt = html_str.substring(inicio_txt+1, fin_txt);
+                if (image_insert_type === 'html') {
+                    new_content += html_str;
+                } else {
+                    new_content += '[' + txt + '](' + ahref +' "' + txt +'")';
+                }
+                githuber_md_editor.replaceSelection(new_content);
+            } else {
+                console.log(html_str);
             }
         }
     });
