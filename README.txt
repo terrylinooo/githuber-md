@@ -315,7 +315,7 @@ GNU General Public License for more details.
 
 = 1.11.9
 
-- Fix issue #126 - Conflict With wordpress 5.3
+- Fix issue #126 - Conflict with WordPress 5.3 ( `add_plugins_menu` function changes )
 
 == Upgrade Notice ==
 
