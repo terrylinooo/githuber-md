@@ -316,6 +316,7 @@ GNU General Public License for more details.
 = 1.11.9
 
 - Fix issue #126 - Conflict with WordPress 5.3 ( `add_plugins_menu` function changes )
+- PR #118 - Allow adding links to other file types rather than only inserting images.
 
 == Upgrade Notice ==
 
