@@ -996,8 +996,7 @@ class Setting extends ControllerAbstract {
 					__( 'WP Githuber MD', 'wp-githuber-md' ),
 					'manage_options',
 					$this->menu_slug,
-					array( $this, 'setting_plugin_page' ),
-					'dashicons-edit'
+					array( $this, 'setting_plugin_page' )
 				);
 				break;
 		}

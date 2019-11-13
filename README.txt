@@ -3,8 +3,8 @@ Contributors: terrylin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40terryl.in&item_name=WordPress+Plugin+-+WP+Githuber+MD&currency_code=USD&source=url
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
-Tested up to: 5.2.0
-Stable tag: 1.11.8
+Tested up to: 5.3.0
+Stable tag: 1.11.9
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -312,6 +312,10 @@ GNU General Public License for more details.
 
 - Fix issue #107 - Fix parsing inline KaTax syntax.
 - Fix issue #104 - UL list does not display correctly in the preview panel.
+
+= 1.11.9
+
+- Fix issue #126 - Conflict With wordpress 5.3
 
 == Upgrade Notice ==
 
