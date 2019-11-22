@@ -14,7 +14,7 @@ if ( ! isset( $markdown_this_post_choice ) ) {
    return;
 }
 ?>
-<div class="submitbox">
+<div class="submitbox p-r">
 	<div class="misc-publishing-actions">
 		<?php if ( 'no' !== $markdown_this_post_choice ) : ?>
 		<div class="wpmd">

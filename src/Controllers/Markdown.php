@@ -229,6 +229,11 @@ class Markdown extends ControllerAbstract {
 					$html2markdown = new Controller\HtmlToMarkdown();
 					$html2markdown->init();
 				}
+
+				if ( 'yes' === githuber_get_option( 'fetch_remote_image', 'githuber_markdown' ) ) {
+					$fetchRemoteImage = new Controller\FetchRemoteImage();
+					$fetchRemoteImage->init();
+				}
 			}
 		}
 	}
@@ -513,7 +518,7 @@ class Markdown extends ControllerAbstract {
 
 		add_meta_box(
 			'markdown_this_post_meta_box',
-			__( 'Enable Markdown', 'wp-githuber-md' ),
+			__( 'Enable Markdown', 'wp-githuber-md' ) . '<div class="bg-icon-md"></div>',
 			array( $this, 'show_meta_box' ),
 			null,
 			'side',

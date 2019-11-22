@@ -75,7 +75,7 @@ class FetchRemoteImage extends ControllerAbstract {
 
 		add_meta_box(
 			'remote_image_meta_box',
-			__( 'Fetch Remote Image', 'wp-githuber-md' ),
+			__( 'Fetch Remote Image', 'wp-githuber-md' ) . '<div class="bg-icon-md"></div>',
 			array( $this, 'show_meta_box' ),
 			null,
 			'side',

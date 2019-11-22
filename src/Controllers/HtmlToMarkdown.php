@@ -86,7 +86,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 
 		add_meta_box(
 			'html2markdown_meta_box',
-			__( 'HTML to Markdown', 'wp-githuber-md' ),
+			__( 'HTML to Markdown', 'wp-githuber-md' ) . '<div class="bg-icon-md"></div>',
 			array( $this, 'show_meta_box' ),
 			null,
 			'side',

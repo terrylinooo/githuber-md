@@ -12,7 +12,7 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  */
 ?>
 
-<div class="submitbox">
+<div class="submitbox p-r">
 	<div class="misc-publishing-actions">
 		<table>
 			<tr>

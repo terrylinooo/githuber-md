@@ -12,7 +12,7 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  */
 ?>
 
-<div class="submitbox">
+<div class="submitbox p-r">
 	<div class="misc-publishing-actions">
 		<p>
 			<?php echo __( 'This is a tool that helps you easily convert an old post into Markdown. If you are not satisfied with the result, do not click <strong>Update</strong> button.', 'wp-githuber-md'  ); ?>

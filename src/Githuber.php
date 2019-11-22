@@ -85,11 +85,6 @@ class Githuber {
 				$spellCheck->init();
 			}
 
-			if ( 'yes' === githuber_get_option( 'fetch_remote_image', 'githuber_markdown' ) ) {
-				$fetchRemoteImage = new Controller\FetchRemoteImage();
-				$fetchRemoteImage->init();
-			}
-
 			$markdown = new Controller\Markdown();
 			$markdown->init();
 		}
