@@ -53,6 +53,7 @@ function githuber_get_current_post_id() {
  * Check current user's permission.
  *
  * @param string $action User action.
+ *
  * @return bool
  */
 function githuber_current_user_can( $action ) {
@@ -69,6 +70,7 @@ function githuber_current_user_can( $action ) {
  *
  * @param string $template_path The specific template's path.
  * @param array  $data              Data is being passed to.
+ *
  * @return string
  */
 function githuber_load_view( $template_path, $data = array() ) {
@@ -116,6 +118,7 @@ function githuber_get_current_post_type() {
  * Load utility files.
  *
  * @param string $filename
+ *
  * @return string
  */
 function githuber_load_utility( $filename ) {
@@ -124,4 +127,16 @@ function githuber_load_utility( $filename ) {
 	if ( ! empty( $include_path ) && is_readable( $include_path ) ) {
 		require $include_path;
 	}
+}
+
+/**
+ * Record Markdown processing logs for debug propose.
+ *
+ * @param string $message
+ * @param array  $data
+ *
+ * @return void
+ */
+function githuber_logger( $message, $data = array() ) {
+	\Githuber\Controller\Monolog::logger( $message, $data );
 }

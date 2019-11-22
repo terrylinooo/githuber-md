@@ -39,16 +39,17 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * Constants.
 	 */
-	const MD_POST_TYPE          = 'githuber_markdown';
-	const MD_POST_META          = '_is_githuber_markdown';
-	const MD_POST_META_ENABLED  = '_is_githuber_markdown_enabled';
-	const MD_POST_META_PRISM    = '_githuber_prismjs';
-	const MD_POST_META_SEQUENCE = '_is_githuber_sequence';
-	const MD_POST_META_FLOW     = '_is_githuber_flow_chart';
-	const MD_POST_META_KATEX    = '_is_githuber_katex';
-	const MD_POST_META_MERMAID  = '_is_githuber_mermaid';
+	const MD_POST_TYPE           = 'githuber_markdown';
+	const MD_POST_META           = '_is_githuber_markdown';
+	const MD_POST_META_ENABLED   = '_is_githuber_markdown_enabled';
+	const MD_POST_META_PRISM     = '_githuber_prismjs';
+	const MD_POST_META_HIGHLIGHT = '_githuber_highlightjs';
+	const MD_POST_META_SEQUENCE  = '_is_githuber_sequence';
+	const MD_POST_META_FLOW      = '_is_githuber_flow_chart';
+	const MD_POST_META_KATEX     = '_is_githuber_katex';
+	const MD_POST_META_MERMAID   = '_is_githuber_mermaid';
 
-	const JETPACK_MD_POST_META  = '_wpcom_is_markdown';
+	const JETPACK_MD_POST_META   = '_wpcom_is_markdown';
 
 	/**
 	 * Parser's instance.
@@ -80,6 +81,7 @@ class Markdown extends ControllerAbstract {
 	 * @var boolean
 	 */
 	public $is_support_prism     = false;
+	public $is_support_highlight = false;
 	public $is_support_task_list = false;
 	public $is_support_katex     = false;
 	public $is_support_flowchart = false;
@@ -101,6 +103,10 @@ class Markdown extends ControllerAbstract {
 
 		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
 			$this->is_support_prism = true;
+		}
+
+		if ( 'yes' === githuber_get_option( 'support_highlight', 'githuber_modules' ) ) {
+			$this->is_support_highlight = true;
 		}
 
 		if ( 'yes' === githuber_get_option( 'support_task_list', 'githuber_extensions' ) ) {
@@ -160,7 +166,7 @@ class Markdown extends ControllerAbstract {
 			add_post_type_support( $post_type, self::MD_POST_TYPE );
 
 			// Only use it in DEBUG mode.
-			Monolog::logger( 'add_post_type_support', array( $post_type ) );
+			githuber_logger( 'add_post_type_support', array( $post_type ) );
 		}
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -395,226 +401,11 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function detect_code_languages( $post_id, $post_content ) {
 
-		// This is what Prism.js uses.
-		$prism_codes = array(
-			'html'              => 'HTML',
-			'xml'               => 'XML',
-			'svg'               => 'SVG',
-			'mathml'            => 'MathML',
-			'css'               => 'CSS',
-			'clike'             => 'C-like',
-			'javascript'        => 'JavaScript',
-			'abap'              => 'ABAP',
-			'actionscript'      => 'ActionScript',
-			'ada'               => 'Ada',
-			'apacheconf'        => 'Apache Configuration',
-			'apl'               => 'APL',
-			'applescript'       => 'AppleScript',
-			'arduino'           => 'Arduino',
-			'arff'              => 'ARFF',
-			'asciidoc'          => 'AsciiDoc',
-			'asm6502'           => '6502 Assembly',
-			'aspnet'            => 'ASP.NET (C#)',
-			'autohotkey'        => 'AutoHotkey',
-			'autoit'            => 'AutoIt',
-			'bash'              => 'Bash',
-			'basic'             => 'BASIC',
-			'batch'             => 'Batch',
-			'bison'             => 'Bison',
-			'brainfuck'         => 'Brainfuck',
-			'bro'               => 'Bro',
-			'c'                 => 'C',
-			'csharp'            => 'C#',
-			'cpp'               => 'C++',
-			'coffeescript'      => 'CoffeeScript',
-			'clojure'           => 'Clojure',
-			'crystal'           => 'Crystal',
-			'csp'               => 'Content-Security-Policy',
-			'css-extras'        => 'CSS Extras',
-			'd'                 => 'D',
-			'dart'              => 'Dart',
-			'diff'              => 'Diff',
-			'django'            => 'Django/Jinja2',
-			'docker'            => 'Docker',
-			'eiffel'            => 'Eiffel',
-			'elixir'            => 'Elixir',
-			'elm'               => 'Elm',
-			'erb'               => 'ERB',
-			'erlang'            => 'Erlang',
-			'fsharp'            => 'F#',
-			'flow'              => 'Flow',
-			'fortran'           => 'Fortran',
-			'gedcom'            => 'GEDCOM',
-			'gherkin'           => 'Gherkin',
-			'git'               => 'Git',
-			'glsl'              => 'GLSL',
-			'go'                => 'Go',
-			'graphql'           => 'GraphQL',
-			'groovy'            => 'Groovy',
-			'haml'              => 'Haml',
-			'handlebars'        => 'Handlebars',
-			'haskell'           => 'Haskell',
-			'haxe'              => 'Haxe',
-			'http'              => 'HTTP',
-			'hpkp'              => 'HTTP Public-Key-Pins',
-			'hsts'              => 'HTTP Strict-Transport-Security',
-			'ichigojam'         => 'IchigoJam',
-			'icon'              => 'Icon',
-			'inform7'           => 'Inform 7',
-			'ini'               => 'Ini',
-			'io'                => 'Io',
-			'j'                 => 'J',
-			'java'              => 'Java',
-			'jolie'             => 'Jolie',
-			'json'              => 'JSON',
-			'julia'             => 'Julia',
-			'keyman'            => 'Keyman',
-			'kotlin'            => 'Kotlin',
-			'latex'             => 'LaTeX',
-			'less'              => 'Less',
-			'liquid'            => 'Liquid',
-			'lisp'              => 'Lisp',
-			'livescript'        => 'LiveScript',
-			'lolcode'           => 'LOLCODE',
-			'lua'               => 'Lua',
-			'makefile'          => 'Makefile',
-			'markdown'          => 'Markdown',
-			'markup-templating' => 'Markup templating',
-			'matlab'            => 'MATLAB',
-			'mel'               => 'MEL',
-			'mizar'             => 'Mizar',
-			'monkey'            => 'Monkey',
-			'n4js'              => 'N4JS',
-			'nasm'              => 'NASM',
-			'nginx'             => 'nginx',
-			'nim'               => 'Nim',
-			'nix'               => 'Nix',
-			'nsis'              => 'NSIS',
-			'objectivec'        => 'Objective-C',
-			'ocaml'             => 'OCaml',
-			'opencl'            => 'OpenCL',
-			'oz'                => 'Oz',
-			'parigp'            => 'PARI/GP',
-			'parser'            => 'Parser',
-			'pascal'            => 'Pascal',
-			'perl'              => 'Perl',
-			'php'               => 'PHP',
-			'php-extras'        => 'PHP Extras',
-			'plsql'             => 'PL/SQL',
-			'powershell'        => 'PowerShell',
-			'processing'        => 'Processing',
-			'prolog'            => 'Prolog',
-			'properties'        => '.properties',
-			'protobuf'          => 'Protocol Buffers',
-			'pug'               => 'Pug',
-			'puppet'            => 'Puppet',
-			'pure'              => 'Pure',
-			'python'            => 'Python',
-			'q'                 => 'Q (kdb+ database)',
-			'qore'              => 'Qore',
-			'r'                 => 'R',
-			'jsx'               => 'React JSX',
-			'tsx'               => 'React TSX',
-			'renpy'             => 'Ren\'py',
-			'reason'            => 'Reason',
-			'rest'              => 'reST (reStructuredText)',
-			'rip'               => 'Rip',
-			'roboconf'          => 'Roboconf',
-			'ruby'              => 'Ruby',
-			'rust'              => 'Rust',
-			'sas'               => 'SAS',
-			'sass'              => 'Sass (Sass)',
-			'scss'              => 'Sass (Scss)',
-			'scala'             => 'Scala',
-			'scheme'            => 'Scheme',
-			'smalltalk'         => 'Smalltalk',
-			'smarty'            => 'Smarty',
-			'sql'               => 'SQL',
-			'soy'               => 'Soy (Closure Template)',
-			'stylus'            => 'Stylus',
-			'swift'             => 'Swift',
-			'tcl'               => 'Tcl',
-			'textile'           => 'Textile',
-			'twig'              => 'Twig',
-			'typescript'        => 'TypeScript',
-			'vbnet'             => 'VB.Net',
-			'velocity'          => 'Velocity',
-			'verilog'           => 'Verilog',
-			'vhdl'              => 'VHDL',
-			'vim'               => 'vim',
-			'visual-basic'      => 'Visual Basic',
-			'wasm'              => 'WebAssembly',
-			'wiki'              => 'Wiki markup',
-			'xeora'             => 'Xeora',
-			'xojo'              => 'Xojo (REALbasic)',
-			'yaml'              => 'YAML',
-		);
-
-		// The below codes need a parent componet being loaded before.
-		$prism_component_parent = array(
-			'javascript'        => array( 'clike' ),
-			'actionscript'      => array( 'javascript' ),
-			'arduino'           => array( 'cpp' ),
-			'aspnet'            => array( 'markup' ),
-			'bison'             => array( 'c' ),
-			'c'                 => array( 'clike' ),
-			'csharp'            => array( 'clike' ),
-			'cpp'               => array( 'c' ),
-			'coffeescript'      => array( 'javascript' ),
-			'crystal'           => array( 'ruby' ),
-			'css-extras'        => array( 'css' ),
-			'd'                 => array( 'clike' ),
-			'dart'              => array( 'clike' ),
-			'django'            => array( 'markup' ),
-			'erb'               => array( 'ruby', 'markup-templating' ),
-			'fsharp'            => array( 'clike' ),
-			'flow'              => array( 'javascript' ),
-			'glsl'              => array( 'clike' ),
-			'go'                => array( 'clike' ),
-			'groovy'            => array( 'clike' ),
-			'haml'              => array( 'ruby' ),
-			'handlebars'        => array( 'markup-templating' ),
-			'haxe'              => array( 'clike' ),
-			'java'              => array( 'clike' ),
-			'jolie'             => array( 'clike' ),
-			'kotlin'            => array( 'clike' ),
-			'less'              => array( 'css' ),
-			'markdown'          => array( 'markup' ),
-			'markup-templating' => array( 'markup' ),
-			'n4js'              => array( 'javascript' ),
-			'nginx'             => array( 'clike' ),
-			'objectivec'        => array( 'c' ),
-			'opencl'            => array( 'cpp' ),
-			'parser'            => array( 'markup' ),
-			'php'               => array( 'clike', 'markup-templating' ),
-			'php-extras'        => array( 'php' ),
-			'plsql'             => array( 'sql' ),
-			'processing'        => array( 'clike' ),
-			'protobuf'          => array( 'clike' ),
-			'pug'               => array( 'javascript' ),
-			'qore'              => array( 'clike' ),
-			'jsx'               => array( 'markup', 'javascript' ),
-			'tsx'               => array( 'jsx', 'typescript'),
-			'reason'            => array( 'clike' ),
-			'ruby'              => array( 'clike' ),
-			'sass'              => array( 'css' ),
-			'scss'              => array( 'css' ),
-			'scala'             => array( 'java' ),
-			'smarty'            => array( 'markup-templating' ),
-			'soy'               => array( 'markup-templating' ),
-			'swift'             => array( 'clike' ),
-			'textile'           => array( 'markup' ),
-			'twig'              => array( 'markup' ),
-			'typescript'        => array( 'javascript' ),
-			'vbnet'             => array( 'basic' ),
-			'velocity'          => array( 'markup' ),
-			'wiki'              => array( 'markup' ),
-			'xeora'             => array( 'markup' )
-		);
-
-		$prism_meta_array = array();
+		$prism_meta_array     = array();
+		$highlight_meta_array = array();
 
 		delete_metadata( 'post', $post_id, self::MD_POST_META_PRISM);
+		delete_metadata( 'post', $post_id, self::MD_POST_META_HIGHLIGHT);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_SEQUENCE);
 		delete_metadata( 'post', $post_id, self::MD_POST_META_FLOW);
 
@@ -626,19 +417,24 @@ class Markdown extends ControllerAbstract {
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
 
 			foreach ( $matches[1] as $match ) {
-				if ( ! empty( $prism_codes[ $match ] ) ) {
+
+				if ( ! empty( Module\Prism::$prism_codes[ $match ] ) ) {
 					$prism_meta_array[ $match ] = $match;
 				}
 
 				// Check if this componets requires the parent components or not.
-				if ( ! empty( $prism_component_parent[ $match ] ) ) {
-					foreach ( $prism_component_parent[ $match ] as $parent ) {
+				if ( ! empty( Module\Prism::$prism_component_parent[ $match ] ) ) {
+					foreach ( Module\Prism::$prism_component_parent[ $match ] as $parent ) {
 
 						// If it need a parent componet, add it to the $paris_meta_array.
 						if ( empty( $prism_meta_array[ $parent ] ) ) {
 							$prism_meta_array[ $parent ] = $parent;
 						}
 					}
+				}
+
+				if ( ! empty( Module\Highlight::$highlight_codes[ $match ] ) ) {
+					$highlight_meta_array[ $match ] = $match;
 				}
 
 				if ( 'seq' === $match || 'sequence' === $match ) {
@@ -665,13 +461,20 @@ class Markdown extends ControllerAbstract {
 		}
 
 		// Combine array into a string.
-		$prism_meta_string = implode( ',', $prism_meta_array );
+		$prism_meta_string     = implode( ',', $prism_meta_array );
+		$highlight_meta_string = implode( ',', $highlight_meta_array );
 
 		// Store the string to post meta, for identifying what the syntax languages are used in current post.
 		if ( $this->is_support_prism && ! empty( $prism_meta_array ) ) {
 			update_metadata( 'post', $post_id, self::MD_POST_META_PRISM, $prism_meta_string );
 		} else {
 			update_metadata( 'post', $post_id, self::MD_POST_META_PRISM, '' );
+		}
+
+		if ( $this->is_support_highlight && ! empty( $highlight_meta_array ) ) {
+			update_metadata( 'post', $post_id, self::MD_POST_META_HIGHLIGHT, $highlight_meta_string );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_HIGHLIGHT, '' );
 		}
 
 		if ( $this->is_support_sequence && $is_sequence ) {
@@ -726,7 +529,7 @@ class Markdown extends ControllerAbstract {
 		$post_id               = githuber_get_current_post_id();
 		$markdown_this_post    = get_metadata( 'post', $post_id, self::MD_POST_META_ENABLED, true );
 
-		Monolog::logger( 'Show meta box.', array(
+		githuber_logger( 'Show meta box.', array(
 			'post_id'            => $post_id,
 			'markdown_this_post' => $markdown_this_post,
 		) );
@@ -742,7 +545,7 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function admin_githuber_markdown_this_post() {
 
-		Monolog::logger( 'Start an Ajax call.');
+		githuber_logger( 'Start an Ajax call.');
 
 		$response = array(
 			'success' => false,
@@ -765,7 +568,7 @@ class Markdown extends ControllerAbstract {
 				'post_id' => $post_id,
 			);
 
-			Monolog::logger( 'Post data is gotten.', array(
+			githuber_logger( 'Post data is gotten.', array(
 				'post_id' => $_POST['post_id'],
 				'markdown_this_post' => $_POST['markdown_this_post'],
 			) );
@@ -989,6 +792,12 @@ class Markdown extends ControllerAbstract {
 			$post_data['post_content_filtered'] = $post_data['post_content'];
 			$post_data['post_content'] = $this->transform( $post_data['post_content'], array( 'id' => $post_id ) );
 
+			if ( $this->is_convert_remote_image() ) {
+				foreach ( FetchRemoteImage::$image_list as $image_info ) {
+					$post_data['post_content_filtered'] = str_replace( $image_info['before'], $image_info['after'], $post_data['post_content_filtered'] );
+				}
+			}
+
 			/** This filter is already documented in core/wp-includes/default-filters.php */
 			$post_data['post_content'] = apply_filters( 'content_save_pre', $post_data['post_content'] );
 
@@ -997,6 +806,12 @@ class Markdown extends ControllerAbstract {
 			// autosaves for previews are weird
 			$post_data['post_content_filtered'] = $post_data['post_content'];
 			$post_data['post_content'] = $this->transform( $post_data['post_content'], array( 'id' => $post_data['post_parent'] ) );
+
+			if ( $this->is_convert_remote_image() ) {
+				foreach ( FetchRemoteImage::$image_list as $image_info ) {
+					$post_data['post_content_filtered'] = str_replace( $image_info['before'], $image_info['after'], $post_data['post_content_filtered'] );
+				}
+			}
 
 			/** This filter is already documented in core/wp-includes/default-filters.php */
 			$post_data['post_content'] = apply_filters( 'content_save_pre', $post_data['post_content'] );
@@ -1012,7 +827,7 @@ class Markdown extends ControllerAbstract {
 		if ( 'revision' === $postarr['post_type'] && $this->has_markdown( $postarr['post_parent'] ) ) {
 			$this->monitoring['parent'][ $postarr['post_parent'] ] = true;
 		}
-
+	
 		// Is it support Prism - syntax highlighter.
 		$this->detect_code_languages( $post_id, wp_unslash( $post_data['post_content'] ) );
 
@@ -1063,9 +878,9 @@ class Markdown extends ControllerAbstract {
 	 * @param array  $args Arguments, with keys:
 	 *                     id: provide a string to prefix footnotes with a unique identifier
 	 *                     unslash: when true, expects and returns slashed data
-	 *                       decode_code_blocks: when true, assume that text in fenced code blocks is already
-	 *                       HTML encoded and should be decoded before being passed to Markdown, which does
-	 *                       its own encoding.
+	 *                     decode_code_blocks: when true, assume that text in fenced code blocks is already
+	 *                     HTML encoded and should be decoded before being passed to Markdown, which does
+	 *                     its own encoding.
 	 * @return string Markdown-processed content
 	 */
 	public function transform( $text, $args = array() ) {
@@ -1100,6 +915,11 @@ class Markdown extends ControllerAbstract {
 
 		// Transform it!
 		$text = $this->get_parser()->transform( $text );
+
+		// Fetch remote images.
+		if ( $this->is_convert_remote_image() ) {
+			$text = $this->convert_remote_image( $text );
+		}
 
 		// Render Github Flavored Markdown task lists if this module is enabled.
 		if ( $this->is_support_task_list ) {
@@ -1328,4 +1148,34 @@ class Markdown extends ControllerAbstract {
 		}
 		return $modules;
 	}
+
+	/**
+	 * Detect remote images.
+	 *
+	 * @param string $post_content 
+	 * 
+	 * @return string
+	 */
+	public function convert_remote_image( $post_content  ) {
+
+		if ( $this->is_convert_remote_image() ) {
+			$post_content  = FetchRemoteImage::covert( $post_content  );
+		}
+		return $post_content ;
+	}
+
+	/**
+	 * Is performing covert remote image.
+	 *
+	 * @return bool
+	 */
+	public function is_convert_remote_image() {
+		if ( 'yes' === githuber_get_option( 'fetch_remote_image', 'githuber_markdown' ) ) {
+			if ( isset( $_POST['fetch_remote_image'] ) && 'yes' === $_POST['fetch_remote_image'] ) {
+				return true;
+			}	
+		}
+		return false;
+	}
+
 }

@@ -7,14 +7,14 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.11.9
+ * @version 1.12.0
  */
 
 /**
  * Plugin Name: WP Githuber MD
  * Plugin URI:  https://github.com/terrylinooo/githuber-md
  * Description: An all-in-one Markdown plugin for your WordPress sites.
- * Version:     1.11.9
+ * Version:     1.12.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'GITHUBER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'GITHUBER_PLUGIN_VERSION', '1.11.9' );
+define( 'GITHUBER_PLUGIN_VERSION', '1.12.0' );
 define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
@@ -91,6 +91,21 @@ require_once GITHUBER_PLUGIN_DIR . 'src/helpers.php';
 require_once GITHUBER_PLUGIN_DIR . 'vendor/autoload.php';
 
 if ( is_admin() ) {
+
+	$githuber_version = get_option( 'githuber_version' );
+
+	if ( $githuber_version < GITHUBER_PLUGIN_VERSION ) {
+
+		function githuber_update_notice() {
+			echo githuber_load_view( 'message/update_notice' );
+
+			// Only show this message one time.
+			update_option( 'githuber_version', GITHUBER_PLUGIN_VERSION );
+		}
+
+		add_action( 'admin_notices', 'githuber_update_notice' );
+	}
+
 	if ( 'yes' === githuber_get_option( 'support_mardown_extra', 'githuber_extensions' ) ) {
 		if ( ! class_exists( 'DOMDocument' ) ) {
 			add_action( 'admin_notices', 'githuber_md_warning_libxml' );
@@ -116,6 +131,7 @@ if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {
 	 * Activate Githuber plugin.
 	 */
 	function githuber_activate_plugin() {
+
 		global $current_user;
 
 		$githuber_markdown = array(
@@ -124,6 +140,7 @@ if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {
 			'disable_autosave'               => 'yes',
 			'html_to_markdown'               => 'yes',
 			'markdown_editor_switcher'       => 'yes',
+			'fetch_remote_image'             => 'no',
 			'editor_live_preview'            => 'yes',
 			'editor_sync_scrolling'          => 'yes',
 			'editor_html_decode'             => 'yes',
@@ -137,6 +154,8 @@ if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {
 		if ( empty( $setting_markdown ) ) {
 			update_option( 'githuber_markdown', $githuber_markdown, '', 'yes' );
 		}
+
+		update_option( 'githuber_version', GITHUBER_PLUGIN_VERSION );
 	}
 
 	/**

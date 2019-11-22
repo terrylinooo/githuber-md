@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donat
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.3.0
-Stable tag: 1.11.9
+Stable tag: 1.12.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -74,7 +74,7 @@ You'll find answers to many of your questions on [Report issues](https://github.
 
 == Translations ==
 
-Traditional Chinese (zh_TW) by [阿力獅](https://www.alexclassroom.com/)
+Traditional Chinese (zh_TW) by [Alex Lion](https://www.alexclassroom.com/)
 Simplified Chinese (zh_CN)
 
 == Screenshots ==
@@ -317,6 +317,10 @@ GNU General Public License for more details.
 
 - Fix issue #126 - Conflict with WordPress 5.3 ( `add_plugins_menu` function changes )
 - PR #118 - Allow adding links to other file types rather than only inserting images.
+
+= 1.12.0
+
+- Feature request #75 - Save images to local folder.
 
 == Upgrade Notice ==
 

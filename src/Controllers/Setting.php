@@ -238,6 +238,8 @@ class Setting extends ControllerAbstract {
 					)
 				),
 
+				/*
+
 				array(
 					'name'    => 'enable_markdown_for_comment',
 					'label'   => '',
@@ -247,6 +249,8 @@ class Setting extends ControllerAbstract {
 						'commenting' => __( 'Comments', 'wp-githuber-md' )
 					)
 				),
+
+				*/
 
 				array(
 					'name'    => 'disable_revision',
@@ -316,6 +320,16 @@ class Setting extends ControllerAbstract {
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
+				),
+
+				array(
+					'name'    => 'fetch_remote_image',
+					'class'   => 'fetch_remote_image',
+					'label'   => __( 'Fetch Remote Image', 'wp-githuber-md' ),
+					'desc'    => __( 'A remote image means that it is not a URL from your site. This option allows you to fetch remote images and save them info local folder.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
 				),
 
 				array(
@@ -479,7 +493,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'        => 'support_prism',
 					//'label'     => __( 'Syntax Highlight', 'wp-githuber-md' ),
-					'desc'        => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-githuber-md' ),
+					'desc'        => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-githuber-md' ) . '<br />' . __( 'This option is not available if you choose another highlighter modules.', 'wp-githuber-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'syntax-highlight',
@@ -535,6 +549,148 @@ class Setting extends ControllerAbstract {
 					'type'    => 'html',
 					'parent'  => 'support_prism',
 				),
+
+				// -------------------------------------------------------------------//
+
+				array(
+					'label'         => __( 'Syntax Highlight', 'wp-githuber-md' ),
+					'section_title' => true,
+					'location_id'   => 'syntax-highlight-js',
+					'desc'          => __( 'highlight.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_highlight',
+					//'label'     => __( 'Syntax Highlight', 'wp-githuber-md' ),
+					'desc'        => __( 'Highligh the syntax in your code snippets by Highlight.js', 'wp-githuber-md' ) . '<br />' . __( 'This option is not available if you choose another highlighter modules.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'syntax-highlight-js',
+					'default'     => 'no',
+				),
+
+				array(
+					'name'    => 'highlight_theme',
+					'label'   => __( 'Theme', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', 'wp-githuber-md' ) . ' [<a href="https://highlightjs.org/static/demo/" target="_blank">' . __( 'Demo') . '</a>]',
+					'type'    => 'select',
+					'default' => 'default',
+					'parent'  => 'support_highlight',
+					'options' => array(
+						'default'                   => 'Default',
+						'a11y-dark'                 => 'A 11 Y Dark',
+						'a11y-light'                => 'A 11 Y Light',
+						'agate'                     => 'Agate',
+						'an-old-hope'               => 'An Old Hope',
+						'androidstudio'             => 'Android Studio',
+						'arduino-light'             => 'Arduino Light',
+						'arta'                      => 'Arta',
+						'ascetic'                   => 'Ascetic',
+						'atelier-cave-dark'         => 'Atelier Cave Dark',
+						'atelier-cave-light'        => 'Atelier Cave Light',
+						'atelier-dune-dark'         => 'Atelier Dune Dark',
+						'atelier-dune-light'        => 'Atelier Dune Light',
+						'atelier-estuary-dark'      => 'Atelier Estuary Dark',
+						'atelier-estuary-light'     => 'Atelier Estuary Light',
+						'atelier-forest-dark'       => 'Atelier Forest Dark',
+						'atelier-forest-light'      => 'Atelier Forest Light',
+						'atelier-heath-dark'        => 'Atelier Heath Dark',
+						'atelier-heath-light'       => 'Atelier Heath Light',
+						'atelier-lakeside-dark'     => 'Atelier Lakeside Dark',
+						'atelier-lakeside-light'    => 'Atelier Lakeside Light',
+						'atelier-plateau-dark'      => 'Atelier Plateau Dark',
+						'atelier-plateau-light'     => 'Atelier Plateau Light',
+						'atelier-savanna-dark'      => 'Atelier Savanna Dark',
+						'atelier-savanna-light'     => 'Atelier Savanna Light',
+						'atelier-seaside-dark'      => 'Atelier Seaside Dark',
+						'atelier-seaside-light'     => 'Atelier Seaside Light',
+						'atelier-sulphurpool-dark'  => 'Atelier Sulphurpool Dark',
+						'atelier-sulphurpool-light' => 'Atelier Sulphurpool Light',
+						'atom-one-dark-reasonable'  => 'Atom One Dark Reasonable',
+						'atom-one-dark'             => 'Atom One Dark',
+						'atom-one-light'            => 'Atom One Light',
+						'brown-paper'               => 'Brown Paper',
+						'codepen-embed'             => 'Codepen Embed',
+						'color-brewer'              => 'Color Brewer',
+						'darcula'                   => 'Darcula',
+						'dark'                      => 'Dark',
+						'darkula'                   => 'Darkula',
+						'docco'                     => 'Docco',
+						'dracula'                   => 'Dracula',
+						'far'                       => 'Far',
+						'foundation'                => 'Foundation',
+						'github-gist'               => 'Github Gist',
+						'github'                    => 'Github',
+						'gml'                          => 'Gml',
+						'googlecode'                => 'Google Code',
+						'grayscale'                 => 'Grayscale',
+						'gruvbox-dark'              => 'Gruvbox Dark',
+						'gruvbox-light'             => 'Gruvbox Light',
+						'hopscotch'                 => 'Hopscotch',
+						'hybrid'                    => 'Hybrid',
+						'idea'                      => 'Idea',
+						'ir-black'                  => 'Ir Black',
+						'isbl-editor-dark'          => 'Isbl Editor Dark',
+						'isbl-editor-light'         => 'Isbl Editor Light',
+						'kimbie.dark'               => 'Kimbie Dark',
+						'kimbie.light'              => 'Kimbie Light',
+						'lightfair'                 => 'Lightfair',
+						'magula'                    => 'Magula',
+						'mono-blue'                 => 'Mono Blue',
+						'monokai-sublime'           => 'Monokai Sublime',
+						'monokai'                   => 'Monokai',
+					 // 'night-owl'                 => 'Night Owl',
+						'nord'                      => 'Nord',
+						'obsidian'                  => 'Obsidian',
+						'ocean'                     => 'Ocean',
+						'paraiso-dark'              => 'Paraiso Dark',
+						'paraiso-light'             => 'Paraiso Light',
+						'pojoaque'                  => 'Pojoaque',
+						'purebasic'                 => 'Purebasic',
+						'qtcreator_dark'            => 'Qtcreator Dark',
+						'qtcreator_light'           => 'Qtcreator Light',
+						'railscasts'                => 'Railscasts',
+						'rainbow'                   => 'Rainbow',
+						'routeros'                  => 'Routeros',
+						'school-book'               => 'School Book',
+						'shades-of-purple'          => 'Shades Of Purple',
+						'solarized-dark'            => 'Solarized Dark',
+						'solarized-light'           => 'Solarized Light',
+						'sunburst'                  => 'Sunburst',
+						'tomorrow-night-blue'       => 'Tomorrow Night Blue',
+						'tomorrow-night-bright'     => 'Tomorrow Night Bright',
+						'tomorrow-night-eighties'   => 'Tomorrow Night Eighties',
+						'tomorrow-night'            => 'Tomorrow Night',
+						'tomorrow'                  => 'Tomorrow',
+						'vs'                        => 'VS',
+						'vs2015'                    => 'VS 2015',
+						'xcode'                     => 'Xcode',
+						'xt256'                     => 'Xt 256',
+						'zenburn'                   => 'Zenburn',
+					),
+				),
+
+				array(
+					'name'    => 'highlight_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_highlight',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+					)
+				),
+
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/highlight-js' ),
+					'type'    => 'html',
+					'parent'  => 'support_highlight',
+				),
+
+				// -------------------------------------------------------------------//
 
 				array(
 					'section_title' => true,

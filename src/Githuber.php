@@ -30,7 +30,7 @@ class Githuber {
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 		// Only use it in DEBUG mode.
-		Monolog::logger( 'Hello, Githuber MD.', array(
+		githuber_logger( 'Hello, Githuber MD.', array(
 			'wp_version'  => $GLOBALS['wp_version'],
 			'php_version' => phpversion(),
 		) );
@@ -53,7 +53,7 @@ class Githuber {
 		add_action( 'wp_loaded', array( $this, 'init' ) );
 
 		// Only use it in DEBUG mode.
-		Monolog::logger( 'Hook: wp_loaded', array( 'url' => $this->current_url ) );
+		githuber_logger( 'Hook: wp_loaded', array( 'url' => $this->current_url ) );
 	}
 
 	/**
@@ -83,6 +83,11 @@ class Githuber {
 			if ( 'yes' === githuber_get_option( 'editor_spell_check', 'githuber_markdown' ) ) {
 				$spellCheck = new Controller\SpellCheck();
 				$spellCheck->init();
+			}
+
+			if ( 'yes' === githuber_get_option( 'fetch_remote_image', 'githuber_markdown' ) ) {
+				$fetchRemoteImage = new Controller\FetchRemoteImage();
+				$fetchRemoteImage->init();
 			}
 
 			$markdown = new Controller\Markdown();
@@ -121,6 +126,12 @@ class Githuber {
 		if ( 'yes' === githuber_get_option( 'support_prism', 'githuber_modules' ) ) {
 			$module_prism = new Module\Prism();
 			$module_prism->init();
+		}
+
+		// Module Name: Highlight
+		if ( 'yes' === githuber_get_option( 'support_highlight', 'githuber_modules' ) ) {
+			$module_highlight = new Module\Highlight();
+			$module_highlight->init();
 		}
 
 		// Replace `&amp;` to `&` in URLs in post content.
