@@ -321,6 +321,9 @@ GNU General Public License for more details.
 = 1.12.0
 
 - Feature request #75 - Save images to local folder.
+- New feature - Syntax highlighter by highlight.js
+- Hide `support comment` option because it doesn't work now.
+- Update uninstall.php
 
 == Upgrade Notice ==
 
