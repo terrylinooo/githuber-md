@@ -1185,7 +1185,7 @@ class Setting extends ControllerAbstract {
 		}
 
 		if ( $file == $this->githuber_plugin_name ) {
-			$links[] = '<a href="' . admin_url( "plugins.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', 'wp-githuber-md' ) . '</a>';
+			$links[] = '<a href="' . admin_url( "options-general.php?page=" . $this->menu_slug ) . '">' . __( 'Settings', 'wp-githuber-md' ) . '</a>';
 			return $links;
 		}
 	}
