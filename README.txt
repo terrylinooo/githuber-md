@@ -325,6 +325,10 @@ GNU General Public License for more details.
 - Hide `support comment` option because it doesn't work now.
 - Update uninstall.php
 
+= 1.12.1
+
+- Move settings to the option submenu.
+
 == Upgrade Notice ==
 
 = Currently no logs now.

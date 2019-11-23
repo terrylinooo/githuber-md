@@ -22,7 +22,7 @@ class Setting extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $menu_position = 'plugins';
+	public $menu_position = 'options';
 
 	/**
 	 * Menu slug.
