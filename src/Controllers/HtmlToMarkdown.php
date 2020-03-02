@@ -45,7 +45,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 
 			// Remove auto-save function.
-			add_action( 'wp_print_scripts', array( $this , 'remove_autosave' ), 10 );
+			add_action( 'admin_enqueue_scripts', array( $this , 'remove_autosave' ), 100 );
 		}
 	}
 
@@ -72,7 +72,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 	 * Remove auto-save function.
 	 */
 	function remove_autosave() {
-		wp_deregister_script('autosave');
+		wp_dequeue_script('autosave');
 	}
 
 	/**
