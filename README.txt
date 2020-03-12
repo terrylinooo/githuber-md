@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.3.0
-Stable tag: 1.12.1
+Stable tag: 1.12.2
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html

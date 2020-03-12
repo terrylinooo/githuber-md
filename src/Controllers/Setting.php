@@ -326,7 +326,7 @@ class Setting extends ControllerAbstract {
 					'name'    => 'fetch_remote_image',
 					'class'   => 'fetch_remote_image',
 					'label'   => __( 'Fetch Remote Image', 'wp-githuber-md' ),
-					'desc'    => __( 'A remote image means that it is not a URL from your site. This option allows you to fetch remote images and save them info local folder.', 'wp-githuber-md' ),
+					'desc'    => __( 'A remote image means that it is not a URL from your site. This option allows you to fetch remote images and save them into local folder.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',
@@ -1012,7 +1012,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'support_inline_code_keyboard_style',
 					'label'   => __( 'Inline Code Block with Keyboard Style', 'wp-githuber-md' ),
-					'desc'    => githuber_load_view( 'example/inline_code_keyboard_style' ),
+					'desc'    => githuber_load_view( 'example/inline-code-keyboard-style' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no'

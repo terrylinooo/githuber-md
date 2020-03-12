@@ -1,0 +1,829 @@
+# Translation of Plugins - WP Githuber MD &#8211; WordPress Markdown Editor - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - WP Githuber MD &#8211; WordPress Markdown Editor - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-12 15:02+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: zh-TW\n"
+"Project-Id-Version: Plugins - WP Githuber MD &#8211; WordPress Markdown "
+"Editor - Stable (latest release)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-12 14:37+0000\n"
+"Last-Translator: Terry Lin <contact@terryl.in>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
+
+#: src/Controllers/CustomMediaLibrary.php:63
+msgid "Code type"
+msgstr "程式碼類型"
+
+#: src/Controllers/FetchRemoteImage.php:78 src/Controllers/Setting.php:328
+msgid "Fetch Remote Image"
+msgstr "抓取遠端圖片"
+
+#: src/Controllers/HtmlToMarkdown.php:89
+msgid "HTML to Markdown"
+msgstr "HTML 轉換成 Markdown"
+
+#: src/Controllers/ImagePaste.php:85 src/Controllers/ImagePaste.php:99 
+#: src/Controllers/ImagePaste.php:115
+#, php-format
+msgid "Error while processing your request to %s!"
+msgstr "處理 %s 要求時發生錯誤！"
+
+#: src/Controllers/ImagePaste.php:102 src/Controllers/ImagePaste.php:122
+msgid "PHP Curl is not installed on your system."
+msgstr "系統尚未安裝 PHP Curl 模組。"
+
+#: src/Controllers/ImagePaste.php:152
+msgid "Error while uploading file."
+msgstr "上傳檔案時發生錯誤。"
+
+#: src/Controllers/Markdown.php:314
+msgid "Happy Markdowning!"
+msgstr "快樂的使用 Markdown 吧！"
+
+#: src/Controllers/Markdown.php:521
+msgid "Enable Markdown"
+msgstr "啟用 Markdown 編輯器"
+
+#: src/Controllers/Setting.php:119 
+#: src/Views/metabox/custom-media-library.php:16
+msgid "Markdown"
+msgstr "Markdown"
+
+#: src/Controllers/Setting.php:124
+msgid "Modules"
+msgstr "模組"
+
+#: src/Controllers/Setting.php:129
+msgid "Extensions"
+msgstr "擴充功能"
+
+#: src/Controllers/Setting.php:134
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: src/Controllers/Setting.php:139
+msgid "About"
+msgstr "關於"
+
+#: src/Controllers/Setting.php:215
+msgid "Your system langauge is supported."
+msgstr "目前的設定可支援這個網站的系統語言。"
+
+#: src/Controllers/Setting.php:217
+msgid "Your system langauge is not supported."
+msgstr "目前的設定不支援這個網站的系統語言。"
+
+#: src/Controllers/Setting.php:226
+msgid "Writing"
+msgstr "寫作設定"
+
+#: src/Controllers/Setting.php:231
+msgid "Enable"
+msgstr "啟用 Markdown 編輯器的內容類型"
+
+#: src/Controllers/Setting.php:232
+msgid "Which post types you would like to enable Markdown editor for."
+msgstr "請選取要啟用 Markdown 編輯器的內容類型。"
+
+#: src/Controllers/Setting.php:257
+msgid "Disable Revision"
+msgstr "停用內容修訂"
+
+#: src/Controllers/Setting.php:258
+msgid ""
+"If you think the revision function is annoying when you're writing, you can "
+"to disable it."
+msgstr "如果覺得內容修訂功能妨礙寫作，請停用這項功能。"
+
+#: src/Controllers/Setting.php:267
+msgid "Disable Auto-save"
+msgstr "停用自動儲存"
+
+#: src/Controllers/Setting.php:268
+msgid ""
+"If you think the auto-save function is annoying when you're writing, you can "
+"to disable it."
+msgstr "如果覺得自動儲存功能妨礙寫作，請停用這項功能。"
+
+#: src/Controllers/Setting.php:276
+msgid "Spell Check"
+msgstr "拼字檢查"
+
+#: src/Controllers/Setting.php:277
+msgid ""
+"Enable spell check on the input. (This feature does not apply to code blocks."
+")"
+msgstr "為內容輸入啟用拼字檢查。這項功能不會套用至 [程式碼] 區塊。"
+
+#: src/Controllers/Setting.php:285
+msgid "Language"
+msgstr "拼字檢查語言"
+
+#: src/Controllers/Setting.php:286
+msgid "Please specify your language for spell check in the setting above."
+msgstr "請在上方設定選單中指定要進行拼字檢查的語言。"
+
+#: src/Controllers/Setting.php:294
+msgid "Match Highlighter"
+msgstr "對照螢光筆"
+
+#: src/Controllers/Setting.php:295
+msgid ""
+"Everywhere else in your text where <strong>current word</strong> appears "
+"will automatically illuminate."
+msgstr "當內容中的其他位置出現與<strong>目前文字</strong>相符的文字時，便會自動標示醒目提示。"
+
+#: src/Controllers/Setting.php:302
+msgid "Meta Boxes"
+msgstr "自訂區塊"
+
+#: src/Controllers/Setting.php:308
+msgid "HTML-to-Markdown"
+msgstr "HTML 轉換成 Markdown"
+
+#: src/Controllers/Setting.php:318
+msgid "Markdown Editor Switcher"
+msgstr "Markdown 編輯器"
+
+#: src/Controllers/Setting.php:329
+msgid ""
+"A remote image means that it is not a URL from your site. This option allows "
+"you to fetch remote images and save them into local folder."
+msgstr "遠端圖片指的並非網址來自您的網站。這個選項讓您抓取遠端圖片並儲存他們到本地資料夾。"
+
+#: src/Controllers/Setting.php:337
+msgid "Markdown Editor"
+msgstr "Markdown 編輯器"
+
+#: src/Controllers/Setting.php:342
+msgid "Live Preview"
+msgstr "即時預覽"
+
+#: src/Controllers/Setting.php:343
+msgid ""
+"Split editor into two panes to display a live preview when editing post."
+msgstr "將編輯器分割為兩個窗格以顯示即時預覽內容。"
+
+#: src/Controllers/Setting.php:351
+msgid "Sync Scrolling"
+msgstr "同步捲動"
+
+#: src/Controllers/Setting.php:352
+msgid "Synchronize scrolling of two editor panes by content."
+msgstr "在兩個編輯器窗格中同步捲動觀看內容。"
+
+#: src/Controllers/Setting.php:360
+msgid "HTML Decode"
+msgstr "HTML 解碼"
+
+#: src/Controllers/Setting.php:361
+msgid "Allow all HTML tags and attributes in the Markdown Editor."
+msgstr "在 Markdown 編輯器中開放使用全部 HTML 標籤及屬性。"
+
+#: src/Controllers/Setting.php:369 src/Controllers/Setting.php:524
+msgid "Line Number"
+msgstr "行號"
+
+#: src/Controllers/Setting.php:370
+msgid "Display line number in the Markdown Editor."
+msgstr "在 Markdown 編輯器中顯示行號。"
+
+#: src/Controllers/Setting.php:378
+msgid "Toolbar"
+msgstr "工具列"
+
+#: src/Controllers/Setting.php:379
+msgid "Choose a perferred style for the Editor's toolbar."
+msgstr "為編輯器工具列選取偏好的樣式。"
+
+#: src/Controllers/Setting.php:390
+msgid "Editing Area"
+msgstr "編輯區域"
+
+#: src/Controllers/Setting.php:391
+msgid "Choose a perferred style for the Editor's editing area."
+msgstr "為編輯器的編輯區選取偏好的樣式。"
+
+#: src/Controllers/Setting.php:487 src/Controllers/Setting.php:556
+msgid "Syntax Highlight"
+msgstr "啟用語法醒目提示"
+
+#: src/Controllers/Setting.php:490
+msgid "prism.js"
+msgstr "prism.js"
+
+#: src/Controllers/Setting.php:496
+msgid "Highligh the syntax in your code snippets by Prism.js"
+msgstr "啟用這項設定後，便能使用 Prism.js 為程式碼片段中的語法標示醒目提示。"
+
+#: src/Controllers/Setting.php:496 src/Controllers/Setting.php:565
+msgid "This option is not available if you choose another highlighter modules."
+msgstr "如果您選擇另一個語法高亮模組，這個選項無法使用。"
+
+#: src/Controllers/Setting.php:505 src/Controllers/Setting.php:574 
+#: src/Controllers/Setting.php:1117
+msgid "Theme"
+msgstr "佈景主題"
+
+#: src/Controllers/Setting.php:506 src/Controllers/Setting.php:575
+msgid "Choose a perferred theme for the syntax highlighter."
+msgstr "為語法醒目提示選取偏好的佈景主題。"
+
+#: src/Controllers/Setting.php:525
+msgid "Show line number in code area?"
+msgstr "設定是否顯示編輯區行號。"
+
+#: src/Controllers/Setting.php:534 src/Controllers/Setting.php:649 
+#: src/Controllers/Setting.php:687 src/Controllers/Setting.php:840 
+#: src/Controllers/Setting.php:878 src/Controllers/Setting.php:916 
+#: src/Controllers/Setting.php:954
+msgid "File Host"
+msgstr "檔案託管設定"
+
+#: src/Controllers/Setting.php:535 src/Controllers/Setting.php:650 
+#: src/Controllers/Setting.php:688 src/Controllers/Setting.php:841 
+#: src/Controllers/Setting.php:879 src/Controllers/Setting.php:917 
+#: src/Controllers/Setting.php:955
+msgid "Use this library with a CDN service or self-hosted (default)?"
+msgstr "設定使用託管於 CDN 服務或自主託管 (預設值) 的函式庫。"
+
+#: src/Controllers/Setting.php:547 src/Controllers/Setting.php:661 
+#: src/Controllers/Setting.php:853 src/Controllers/Setting.php:891 
+#: src/Controllers/Setting.php:929 src/Controllers/Setting.php:967
+msgid "Example"
+msgstr "範例"
+
+#: src/Controllers/Setting.php:559
+msgid "highlight.js"
+msgstr "highlight.js"
+
+#: src/Controllers/Setting.php:565
+msgid "Highligh the syntax in your code snippets by Highlight.js"
+msgstr "使用 Highlight.js 將您程式碼片段中的語法進行醒目效果。"
+
+#: src/Controllers/Setting.php:672
+msgid "Copy to Clipboard"
+msgstr "複製至剪貼簿"
+
+#: src/Controllers/Setting.php:673
+msgid "clipboard.js"
+msgstr "clipboard.js"
+
+#: src/Controllers/Setting.php:678
+msgid ""
+"Display a `Copy` button on the highlighting code block. Copy the text into "
+"clipboard by clicking the button."
+msgstr "在語法醒目提示區塊顯示 [複製] 按鈕，點擊這個按鈕便能將文字複製至剪貼簿。"
+
+#: src/Controllers/Setting.php:702
+msgid "Image Paste"
+msgstr "圖片隨貼"
+
+#: src/Controllers/Setting.php:717
+msgid "Storage Space"
+msgstr "儲存空間"
+
+#: src/Controllers/Setting.php:718
+msgid ""
+"Images are stored in WordPress's <strong>uploads</strong> folder by default. "
+"However, you can use Imgur instead of the default place."
+msgstr ""
+"圖片預設儲存在 WordPress 的 <strong>uploads</strong> 資料夾。網站管理員可以選擇使用 Imgur "
+"服務取代預設儲存位置。"
+
+#: src/Controllers/Setting.php:723 src/Controllers/Setting.php:805
+msgid "default"
+msgstr "預設"
+
+#: src/Controllers/Setting.php:724
+msgid "imgur.com"
+msgstr "imgur.com"
+
+#: src/Controllers/Setting.php:725
+msgid "sm.ms"
+msgstr "sm.ms"
+
+#: src/Controllers/Setting.php:731
+msgid "Imgur Client ID"
+msgstr "Imgur Client ID"
+
+#: src/Controllers/Setting.php:742
+msgid "sm.ms API Key"
+msgstr "sm.ms API 金鑰"
+
+#: src/Controllers/Setting.php:753
+msgid "Upload to Media Library?"
+msgstr "上傳至媒體庫"
+
+#: src/Controllers/Setting.php:764 src/Modules/Toc.php:46
+msgid "Table of Content"
+msgstr "目錄"
+
+#: src/Controllers/Setting.php:770
+msgid "Support Table of Content."
+msgstr "啟用這項設定後，便能為內容加上目錄。"
+
+#: src/Controllers/Setting.php:779
+msgid "Widget"
+msgstr "小工具"
+
+#: src/Controllers/Setting.php:780
+msgid "Display a TOC in the widget area for single post."
+msgstr "在單篇文章的小工具區域中顯示目錄。"
+
+#: src/Controllers/Setting.php:789
+msgid "Inside a Post"
+msgstr "內容區域"
+
+#: src/Controllers/Setting.php:790
+msgid "Insert a TOC inside a post header location."
+msgstr "在文章內容最前方插入目錄。"
+
+#: src/Controllers/Setting.php:799
+msgid "Float"
+msgstr "浮動顯示"
+
+#: src/Controllers/Setting.php:800
+msgid "Would you like to float the TOC in the post to left or right?"
+msgstr "設定目錄要浮動顯示於文章的左側或右側。"
+
+#: src/Controllers/Setting.php:806
+msgid "right"
+msgstr "右側"
+
+#: src/Controllers/Setting.php:807
+msgid "left"
+msgstr "左側"
+
+#: src/Controllers/Setting.php:813
+msgid "Border"
+msgstr "目錄框線"
+
+#: src/Controllers/Setting.php:814
+msgid "Would you like to show the border of the TOC in the post?"
+msgstr "設定顯示於文章內的目錄是否顯示框線。"
+
+#: src/Controllers/Setting.php:824
+msgid "KaTex"
+msgstr "KaTex"
+
+#: src/Controllers/Setting.php:825
+msgid "KaTex.js"
+msgstr "KaTex.js"
+
+#: src/Controllers/Setting.php:831
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"target=\"_blank\">KaTeX</a> math typesetting."
+msgstr ""
+"啟用這項設定後，便能使用 <a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"target=\"_blank\">KaTeX</a> 數學公式排版語法。"
+
+#: src/Controllers/Setting.php:862
+msgid "Mermaid"
+msgstr "Mermaid"
+
+#: src/Controllers/Setting.php:863
+msgid "mermaid.js"
+msgstr "mermaid.js"
+
+#: src/Controllers/Setting.php:869
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
+msgstr ""
+"啟用這項設定後，便能使用 <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"target=\"_blank\">Mermaid.js</a> 這種與 Markdown 類似的語法產生圖表。"
+
+#: src/Controllers/Setting.php:900
+msgid "Flow Chart"
+msgstr "流程圖"
+
+#: src/Controllers/Setting.php:901
+msgid "flowchart.js"
+msgstr "flowchart.js"
+
+#: src/Controllers/Setting.php:907
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
+msgstr ""
+"啟用這項設定後，便能使用 <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"target=\"_blank\">flowchart.js</a> 畫出簡易的 SVG 向量流程圖。"
+
+#: src/Controllers/Setting.php:938
+msgid "Sequence Diagrams"
+msgstr "順序圖表"
+
+#: src/Controllers/Setting.php:939
+msgid "sequence-diagrams.js"
+msgstr "sequence-diagrams.js"
+
+#: src/Controllers/Setting.php:945
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
+"sequence diagrams."
+msgstr ""
+"啟用這項設定後，便能使用 <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"target=\"_blank\">js-sequence-diagrams</a> 將文字轉換成向量 UML 順序圖表。"
+
+#: src/Controllers/Setting.php:978
+msgid "Markdown Extra"
+msgstr "Markdown Extra"
+
+#: src/Controllers/Setting.php:986
+msgid "GFM Task List"
+msgstr "GFM 工作清單"
+
+#: src/Controllers/Setting.php:987
+msgid "Support Github Flavored Markdown task lists."
+msgstr "啟用這項設定後，便能使用 Github Flavored Markdown (GFM) 的工作清單功能。"
+
+#: src/Controllers/Setting.php:999
+msgid "Githuber MD Extensions"
+msgstr "Githuber MD 擴充功能"
+
+#: src/Controllers/Setting.php:1005
+msgid "HTML5 Figure"
+msgstr "HTML5 Figure 標籤"
+
+#: src/Controllers/Setting.php:1014
+msgid "Inline Code Block with Keyboard Style"
+msgstr "使用內嵌程式碼區塊顯示鍵盤按鍵樣式"
+
+#: src/Controllers/Setting.php:1025
+msgid "Link Opening Method"
+msgstr "連結開啟方式"
+
+#: src/Controllers/Setting.php:1026
+msgid "For links in posts, please specify where to open the linked document."
+msgstr "這項設定能為文章中的連結設定開啟連結目標的方式。"
+
+#: src/Controllers/Setting.php:1030
+msgid "Same window. (default)"
+msgstr "在同一視窗開啟 (預設)"
+
+#: src/Controllers/Setting.php:1031
+msgid "New window."
+msgstr "在新視窗中開啟"
+
+#: src/Controllers/Setting.php:1037
+msgid "Shortcode"
+msgstr "短代碼"
+
+#: src/Controllers/Setting.php:1038
+msgid "Allow using shortcode in Markdown text."
+msgstr "允許在 Markdown 內文中使用短代碼。"
+
+#: src/Controllers/Setting.php:1038
+msgid ""
+"Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
+" therefore live-preview panel does not support it."
+msgstr "請瞭解短代碼是透過 PHP 處理成前端可檢視的 HTML 結果，而不是透過 JavaScript，因此短代碼的結果無法顯示於即時檢視面板。"
+
+#: src/Controllers/Setting.php:1045
+msgid "Smart Quotes"
+msgstr "智慧型引號"
+
+#: src/Controllers/Setting.php:1053
+msgid "Ampersands in URL"
+msgstr "網址中的連字號"
+
+#: src/Controllers/Setting.php:1054
+msgid "Replace `&amp;amp;` to `&` in URLs."
+msgstr "將網址中的 <code>&amp;amp;</code> 取代為 <code>&amp;</code>。"
+
+#: src/Controllers/Setting.php:1061
+msgid "Yoast SEO Analysis"
+msgstr "Yoast SEO 分析"
+
+#: src/Controllers/Setting.php:1062
+msgid "Support Yoast SEO readability analysis."
+msgstr "支援 Yoast SEO 可讀性分析。"
+
+#: src/Controllers/Setting.php:1069
+msgid "Clear all Settings"
+msgstr "清除全部設定"
+
+#: src/Controllers/Setting.php:1070
+msgid "Clear all settings when uninstalling WP GitHuber MD."
+msgstr "解除安裝 WP GitHuber MD 時一併清除這個外掛的全部設定。"
+
+#: src/Controllers/Setting.php:1077
+msgid "Decode Code Blocks"
+msgstr "解碼程式碼區塊"
+
+#: src/Controllers/Setting.php:1078
+#, php-format
+msgid ""
+"If you have met issues similar to issue #30, <a href=\"%s\" "
+"target=\"_blank\">#89</a>, try enabling this."
+msgstr ""
+"如果網站遇到類似 issue #30 或 <a href=\"%s\" target=\"_blank\">#89</a> 的問題，請啟用這項功能。"
+
+#: src/Controllers/Setting.php:1085
+msgid "Default: Rich Editor"
+msgstr "預設使用 RTF 編輯器"
+
+#: src/Controllers/Setting.php:1086
+msgid ""
+"Notice: Your users might be confused because that if they swith to Markdown "
+"editor and then switch back to Rich editor or Gutenberg, the Markdown text "
+"of that single post will be lost. That is because that Rich editor and "
+"Markdown editor use differnt fields to store data."
+msgstr ""
+"請注意，啟用這個功能後，由於 RTF 編輯器及 Markdown 編輯器使用不同的欄位儲存資料，因此當網站使用者切換至 Markdown "
+"編輯器然後再切換至 RTF 編輯器或 Gutenberg/區塊編輯器時，單篇文章的 Markdown 文字會消失，這個狀況或許會對他們產生困擾。"
+
+#: src/Controllers/Setting.php:1096
+msgid "Author"
+msgstr "作者"
+
+#: src/Controllers/Setting.php:1103
+msgid "Version"
+msgstr "版本"
+
+#: src/Controllers/Setting.php:1110
+msgid "GitHub Repository"
+msgstr "GitHub 存放庫"
+
+#: src/Controllers/Setting.php:1136
+msgid "WP Githuber MD "
+msgstr "WP Githuber MD "
+
+#. Plugin Name of the plugin
+#: src/Controllers/Setting.php:1137
+msgid "WP Githuber MD"
+msgstr "WP Githuber MD"
+
+#: src/Controllers/Setting.php:1173
+msgid "Settings"
+msgstr "設定"
+
+#: src/Controllers/Setting.php:1191
+msgid "View GitHub project"
+msgstr "檢視 GitHub 專案"
+
+#: src/Controllers/Setting.php:1192
+msgid "Report issues"
+msgstr "回報問題"
+
+#: src/Views/metabox/custom-media-library.php:17
+msgid "HTML"
+msgstr "HTML"
+
+#: src/Views/metabox/fetch-remote-image.php:24
+msgid "Fetch remote images and save them into local folder."
+msgstr "抓取遠端圖片並儲存到本地端的資料夾。"
+
+#: src/Views/metabox/html-to-markdown.php:18
+msgid ""
+"This is a tool that helps you easily convert an old post into Markdown. If "
+"you are not satisfied with the result, do not click <strong>Update</strong> "
+"button."
+msgstr ""
+"這個外掛能協助作者輕鬆將舊文章內容轉換成 Markdown 語法格式。如果對轉換結果不滿意，請勿點擊 <strong>[更新]</strong> 按鈕。"
+
+#: src/Views/metabox/html-to-markdown.php:23
+msgid "Strip tags"
+msgstr "移除標籤"
+
+#: src/Views/metabox/html-to-markdown.php:27 
+#: src/Views/metabox/html-to-markdown.php:38
+msgid "Yes"
+msgstr "是"
+
+#: src/Views/metabox/html-to-markdown.php:29 
+#: src/Views/metabox/html-to-markdown.php:40
+msgid "No"
+msgstr "否"
+
+#: src/Views/metabox/html-to-markdown.php:34
+msgid "Line break"
+msgstr "分行符號"
+
+#: src/Views/metabox/html-to-markdown.php:49
+msgid "Reload"
+msgstr "重新載入"
+
+#: src/Views/metabox/html-to-markdown.php:50
+msgid "Convert"
+msgstr "轉換"
+
+#: src/Views/setting/about-github-repo.php:15
+msgid ""
+"If you have any issues, or found any bugs, please report them in the "
+"following URL."
+msgstr "如果發現任何問題或程式碼錯誤，請透過下方連結回報。"
+
+#: src/Views/setting/about-github-repo.php:20
+#, php-format
+msgid ""
+"WP Githuber MD recommends you install %s to increase your website security."
+msgstr "WP Githuber MD 建議您安裝 %s 以增進您的網站安全性。"
+
+#: src/Views/setting/html-to-markdown.php:17
+msgid ""
+"Dsiplaying A <strong>HTML to Markdown</strong> helper widget beside Markdown "
+"editor that helps you convert an <strong>old post</strong> into Markdown. "
+"<br />It is just a <strong>preview</strong>, to let you know what the "
+"converted content looks like after converting to Markdown.<br /><br />Notice:"
+" Turning on this option will force to disable <strong>auto-save</strong>, "
+"prevents breaking your original content.<br />If you are not satisfied with "
+"the result, do not click <strong>Update</strong> button."
+msgstr ""
+"在 Markdown 編輯器旁邊顯示 <strong>[HTML 轉換成 Markdown]</strong> 協助程式區塊，以協助作者將<strong>"
+"舊文章</strong>轉換成 Markdown 語法。<br />這個區塊顯示的是<strong>預覽內容</strong>，讓作者瞭解轉換成 "
+"Markdown 語法後的內容呈現方式。<br /><br />請注意，啟用這項設定會強制停用<strong>自動儲存</strong>"
+"功能，避免對原始內容造成破壞。<br />如果對轉換結果不滿意，請勿點擊 <strong>[更新]</strong> 按鈕。"
+
+#: src/Views/setting/image-paste-imgur.php:17
+msgid ""
+"Required while the choosed storage space is <u>imgur.com</u>. If you don't "
+"have one, <a href=\"https://api.imgur.com/oauth2/addclient\" "
+"target=\"_blank\">sign up</a> here."
+msgstr ""
+"選取的儲存空間如為 <u>imgur.com</u>，這個欄位為必填。如果沒有 Imgur Client ID，請點擊<a href=\"https:"
+"//api.imgur.com/oauth2/addclient\" target=\"_blank\">這裡</a>進行申請。"
+
+#: src/Views/setting/image-paste-imgur.php:23
+msgid ""
+"Uploading images to Imgur is unavailable because that <strong>PHP "
+"CURL</strong> is not installed on your system."
+msgstr "由於系統並未安裝 <strong>PHP CURL</strong>功能，因此無法將圖片上傳至 Imgur。"
+
+#: src/Views/setting/image-paste-media-library.php:15
+msgid ""
+"This is Media Library that copy-paste images will be uploaded to, and "
+"generates different sizes of thumbnail."
+msgstr "啟用這項設定後，會將隨貼圖片上傳一份至這個網站的媒體庫，並產生不同尺寸的縮圖。"
+
+#: src/Views/setting/image-paste-media-library.php:17
+msgid ""
+"If you would like to simply copy and paste images into your article and "
+"don’t care about the image management, , please choose No."
+msgstr "如果想要將圖片很簡單的複製/貼上至文章中，且不想費心在圖片管理上，請選取 [否]。"
+
+#: src/Views/setting/image-paste-media-library.php:20
+msgid "Notice: This setting only works when Storage Space is set to `default`."
+msgstr "請注意，這項設定僅有 [儲存空間] 設定為 [預設] 時才會生效。"
+
+#: src/Views/setting/image-paste-smms.php:17
+msgid ""
+"Required while the choosed storage space is <u>sm.ms</u>. If you don't have "
+"one, <a href=\"https://sm.ms/home/apitoken\" target=\"_blank\">sign up</a> "
+"here."
+msgstr ""
+"選取的儲存空間如為 <u>sm.ms</u>，這個欄位為必填。如果沒有 API 金鑰，請點擊<a href=\"https://sm."
+"ms/home/apitoken\" target=\"_blank\">這裡</a>進行申請。"
+
+#: src/Views/setting/image-paste.php:17
+msgid ""
+"Easily <a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"target=\"_blank\">paste image from clipboard</a> directly into the post "
+"content."
+msgstr ""
+"啟用這項設定後，便能輕鬆<a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"target=\"_blank\">從剪貼簿直接將圖片貼上</a>至文章內容中。"
+
+#: src/Views/setting/markdown-editor-switcher.php:15
+msgid ""
+"This feature is for specific posts you don't want to use Markdown, allows "
+"you switch your Markdown editor to Rich editor (or Gutenberg)"
+msgstr ""
+"這項功能能在不需要使用 Markdown 語法功能的文章中，開放作者將 Markdown 編輯器切換為區塊編輯器 (或 Gutenberg)。"
+
+#: src/Views/setting/markdown-editor-switcher.php:16
+msgid ""
+"Be careful of using this feature - If you switch back to Rich editor then "
+"save, Markdown text will be cleared. "
+msgstr "請小心使用這項功能，如果切換回區塊編輯器並進行儲存，Markdown 語法便會遭到清除。"
+
+#: src/Views/setting/markdown-extra.php:17
+msgid ""
+"Support <a href=\"https://michelf.ca/projects/php-markdown/extra/\" "
+"target=\"_blank\">Markdown Extra</a>."
+msgstr ""
+"啟用這項設定後，便能使用 <a href=\"https://michelf.ca/projects/php-markdown/extra/\" "
+"target=\"_blank\">Markdown Extra</a>。"
+
+#: src/Views/setting/markdown-extra.php:23 
+#: src/Views/message/php-libxml-warning.php:18
+msgid ""
+"Markdown Extra parser requires PHP module <strong>libxml</strong> and your "
+"system does not have <strong>libxml</strong> installed. Please disable "
+"Markdown Extra."
+msgstr ""
+"Markdown Extra 剖析器需要 PHP <strong>libxml</strong> 擴充模組，但目前的主機並未安裝 <strong>"
+"libxml</strong> 擴充模組。請將 Markdown Extra 功能予以停用。"
+
+#: src/Views/setting/smart-quotes.php:15
+msgid ""
+"This is WordPress default, you should not turn it off unless you know what "
+"you do."
+msgstr "這項功能為 WordPress 預設功能。除非確實瞭解停用這項功能的影響，否則請<strong>不要停用</strong>這項功能。"
+
+#: src/Views/setting/smart-quotes.php:16
+msgid "(detail)"
+msgstr "(詳細資料)"
+
+#: src/Views/setting/theme-description.php:20
+msgid ""
+"Mynote is a WordPress theme built for developer. Click <a href=\"https:"
+"//wordpress.org/themes/mynote/\" target=\"_blank\">here</a> to download it "
+"from WordPress theme dictionary."
+msgstr ""
+"Mynote 是一款專為開發者設計的 WordPress 佈景主題，點擊<a href=\"https://wordpress."
+"org/themes/mynote/\" target=\"_blank\">這裡</a>便能從 WordPress 佈景主題目錄下載。"
+
+#: src/Views/message/php-mbstring-warning.php:18
+msgid ""
+"Markdown parser requires PHP module <strong>mbstring</strong> and your "
+"system does not have <strong>mbstring</strong> installed. Please ask for "
+"your web hosting provider to help you."
+msgstr ""
+"Markdown 剖析器需要 PHP <strong>mbstring</strong> 擴充模組，但目前的主機並未安裝 <strong>"
+"mbstring</strong> 擴充模組。請洽詢這個網站的主機服務提供商提供協助。"
+
+#: src/Views/message/php-version-warning.php:18
+#, php-format
+msgid ""
+"The minimum required PHP version for WP Githuber MD is PHP <strong>5.3."
+"6</strong>, and yours is <strong>%1s</strong>."
+msgstr ""
+"WP Githuber MD 的 PHP 最低版本版本為 PHP <strong>5.3.6</strong>，而這個網站使用的版本為 <strong>"
+"%1s</strong>。"
+
+#: src/Views/message/php-version-warning.php:19
+msgid "Please remove WP Githuber MD or upgrade your PHP version."
+msgstr "請移除 WP Githuber MD 或升級這個網站的 PHP 版本。"
+
+#: src/Views/example/flowchart.php:29 src/Views/example/highlight-js.php:26 
+#: src/Views/example/katex.php:24 src/Views/example/mermaid.php:32 
+#: src/Views/example/prism.php:26 src/Views/example/sequence.php:24
+msgid "Block identification code:"
+msgstr "區塊識別代碼:"
+
+#: src/Views/example/flowchart.php:30 src/Views/example/gfm-task-list.php:22 
+#: src/Views/example/inline-code-keyboard-style.php:25 
+#: src/Views/example/katex.php:33 src/Views/example/mermaid.php:33 
+#: src/Views/example/sequence.php:25
+msgid "The Markdown text above will be rendered to:"
+msgstr "上方 Markdown 文字轉譯結果:"
+
+#: src/Views/example/highlight-js.php:14 src/Views/example/prism.php:14
+msgid ""
+"If you switch to another highlighter moudle, you have to update every your "
+"post to take effect.<br />Because only the language files defined in the "
+"code block will be loaded, not all fat packed file."
+msgstr "如果您切換至另一個語法高亮模組，您必須更新每篇文章來生效。<br />因為只有定義在程式碼區塊的程式語言檔案會被讀取，而不是整包肥胖的檔案。"
+
+#: src/Views/example/highlight-js.php:28 src/Views/example/prism.php:28
+msgid "Check out this page to view full list."
+msgstr "前往說明頁面檢視完整清單"
+
+#: src/Views/example/html5-figure.php:22
+msgid "The Markdown text above will be transformed to:"
+msgstr "上方 Markdown 文字轉換結果:"
+
+#: src/Views/example/katex.php:15
+msgid "KaTeX block:"
+msgstr "KaTeX 區塊:"
+
+#: src/Views/example/katex.php:25
+msgid "KaTeX inline:"
+msgstr "KaTeX 內嵌:"
+
+#: src/wp_utilities/class-widget-toc.php:25
+msgid ""
+"Add a Table of Content for your article. This widget is for single-post "
+"pages only."
+msgstr "為內容加入目錄。這個小工具僅適用於單篇文章。"
+
+#: src/wp_utilities/class-widget-toc.php:29
+msgid "Githuber MD: TOC"
+msgstr "Githuber MD: 目錄"
+
+#. Description of the plugin
+msgid "An all-in-one Markdown plugin for your WordPress sites."
+msgstr "一個為 WordPress 網站提供全功能 Markdown 語法的外掛。"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/terrylinooo/githuber-md"
+msgstr "https://github.com/terrylinooo/githuber-md"
+
+#. Author of the plugin
+msgid "Terry Lin"
+msgstr "Terry Lin"
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr "https://terryl.in/"

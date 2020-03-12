@@ -7,7 +7,7 @@
  *
  * @package Githuber
  * @since 1.0.1
- * @version 1.6.1
+ * @version 1.12.2
  */
 
 namespace Githuber\Controller;
@@ -227,8 +227,6 @@ class ImagePaste extends ControllerAbstract {
 	 * @param string $filename  Filename.
 	 * @return array Response from sm.ms image API.
 	 */
-
-	 /*
 	public function upload_to_smms_v1( $image, $filename ) {
 		$image     = curl_file_create( $image, 'image/png', $filename );
 		$post_data = array( 'smfile' => $image );
@@ -249,5 +247,4 @@ class ImagePaste extends ControllerAbstract {
 
 		return json_decode( $result, true );
 	}
-	*/
 }
