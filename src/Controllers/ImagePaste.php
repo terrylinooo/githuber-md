@@ -73,6 +73,7 @@ class ImagePaste extends ControllerAbstract {
 		if ( isset( $_FILES['file'], $_GET['_wpnonce'], $_GET['post_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'image_paste_action_' . $_GET['post_id'] ) && current_user_can( 'edit_post', $_GET['post_id'] ) ) {
 			$image_src        = githuber_get_option( 'image_paste_src', 'githuber_modules' );
 			$imgur_client_id  = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
+			$smms_api_key     = githuber_get_option( 'smms_api_key', 'githuber_modules' );
 			$is_media_library = githuber_get_option( 'is_image_paste_media_library', 'githuber_modules' );
 
 			$file = $_FILES['file'];
@@ -106,12 +107,12 @@ class ImagePaste extends ControllerAbstract {
 					$image    = $file['tmp_name'];
 					$filename = uniqid() . '.png';
 
-					$data  = $this->upload_to_smms( $image, $filename );
+					$data  = $this->upload_to_smms( $image, $filename, $smms_api_key );
 
 					if ( 'success' === $data['code'] ) {
 						$response['filename'] = $data['data']['url'];
 					} else {
-						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'sm.ms' );
+						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'sm.mse' ) . '(' . json_encode($data) . ')';
 
 						if ( ! empty( $data['msg'] ) ) {
 							$response['error'] .= $data['msg'];
@@ -186,13 +187,49 @@ class ImagePaste extends ControllerAbstract {
 	}
 
 	/**
-	 * Upload images to sm.ms 
+	 * Upload images to sm.ms (v2 API)
+	 * 
+	 * @param string $image     Image binary string.
+	 * @param string $filename  Filename.
+	 * @param string $api_key   sm.ms API key (required since v2 API.)
+	 * @return array Response from sm.ms image API.
+	 */
+	public function upload_to_smms( $image, $filename, $api_key ) {
+		$image     = curl_file_create( $image, 'image/png', $filename );
+		$post_data = array( 'smfile' => $image );
+
+		$ch = curl_init();
+
+		curl_setopt( $ch, CURLOPT_URL, 'https://sm.ms/api/v2/upload' );
+		curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)' );
+		curl_setopt( $ch, CURLOPT_POST, 1 );
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $post_data );
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
+
+		$header[] = 'Content-Type: multipart/form-data';
+    	$header[] = 'Authorization: ' . $api_key;
+
+    	curl_setopt( $ch, CURLOPT_HTTPHEADER, $header );
+		
+		$result = curl_exec( $ch );
+		curl_close( $ch );
+
+		return json_decode( $result, true );
+	}
+
+	/**
+	 * Upload images to sm.ms (deprecated)
 	 * 
 	 * @param string $image     Image binary string.
 	 * @param string $filename  Filename.
 	 * @return array Response from sm.ms image API.
 	 */
-	public function upload_to_smms( $image, $filename ) {
+
+	 /*
+	public function upload_to_smms_v1( $image, $filename ) {
 		$image     = curl_file_create( $image, 'image/png', $filename );
 		$post_data = array( 'smfile' => $image );
 
@@ -212,4 +249,5 @@ class ImagePaste extends ControllerAbstract {
 
 		return json_decode( $result, true );
 	}
+	*/
 }

@@ -764,6 +764,17 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+                    'name'              => 'smms_api_key',
+					'label'             => __( 'sm.ms API Key', 'wp-githuber-md' ),
+					'desc'              => githuber_load_view( 'setting/image-paste-smms' ),
+                    'placeholder'       => '',
+                    'type'              => 'text',
+					'default'           => '',
+					'parent'            => 'support_image_paste',
+                    'sanitize_callback' => 'sanitize_text_field',
+				),
+
+				array(
                     'name'    => 'is_image_paste_media_library',
 					'label'   => __( 'Upload to Media Library?', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'setting/image-paste-media-library' ),
