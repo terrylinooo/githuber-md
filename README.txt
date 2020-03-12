@@ -31,7 +31,7 @@ The Video shows you the following steps:
 2. Parse the Markdown to HTML, save the parsed HTML content into `wp_posts`.`post_content`.
 
 This plugin will detect your Markdown content and decide what scripts will be loaded, to avoid loading unnecessary scripts.
-For example, if you enabled `Syntax highlight`, you have to update your post again to take effects.
+For example, if you enabled Syntax highlight, you have to update your post again to take effects.
 
 == Suggestions ==
 
@@ -40,7 +40,7 @@ The better situation to use this plugin is you just started a new blog.
 If you're planning to use this plugin in an existing blog, be sure to:
 
 - Turn off other Markdown plugins, because the similar plugins might do the same things when submitting your posts, may have some syntax conversion issues between Markdown and HTML.
-- My personal suggestion is to turn off `revision` and `auto-save`, there are options in setting page.
+- My suggestion is to turn off revision and auto-save, there are options in setting page.
 
 == Installation ==
 
@@ -93,7 +93,7 @@ Simplified Chinese (zh_CN)
 
 == Copyright ==
 
-WP Githuber MD, Copyright 2018 TerryL.in
+WP Githuber MD, Copyright 2018-2020 TerryL.in
 WP Githuber MD is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
@@ -327,6 +327,12 @@ GNU General Public License for more details.
 = 1.12.1
 
 - Move settings to the option submenu.
+
+= 1.12.2
+
+- Fix issue #144 - Deregistering `autosave` script gives error. (Fixed by alpipego. Thanks for contributing.)
+- Fix issue #143 - Unable to upload images to sm.ms. (The v1 API is deprecated.)
+- Fix issue #147 - Update CodeMirror themes.
 
 == Upgrade Notice ==
 
