@@ -97,7 +97,7 @@ class Toc extends ModuleAbstract {
 			$script .= '
 				$("#md-post-toc").initTOC({
 					selector: "h2, h3, h4, h5, h6",
-					scope: ".post",
+					scope: ".post-content",
 				});
 
 				$("#md-post-toc a").click(function(e) {
