@@ -47,6 +47,7 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_SEQUENCE  = '_is_githuber_sequence';
 	const MD_POST_META_FLOW      = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX     = '_is_githuber_katex';
+	const MD_POST_META_MATHJAX   = '_is_githuber_mathjax';
 	const MD_POST_META_MERMAID   = '_is_githuber_mermaid';
 
 	const JETPACK_MD_POST_META   = '_wpcom_is_markdown';
@@ -127,6 +128,10 @@ class Markdown extends ControllerAbstract {
 
 		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
 			$this->is_support_mermaid = true;
+		}
+
+		if ( 'yes' === githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) {
+			$this->is_support_mathjax = true;
 		}
 
 		// Load TOC widget. //
@@ -418,6 +423,7 @@ class Markdown extends ControllerAbstract {
 		$is_flowchart = false;
 		$is_mermaid   = false;
 		$is_katex     = false;
+		$is_mathjax   = false;
 
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
 
@@ -456,6 +462,10 @@ class Markdown extends ControllerAbstract {
 
 				if ( 'katex' === $match ) {
 					$is_katex = true;
+				}
+
+				if ( 'mathjax' === $match ) {
+					$is_mathjax = true;
 				}
 			}
 		} 
@@ -504,6 +514,12 @@ class Markdown extends ControllerAbstract {
 			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, true );
 		} else {
 			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, false );
+		}
+
+		if ( $this->is_support_mathjax && $is_mathjax ) {
+			update_metadata( 'post', $post_id, self::MD_POST_META_MATHJAX, true );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_MATHJAX, false );
 		}
 	}
 
