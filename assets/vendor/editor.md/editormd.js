@@ -611,6 +611,7 @@
 
             if (settings.mathJax) {
                 console.log('MathJax is loadded.');
+                //
                 editormd.loadScript(loadPath + "../../mathjax/MathJax");
             }
 
@@ -1583,58 +1584,68 @@
 
                 if ($('.mathjax').length < 1) {
                     console.log('mathjax string not found.');
+                } else {
+                    setTimeout(function() {
+
+                        var c = $('.mathjax').length;
+    
+                        $('.mathjax').each(function(i) {
+
+                            $(this).attr('id', 'mathjax-element-' + i);
+    
+                            if (i + 1 === c) {
+    
+                                console.log('Render MathJax. (processing)');
+    
+                                MathJax.Hub.Config({
+                                    showProcessingMessages: false,
+                                    messageStyle: "none",
+                                    extensions: [
+                                        "tex2jax.js",
+                                        "TeX/mediawiki-texvc.js",
+                                        "TeX/noUndefined.js",
+                                        "TeX/autoload-all.js",
+                                        "TeX/AMSmath.js",
+                                        "TeX/AMSsymbols.js"
+                                    ],
+                                    jax: [
+                                        "input/TeX",
+                                        "output/SVG"
+                                    ],
+                                    elements: document.getElementsByClassName("mathjax"),
+                                    tex2jax: {
+                                        skipTags: [
+                                            "script",
+                                            "noscript",
+                                            "style",
+                                            "textarea"
+                                        ],
+                                        processClass: "mathjax"
+                                    },
+                                    processEscapes: true,
+                                    preview: "none"
+                                });
+
+                                
+
+                                $('.mathjax').each(function(i) {
+                                    console.log('mathjax-element-' + i);
+                                    
+                                    MathJax.Hub.Queue(
+                                        ["Typeset", MathJax.Hub, 'mathjax-element-' + i]
+                                    );
+                                });
+
+
+                                //MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                                
+    
+                                console.log('Render MathJax. (after)');
+                            }
+                        });   
+                    }, 100); 
+
                 }
-
-                setTimeout(function() {
-
-                    var c = $('.mathjax').length;
-
-                    $('.mathjax').each(function(i) {
-
-                        if (i + 1 === c) {
-
-                            console.log('Render MathJax. (processing)');
-
-                            MathJax.Hub.Config({
-                                showProcessingMessages: false,
-                                messageStyle: "none",
-                                extensions: [
-                                    "tex2jax.js",
-                                    "TeX/mediawiki-texvc.js",
-                                    "TeX/noUndefined.js",
-                                    "TeX/autoload-all.js",
-                                    "TeX/AMSmath.js",
-                                    "TeX/AMSsymbols.js"
-                                ],
-                                jax: [
-                                    "input/TeX",
-                                    "output/SVG"
-                                ],
-                                elements: document.getElementsByClassName("mathjax"),
-                                tex2jax: {
-                                    skipTags: [
-                                        "script",
-                                        "noscript",
-                                        "style",
-                                        "textarea"
-                                    ],
-                                    inlineMath: [
-                                        ["$", "$"]
-                                    ],
-                                    displayMath: [
-                                        ["$$", "$$"]
-                                    ],
-                                    processClass: "mathjax",
-                                    ignoreClass: ""
-                                }
-                            });
-
-                            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-
-                            console.log('Render MathJax. (after)');
-                        }
-                    });   
-                }, 100); 
             }
         },
 
@@ -3773,7 +3784,7 @@
                 return "<div class=\"mermaid\">" + code + "</div>";
             } else if (lang === "mathjax") {
                 return "<div class=\"mathjax\">$$\n" + code + "\n$$</div>";
-            } else if (lang === "math" || lang === "latex" || lang === "katex") {
+            } else if (lang === "latex" || lang === "katex") {
                 return "<p class=\"" + editormd.classNames.tex + "\">" + code + "</p>";
             } else {
                 return marked.Renderer.prototype.code.apply(this, arguments);
