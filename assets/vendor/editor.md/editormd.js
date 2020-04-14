@@ -1574,7 +1574,7 @@
 
         mathJaxRender: function() {
 
-            console.log('Render MathJax. (before)');
+            //console.log('Render MathJax. (before)');
 
             if (typeof MathJax === 'undefined') {
                 console.log('MathJax is undefined.');
@@ -1595,38 +1595,11 @@
     
                             if (i + 1 === c) {
     
-                                console.log('Render MathJax. (processing)');
+                                //console.log('Render MathJax. (processing)');
     
-                                MathJax.Hub.Config({
-                                    showProcessingMessages: false,
-                                    messageStyle: "none",
-                                    extensions: [
-                                        "tex2jax.js",
-                                        "TeX/mediawiki-texvc.js",
-                                        "TeX/noUndefined.js",
-                                        "TeX/autoload-all.js",
-                                        "TeX/AMSmath.js",
-                                        "TeX/AMSsymbols.js"
-                                    ],
-                                    jax: [
-                                        "input/TeX",
-                                        "output/SVG"
-                                    ],
-                                    elements: document.getElementsByClassName("mathjax"),
-                                    tex2jax: {
-                                        skipTags: [
-                                            "script",
-                                            "noscript",
-                                            "style",
-                                            "textarea"
-                                        ],
-                                        processClass: "mathjax"
-                                    },
-                                    processEscapes: true,
-                                    preview: "none"
-                                });
+                               
 
-                                
+                                /*
 
                                 $('.mathjax').each(function(i) {
                                     console.log('mathjax-element-' + i);
@@ -1634,13 +1607,12 @@
                                     MathJax.Hub.Queue(
                                         ["Typeset", MathJax.Hub, 'mathjax-element-' + i]
                                     );
-                                });
+                                }); 
 
-
-                                //MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                                */
+                                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
                                 
-    
-                                console.log('Render MathJax. (after)');
+                                //console.log('Render MathJax. (after)');
                             }
                         });   
                     }, 100); 
