@@ -16,7 +16,7 @@ namespace Githuber\Module;
 class MathJax extends ModuleAbstract {
 
 	/**
-	 * The version of KaTeX we are using.
+	 * The version of MathJax we are using.
 	 *
 	 * @var string
 	 */
@@ -110,24 +110,56 @@ class MathJax extends ModuleAbstract {
                                     jax: [
                                         "input/TeX",
                                         "output/SVG"
-                                    ],
+									],
+									inlineMath: [
+										[\'$\', \'$\']
+									],
+									displayMath: [
+										[\'$$\', \'$$\']
+									],
                                     elements: document.getElementsByClassName("language-mathjax"),
                                     tex2jax: {
-                                        processClass: "language-mathjax|inline-mathjax"
+                                        processClass: "language-mathjax"
                                     }
                                 });
-                                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                                $(".language-mathjax").closest("pre").attr("style", "background: transparent");
+								MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+								$(".language-mathjax").attr("style", "background: transparent; border: 0;");
+                                $(".language-mathjax").closest("pre").attr("style", "background: transparent; border: 0;");
                             } else {
-                                console.log("MathJax code blocks not found.");
+                                console.log("[wp-githuber-md] MathJax code blocks not found.");
                             }
                         } else {
-                            console.log("MathJax is not loadded");
+                            console.log("[wp-githuber-md] MathJax is not loadded.");
                         }  
                     });
                 })(jQuery);
             </script>
 		';
 		echo preg_replace( '/\s+/', ' ', $script );
+	}
+
+	/**
+	 * MathJax Inline Markup
+	 * 
+	 * Ex.
+	 * `$ x_{1,2} = {-b\pm\sqrt{b^2 - 4ac} \over 2a}. $`
+	 *
+	 * @param string  $content HTML or Markdown content.
+	 * @return void
+	 */
+	public static function mathjax_inline_markup( $content ) {
+
+		$regex = '%<code>\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$<\/code>%ix';
+		$content = preg_replace_callback( $regex, function() {
+			$matches = func_get_arg(0);
+
+			if ( ! empty( $matches[1] ) ) {
+				$mathjax = $matches[1];
+				$mathjax = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $mathjax );
+				return '<code class="mathjax-inline language-mathjax">$$ ' . trim( $mathjax ) . ' $$</code>';
+			}
+		}, $content );
+
+		return $content;
 	}
 }
