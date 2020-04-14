@@ -129,6 +129,12 @@ class Githuber {
 			$module_highlight->init();
 		}
 
+		// Module Name: MathJax
+		if ( 'yes' === githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) {
+			$module_mathjax = new Module\MathJax();
+			$module_mathjax->init();
+		}
+
 		// Replace `&amp;` to `&` in URLs in post content.
 		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
 			$module_toc = new Module\Toc();
@@ -337,6 +343,14 @@ class Githuber {
 				}
 				.md-widget-toc ol ul ol, .md-widget-toc ol ol ol, .md-post-toc ol ul ol, .md-post-toc ol ol ol {
 					list-style-type: lower-alpha;
+				}
+			';
+		}
+
+		if ( 'yes' == githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) {
+			$custom_css .= '
+				.post pre code script, .language-mathjax ~ .copy-button {
+					display: none !important;
 				}
 			';
 		}

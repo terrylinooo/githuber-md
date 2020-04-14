@@ -609,6 +609,12 @@
                 });
             }
 
+            if (settings.mathJax) {
+                console.log('MathJax is loadded.');
+                //
+                editormd.loadScript(loadPath + "../../mathjax/MathJax");
+            }
+
             return this;
         },
         
@@ -1508,10 +1514,35 @@
                     previewContainer.find("pre").addClass("prettyprint");
                 }
 
-                if (typeof prettyPrint !== "undefined")
-                {                    
-                    prettyPrint();
-                }
+                var preCount = previewContainer.find("pre").length;
+
+                previewContainer.find("pre").each(function(i) {
+                    var codeObj = $(this).find('code');
+
+                    if (
+                        codeObj.hasClass('language-mathjax') || 
+                        codeObj.hasClass('language-katex') || 
+                        codeObj.hasClass('language-flowchart') || 
+                        codeObj.hasClass('language-flow') || 
+                        codeObj.hasClass('language-mermaid') || 
+                        codeObj.hasClass('language-seq') || 
+                        codeObj.hasClass('language-sequence')
+                    ) {
+                        $(this).removeClass('prettyprint');
+                        $(this).removeClass('linenums');
+                    }
+
+                    if (codeObj.hasClass('language-mathjax')) {
+                        codeObj.html('$$' + "\n" + codeObj.html() + "\n" + '$$');
+                    }
+
+                    if (i + 1 === preCount) {
+                        if (typeof prettyPrint !== "undefined")
+                        {                    
+                            prettyPrint();
+                        }
+                    }
+                });
             }
 
             return this;
@@ -1540,7 +1571,56 @@
 
             return this;
         },
-        
+
+        mathJaxRender: function() {
+
+            //console.log('Render MathJax. (before)');
+
+            if (typeof MathJax === 'undefined') {
+                console.log('MathJax is undefined.');
+            }
+
+            if (window.MathJax) {
+
+                if ($('.mathjax').length < 1) {
+                    console.log('mathjax string not found.');
+                } else {
+                    setTimeout(function() {
+
+                        var c = $('.mathjax').length;
+    
+                        $('.mathjax').each(function(i) {
+
+                            $(this).attr('id', 'mathjax-element-' + i);
+    
+                            if (i + 1 === c) {
+    
+                                //console.log('Render MathJax. (processing)');
+    
+                               
+
+                                /*
+
+                                $('.mathjax').each(function(i) {
+                                    console.log('mathjax-element-' + i);
+                                    
+                                    MathJax.Hub.Queue(
+                                        ["Typeset", MathJax.Hub, 'mathjax-element-' + i]
+                                    );
+                                }); 
+
+                                */
+                                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                                
+                                //console.log('Render MathJax. (after)');
+                            }
+                        });   
+                    }, 100); 
+
+                }
+            }
+        },
+
         /**
          * 解析和渲染流程图及时序图
          * FlowChart and SequenceDiagram Renderer
@@ -2119,6 +2199,11 @@
                         }
                         mermaid_counter++;
                     }
+                }
+                if (settings.mathJax) {
+                
+                    editormd.loadMathJax();
+                    this.mathJaxRender();
                 }
                 if (settings.flowChart || settings.sequenceDiagram)
                 {
@@ -3436,6 +3521,7 @@
             tex                  : false,          // TeX(LaTeX), based on KaTeX
             flowChart            : false,          // flowChart.js only support IE9+
             mermaid              : false,
+            mathJax              : false,
             sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
         };
         
@@ -3662,25 +3748,17 @@
 
         markedRenderer.code = function (code, lang, escaped) { 
 
-            if (lang === "seq" || lang === "sequence")
-            {
+            if (lang === "seq" || lang === "sequence") {
                 return "<div class=\"sequence-diagram\">" + code + "</div>";
-            } 
-            else if ( lang === "flow")
-            {
+            }  else if (lang === "flow" || lang === "flowchart") {
                 return "<div class=\"flowchart\">" + code + "</div>";
-            } 
-            else if ( lang === "mermaid")
-            {
+            } else if (lang === "mermaid") {
                 return "<div class=\"mermaid\">" + code + "</div>";
-            } 
-            else if ( lang === "math" || lang === "latex" || lang === "katex")
-            {
+            } else if (lang === "mathjax") {
+                return "<div class=\"mathjax\">$$\n" + code + "\n$$</div>";
+            } else if (lang === "latex" || lang === "katex") {
                 return "<p class=\"" + editormd.classNames.tex + "\">" + code + "</p>";
-            } 
-            else 
-            {
-
+            } else {
                 return marked.Renderer.prototype.code.apply(this, arguments);
             }
         };
@@ -3928,179 +4006,6 @@
         return html;
     };
     
-    /**
-     * 将Markdown文档解析为HTML用于前台显示
-     * Parse Markdown to HTML for Font-end preview.
-     * 
-     * @param   {String}   id            用于显示HTML的对象ID
-     * @param   {Object}   [options={}]  配置选项，可选
-     * @returns {Object}   div           返回jQuery对象元素
-     */
-    
-    editormd.markdownToHTML = function(id, options) {
-        var defaults = {
-            gfm                  : true,
-            toc                  : true,
-            tocm                 : false,
-            tocStartLevel        : 1,
-            tocTitle             : "目录",
-            tocDropdown          : false,
-            imagePasteCallback   : "",
-            tocContainer         : "",
-            markdown             : "",
-            markdownSourceCode   : false,
-            htmlDecode           : false,
-            autoLoadKaTeX        : true,
-            pageBreak            : true,
-            atLink               : true,    // for @link
-            emailLink            : true,    // for mail address auto link
-            tex                  : false,
-            taskList             : false,   // Github Flavored Markdown task lists
-            emoji                : false,
-            flowChart            : false,
-            mermaid              : false,
-            sequenceDiagram      : false,
-            previewCodeHighlight : true,
-        };
-        
-        editormd.$marked  = marked;
-
-        var div           = $("#" + id);
-        var settings      = div.settings = $.extend(true, defaults, options || {});
-        var saveTo        = div.find("textarea");
-        
-        if (saveTo.length < 1)
-        {
-            div.append("<textarea></textarea>");
-            saveTo        = div.find("textarea");
-        }        
-        
-        var markdownDoc   = (settings.markdown === "") ? saveTo.val() : settings.markdown; 
-        var markdownToC   = [];
-
-        var rendererOptions = {  
-            toc                  : settings.toc,
-            tocm                 : settings.tocm,
-            tocStartLevel        : settings.tocStartLevel,
-            taskList             : settings.taskList,
-            emoji                : settings.emoji,
-            tex                  : settings.tex,
-            pageBreak            : settings.pageBreak,
-            atLink               : settings.atLink,           // for @link
-            emailLink            : settings.emailLink,        // for mail address auto link
-            flowChart            : settings.flowChart,
-            mermaid              : settings.mermaid,
-            sequenceDiagram      : settings.sequenceDiagram,
-            previewCodeHighlight : settings.previewCodeHighlight,
-            previewCodeLineNumber: settings.previewCodeLineNumber,
-        };
-
-        var markedOptions = {
-            renderer    : editormd.markedRenderer(markdownToC, rendererOptions),
-            gfm         : settings.gfm,
-            tables      : true,
-            breaks      : true,
-            pedantic    : false,
-            sanitize    : (settings.htmlDecode) ? false : true, // 是否忽略HTML标签，即是否开启HTML标签解析，为了安全性，默认不开启
-            smartLists  : true,
-            smartypants : true
-        };
-        
-		markdownDoc = new String(markdownDoc);
-        
-        var markdownParsed = marked(markdownDoc, markedOptions);
-        
-        markdownParsed = editormd.filterHTMLTags(markdownParsed, settings.htmlDecode);
-        
-        if (settings.markdownSourceCode) {
-            saveTo.text(markdownDoc);
-        } else {
-            saveTo.remove();
-        }
-        
-        div.addClass("markdown-body " + this.classPrefix + "html-preview").append(markdownParsed);
-        
-        var tocContainer = (settings.tocContainer !== "") ? $(settings.tocContainer) : div;
-        
-        if (settings.tocContainer !== "")
-        {
-            tocContainer.attr("previewContainer", false);
-        }
-         
-        if (settings.toc) 
-        {
-            div.tocContainer = this.markdownToCRenderer(markdownToC, tocContainer, settings.tocDropdown, settings.tocStartLevel);
-            
-            if (settings.tocDropdown || div.find("." + this.classPrefix + "toc-menu").length > 0)
-            {
-                this.tocDropdownMenu(div, settings.tocTitle);
-            }
-            
-            if (settings.tocContainer !== "")
-            {
-                div.find(".editormd-toc-menu, .editormd-markdown-toc").remove();
-            }
-        }
-            
-        if (settings.previewCodeHighlight) 
-        {
-            if (settings.previewCodeLineNumber) {
-                div.find("pre").addClass("prettyprint linenums");
-            } else {
-                div.find("pre").addClass("prettyprint");
-            }
-            prettyPrint();
-        }
-        
-        if (!editormd.isIE8) 
-        {
-            if (settings.flowChart) {
-                div.find(".flowchart").flowChart(); 
-            }
-
-            if (settings.sequenceDiagram) {
-                div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
-            }
-        }
-
-        if (settings.mermaid) {
-            if (typeof mermaid !== "undefined") {
-                console.log('eee');
-               mermaid.init();
-            }
-        }
-
-        if (settings.tex)
-        {
-            var katexHandle = function() {
-                div.find("." + editormd.classNames.tex).each(function(){
-                    var tex  = $(this);                    
-                    katex.render(tex.html().replace(/&lt;/g, "<").replace(/&gt;/g, ">"), tex[0]);                    
-                    tex.find(".katex").css("font-size", "1.6em");
-                });
-            };
-            
-            if (settings.autoLoadKaTeX && !editormd.$katex && !editormd.kaTeXLoaded)
-            {
-                this.loadKaTeX(function() {
-                    editormd.$katex      = katex;
-                    editormd.kaTeXLoaded = true;
-                    katexHandle();
-                });
-            }
-            else
-            {
-                katexHandle();
-            }
-        }
-        
-        div.getMarkdown = function() {            
-            return saveTo.val();
-        };
-        
-        return div;
-    };
-    
     // Editor.md themes, change toolbar themes etc.
     // added @1.5.0
     editormd.themes        = ["default", "dark"];
@@ -4250,6 +4155,20 @@
         editormd.loadCSS(loadPath + "../../katex/katex.min", function(){
             editormd.loadScript(loadPath + "../../katex/katex.min", callback || function(){});
         });
+    };
+
+    editormd.mathJaxLoaded = false;
+    
+    /**
+     * 加载KaTeX文件
+     * load KaTeX files
+     * 
+     * @param {Function} [callback=function()]  加载成功后执行的回调函数
+     */
+    
+    editormd.loadMathJax = function (callback) {
+        var loadPath = window.editormd_config.editor_modules_url;
+        editormd.loadScript(loadPath + "../../mathjax/MathJax");
     };
         
     /**

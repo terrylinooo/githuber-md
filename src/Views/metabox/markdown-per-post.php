@@ -32,4 +32,38 @@ if ( ! isset( $markdown_this_post_choice ) ) {
 	</div>
 </div>
 
+<?php if ( 'yes' == githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) : ?>
+<!-- BEGIN - This section is a templete for MathJax module -->
+<script type="text/x-mathjax-config"> 
+	MathJax.Hub.Config({
+		showProcessingMessages: false,
+		messageStyle: "none",
+		extensions: [
+			"tex2jax.js",
+			"TeX/mediawiki-texvc.js",
+			"TeX/noUndefined.js",
+			"TeX/autoload-all.js",
+			"TeX/AMSmath.js",
+			"TeX/AMSsymbols.js"
+		],
+		jax: [
+			"input/TeX",
+			"output/SVG"
+		],
+		elements: document.getElementsByClassName("mathjax"),
+		tex2jax: {
+			skipTags: [
+				"script",
+				"noscript",
+				"style",
+				"textarea"
+			],
+			processClass: "mathjax"
+		},
+		processEscapes: true,
+		preview: "none"
+	});
+</script>
+<!-- END - This section is a templete for MathJax module -->
+<?php endif; ?>
 

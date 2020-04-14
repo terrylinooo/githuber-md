@@ -47,6 +47,7 @@ class Markdown extends ControllerAbstract {
 	const MD_POST_META_SEQUENCE  = '_is_githuber_sequence';
 	const MD_POST_META_FLOW      = '_is_githuber_flow_chart';
 	const MD_POST_META_KATEX     = '_is_githuber_katex';
+	const MD_POST_META_MATHJAX   = '_is_githuber_mathjax';
 	const MD_POST_META_MERMAID   = '_is_githuber_mermaid';
 
 	const JETPACK_MD_POST_META   = '_wpcom_is_markdown';
@@ -127,6 +128,10 @@ class Markdown extends ControllerAbstract {
 
 		if ( 'yes' === githuber_get_option( 'support_mermaid', 'githuber_modules' ) ) {
 			$this->is_support_mermaid = true;
+		}
+
+		if ( 'yes' === githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) {
+			$this->is_support_mathjax = true;
 		}
 
 		// Load TOC widget. //
@@ -294,6 +299,7 @@ class Markdown extends ControllerAbstract {
 				'support_flowchart',
 				'support_sequence_diagram',
 				'support_mermaid',
+				'support_mathjax',
 			);
 
 			$editormd_config_list['extensions'] = array(
@@ -311,6 +317,7 @@ class Markdown extends ControllerAbstract {
 			}
 
 			$editormd_localize['editor_modules_url']   = $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/';
+			$editormd_localize['plugin_vendor_url']    = $this->githuber_plugin_url . 'assets/vendor/';
 			$editormd_localize['editor_placeholder']   = __( 'Happy Markdowning!', 'wp-githuber-md' );
 			$editormd_localize['image_paste_callback'] = admin_url( 'admin-ajax.php?action=githuber_image_paste&post_id=' . $post_id . '&_wpnonce=' . wp_create_nonce( 'image_paste_action_' . $post_id ) );
 			$editormd_localize['prism_line_number']    = githuber_get_option( 'prism_line_number', 'githuber_modules' );
@@ -418,6 +425,7 @@ class Markdown extends ControllerAbstract {
 		$is_flowchart = false;
 		$is_mermaid   = false;
 		$is_katex     = false;
+		$is_mathjax   = false;
 
 		if ( preg_match_all( '/<code class="language-([a-z\-0-9]+)"/', $post_content, $matches ) > 0 && ! empty( $matches[1] ) ) {
 
@@ -457,12 +465,21 @@ class Markdown extends ControllerAbstract {
 				if ( 'katex' === $match ) {
 					$is_katex = true;
 				}
+
+				if ( 'mathjax' === $match ) {
+					$is_mathjax = true;
+				}
 			}
 		} 
 		
 		// If we find inline KaTex syntax.
 		if ( strpos( $post_content, '<code class="katex-inline">' ) !== false ) {
 			$is_katex = true;
+		}
+
+		// If we find inline MathJax syntax.
+		if ( strpos( $post_content, '<code class="mathjax-inline">' ) !== false ) {
+			$is_mathjax = true;
 		}
 
 		// Combine array into a string.
@@ -504,6 +521,12 @@ class Markdown extends ControllerAbstract {
 			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, true );
 		} else {
 			update_metadata( 'post', $post_id, self::MD_POST_META_KATEX, false );
+		}
+
+		if ( $this->is_support_mathjax && $is_mathjax ) {
+			update_metadata( 'post', $post_id, self::MD_POST_META_MATHJAX, true );
+		} else {
+			update_metadata( 'post', $post_id, self::MD_POST_META_MATHJAX, false );
 		}
 	}
 
@@ -934,6 +957,11 @@ class Markdown extends ControllerAbstract {
 		// Render KaTeX inline markup.
 		if ( $this->is_support_katex ) {
 			$text = Module\KaTeX::katex_inline_markup( $text );
+		}
+
+		// Render MathJax inline markup.
+		if ( $this->is_support_mathjax ) {
+			$text = Module\MathJax::mathjax_inline_markup( $text );
 		}
 
 		// Markdown inserts extra spaces to make itself work. Buh-bye.

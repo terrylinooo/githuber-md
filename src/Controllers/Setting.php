@@ -969,6 +969,43 @@ class Setting extends ControllerAbstract {
 					'type'    => 'html',
 					'parent'  => 'support_sequence_diagram',
 				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'mathjax',
+					'label'         => __( 'MathJax', 'wp-githuber-md' ),
+					'desc'          => __( 'MathJax.js', 'wp-githuber-md' ),
+				),
+			
+				array(
+					'name'        => 'support_mathjax',
+					'desc'        => __( 'MathJax displays mathematical notation in web browsers, using LaTeX markup. ', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'mathjax',
+					'default'     => 'no',
+				),
+	
+				array(
+					'name'    => 'mathjax_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'cloudflare',
+					'parent'  => 'support_mathjax',
+					'options' => array(
+						'default'    => 'default',
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+	
+				array(
+					'label'   => __( 'Example', 'wp-githuber-md' ),
+					'desc'    => githuber_load_view( 'example/mathjax' ),
+					'type'    => 'html',
+					'parent'  => 'support_mathjax',
+				),
 			),
 
 			'githuber_extensions' => array(
