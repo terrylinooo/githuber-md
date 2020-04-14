@@ -37,6 +37,11 @@ class MarkdownParser extends Parsedown {
 	 */
 	public function __construct() {
 
+		$this->unmarkedBlockTypes[] = 'MathJax';
+		$this->InlineTypes['$'][]= 'MathJax';
+                $this->inlineMarkerList = '$'.$this->inlineMarkerList;
+		$this->BlockTypes['$'][] = 'MathJax'; 
+
 		$is_html5_figure = githuber_get_option( 'support_html_figure', 'githuber_extensions' );
 
 		if ( 'no' !== $is_html5_figure ) {
@@ -50,6 +55,81 @@ class MarkdownParser extends Parsedown {
 			$this->preserve_shortcodes = false;
 		}
 	}
+	protected function inlineMathJax($excerpt)
+    {
+        if (preg_match('/\$.*?\$/', $excerpt['text'], $matches))
+        {
+            return array(
+
+                // How many characters to advance the Parsedown's
+                // cursor after being done processing this tag.
+                'extent' => strlen($matches[0]), 
+                'element' => array(
+                    'name' => 'span',
+                    'text' => $matches[0],
+                ),
+
+            );
+        }
+    }
+	protected function blockMathJax($line, $block)
+    {
+        if (preg_match('/^\$\$$/', $line['text'], $matches))
+        {
+            return array(
+                'char' => $line['text'][0],
+                'element' => array(
+                    'name' => 'div',
+                    'text' => '',
+                ),
+            );
+        }
+    	
+    } 
+
+    /**
+     * Appending the word `continue` to the function name will cause this function to be
+     * called to process any following lines, until $block['complete'] is set to be 'true'.
+     */
+    protected function blockMathJaxContinue($line, $block)
+    {
+        if (isset($block['complete']))
+        {
+            return;
+        }
+
+        // A blank newline has occurred.
+        if (isset($block['interrupted']))
+        {
+            $block['element']['text'] .= "\n";
+            unset($block['interrupted']);
+        }
+
+        // Check for end of the block. 
+        if (preg_match('/\$\$$/', $line['text']))
+        {
+            $block['element']['text'] = "\n\$\$\n" . substr($block['element']['text'], 1) .  "\n\$\$\n";
+
+            // This will flag the block as 'complete':
+            // 1. The 'continue' function will not be called again.
+            // 2. The 'complete' function will be called instead.
+            $block['complete'] = true;
+            return $block;
+        }
+        
+        $block['element']['text'] .= "\n" . $line['body'];
+
+        return $block;
+    }
+
+    /**
+     * Appending the word `complete` to the function name will cause this function to be
+     * called when the block is marked as *complete* (see the previous method).
+     */
+    protected function blockMathJaxComplete($block)
+    {
+        return $block;
+    }
 
 	/**
 	 * Remove bare <p> elements. <p>s with attributes will be preserved.
