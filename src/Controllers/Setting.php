@@ -979,7 +979,7 @@ class Setting extends ControllerAbstract {
 			
 				array(
 					'name'        => 'support_mathjax',
-					'desc'        => __( 'MathJax displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMathML markup.', 'wp-githuber-md' ),
+					'desc'        => __( 'MathJax displays mathematical notation in web browsers, using LaTeX markup. ', 'wp-githuber-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'mathjax',
@@ -989,11 +989,12 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'mathjax_src',
 					'label'   => __( 'File Host', 'wp-githuber-md' ),
-					'desc'    => __( 'Only CDN option provied because of the huge size of the library.', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'cloudflare',
 					'parent'  => 'support_mathjax',
 					'options' => array(
+						'default'    => 'default',
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)

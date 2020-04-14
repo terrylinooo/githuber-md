@@ -78,8 +78,11 @@ class MathJax extends ModuleAbstract {
 					break;
 
                 case 'jsdelivr':
-                default:
 					$script_url = 'https://cdn.jsdelivr.net/npm/mathjax@' . $this->mathjax_version . '/MathJax.js';
+					break;
+
+				default:
+					$script_url = $this->githuber_plugin_url . 'assets/vendor/mathjax/MathJax.js';
 					break;
 			} 
 			wp_enqueue_script( 'mathjax', $script_url, array(), $this->mathjax_version, true );
@@ -95,36 +98,57 @@ class MathJax extends ModuleAbstract {
                 (function($) {
                     $(function() {
                         if (typeof MathJax !== "undefined") {
-                            if ($(".language-mathjax").length > 0) {
-                                MathJax.Hub.Config({
-                                    showProcessingMessages: false,
-                                    messageStyle: "none",
-                                    extensions: [
-                                        "tex2jax.js",
-                                        "TeX/mediawiki-texvc.js",
-                                        "TeX/noUndefined.js",
-                                        "TeX/autoload-all.js",
-                                        "TeX/AMSmath.js",
-                                        "TeX/AMSsymbols.js"
-                                    ],
-                                    jax: [
-                                        "input/TeX",
-                                        "output/SVG"
-									],
-									inlineMath: [
-										[\'$\', \'$\']
-									],
-									displayMath: [
-										[\'$$\', \'$$\']
-									],
-                                    elements: document.getElementsByClassName("language-mathjax"),
-                                    tex2jax: {
-                                        processClass: "language-mathjax"
-                                    }
-                                });
-								MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-								$(".language-mathjax").attr("style", "background: transparent; border: 0;");
-                                $(".language-mathjax").closest("pre").attr("style", "background: transparent; border: 0;");
+							var c = $(".language-mathjax").length;
+
+                            if (c > 0) {
+								$(".language-mathjax").each(function(i) {
+									var content = $(this).html();
+									if ($(this).hasClass("mathjax-inline")) {
+										$(this).html("$$ " + content + " $$");
+									} else {
+										$(this).html("$$" + "\n" + content + "\n" + "$$");
+									}
+
+									if (i + 1 === c) {
+										MathJax.Hub.Config({
+											showProcessingMessages: false,
+											messageStyle: "none",
+											extensions: [
+												"tex2jax.js",
+												"TeX/mediawiki-texvc.js",
+												"TeX/noUndefined.js",
+												"TeX/autoload-all.js",
+												"TeX/AMSmath.js",
+												"TeX/AMSsymbols.js"
+											],
+											jax: [
+												"input/TeX",
+												"output/SVG"
+											],
+											elements: document.getElementsByClassName("language-mathjax"),
+											tex2jax: {
+												skipTags: [
+													"script",
+													"noscript",
+													"style",
+													"textarea"
+												],
+												inlineMath: [
+													[\'$\', \'$\']
+												],
+												displayMath: [
+													[\'$$\', \'$$\']
+												],
+												processClass: "language-mathjax"
+											}
+										});
+
+										MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
+										$(".language-mathjax").attr("style", "background: transparent; border: 0;");
+										$(".language-mathjax").closest("pre").attr("style", "background: transparent; border: 0;");
+									}
+								});
                             } else {
                                 console.log("[wp-githuber-md] MathJax code blocks not found.");
                             }
@@ -156,7 +180,7 @@ class MathJax extends ModuleAbstract {
 			if ( ! empty( $matches[1] ) ) {
 				$mathjax = $matches[1];
 				$mathjax = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $mathjax );
-				return '<code class="mathjax-inline language-mathjax">$$ ' . trim( $mathjax ) . ' $$</code>';
+				return '<code class="mathjax-inline language-mathjax">' . trim( $mathjax ) . '</code>';
 			}
 		}, $content );
 

@@ -299,6 +299,7 @@ class Markdown extends ControllerAbstract {
 				'support_flowchart',
 				'support_sequence_diagram',
 				'support_mermaid',
+				'support_mathjax',
 			);
 
 			$editormd_config_list['extensions'] = array(
@@ -473,6 +474,11 @@ class Markdown extends ControllerAbstract {
 		// If we find inline KaTex syntax.
 		if ( strpos( $post_content, '<code class="katex-inline">' ) !== false ) {
 			$is_katex = true;
+		}
+
+		// If we find inline MathJax syntax.
+		if ( strpos( $post_content, '<code class="mathjax-inline">' ) !== false ) {
+			$is_mathjax = true;
 		}
 
 		// Combine array into a string.
