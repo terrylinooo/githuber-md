@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.3.0
-Stable tag: 1.12.2
+Stable tag: 1.13.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -63,6 +63,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * [KaTex](https://terryl.in/en/githuber-md-katax/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
+* MathJax.
 * Github flavored Markdown task list.
 * Githuber MD extended Markdown.
 * Markdown extra...
@@ -333,6 +334,10 @@ GNU General Public License for more details.
 - Fix issue #144 - Deregistering `autosave` script gives error. (Fixed by alpipego. Thanks for contributing.)
 - Fix issue #143 - Unable to upload images to sm.ms. (The v1 API is deprecated.)
 - Fix issue #147 - Update CodeMirror themes.
+
+= 1.13.0
+
+- New feature - MathJax.
 
 == Upgrade Notice ==
 

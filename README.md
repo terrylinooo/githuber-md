@@ -81,6 +81,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * [KaTex](https://terryl.in/en/githuber-md-katex/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
+* MathJax
 * Github flavored Markdown task list.
 * Markdown extra...
 
