@@ -3490,7 +3490,7 @@
 
     // Emoji graphics files url path
     editormd.emoji     = {
-        path  : "http://www.emoji-cheat-sheet.com/graphics/emojis/",
+        path  : "https://markdown-editor.github.io/emoji/",
         ext   : ".png"
     };
 

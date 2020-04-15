@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.4.0
-Stable tag: 1.13.1
+Stable tag: 1.14.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -342,6 +342,10 @@ GNU General Public License for more details.
 = 1.13.1
 
 - Bug fix - Missing property in Markdown class.
+
+= 1.14.0
+
+- Feature request #86, #135 - Emojify module.
 
 == Upgrade Notice ==
 

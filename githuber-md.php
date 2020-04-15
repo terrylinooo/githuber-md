@@ -7,14 +7,14 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.13.1
+ * @version 1.14.0
  */
 
 /**
  * Plugin Name: WP Githuber MD
  * Plugin URI:  https://github.com/terrylinooo/githuber-md
  * Description: An all-in-one Markdown plugin for your WordPress sites.
- * Version:     1.13.1
+ * Version:     1.14.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -64,7 +64,7 @@ define( 'GITHUBER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GITHUBER_PLUGIN_PATH', __FILE__ );
 define( 'GITHUBER_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'GITHUBER_PLUGIN_VERSION', '1.13.1' );
+define( 'GITHUBER_PLUGIN_VERSION', '1.14.0' );
 define( 'GITHUBER_PLUGIN_TEXT_DOMAIN', 'wp-githuber-md' );
 
 /**
@@ -153,6 +153,64 @@ if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {
 
 	register_activation_hook( __FILE__, 'githuber_activate_plugin' );
 	register_deactivation_hook( __FILE__, 'githuber_deactivate_plugin' );
+
+	if ( 'yes' === githuber_get_option( 'support_emojify', 'githuber_modules' ) ) {
+
+		/**
+		 * Disable the emoji's
+		 * 
+		 * The blow code is from https://wordpress.org/plugins/disable-emojis/
+		 */
+		function disable_emojis() {
+			remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+			remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+			remove_action( 'wp_print_styles', 'print_emoji_styles' );
+			remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+			remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+			remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+			remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
+			add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+			add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
+		}
+
+		/**
+		 * Filter function used to remove the tinymce emoji plugin.
+		 * 
+		 * @param  array $plugins
+		 *
+		 * @return array Difference betwen the two arrays
+		 */
+		function disable_emojis_tinymce( $plugins ) {
+			if ( is_array( $plugins ) ) {
+				return array_diff( $plugins, array( 'wpemoji' ) );
+			}
+			return array();
+		}
+
+		/**
+		 * Remove emoji CDN hostname from DNS prefetching hints.
+		 *
+		 * @param  array  $urls          URLs to print for resource hints.
+		 * @param  string $relation_type The relation type the URLs are printed for.
+		 *
+		 * @return array Difference betwen the two arrays.
+		 */
+		function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+			if ( 'dns-prefetch' == $relation_type ) {
+				// Strip out any URLs referencing the WordPress.org emoji location
+				$emoji_svg_url_bit = 'https://s.w.org/images/core/emoji/';
+				foreach ( $urls as $key => $url ) {
+					if ( strpos( $url, $emoji_svg_url_bit ) !== false ) {
+						unset( $urls[$key] );
+					}
+				}
+			}
+			return $urls;
+		}
+		
+		add_action( 'init', 'disable_emojis' );
+	}
 
 	// Load main launcher class of WP Githuber MD plugin.
 	$gitbuber = new Githuber();

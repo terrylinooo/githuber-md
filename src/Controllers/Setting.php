@@ -537,7 +537,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_prism',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -652,7 +652,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_highlight',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 					)
 				),
@@ -690,7 +690,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_clipboard',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -843,7 +843,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_katex',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -881,7 +881,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_mermaid',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -919,7 +919,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_flowchart',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -957,7 +957,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'default',
 					'parent'  => 'support_sequence_diagram',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -994,7 +994,7 @@ class Setting extends ControllerAbstract {
 					'default' => 'cloudflare',
 					'parent'  => 'support_mathjax',
 					'options' => array(
-						'default'    => 'default',
+						'default'    => __( 'default', 'wp-githuber-md' ),
 						'cloudflare' => 'cdnjs.cloudflare.com',
 						'jsdelivr'   => 'cdn.jsdelivr.net',
 					)
@@ -1005,6 +1005,54 @@ class Setting extends ControllerAbstract {
 					'desc'    => githuber_load_view( 'example/mathjax' ),
 					'type'    => 'html',
 					'parent'  => 'support_mathjax',
+				),
+
+				array(
+					'section_title' => true,
+					'location_id'   => 'support-emojify',
+					'label'         => __( 'Emojify', 'wp-githuber-md' ),
+					'desc'          => __( 'emojify.js', 'wp-githuber-md' ),
+				),
+
+				array(
+					'name'        => 'support_emojify',
+					'desc'        => __( 'Display emojis on Markdown editor preview pane and frontend posts.', 'wp-githuber-md' ),
+					'type'        => 'toggle',
+					'has_child'   => true,
+					'location_id' => 'support-emoji',
+					'default'     => 'no',
+				),
+
+				array(
+					'name'    => 'emojify_src',
+					'label'   => __( 'File Host', 'wp-githuber-md' ),
+					'desc'    => __( 'Use this library with a CDN service or self-hosted (default)?', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => 'default',
+					'parent'  => 'support_emojify',
+					'options' => array(
+						'default'    => __( 'default', 'wp-githuber-md' ),
+						'cloudflare' => 'cdnjs.cloudflare.com',
+						'jsdelivr'   => 'cdn.jsdelivr.net',
+					)
+				),
+
+				array(
+					'name'    => 'emojify_emoji_size',
+					'label'   => __( 'Image Size', 'wp-githuber-md' ),
+					'desc'    => __( 'What size would you want the emojis to be in your posts.', 'wp-githuber-md' ),
+					'type'    => 'radio',
+					'default' => '1.5em',
+					'parent'  => 'support_emojify',
+					'options' => array(
+						'1em' => '1.00em',
+						'1.125em' => '1.125em',
+						'1.25em' => '1.250em',
+						'1.375em' => '1.375em',
+						'1.5em' => '1.500em' . ' (' . __( 'default', 'wp-githuber-md' ) . ')',
+						'1.625em' => '1.625em',
+						'1.75em' => '1.750em',
+					)
 				),
 			),
 

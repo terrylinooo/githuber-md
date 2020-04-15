@@ -147,6 +147,12 @@ class Githuber {
 			$module_clipboard->init();
 		}
 
+		// Emojify
+		if ( 'yes' === githuber_get_option( 'support_emojify', 'githuber_modules' ) ) {
+			$module_emojify = new Module\Emojify();
+			$module_emojify->init();
+		}
+
 		/**
 		 * Let's start setting user's perferences...
 		 */
@@ -353,6 +359,20 @@ class Githuber {
 					display: none !important;
 				}
 			';
+		}
+
+		if ( 'yes' === githuber_get_option( 'support_emojify', 'githuber_modules' ) ) {
+			$emoji_size = githuber_get_option( 'emojify_emoji_size', 'githuber_modules' );
+
+			// If not the default value, overwrite customized size to the CSS.
+			if ( '1.5em' !== $emoji_size ) {
+				$custom_css .= '
+					.post .emoji {
+						width: ' . $emoji_size . ';
+						height: ' . $emoji_size . ';
+					}
+				';
+			}
 		}
 
 		return preg_replace( '/\s+/', ' ', $custom_css );

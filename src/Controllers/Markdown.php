@@ -27,7 +27,7 @@ class Markdown extends ControllerAbstract {
 	 *
 	 * @var string
 	 */
-	public $editormd_varsion = '1.5.0.13';
+	public $editormd_varsion = '1.5.0.14';
 
 	/**
 	 * The Post Type support from Markdown controller.
@@ -294,8 +294,7 @@ class Markdown extends ControllerAbstract {
 			);
 
 			$editormd_config_list['modules'] = array(
-				//'support_toc',
-				//'support_emoji',
+				'support_emojify',
 				'support_katex',
 				'support_flowchart',
 				'support_sequence_diagram',
