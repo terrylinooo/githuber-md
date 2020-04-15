@@ -271,8 +271,11 @@ class Markdown extends ControllerAbstract {
 
 			switch ( get_bloginfo( 'language' ) ) {
 				case 'zh-TW':
-				case 'zh-CN':
 					wp_enqueue_script( 'editor-md-lang', $this->githuber_plugin_url . 'assets/vendor/editor.md/languages/zh-tw.js', array(), $this->editormd_varsion, true );
+					break;
+
+				case 'zh-CN':
+					wp_enqueue_script( 'editor-md-lang', $this->githuber_plugin_url . 'assets/vendor/editor.md/languages/zh-cn.js', array(), $this->editormd_varsion, true );
 					break;
 
 				case 'en-US':
