@@ -89,6 +89,7 @@ class Markdown extends ControllerAbstract {
 	public $is_support_sequence  = false;
 	public $is_support_mermaid   = false;
 	public $is_support_toc       = false;
+	public $is_support_mathjax   = false;
 
 	public $markdown_this_post = true;
 
