@@ -156,7 +156,6 @@ class Githuber {
 		/**
 		 * Let's start setting user's perferences...
 		 */
-		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 
 		if ( 'yes' !== githuber_get_option( 'smart_quotes', 'githuber_preferences' ) ) {
 			remove_filter( 'the_content', 'wptexturize' );
@@ -389,7 +388,7 @@ class Githuber {
 				<script id="preference-link-target">
 					(function($) {
 						$(function() {
-							$(".post a").each(function() {
+							$(".post").find("a").each(function() {
 								var link_href = $(this).attr("href");
 								if (link_href.indexOf("#") == -1) {
 									$(this).attr("target", "_blank");
@@ -400,10 +399,10 @@ class Githuber {
 				</script>
 			';
 
-			return preg_replace( '/\s+/', ' ', $script );
+			$script = preg_replace( '/\s+/', ' ', $script );
 		}
 
-		return $script;
+		echo $script;
 	}
 }
 
