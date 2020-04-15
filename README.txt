@@ -346,7 +346,8 @@ GNU General Public License for more details.
 = 1.14.0
 
 - Feature request #86, #135 - Emojify module.
-- Fix issue #147 - Update CodeMirror themes.
+- Fix issue #163 - Update KaTex version.
+- Fix issue #149 - Link opening method.
 
 == Upgrade Notice ==
 
