@@ -8,7 +8,7 @@
  *
  * @package Githuber
  * @since 1.0.0
- * @version 1.5.2
+ * @version 1.14.0
  */
 
 namespace Githuber\Module;
@@ -20,7 +20,7 @@ class KaTeX extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-	public $katex_version = '0.10.0';
+	public $katex_version = '0.11.1';
 
 	/**
 	 * The priority order to load CSS file, the value should be higher than theme's.

@@ -346,6 +346,7 @@ GNU General Public License for more details.
 = 1.14.0
 
 - Feature request #86, #135 - Emojify module.
+- Fix issue #147 - Update CodeMirror themes.
 
 == Upgrade Notice ==
 
