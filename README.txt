@@ -347,7 +347,9 @@ GNU General Public License for more details.
 
 - Feature request #86, #135 - Emojify module.
 - Fix issue #163 - Update KaTex version.
-- Fix issue #149 - Link opening method.
+- Fix issue #127, #149 - Link opening method.
+- Fix issue #156 - Highlight C code block.
+- Fix issue #120 - FlowChart identification code - flow, which occurs a conflict to Prism.
 
 == Upgrade Notice ==
 

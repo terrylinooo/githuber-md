@@ -204,7 +204,7 @@ class Prism extends ModuleAbstract {
 		'django'            => array( 'markup' ),
 		'erb'               => array( 'ruby', 'markup-templating' ),
 		'fsharp'            => array( 'clike' ),
-		'flow'              => array( 'javascript' ),
+		//'flow'            => array( 'javascript' ),
 		'glsl'              => array( 'clike' ),
 		'go'                => array( 'clike' ),
 		'groovy'            => array( 'clike' ),
