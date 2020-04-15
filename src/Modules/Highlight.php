@@ -55,6 +55,7 @@ class Highlight extends ModuleAbstract {
 		'basic'          => 'Basic',
 		'bnf'            => 'Backus–Naur Form',
 		'brainfuck'      => 'Brainfuck',
+		'c'              => 'C',
 		'cal'            => 'C/AL',
 		'capnproto'      => 'Cap’n Proto',
 		'ceylon'         => 'Ceylon',
@@ -289,6 +290,9 @@ class Highlight extends ModuleAbstract {
 
 					if ( ! empty( $highlight_meta_array ) ) {
 						foreach ( array_reverse( $highlight_meta_array ) as $component_name ) {
+							if ( 'c' === $component_name ) {
+								$component_name = 'cpp';
+							}
 							$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/' . $this->highlight_version . '/languages/' . $component_name . '.min.js';
 						}
 					}
@@ -299,6 +303,9 @@ class Highlight extends ModuleAbstract {
 
 					if ( ! empty( $highlight_meta_array ) ) {
 						foreach ( array_reverse( $highlight_meta_array ) as $component_name ) {
+							if ( 'c' === $component_name ) {
+								$component_name = 'cpp';
+							}
 							$script_url[] = $this->githuber_plugin_url . 'assets/vendor/highlight.js/languages/' . $component_name . '.min.js';
 						}
 					}
