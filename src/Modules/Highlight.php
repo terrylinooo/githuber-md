@@ -55,7 +55,6 @@ class Highlight extends ModuleAbstract {
 		'basic'          => 'Basic',
 		'bnf'            => 'Backus–Naur Form',
 		'brainfuck'      => 'Brainfuck',
-		'c'              => 'C',
 		'cal'            => 'C/AL',
 		'capnproto'      => 'Cap’n Proto',
 		'ceylon'         => 'Ceylon',
