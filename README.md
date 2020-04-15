@@ -41,7 +41,7 @@ https://youtu.be/it1noNCTXa4
 
 * PHP version > 5.3.0
 * WordPress version > 4.0
-* Tested up to 5.1.1
+* Tested up to 5.4.0
 
 ## Download
 
@@ -81,7 +81,8 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * [KaTex](https://terryl.in/en/githuber-md-katex/).
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
-* MathJax
+* MathJax.
+* Emoji.
 * Github flavored Markdown task list.
 * Markdown extra...
 

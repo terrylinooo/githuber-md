@@ -174,3 +174,31 @@ pre.setting-example {
 .p-r {
 	position: relative;
 }
+
+.githuber-md-info-bar {
+	clear: both;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.version-info {
+		margin-right: 20px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: rgba(255, 255, 255, 0);
+	}
+
+	.githuber-md-logo {
+		height: 60px;
+	}
+
+	a {
+		text-decoration: none;
+		padding: 3px 5px;
+		border: 1px #dddddd solid;
+		margin-right: 10px;
+		border-radius: 2px;
+		background-color: #f4f5f5;
+	}
+}

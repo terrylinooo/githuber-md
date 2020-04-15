@@ -1258,11 +1258,24 @@ class Setting extends ControllerAbstract {
 	*/
 	public function setting_plugin_page() {
 
+		$git_url_plugin = 'https://github.com/terrylinooo/githuber-md';
+
+		echo '<div class="githuber-md-info-bar">';
+		echo '	<div class="logo-info"><img src="' . GITHUBER_PLUGIN_URL . '/assets/images/logo.png" class="githuber-md-logo"></div>';
+		echo '	<div class="version-info">';
+		echo '    <a href="' . $git_url_plugin . '/issues" target="_blank">' . __( 'Report an issue', 'wp-githuber-md' ) . '</a>  ';
+		echo '    ' . __( 'Version', 'wp-githuber-md' ) . ': <a href="' . $git_url_plugin . '" target="_blank">' . GITHUBER_PLUGIN_VERSION . '</a>  ';
+		echo '  </div>';
+		echo '</div>';
 		echo '<div class="wrap">';
+
 		settings_errors();
 
 		self::$setting_api->show_navigation();
 		self::$setting_api->show_forms();
+
+		echo '<div>' . __( 'Maintain social distancing. Wash your hands frequently.', 'wp-githuber-md' ) . '</div>';
+		echo '<div>' . __( 'Stay at home. Write your articles with Githuber MD.', 'wp-githuber-md' ) . '</div>';
 
 		echo '</div>';
 	}

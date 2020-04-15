@@ -64,6 +64,7 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (#1)
 * [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
 * MathJax.
+* Emoji.
 * Github flavored Markdown task list.
 * Githuber MD extended Markdown.
 * Markdown extra...
@@ -350,6 +351,7 @@ GNU General Public License for more details.
 - Fix issue #127, #149 - Link opening method.
 - Fix issue #156 - Highlight C code block.
 - Fix issue #120 - FlowChart identification code - flow, which occurs a conflict to Prism.
+- Fix issue #103 - Markdown editor UI - add support to zh_CN
 
 == Upgrade Notice ==
 
