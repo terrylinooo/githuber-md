@@ -74,17 +74,18 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
 * Support custom post types.
-* [HTML-to-Markdown helper](https://terryl.in/en/githuber-md-html2markdown/).
-* [Image copy & paste](https://terryl.in/en/githuber-md-image-paste/). (support uploading to Imgur and sm.ms)
-* Syntax highlight. (prism.js)
-* [Flow chart](https://terryl.in/en/githuber-md-flow-chart/).
-* [KaTex](https://terryl.in/en/githuber-md-katex/).
-* [Sequence diagram](https://terryl.in/en/githuber-md-sequence-diagrams/). (Known issue #1)
-* [Mermaid](https://terryl.in/en/githuber-md-mermaid/).
+* HTML-to-Markdown helper
+* Image copy & paste (support uploading to Imgur.com and sm.ms)
+* Syntax highlight.
+* Flow chart.
+* KaTex.
+* Sequence diagram.
+* Mermaid.
 * MathJax.
 * Emoji.
 * Github flavored Markdown task list.
 * Markdown extra...
+* Keyword suggestion tool.
 
 ## Sceenshots
 
