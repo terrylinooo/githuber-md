@@ -333,6 +333,16 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
+					'name'    => 'keyword_suggestion_tool',
+					'class'   => 'keyword_suggestion_tool',
+					'label'   => __( 'Keyword Suggestion Tool', 'wp-githuber-md' ),
+					'desc'    => __( 'This keyword suggestion tool can give you a list of long-tail terms based on the keyword you enter. If you are good in On-page SEO skills, it will help you a lot in writing. Data source is from Google Suggestions.', 'wp-githuber-md' ),
+					'type'    => 'toggle',
+					'size'    => 'sm',
+					'default' => 'no',
+				),
+
+				array(
 					'section_title' => true,
 					'label' => __( 'Markdown Editor', 'wp-githuber-md' ),
 				),

@@ -3,7 +3,7 @@ Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
 Tested up to: 5.4.0
-Stable tag: 1.14.0
+Stable tag: 1.15.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -352,6 +352,10 @@ GNU General Public License for more details.
 - Fix issue #156 - Highlight C code block.
 - Fix issue #120 - FlowChart identification code - flow, which occurs a conflict to Prism.
 - Fix issue #103 - Markdown editor UI - add support to zh_CN
+
+= 1.15.0
+
+- New feature - Keyword suggestion tool.
 
 == Upgrade Notice ==
 

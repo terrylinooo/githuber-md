@@ -68,7 +68,7 @@ class ImagePaste extends ControllerAbstract {
 	 * Do action hook for image paste.
 	 */
 	public function admin_githuber_image_paste() {
-		$response    = array();
+		$response = array();
 		
 		if ( isset( $_FILES['file'], $_GET['_wpnonce'], $_GET['post_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'image_paste_action_' . $_GET['post_id'] ) && current_user_can( 'edit_post', $_GET['post_id'] ) ) {
 			$image_src        = githuber_get_option( 'image_paste_src', 'githuber_modules' );

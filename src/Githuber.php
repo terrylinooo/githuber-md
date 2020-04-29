@@ -85,6 +85,11 @@ class Githuber {
 				$spellCheck->init();
 			}
 
+			if ( 'yes' === githuber_get_option( 'keyword_suggestion_tool', 'githuber_markdown' ) ) {
+				$keywordSuggestion = new Controller\KeywordSuggestion();
+				$keywordSuggestion->init();
+			}
+
 			$markdown = new Controller\Markdown();
 			$markdown->init();
 		}

@@ -158,6 +158,27 @@ pre.setting-example code {
   position: relative;
 }
 
+.githuber-md-keyword {
+  padding: 3px 6px;
+  border: 1px #dddddd solid;
+  margin: 3px;
+  font-size: 12px;
+  display: inline-block;
+  word-wrap: break-word;
+  background-color: #f6f6f6;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.githuber-md-keyword:hover {
+  background-color: #0073aa;
+  color: #ffffff;
+  border: 1px #7350c7 solid;
+}
+
+.metabox-prefs .bg-icon-md {
+  display: none;
+}
+
 .githuber-md-info-bar {
   clear: both;
   margin-top: 20px;
