@@ -41,7 +41,7 @@ https://youtu.be/it1noNCTXa4
 
 * PHP version > 5.3.0
 * WordPress version > 4.0
-* Tested up to 5.4.0
+* Tested up to 5.5.1
 
 ## Download
 
