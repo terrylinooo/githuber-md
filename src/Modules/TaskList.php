@@ -19,7 +19,6 @@ class TaskList {
 	 * Constructer.
 	 */
 	public function __construct() {
-		parent::__construct();
 	}
 
 	/**
