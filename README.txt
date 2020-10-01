@@ -357,6 +357,11 @@ GNU General Public License for more details.
 
 - New feature - Keyword suggestion tool.
 
+= 1.15.1
+
+- Fix issue #184 - The position of typing dialog should be under the focused line.
+- Fix issue #187 - Task List - Compatible with PHP 7.4
+
 == Upgrade Notice ==
 
 = Currently no logs now.
