@@ -27,6 +27,11 @@ class Githuber {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 
+		if ( ! isset( $_SERVER['HTTP_HOST'] ) || ! isset( $_SERVER['REQUEST_URI'] ) ) {
+			$_SERVER['HTTP_HOST']   = '127.0.0.1';
+			$_SERVER['REQUEST_URI'] = '/';
+		}
+
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 		// Only use it in DEBUG mode.
