@@ -2,8 +2,8 @@
 Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
-Tested up to: 5.5.1
-Stable tag: 1.15.1
+Tested up to: 5.5.3
+Stable tag: 1.15.2
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -361,6 +361,10 @@ GNU General Public License for more details.
 
 - Fix issue #184 - The position of typing dialog should be under the focused line.
 - Fix issue #187 - Task List - Compatible with PHP 7.4
+
+= 1.15.2
+
+- Fix errors in WP CLI.
 
 == Upgrade Notice ==
 
