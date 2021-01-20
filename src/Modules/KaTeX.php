@@ -116,15 +116,15 @@ class KaTeX extends ModuleAbstract {
 				(function($) {
 					$(function() {
 						if (typeof katex !== "undefined") {
-                            if ($(".language-katex").length > 0) {
-								$(".language-katex").parent("pre").attr("style", "text-align: center; background: none;");
-								$(".language-katex").addClass("katex-container").removeClass("language-katex");
+							if ($(".language-katex").length > 0) {
+								$(".language-katex").parent("pre").wrapInner("<div/>").children(0).unwrap();
+								$(".language-katex").wrapInner("<div/>").children(0).unwrap().addClass("katex-container");
 								$(".katex-container").each(function() {
 									var katexText = $(this).text();
 									var el = $(this).get(0);
 									if ($(this).parent("code").length == 0) {
 										try {
-											katex.render(katexText, el)
+											katex.render(katexText, el, {displayMode:true})
 										} catch (err) {
 											$(this).html("<span class=\'err\'>" + err)
 										}
@@ -146,7 +146,7 @@ class KaTeX extends ModuleAbstract {
 							}
 						}
 					});
-                })(jQuery);
+				})(jQuery);
 			</script>
 		';
 		echo preg_replace( '/\s+/', ' ', $script );
