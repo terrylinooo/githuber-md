@@ -967,6 +967,16 @@ class Markdown extends ControllerAbstract {
 			$text = Module\TaskList::parse_gfm_task_list( $text );
 		}
 
+		// Render KaTeX display markup after processing code blocks to replace <pre><code> into <div>
+		if ( $this->is_support_katex ) {
+			$text = Module\KaTeX::katex_display_markdown( $text );
+		}
+				
+		// Render KaTeX inline markup after processing code blocks to replace <code> into <div>
+		if ( $this->is_support_katex ) {
+			$text = Module\KaTeX::katex_inline_markdown( $text );
+		}
+
 		// Render MathJax inline markup.
 		if ( $this->is_support_mathjax ) {
 			$text = Module\MathJax::mathjax_inline_markup( $text );
