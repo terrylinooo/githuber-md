@@ -72,6 +72,10 @@ class KaTeX extends ModuleAbstract {
 					$style_url = 'https://cdn.jsdelivr.net/npm/katex@' . $this->katex_version . '/dist/katex.min.css';
 					break;
 
+				case 'custom':
+					$style_url = githuber_get_option( 'katex_src_custom_css_url', 'githuber_modules' );
+					break;	
+
 				default:
 					$style_url = $this->githuber_plugin_url . 'assets/vendor/katex/katex.min.css';
 					break;
@@ -97,6 +101,10 @@ class KaTeX extends ModuleAbstract {
 
 				case 'jsdelivr':
 					$script_url = 'https://cdn.jsdelivr.net/npm/katex@' . $this->katex_version . '/dist/katex.min.js';
+					break;
+
+				case 'custom':
+					$script_url = githuber_get_option( 'katex_src_custom_js_url', 'githuber_modules' );
 					break;
 
 				default:
@@ -163,7 +171,7 @@ class KaTeX extends ModuleAbstract {
 	 */
 	public static function katex_inline_markup( $content ) {
 
-		$regex = '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix';
+		$regex = githuber_get_option( 'katex_custom_regex_inline', 'githuber_modules' );
 		$content = preg_replace_callback( $regex, function() {
 			$matches = func_get_arg(0);
 
@@ -171,6 +179,28 @@ class KaTeX extends ModuleAbstract {
 				$katex = $matches[1];
 				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
 				return '<code class="katex-inline">' . trim( $katex ) . '</code>';
+			}
+		}, $content );
+
+		return $content;
+	}
+
+	public static function katex_display_markup( $content ) {
+
+		$regex = githuber_get_option( 'katex_custom_regex_display', 'githuber_modules' );
+
+		// abort if native
+		if ( $regex == '' ) {
+			return $content;
+		}
+
+		$content = preg_replace_callback( $regex, function() {
+			$matches = func_get_arg(0);
+
+			if ( ! empty( $matches[1] ) ) {
+				$katex = $matches[1];
+				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
+				return '<pre><code class="language-katex">' . trim( $katex ) . '</code></pre>';
 			}
 		}, $content );
 
