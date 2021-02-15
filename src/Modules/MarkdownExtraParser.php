@@ -238,7 +238,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 		$block = stripslashes( $matches[3] );
 
 		// Issue #209
-		$block = str_replace( '&', '_!_!_', $block );
+		$block = str_replace( '&#', '_!_!_', $block );
 
 		// check `
 		$block = str_replace( '`', '&#x60;', $block );
@@ -270,11 +270,13 @@ class MarkdownExtraParser extends ParsedownExtra {
 		$block = html_entity_decode( $matches[3], ENT_QUOTES );
 
 		// Issue #209
-		$block = str_replace( '_!_!_', '&', $block );
+		$block = str_replace( '_!_!_', '&#', $block );
 
 		$block = str_replace( '&#x60;', '`', $block );
 		$open  = $matches[1] . $matches[2] . "\n";
 		$end   =  "\n" . $matches[4];
+
+
 
 		return $open . $block . $end;
 	}

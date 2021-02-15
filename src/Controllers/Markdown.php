@@ -1180,8 +1180,9 @@ class Markdown extends ControllerAbstract {
 	 * @return string       post content with code blocks unescaped
 	 */
 	public function fix_issue_209( $text ) {
-		// Use a unique string `_!_!_` to replace `&`, then covert it to `&amp;`
-		return str_replace( '_!_!_', '&amp;', $text );
+		// Use a unique string `_!_!_` to replace `&#`, then covert it to `&amp;#`
+		$text = str_replace( '_!_!_', '&amp;#', $text );
+		return $text;
 	}
 
 	/**
