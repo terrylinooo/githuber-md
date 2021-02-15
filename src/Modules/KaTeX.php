@@ -124,9 +124,12 @@ class KaTeX extends ModuleAbstract {
 				(function($) {
 					$(function() {
 						if (typeof katex !== "undefined") {
+							/* preserve for backward compatibility */
 							if ($(".language-katex").length > 0) {
 								$(".language-katex").parent("pre").wrapInner("<div/>").children(0).unwrap();
 								$(".language-katex").wrapInner("<div/>").children(0).unwrap().addClass("katex-container");
+							}
+							if ($(".katex-container").length > 0) {
 								$(".katex-container").each(function() {
 									var katexText = $(this).text();
 									var el = $(this).get(0);
@@ -185,6 +188,12 @@ class KaTeX extends ModuleAbstract {
 		return $content;
 	}
 
+	/**
+	 * Katex Display Markup
+	 *
+	 * @param string  $content HTML or Markdown content.
+	 * @return void
+	 */
 	public static function katex_display_markup( $content ) {
 
 		$regex = githuber_get_option( 'katex_custom_regex_display', 'githuber_modules' );
@@ -201,6 +210,48 @@ class KaTeX extends ModuleAbstract {
 				$katex = $matches[1];
 				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
 				return '<pre><code class="language-katex">' . trim( $katex ) . '</code></pre>';
+			}
+		}, $content );
+
+		return $content;
+	}
+
+	/**
+	 * Katex Inline Markdown
+	 *
+	 * @param string  $content HTML or Markdown content.
+	 * @return void
+	 */
+	public static function katex_inline_markdown( $content ) {
+
+		$regex = '%<code class="katex-inline">(.+)</code>%sU';
+		$content = preg_replace_callback( $regex, function() {
+			$matches = func_get_arg(0);
+
+			if ( ! empty( $matches[1] ) ) {
+				$katex = $matches[1];
+				return '<span class="katex-inline">' . $katex . '</span>';
+			}
+		}, $content );
+
+		return $content;
+	}
+
+	/**
+	 * Katex Display Markdown
+	 *
+	 * @param string  $content HTML or Markdown content.
+	 * @return void
+	 */
+	public static function katex_display_markdown( $content ) {
+
+		$regex = '%<pre><code class="language-katex">(.+)</code></pre>%sU';
+		$content = preg_replace_callback( $regex, function() {
+			$matches = func_get_arg(0);
+
+			if ( ! empty( $matches[1] ) ) {
+				$katex = $matches[1];
+				return '<div class="katex-container">' . $katex . '</div>';
 			}
 		}, $content );
 
