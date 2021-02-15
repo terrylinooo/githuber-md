@@ -916,16 +916,6 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function transform( $text, $args = array() ) {
 
-		// Render KaTeX display markup beofre processing code blocks to ensure code block tag <pre><code> is respected
-		if ( $this->is_support_katex ) {
-			$text = Module\KaTeX::katex_display_markup( $text );
-		}
-				
-		// Render KaTeX inline markup beofre processing code blocks to ensure code block tag <code> is respected
-		if ( $this->is_support_katex ) {
-			$text = Module\KaTeX::katex_inline_markup( $text );
-		}
-
 		$is_decode_code_blocks = ( 'yes' === githuber_get_option( 'decode_code_blocks', 'githuber_preferences' ) ) ? true : false;
 
 		$args = wp_parse_args( $args, array(
@@ -965,6 +955,11 @@ class Markdown extends ControllerAbstract {
 		// Render Github Flavored Markdown task lists if this module is enabled.
 		if ( $this->is_support_task_list ) {
 			$text = Module\TaskList::parse_gfm_task_list( $text );
+		}
+
+		// Render KaTeX inline markup.
+		if ( $this->is_support_katex ) {
+			$text = Module\KaTeX::katex_inline_markup( $text );
 		}
 
 		// Render MathJax inline markup.
