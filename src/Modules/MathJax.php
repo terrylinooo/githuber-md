@@ -104,7 +104,7 @@ class MathJax extends ModuleAbstract {
 								$(".language-mathjax").each(function(i) {
 									var content = $(this).html();
 									if ($(this).hasClass("mathjax-inline")) {
-										$(this).html("$$ " + content + " $$");
+										$(this).html("$ " + content + " $");
 									} else {
 										$(this).html("$$" + "\n" + content + "\n" + "$$");
 									}
