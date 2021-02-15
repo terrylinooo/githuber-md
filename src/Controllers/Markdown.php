@@ -679,6 +679,7 @@ class Markdown extends ControllerAbstract {
 				add_filter( '_wp_post_revision_fields', array( $this, '_wp_post_revision_fields' ) );
 				add_action( 'xmlrpc_call', array( $this, 'xmlrpc_actions' ) );
 				add_filter( 'content_save_pre', array( $this, 'preserve_code_blocks' ), 1 );
+
 				if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
 					$this->check_for_early_methods();
 				}
@@ -811,7 +812,6 @@ class Markdown extends ControllerAbstract {
 			// we have no context to determine supported post types in the `post_content_pre` hook,
 			// which already ran to sanitize code blocks. Undo that.
 			$post_data['post_content'] = $this->restore_code_blocks( $post_data['post_content'] );
-
 			return $post_data;
 		}
 
@@ -861,6 +861,8 @@ class Markdown extends ControllerAbstract {
 	
 		// Is it support Prism - syntax highlighter.
 		$this->detect_code_languages( $post_id, wp_unslash( $post_data['post_content'] ) );
+
+		$post_data['post_content'] = $this->fix_issue_209( $post_data['post_content'] );
 
 		return $post_data;
 	}
@@ -1167,7 +1169,19 @@ class Markdown extends ControllerAbstract {
 	 * @return string       post content with code blocks unescaped
 	 */
 	public function restore_code_blocks( $text ) {
-		return $this->get_parser()->codeblock_restore( $text );
+		$text = $this->get_parser()->codeblock_restore( $text );
+		return $this->fix_issue_209( $text );
+	}
+
+	/**
+	 * https://github.com/terrylinooo/githuber-md/issues/209
+	 *
+	 * @param  string $text post content
+	 * @return string       post content with code blocks unescaped
+	 */
+	public function fix_issue_209( $text ) {
+		// Use a unique string `_!_!_` to replace `&`, then covert it to `&amp;`
+		return str_replace( '_!_!_', '&amp;', $text );
 	}
 
 	/**

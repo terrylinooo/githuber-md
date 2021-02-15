@@ -13,4 +13,4 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 ?>
 
 <?php echo __( 'This is WordPress default, you should not turn it off unless you know what you do.', 'wp-githuber-md' ); ?> 
-<a href="https://codex.wordpress.org/Function_Reference/wptexturize" target="_blank"><?php echo __( '(detail)', 'wp-githuber-md' ); ?></a>
+<a href="https://developer.wordpress.org/reference/functions/wptexturize/" target="_blank"><?php echo __( '(detail)', 'wp-githuber-md' ); ?></a>
