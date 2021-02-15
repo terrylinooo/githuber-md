@@ -481,7 +481,7 @@ class Markdown extends ControllerAbstract {
 		}
 
 		// If we find inline MathJax syntax.
-		if ( strpos( $post_content, '<code class="mathjax-inline">' ) !== false ) {
+		if ( strpos( $post_content, '<code class="mathjax-inline language-mathjax">' ) !== false ) {
 			$is_mathjax = true;
 		}
 
