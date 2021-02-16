@@ -886,48 +886,6 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-                    'name'              => 'katex_src_custom_css_url',
-					'label'             => __( 'KaTeX Custom CSS URL', 'wp-githuber-md' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
-					'default'           => '',
-					'parent'            => 'support_katex',
-					'sanitize_callback' => '',
-				),
-
-				array(
-                    'name'              => 'katex_src_custom_js_url',
-					'label'             => __( 'KaTeX CustomJS URL', 'wp-githuber-md' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
-					'default'           => '',
-					'parent'            => 'support_katex',
-					'sanitize_callback' => '',
-				),
-
-				array(
-                    'name'              => 'katex_custom_regex_inline',
-					'label'             => __( 'KaTeX Custom Inline Regex', 'wp-githuber-md' ),
-					'desc'    			=> __( 'default to \'' . htmlspecialchars('%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix') . '\'', 'wp-githuber-md' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
-					'default'           => '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix',
-					'parent'            => 'support_katex',
-					'sanitize_callback' => '',
-				),
-
-				array(
-                    'name'              => 'katex_custom_regex_display',
-					'label'             => __( 'KaTeX Custom Display Regex', 'wp-githuber-md' ),
-					'desc'    			=> __( 'default to code block style' ),
-                    'placeholder'       => '',
-                    'type'              => 'text',
-					'default'           => '',
-					'parent'            => 'support_katex',
-					'sanitize_callback' => '',
-				),
-
-				array(
 					'label'   => __( 'Example', 'wp-githuber-md' ),
 					'desc'    => githuber_load_view( 'example/katex' ),
 					'type'    => 'html',
