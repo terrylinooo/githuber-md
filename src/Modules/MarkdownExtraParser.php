@@ -12,6 +12,7 @@
  */
 
 namespace Githuber\Module;
+use Markdown;
 use ParsedownExtra;
 
 class MarkdownExtraParser extends ParsedownExtra {
@@ -275,8 +276,6 @@ class MarkdownExtraParser extends ParsedownExtra {
 		$block = str_replace( '&#x60;', '`', $block );
 		$open  = $matches[1] . $matches[2] . "\n";
 		$end   =  "\n" . $matches[4];
-
-
 
 		return $open . $block . $end;
 	}
