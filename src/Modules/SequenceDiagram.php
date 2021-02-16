@@ -2,6 +2,8 @@
 /**
  * Module Name: Sequence Diagram
  * Module Description: Turn text into vector UML sequence diagrams.
+ * 
+ * JavaScript package: https://github.com/bramp/js-sequence-diagrams
  *
  * @author Terry Lin
  * @link https://terryl.in/
@@ -16,7 +18,7 @@ namespace Githuber\Module;
 class SequenceDiagram extends ModuleAbstract {
 
 	/**
-	 * The version of flowchart.js we are using.
+	 * The version of js-sequence-diagrams.js we are using.
 	 *
 	 * @var string
 	 */

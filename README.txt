@@ -2,8 +2,8 @@
 Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
-Tested up to: 5.5.3
-Stable tag: 1.15.2
+Tested up to: 5.6.1
+Stable tag: 1.16.0
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -366,6 +366,15 @@ GNU General Public License for more details.
 
 - Fix errors in WP CLI.
 
+= 1.16.0
+
+- Fix issue #209 - HTML unescaped in code blocks.
+- Fix issue #210 - Inline mathjax is not displayed.
+- Ugrade Mermaid JavaScript library from 8.0.0 to 8.9.0
+- Ugrade KaTax JavaScript library from 0.11.1 to 0.12.0
+- Ugrade Flowchart.js JavaScript library from 1.11.3 => 1.14.1
+
 == Upgrade Notice ==
 
 = Currently no logs now.
+

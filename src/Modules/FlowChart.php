@@ -20,7 +20,7 @@ class FlowChart extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-    public $flowchart_version = '1.11.3';
+    public $flowchart_version = '1.14.1'; // 1.11.3 => 1.14.1
 
 	/**
 	 * The version of raphael.js we are using.
@@ -79,6 +79,9 @@ class FlowChart extends ModuleAbstract {
 
 				case 'jsdelivr':
 					$script_url[0] = 'https://cdn.jsdelivr.net/npm/raphael@' . $this->raphael_version . '/raphael.min.js';
+
+					// It doesn't have the latest files in `release` folder on jsdelivr, rollback to 1.12.1
+					$this->flowchart_version = '1.12.1';
 					$script_url[1] = 'https://cdn.jsdelivr.net/npm/flowchart.js@' . $this->flowchart_version . '/release/flowchart.min.js';
 					break;
 
