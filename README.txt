@@ -371,10 +371,10 @@ GNU General Public License for more details.
 = 1.16.0
 
 - Fix issue #209 - HTML unescaped in code blocks.
-- Fix issue #210 - Inline mathjax is not displayed.
-- Ugrade Mermaid JavaScript library from 8.0.0 to 8.9.0
-- Ugrade KaTax JavaScript library from 0.11.1 to 0.12.0
-- Ugrade Flowchart.js JavaScript library from 1.11.3 to 1.14.1
+- Fix issue #210 - Inline MathJax is not displayed.
+- Upgrade Mermaid JavaScript library from 8.0.0 to 8.9.0
+- Upgrade KaTax JavaScript library from 0.11.1 to 0.12.0
+- Upgrade Flowchart.js JavaScript library from 1.11.3 to 1.14.1
 
 == Upgrade Notice ==
 
