@@ -20,7 +20,7 @@ class KaTeX extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-	public $katex_version = '0.11.1';
+	public $katex_version = '0.12.0';
 
 	/**
 	 * The priority order to load CSS file, the value should be higher than theme's.
