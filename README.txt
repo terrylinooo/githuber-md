@@ -56,9 +56,10 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * Enable / disable Markdown for single post.
 * Support Gutenberg editor.
 * Support custom post types.
-* HTML-to-Markdown helper
+* Support Markdown extra syntax.
+* HTML-to-Markdown tool.
 * Image copy & paste (support uploading to Imgur.com and sm.ms)
-* Syntax highlight.
+* Highlight code syntax. (prism.js or hightlight.js)
 * Flow chart.
 * KaTex.
 * Sequence diagram.
@@ -66,8 +67,9 @@ If you're planning to use this plugin in an existing blog, be sure to:
 * MathJax.
 * Emoji.
 * Github flavored Markdown task list.
-* Markdown extra...
+* Fetch remote images.
 * Keyword suggestion tool.
+* and more...
 
 == Frequently Asked Questions ==
 
@@ -76,7 +78,7 @@ You'll find answers to many of your questions on [Report issues](https://github.
 == Translations ==
 
 Traditional Chinese (zh_TW) by [Alex Lion](https://www.alexclassroom.com/).
-Simplified Chinese (zh_CN) by Terry Lin.
+Simplified Chinese (zh_CN) by [Terry Lin](https://terryl.in/zh/).
 
 == Screenshots ==
 
@@ -372,7 +374,7 @@ GNU General Public License for more details.
 - Fix issue #210 - Inline mathjax is not displayed.
 - Ugrade Mermaid JavaScript library from 8.0.0 to 8.9.0
 - Ugrade KaTax JavaScript library from 0.11.1 to 0.12.0
-- Ugrade Flowchart.js JavaScript library from 1.11.3 => 1.14.1
+- Ugrade Flowchart.js JavaScript library from 1.11.3 to 1.14.1
 
 == Upgrade Notice ==
 
