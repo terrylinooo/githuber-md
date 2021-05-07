@@ -13,23 +13,21 @@
 
 		// This handles both single-line and multi-line comments
 		'comment': {
-			pattern: /(^([\t ]*))\/\/.*(?:(?:\r?\n|\r)\2[\t ]+.+)*/m,
+			pattern: /(^([\t ]*))\/\/.*(?:(?:\r?\n|\r)\2[\t ].+)*/m,
 			lookbehind: true
 		},
 
 		// All the tag-related part is in lookbehind
 		// so that it can be highlighted by the "tag" pattern
 		'multiline-script': {
-			pattern: /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
+			pattern: /(^([\t ]*)script\b.*\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
 			lookbehind: true,
-			inside: {
-				rest: Prism.languages.javascript
-			}
+			inside: Prism.languages.javascript
 		},
 
 		// See at the end of the file for known filters
 		'filter': {
-			pattern: /(^([\t ]*)):.+(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
+			pattern: /(^([\t ]*)):.+(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
 			lookbehind: true,
 			inside: {
 				'filter-name': {
@@ -40,15 +38,13 @@
 		},
 
 		'multiline-plain-text': {
-			pattern: /(^([\t ]*)[\w\-#.]+\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ]+.+|\s*?(?=\r?\n|\r)))+/m,
+			pattern: /(^([\t ]*)[\w\-#.]+\.[\t ]*)(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/m,
 			lookbehind: true
 		},
 		'markup': {
 			pattern: /(^[\t ]*)<.+/m,
 			lookbehind: true,
-			inside: {
-				rest: Prism.languages.markup
-			}
+			inside: Prism.languages.markup
 		},
 		'doctype': {
 			pattern: /((?:^|\n)[\t ]*)doctype(?: .+)?/,
@@ -98,20 +94,18 @@
 						pattern: /^\+\w+/,
 						alias: 'function'
 					},
-					'rest': Prism.languages.javascript
+					rest: Prism.languages.javascript
 				}
 			}
 		],
 		'script': {
-			pattern: /(^[\t ]*script(?:(?:&[^(]+)?\([^)]+\))*[\t ]+).+/m,
+			pattern: /(^[\t ]*script(?:(?:&[^(]+)?\([^)]+\))*[\t ]).+/m,
 			lookbehind: true,
-			inside: {
-				rest: Prism.languages.javascript
-			}
+			inside: Prism.languages.javascript
 		},
 
 		'plain-text': {
-			pattern: /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]+).+/m,
+			pattern: /(^[\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\t ]).+/m,
 			lookbehind: true
 		},
 		'tag': {
@@ -121,41 +115,37 @@
 				'attributes': [
 					{
 						pattern: /&[^(]+\([^)]+\)/,
-						inside: {
-							rest: Prism.languages.javascript
-						}
+						inside: Prism.languages.javascript
 					},
 					{
 						pattern: /\([^)]+\)/,
 						inside: {
 							'attr-value': {
-								pattern: /(=\s*)(?:\{[^}]*\}|[^,)\r\n]+)/,
+								pattern: /(=\s*(?!\s))(?:\{[^}]*\}|[^,)\r\n]+)/,
 								lookbehind: true,
-								inside: {
-									rest: Prism.languages.javascript
-								}
+								inside: Prism.languages.javascript
 							},
 							'attr-name': /[\w-]+(?=\s*!?=|\s*[,)])/,
 							'punctuation': /[!=(),]+/
 						}
 					}
 				],
-				'punctuation': /:/
+				'punctuation': /:/,
+				'attr-id': /#[\w\-]+/,
+				'attr-class': /\.[\w\-]+/
 			}
 		},
 		'code': [
 			{
 				pattern: /(^[\t ]*(?:-|!?=)).+/m,
 				lookbehind: true,
-				inside: {
-					rest: Prism.languages.javascript
-				}
+				inside: Prism.languages.javascript
 			}
 		],
 		'punctuation': /[.\-!=|]+/
 	};
 
-	var filter_pattern = '(^([\\t ]*)):{{filter_name}}(?:(?:\\r?\\n|\\r(?!\\n))(?:\\2[\\t ]+.+|\\s*?(?=\\r?\\n|\\r)))+';
+	var filter_pattern = /(^([\t ]*)):{{filter_name}}(?:(?:\r?\n|\r(?!\n))(?:\2[\t ].+|\s*?(?=\r?\n|\r)))+/.source;
 
 	// Non exhaustive list of available filters and associated languages
 	var filters = [
@@ -163,16 +153,11 @@
 		{filter:'coffee',language:'coffeescript'},
 		'ejs',
 		'handlebars',
-		'hogan',
 		'less',
 		'livescript',
 		'markdown',
-		'mustache',
-		'plates',
 		{filter:'sass',language:'scss'},
-		'stylus',
-		'swig'
-
+		'stylus'
 	];
 	var all_filters = {};
 	for (var i = 0, l = filters.length; i < l; i++) {
@@ -180,7 +165,7 @@
 		filter = typeof filter === 'string' ? {filter: filter, language: filter} : filter;
 		if (Prism.languages[filter.language]) {
 			all_filters['filter-' + filter.filter] = {
-				pattern: RegExp(filter_pattern.replace('{{filter_name}}', filter.filter), 'm'),
+				pattern: RegExp(filter_pattern.replace('{{filter_name}}', function () { return filter.filter; }), 'm'),
 				lookbehind: true,
 				inside: {
 					'filter-name': {
