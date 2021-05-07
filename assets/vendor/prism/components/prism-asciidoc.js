@@ -1,7 +1,7 @@
 (function (Prism) {
 
 	var attributes = {
-		pattern: /(^[ \t]*)\[(?!\[)(?:(["'$`])(?:(?!\2)[^\\]|\\.)*\2|\[(?:[^\]\\]|\\.)*\]|[^\]\\]|\\.)*\]/m,
+		pattern: /(^[ \t]*)\[(?!\[)(?:(["'$`])(?:(?!\2)[^\\]|\\.)*\2|\[(?:[^\[\]\\]|\\.)*\]|[^\[\]\\"'$`]|\\.)*\]/m,
 		lookbehind: true,
 		inside: {
 			'quoted': {
@@ -25,13 +25,14 @@
 			'attr-value': /(?!^\s+$).+/
 		}
 	};
-	Prism.languages.asciidoc = {
+
+	var asciidoc = Prism.languages.asciidoc = {
 		'comment-block': {
 			pattern: /^(\/{4,})(?:\r?\n|\r)(?:[\s\S]*(?:\r?\n|\r))??\1/m,
 			alias: 'comment'
 		},
 		'table': {
-			pattern: /^\|={3,}(?:(?:\r?\n|\r).*)*?(?:\r?\n|\r)\|={3,}$/m,
+			pattern: /^\|={3,}(?:(?:\r?\n|\r(?!\n)).*)*?(?:\r?\n|\r)\|={3,}$/m,
 			inside: {
 				'specifiers': {
 					pattern: /(?!\|)(?:(?:(?:\d+(?:\.\d+)?|\.\d+)[+*])?(?:[<^>](?:\.[<^>])?|\.[<^>])?[a-z]*)(?=\|)/,
@@ -87,7 +88,7 @@
 
 		'comment': /^\/\/.*/m,
 		'title': {
-			pattern: /^.+(?:\r?\n|\r)(?:={3,}|-{3,}|~{3,}|\^{3,}|\+{3,})$|^={1,5} +.+|^\.(?![\s.]).*/m,
+			pattern: /^.+(?:\r?\n|\r)(?:={3,}|-{3,}|~{3,}|\^{3,}|\+{3,})$|^={1,5} .+|^\.(?![\s.]).*/m,
 			alias: 'important',
 			inside: {
 				'punctuation': /^(?:\.|=+)|(?:=+|-+|~+|\^+|\++)$/
@@ -123,7 +124,7 @@
 			}
 		],
 		'macro': {
-			pattern: /\b[a-z\d][a-z\d-]*::?(?:(?:\S+)??\[(?:[^\]\\"]|(["'])(?:(?!\1)[^\\]|\\.)*\1|\\.)*\])/,
+			pattern: /\b[a-z\d][a-z\d-]*::?(?:[^\s\[\]]*\[(?:[^\]\\"']|(["'])(?:(?!\1)[^\\]|\\.)*\1|\\.)*\])/,
 			inside: {
 				'function': /^[a-z\d-]+(?=:)/,
 				'punctuation': /^::?/,
@@ -148,7 +149,7 @@
 			Those do not have the restrictions of the constrained quotes.
 			They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, ##unquoted##, $$passthrough$$, ~subscript~, ^superscript^, {attribute-reference}, [[anchor]], [[[bibliography anchor]]], <<xref>>, (((indexes))) and ((indexes))
 			 */
-			pattern: /(^|[^\\])(?:(?:\B\[(?:[^\]\\"]|(["'])(?:(?!\2)[^\\]|\\.)*\2|\\.)*\])?(?:\b_(?!\s)(?: _|[^_\\\r\n]|\\.)+(?:(?:\r?\n|\r)(?: _|[^_\\\r\n]|\\.)+)*_\b|\B``(?!\s).+?(?:(?:\r?\n|\r).+?)*''\B|\B`(?!\s)(?: ['`]|.)+?(?:(?:\r?\n|\r)(?: ['`]|.)+?)*['`]\B|\B(['*+#])(?!\s)(?: \3|(?!\3)[^\\\r\n]|\\.)+(?:(?:\r?\n|\r)(?: \3|(?!\3)[^\\\r\n]|\\.)+)*\3\B)|(?:\[(?:[^\]\\"]|(["'])(?:(?!\4)[^\\]|\\.)*\4|\\.)*\])?(?:(__|\*\*|\+\+\+?|##|\$\$|[~^]).+?(?:(?:\r?\n|\r).+?)*\5|\{[^}\r\n]+\}|\[\[\[?.+?(?:(?:\r?\n|\r).+?)*\]?\]\]|<<.+?(?:(?:\r?\n|\r).+?)*>>|\(\(\(?.+?(?:(?:\r?\n|\r).+?)*\)?\)\)))/m,
+			pattern: /(^|[^\\])(?:(?:\B\[(?:[^\]\\"]|(["'])(?:(?!\2)[^\\]|\\.)*\2|\\.)*\])?(?:\b_(?!\s)(?: _|[^_\\\r\n]|\\.)+(?:(?:\r?\n|\r)(?: _|[^_\\\r\n]|\\.)+)*_\b|\B``(?!\s).+?(?:(?:\r?\n|\r).+?)*''\B|\B`(?!\s)(?:[^`'\s]|\s+\S)+['`]\B|\B(['*+#])(?!\s)(?: \3|(?!\3)[^\\\r\n]|\\.)+(?:(?:\r?\n|\r)(?: \3|(?!\3)[^\\\r\n]|\\.)+)*\3\B)|(?:\[(?:[^\]\\"]|(["'])(?:(?!\4)[^\\]|\\.)*\4|\\.)*\])?(?:(__|\*\*|\+\+\+?|##|\$\$|[~^]).+?(?:(?:\r?\n|\r).+?)*\5|\{[^}\r\n]+\}|\[\[\[?.+?(?:(?:\r?\n|\r).+?)*\]?\]\]|<<.+?(?:(?:\r?\n|\r).+?)*>>|\(\(\(?.+?(?:(?:\r?\n|\r).+?)*\)?\)\)))/m,
 			lookbehind: true,
 			inside: {
 				'attributes': attributes,
@@ -199,73 +200,35 @@
 
 	// Allow some nesting. There is no recursion though, so cloning should not be needed.
 
-	attributes.inside['interpreted'].inside.rest = {
-		'macro': Prism.languages.asciidoc['macro'],
-		'inline': Prism.languages.asciidoc['inline'],
-		'replacement': Prism.languages.asciidoc['replacement'],
-		'entity': Prism.languages.asciidoc['entity']
-	};
+	function copyFromAsciiDoc(keys) {
+		keys = keys.split(' ');
 
-	Prism.languages.asciidoc['passthrough-block'].inside.rest = {
-		'macro': Prism.languages.asciidoc['macro']
-	};
+		var o = {};
+		for (var i = 0, l = keys.length; i < l; i++) {
+			o[keys[i]] = asciidoc[keys[i]];
+		}
+		return o;
+	}
 
-	Prism.languages.asciidoc['literal-block'].inside.rest = {
-		'callout': Prism.languages.asciidoc['callout']
-	};
+	attributes.inside['interpreted'].inside.rest = copyFromAsciiDoc('macro inline replacement entity');
 
-	Prism.languages.asciidoc['table'].inside.rest = {
-		'comment-block': Prism.languages.asciidoc['comment-block'],
-		'passthrough-block': Prism.languages.asciidoc['passthrough-block'],
-		'literal-block': Prism.languages.asciidoc['literal-block'],
-		'other-block': Prism.languages.asciidoc['other-block'],
-		'list-punctuation': Prism.languages.asciidoc['list-punctuation'],
-		'indented-block': Prism.languages.asciidoc['indented-block'],
-		'comment': Prism.languages.asciidoc['comment'],
-		'title': Prism.languages.asciidoc['title'],
-		'attribute-entry': Prism.languages.asciidoc['attribute-entry'],
-		'attributes': Prism.languages.asciidoc['attributes'],
-		'hr': Prism.languages.asciidoc['hr'],
-		'page-break': Prism.languages.asciidoc['page-break'],
-		'admonition': Prism.languages.asciidoc['admonition'],
-		'list-label': Prism.languages.asciidoc['list-label'],
-		'callout': Prism.languages.asciidoc['callout'],
-		'macro': Prism.languages.asciidoc['macro'],
-		'inline': Prism.languages.asciidoc['inline'],
-		'replacement': Prism.languages.asciidoc['replacement'],
-		'entity': Prism.languages.asciidoc['entity'],
-		'line-continuation': Prism.languages.asciidoc['line-continuation']
-	};
+	asciidoc['passthrough-block'].inside.rest = copyFromAsciiDoc('macro');
 
-	Prism.languages.asciidoc['other-block'].inside.rest = {
-		'table': Prism.languages.asciidoc['table'],
-		'list-punctuation': Prism.languages.asciidoc['list-punctuation'],
-		'indented-block': Prism.languages.asciidoc['indented-block'],
-		'comment': Prism.languages.asciidoc['comment'],
-		'attribute-entry': Prism.languages.asciidoc['attribute-entry'],
-		'attributes': Prism.languages.asciidoc['attributes'],
-		'hr': Prism.languages.asciidoc['hr'],
-		'page-break': Prism.languages.asciidoc['page-break'],
-		'admonition': Prism.languages.asciidoc['admonition'],
-		'list-label': Prism.languages.asciidoc['list-label'],
-		'macro': Prism.languages.asciidoc['macro'],
-		'inline': Prism.languages.asciidoc['inline'],
-		'replacement': Prism.languages.asciidoc['replacement'],
-		'entity': Prism.languages.asciidoc['entity'],
-		'line-continuation': Prism.languages.asciidoc['line-continuation']
-	};
+	asciidoc['literal-block'].inside.rest = copyFromAsciiDoc('callout');
 
-	Prism.languages.asciidoc['title'].inside.rest = {
-		'macro': Prism.languages.asciidoc['macro'],
-		'inline': Prism.languages.asciidoc['inline'],
-		'replacement': Prism.languages.asciidoc['replacement'],
-		'entity': Prism.languages.asciidoc['entity']
-	};
+	asciidoc['table'].inside.rest = copyFromAsciiDoc('comment-block passthrough-block literal-block other-block list-punctuation indented-block comment title attribute-entry attributes hr page-break admonition list-label callout macro inline replacement entity line-continuation');
+
+	asciidoc['other-block'].inside.rest = copyFromAsciiDoc('table list-punctuation indented-block comment attribute-entry attributes hr page-break admonition list-label macro inline replacement entity line-continuation');
+
+	asciidoc['title'].inside.rest = copyFromAsciiDoc('macro inline replacement entity');
+
 
 	// Plugin to make entity title show the real entity, idea by Roman Komarov
-	Prism.hooks.add('wrap', function(env) {
+	Prism.hooks.add('wrap', function (env) {
 		if (env.type === 'entity') {
 			env.attributes['title'] = env.content.replace(/&amp;/, '&');
 		}
 	});
+
+	Prism.languages.adoc = Prism.languages.asciidoc;
 }(Prism));

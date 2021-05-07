@@ -12,7 +12,7 @@
 			alias: 'punctuation'
 		},
 		'string': /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
-		'number': /\b0x[\dA-Fa-f]+|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][-+]?\d+)?/,
+		'number': /\b0x[\dA-Fa-f]+|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee][-+]?\d+)?/,
 		'variable': [
 			/\$(?!\d)\w+/,
 			/#(?!\d)\w+#/,
@@ -54,15 +54,6 @@
 		],
 		'keyword': /\b(?:false|off|on|no|true|yes)\b/
 	};
-
-	// Comments are inserted at top so that they can
-	// surround markup
-	Prism.languages.insertBefore('smarty', 'tag', {
-		'smarty-comment': {
-			pattern: /\{\*[\s\S]*?\*\}/,
-			alias: ['smarty','comment']
-		}
-	});
 
 	// Tokenize all inline Smarty expressions
 	Prism.hooks.add('before-tokenize', function(env) {

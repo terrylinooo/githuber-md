@@ -1,0 +1,81 @@
+#!/bin/bash
+
+set -e -u -o pipefail
+
+
+download_components_json() {
+    curl -sS -L -o $2 $1
+}
+
+generate_prism_codes() {
+    local components jq_program
+    components=$1
+
+    set +e		## not quite sure why the read exits with 1
+    read -u 0 -r -d '' jq_program <<!
+        .languages | 
+	to_entries | 
+	sort_by(.key) | 
+	map(select(.key != "meta") | 
+	("'" + .key + "' => '" + .value.title + "',")) | 
+	.[] | .
+!
+   set -e
+    
+    echo 'public static $prism_codes = array('
+    jq  -r "$jq_program" $components | \
+	sed -e 's/^/    /'
+    echo ');'
+
+}
+
+
+generate_prism_parents() {
+    local components jq_program
+    components=$1
+    jq_program=''
+
+    set +e		## not quite sure why the read exits with 1
+    read -u 0 -r -d '' jq_program <<!
+	.languages |  
+        to_entries | 
+        sort_by(.key) |
+	map(select(.value|has("require")) | 
+	(
+	   ("'" + .key + "'") + 
+	   " => array(" + 
+	   (
+		(if ((.value.require|type) == "string") then 
+		       ([.value.require]) 
+	         else 
+		       .value.require 
+                end) | 
+                map("'" + . + "'") | 
+                join (", ") + "), "
+	   )
+	)  
+	)| .[] | .
+!
+    set -e
+
+    echo 'public static $prism_component_parent = array('
+      jq -r "$jq_program" $components | sed -e 's/^/    /'
+    echo ');'
+}
+
+main() {
+    local url components version
+    version=${1:-}
+    
+    [[ ! $version =~ v[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,} ]] && echo "ERROR: invalid version definition" >&2 && exit 1
+
+    url=https://github.com/PrismJS/prism/raw/$version/components.json
+    components=$(mktemp)
+
+    download_components_json $url $components
+    generate_prism_codes $components
+    generate_prism_parents $components
+    rm $components
+}
+
+main $1
