@@ -2,7 +2,7 @@
 
 ![Screenshot](./assets/images/wp-githuber-md-cover.png)
 
-An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+An all-in-on [WordPress Markdown Plugin](https://terryl.in/en/repository/wordpress-markdown-plugin-githuber-md/) provides a variety of features such as Markdown editor, live-preview, image-paste, HTML-to-Markdown helper, and more..
 
 ## How it works
 
