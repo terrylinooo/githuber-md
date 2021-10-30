@@ -230,6 +230,7 @@ class Markdown extends ControllerAbstract {
 
 				// Okay! User enable Markdown for current current post and it's post type.
 				$this->jetpack_code_snippets();
+				$this->maybe_unload_for_bulk_edit();
 
 				if ( 'yes' === githuber_get_option( 'html_to_markdown', 'githuber_markdown' ) ) {
 					$html2markdown = new Controller\HtmlToMarkdown();
@@ -633,7 +634,7 @@ class Markdown extends ControllerAbstract {
 	 */
 	public function maybe_unload_for_bulk_edit() {
 		if ( isset( $_REQUEST['bulk_edit'] ) && $this->is_md_enabled( 'posting' ) ) {
-			$this->unload_markdown_for_posts();
+			$this->unload_markdown( 'posting' );
 		}
 	}
 
