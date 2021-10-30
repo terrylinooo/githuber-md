@@ -185,10 +185,11 @@ class Markdown extends ControllerAbstract {
 		$current_post_type = githuber_get_current_post_type();
 
         $args = array(
-            'public'   => true,
-            '_builtin' => false, // for custom post types
+            'public'       => true,
+            '_builtin'     => false, // for custom post types
             'show_in_rest' => true, // for custom post types with Gutenberg editor enabled
         );
+
         $custom_post_types = get_post_types( $args );
 
 		// Feature request #98
@@ -198,7 +199,7 @@ class Markdown extends ControllerAbstract {
 				$rich_editing = new RichEditing();
 				$rich_editing->enable();
 
-				if ( empty( $current_post_type ) || 'post' === $current_post_type || 'page' === $current_post_type || in_array($current_post_type, $custom_post_types) ) {
+				if ( empty( $current_post_type ) || 'post' === $current_post_type || 'page' === $current_post_type || in_array( $current_post_type, $custom_post_types ) ) {
 					$rich_editing->enable_gutenberg();
 				}
 
@@ -214,7 +215,7 @@ class Markdown extends ControllerAbstract {
 
 			// Custom post types are not supporting Gutenberg by default for now, so
             // We only enable Gutenberg for `post`, `page` and custom post types with Gutenberg enabled
-			if ( 'post' === $current_post_type || 'page' === $current_post_type || in_array($current_post_type, $custom_post_types) ) {
+			if ( 'post' === $current_post_type || 'page' === $current_post_type || in_array( $current_post_type, $custom_post_types ) ) {
 				$rich_editing->enable_gutenberg();
 			}
 		} else {
@@ -224,7 +225,7 @@ class Markdown extends ControllerAbstract {
 				$rich_editing = new RichEditing();
 				$rich_editing->enable();
 
-				if ( 'post' === $current_post_type || 'page' === $current_post_type || in_array($current_post_type, $custom_post_types) ) {
+				if ( 'post' === $current_post_type || 'page' === $current_post_type || in_array( $current_post_type, $custom_post_types ) ) {
 					$rich_editing->enable_gutenberg();
 				}
 
