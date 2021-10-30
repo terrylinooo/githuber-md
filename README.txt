@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-An all-in-on WordPress Markdown Plugin provides a variety of features such as Markdown editor, live-preivew, image-paste, HTML-to-Markdown helper, and more..
+An all-in-on WordPress Markdown Plugin provides a variety of features such as Markdown editor, live-preview, image-paste, HTML-to-Markdown helper, and more..
 
 Read detailed document, please visit [https://github.com/terrylinooo/githuber-md](https://github.com/terrylinooo/githuber-md).
 
