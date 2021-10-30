@@ -5,16 +5,16 @@
  */
 
 Prism.languages.hsts = {
-	'directive':  {
+	'directive': {
 		pattern: /\b(?:max-age=|includeSubDomains|preload)/,
 		alias: 'keyword'
 	},
 	'safe': {
-		pattern: /\d{8,}/,
+		pattern: /\b\d{8,}\b/,
 		alias: 'selector'
 	},
 	'unsafe': {
-		pattern: /\d{0,7}/,
+		pattern: /\b\d{1,7}\b/,
 		alias: 'function'
 	}
 };
