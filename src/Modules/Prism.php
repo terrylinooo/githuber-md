@@ -415,7 +415,7 @@ class Prism extends ModuleAbstract {
 				case 'jsdelivr':
 					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/themes/' . $theme . '.css';
 					if ( 'yes' === $prism_line_number ) {
-						$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.css';
+						$style_url[] ='https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.css';
 					}
 					break;
 
