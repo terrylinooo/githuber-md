@@ -164,7 +164,7 @@ class KaTeX extends ModuleAbstract {
 	public static function katex_inline_markup( $content ) {
 
 		$regex = '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix';
-		$content = preg_replace_callback( $regex, function() {
+		$result = preg_replace_callback( $regex, function() {
 			$matches = func_get_arg(0);
 
 			if ( ! empty( $matches[1] ) ) {
@@ -173,6 +173,10 @@ class KaTeX extends ModuleAbstract {
 				return '<code class="katex-inline">' . trim( $katex ) . '</code>';
 			}
 		}, $content );
+
+		if ( ! empty( $result ) ) {
+			return $result;
+		}
 
 		return $content;
 	}
