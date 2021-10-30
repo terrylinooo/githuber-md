@@ -1,5 +1,6 @@
 {
     "name": "terrylinooo/githuber-md",
+    "type": "wordpress-plugin",
     "description": "An all-in-one WordPress Markdown plugin.",
     "keywords": ["markdown", "markdown-editor", "wordpress-plugin", "wordpress-markdown-plugin"],
     "homepage": "https://github.com/terrylinooo/githuber-md",
