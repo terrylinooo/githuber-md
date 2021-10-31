@@ -91,7 +91,7 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
         height: 16px;
         margin-right: 3px;
         background-size: contain;
-        background-image: url("' . $svg . '");
+        background-image: url("<?php echo $svg; ?>");
         background-repeat: no-repeat;
         position: relative;
         top: 3px;
