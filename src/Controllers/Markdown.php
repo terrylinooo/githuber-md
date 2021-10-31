@@ -1237,5 +1237,4 @@ class Markdown extends ControllerAbstract {
 		}
 		return false;
 	}
-
 }

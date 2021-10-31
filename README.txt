@@ -2,8 +2,8 @@
 Contributors: terrylin
 Tags: markdown, markdown editor, katex, mermaid, flow chart, github
 Requires at least: 4.0
-Tested up to: 5.6.1
-Stable tag: 1.16.0
+Tested up to: 5.8.1
+Stable tag: 1.16.1
 Requires PHP: 5.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -22,7 +22,7 @@ The Video shows you the following steps:
 
 1. Convert HTML to Markdown by using `HTML to Markdown` tool.
 2. Cut up a selection area of an image and copy it from Photoshop, then paste it to Markdown Editor.
-3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
+3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result).
 4. View the result.
 
 == How it works ==
@@ -84,7 +84,7 @@ Simplified Chinese (zh_CN) by [Terry Lin](https://terryl.in/zh/).
 
 1. HTML-to-Markdown tool.
 2. Image copy and paste.
-3. Update post and see result. 
+3. Update post and see result.
 4. Syntax Highlighing
 5. Mermaid.
 6. KaTex.
@@ -296,7 +296,7 @@ GNU General Public License for more details.
 
 = 1.11.5
 
-- Jetpack compatibility #80, #81, thanks @jeherve 
+- Jetpack compatibility #80, #81, thanks @jeherve
 - Fix issue #92
 - Remove donation information.
 
@@ -376,7 +376,15 @@ GNU General Public License for more details.
 - Upgrade KaTax JavaScript library from 0.11.1 to 0.12.0
 - Upgrade Flowchart.js JavaScript library from 1.11.3 to 1.14.1
 
+= 1.16.1
+
+- Fix issue #253 - KaTax... by xxNull-lsk
+- Fix issue #252 - Bulk action... by hmaragy
+- Improve #252 Update composer.json to allow bedrock installs by jawngee
+- Fix issue #230 - jsdeliver url by Bronya0
+- Test up to WordPress 5.8.1
+- Test up to PHP 8.0
+
 == Upgrade Notice ==
 
 = Currently no logs now.
-
