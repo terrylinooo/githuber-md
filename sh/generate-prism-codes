@@ -17,7 +17,7 @@ generate_prism_codes() {
 	to_entries | 
 	sort_by(.key) | 
 	map(select(.key != "meta") | 
-	("'" + .key + "' => '" + .value.title + "',")) | 
+	("'" + .key + "' => '" + (.value.title | sub("'";"\\\\'")) + "',")) | 
 	.[] | .
 !
    set -e
@@ -51,7 +51,7 @@ generate_prism_parents() {
 		       .value.require 
                 end) | 
                 map("'" + . + "'") | 
-                join (", ") + "), "
+                join (", ") + "),"
 	   )
 	)  
 	)| .[] | .
