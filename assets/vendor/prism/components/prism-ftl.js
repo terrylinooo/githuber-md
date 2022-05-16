@@ -36,14 +36,14 @@
 			}
 		],
 		'keyword': /\b(?:as)\b/,
-		'boolean': /\b(?:true|false)\b/,
+		'boolean': /\b(?:false|true)\b/,
 		'builtin-function': {
 			pattern: /((?:^|[^?])\?\s*)\w+/,
 			lookbehind: true,
 			alias: 'function'
 		},
-		'function': /\w+(?=\s*\()/,
-		'number': /\d+(?:\.\d+)?/,
+		'function': /\b\w+(?=\s*\()/,
+		'number': /\b\d+(?:\.\d+)?\b/,
 		'operator': /\.\.[<*!]?|->|--|\+\+|&&|\|\||\?{1,2}|[-+*/%!=<>]=?|\b(?:gt|gte|lt|lte)\b/,
 		'punctuation': /[,;.:()[\]{}]/
 	};
@@ -86,6 +86,7 @@
 	};
 
 	Prism.hooks.add('before-tokenize', function (env) {
+		// eslint-disable-next-line regexp/no-useless-lazy
 		var pattern = RegExp(/<#--[\s\S]*?-->|<\/?[#@][a-zA-Z](?:<expr>)*?>|\$\{(?:<expr>)*?\}/.source.replace(/<expr>/g, function () { return FTL_EXPR; }), 'gi');
 		Prism.languages['markup-templating'].buildPlaceholders(env, 'ftl', pattern);
 	});

@@ -6,7 +6,7 @@
 
 
 	var LANGUAGE_REGEX = /^diff-([\w-]+)/i;
-	var HTML_TAG = /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/gi;
+	var HTML_TAG = /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/g;
 	//this will match a line plus the line break while ignoring the line breaks HTML tags may contain.
 	var HTML_LINE = RegExp(/(?:__|[^\r\n<])*(?:\r\n?|\n|(?:__|[^\r\n<])(?![^\r\n]))/.source.replace(/__/g, function () { return HTML_TAG.source; }), 'gi');
 
@@ -32,7 +32,7 @@
 	});
 
 	Prism.hooks.add('wrap', function (env) {
-		var diffLanguage, diffGrammar;
+		var diffLanguage; var diffGrammar;
 
 		if (env.language !== 'diff') {
 			var langMatch = LANGUAGE_REGEX.exec(env.language);
@@ -70,9 +70,9 @@
 			var prefix = Prism.Token.stringify(prefixToken, env.language);
 
 			// add prefix
-			var lines = [], m;
+			var lines = []; var m;
 			HTML_LINE.lastIndex = 0;
-			while (m = HTML_LINE.exec(highlighted)) {
+			while ((m = HTML_LINE.exec(highlighted))) {
 				lines.push(prefix + m[0]);
 			}
 			if (/(?:^|[\r\n]).$/.test(decoded)) {

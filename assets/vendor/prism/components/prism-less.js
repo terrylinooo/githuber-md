@@ -29,7 +29,7 @@ Prism.languages.less = Prism.languages.extend('css', {
 		}
 	},
 
-	'property': /(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/i,
+	'property': /(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/,
 	'operator': /[+\-*\/]/
 });
 
@@ -39,7 +39,7 @@ Prism.languages.insertBefore('less', 'property', {
 		{
 			pattern: /@[\w-]+\s*:/,
 			inside: {
-				"punctuation": /:/
+				'punctuation': /:/
 			}
 		},
 
