@@ -5,10 +5,11 @@ Prism.languages.jsstacktrace = {
 	},
 
 	'stack-frame': {
-		pattern: /^[ \t]+at[ \t].*/m,
+		pattern: /(^[ \t]+)at[ \t].*/m,
+		lookbehind: true,
 		inside: {
 			'not-my-code': {
-				pattern: /[ \t]+at[ \t]+(?!\s)(?:node\.js|\<unknown\>|.*(?:node_modules|\(\<anonymous\>\)|\(\<unknown\>|\<anonymous\>$|\(internal\/|\(node\.js)).*/m,
+				pattern: /^at[ \t]+(?!\s)(?:node\.js|<unknown>|.*(?:node_modules|\(<anonymous>\)|\(<unknown>|<anonymous>$|\(internal\/|\(node\.js)).*/m,
 				alias: 'comment'
 			},
 
@@ -19,7 +20,7 @@ Prism.languages.jsstacktrace = {
 			},
 
 			'function': {
-				pattern: /(at\s+(?:new\s+)?)(?!\s)[_$a-zA-Z\xA0-\uFFFF<][.$\w\xA0-\uFFFF<>]*/,
+				pattern: /(\bat\s+(?:new\s+)?)(?!\s)[_$a-zA-Z\xA0-\uFFFF<][.$\w\xA0-\uFFFF<>]*/,
 				lookbehind: true,
 				inside: {
 					'punctuation': /\./
@@ -36,7 +37,7 @@ Prism.languages.jsstacktrace = {
 			},
 
 			'line-number': {
-				pattern: /:[0-9]+(?::[0-9]+)?\b/,
+				pattern: /:\d+(?::\d+)?\b/,
 				alias: 'number',
 				inside: {
 					'punctuation': /:/
@@ -45,4 +46,4 @@ Prism.languages.jsstacktrace = {
 
 		}
 	}
-}
+};

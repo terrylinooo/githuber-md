@@ -2,8 +2,8 @@
 
 	var javascript = Prism.languages.javascript;
 
-	var type = /{(?:[^{}]|{(?:[^{}]|{[^{}]*})*})+}/.source;
-	var parameterPrefix = '(@(?:param|arg|argument|property)\\s+(?:' + type + '\\s+)?)';
+	var type = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})+\}/.source;
+	var parameterPrefix = '(@(?:arg|argument|param|property)\\s+(?:' + type + '\\s+)?)';
 
 	Prism.languages.jsdoc = Prism.languages.extend('javadoclike', {
 		'parameter': {
@@ -40,7 +40,7 @@
 		},
 		'class-name': [
 			{
-				pattern: RegExp(/(@(?:augments|extends|class|interface|memberof!?|template|this|typedef)\s+(?:<TYPE>\s+)?)[A-Z]\w*(?:\.[A-Z]\w*)*/.source.replace(/<TYPE>/g, function () { return type; })),
+				pattern: RegExp(/(@(?:augments|class|extends|interface|memberof!?|template|this|typedef)\s+(?:<TYPE>\s+)?)[A-Z]\w*(?:\.[A-Z]\w*)*/.source.replace(/<TYPE>/g, function () { return type; })),
 				lookbehind: true,
 				inside: {
 					'punctuation': /\./
@@ -64,7 +64,7 @@
 			lookbehind: true,
 			inside: {
 				'code': {
-					pattern: /^(\s*(?:\*\s*)?)\S.*$/m,
+					pattern: /^([\t ]*(?:\*\s*)?)\S.*$/m,
 					lookbehind: true,
 					inside: javascript,
 					alias: 'language-javascript'

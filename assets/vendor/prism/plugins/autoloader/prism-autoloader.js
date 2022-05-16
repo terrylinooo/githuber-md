@@ -1,7 +1,10 @@
 (function () {
-	if (typeof self === 'undefined' || !self.Prism || !self.document || !document.createElement) {
+
+	if (typeof Prism === 'undefined' || typeof document === 'undefined') {
 		return;
 	}
+
+	/* eslint-disable */
 
 	/**
 	 * The dependencies map is built automatically with gulp.
@@ -25,6 +28,11 @@
 		"c": "clike",
 		"csharp": "clike",
 		"cpp": "c",
+		"cfscript": "clike",
+		"chaiscript": [
+			"clike",
+			"cpp"
+		],
 		"coffeescript": "javascript",
 		"crystal": "ruby",
 		"css-extras": "css",
@@ -55,6 +63,7 @@
 		"handlebars": "markup-templating",
 		"haxe": "clike",
 		"hlsl": "c",
+		"idris": "haskell",
 		"java": "clike",
 		"javadoc": [
 			"markup",
@@ -79,11 +88,11 @@
 		],
 		"less": "css",
 		"lilypond": "scheme",
+		"liquid": "markup-templating",
 		"markdown": "markup",
 		"markup-templating": "markup",
 		"mongodb": "javascript",
 		"n4js": "javascript",
-		"nginx": "clike",
 		"objectivec": "c",
 		"opencl": "c",
 		"parser": "markup",
@@ -102,9 +111,14 @@
 		],
 		"purebasic": "clike",
 		"purescript": "haskell",
+		"qsharp": "clike",
 		"qml": "javascript",
 		"qore": "clike",
 		"racket": "scheme",
+		"cshtml": [
+			"markup",
+			"csharp"
+		],
 		"jsx": [
 			"markup",
 			"javascript"
@@ -124,7 +138,12 @@
 		"soy": "markup-templating",
 		"sparql": "turtle",
 		"sqf": "clike",
-		"swift": "clike",
+		"squirrel": "clike",
+		"stata": [
+			"mata",
+			"java",
+			"python"
+		],
 		"t4-cs": [
 			"t4-templating",
 			"csharp"
@@ -139,8 +158,9 @@
 			"markup-templating"
 		],
 		"textile": "markup",
-		"twig": "markup",
+		"twig": "markup-templating",
 		"typescript": "javascript",
+		"v": "clike",
 		"vala": "clike",
 		"vbnet": "basic",
 		"velocity": "markup",
@@ -160,29 +180,45 @@
 		"rss": "markup",
 		"js": "javascript",
 		"g4": "antlr4",
+		"ino": "arduino",
+		"arm-asm": "armasm",
+		"art": "arturo",
 		"adoc": "asciidoc",
+		"avs": "avisynth",
+		"avdl": "avro-idl",
+		"gawk": "awk",
 		"shell": "bash",
 		"shortcode": "bbcode",
 		"rbnf": "bnf",
 		"oscript": "bsl",
 		"cs": "csharp",
 		"dotnet": "csharp",
+		"cfc": "cfscript",
 		"coffee": "coffeescript",
 		"conc": "concurnas",
 		"jinja2": "django",
 		"dns-zone": "dns-zone-file",
 		"dockerfile": "docker",
+		"gv": "dot",
 		"eta": "ejs",
 		"xlsx": "excel-formula",
 		"xls": "excel-formula",
 		"gamemakerlanguage": "gml",
+		"po": "gettext",
+		"gni": "gn",
+		"ld": "linker-script",
+		"go-mod": "go-module",
+		"hbs": "handlebars",
+		"mustache": "handlebars",
 		"hs": "haskell",
+		"idr": "idris",
 		"gitignore": "ignore",
 		"hgignore": "ignore",
 		"npmignore": "ignore",
 		"webmanifest": "json",
 		"kt": "kotlin",
 		"kts": "kotlin",
+		"kum": "kumir",
 		"tex": "latex",
 		"context": "latex",
 		"ly": "lilypond",
@@ -194,16 +230,21 @@
 		"n4jsd": "n4js",
 		"nani": "naniscript",
 		"objc": "objectivec",
+		"qasm": "openqasm",
 		"objectpascal": "pascal",
 		"px": "pcaxis",
 		"pcode": "peoplecode",
+		"plantuml": "plant-uml",
 		"pq": "powerquery",
 		"mscript": "powerquery",
 		"pbfasm": "purebasic",
 		"purs": "purescript",
 		"py": "python",
+		"qs": "qsharp",
 		"rkt": "racket",
+		"razor": "cshtml",
 		"rpy": "renpy",
+		"res": "rescript",
 		"robot": "robotframework",
 		"rb": "ruby",
 		"sh-session": "shell-session",
@@ -212,17 +253,27 @@
 		"sol": "solidity",
 		"sln": "solution-file",
 		"rq": "sparql",
+		"sclang": "supercollider",
 		"t4": "t4-cs",
+		"trickle": "tremor",
+		"troy": "tremor",
 		"trig": "turtle",
 		"ts": "typescript",
 		"tsconfig": "typoscript",
 		"uscript": "unrealscript",
 		"uc": "unrealscript",
+		"url": "uri",
 		"vb": "visual-basic",
 		"vba": "visual-basic",
+		"webidl": "web-idl",
+		"mathematica": "wolfram",
+		"nb": "wolfram",
+		"wl": "wolfram",
 		"xeoracube": "xeora",
 		"yml": "yaml"
 	}/*]*/;
+
+	/* eslint-enable */
 
 	/**
 	 * @typedef LangDataItem
@@ -334,7 +385,7 @@
 	 * @returns {string}
 	 */
 	function getLanguagePath(lang) {
-		return config.languages_path + 'prism-' + lang + (config.use_minified ? '.min' : '') + '.js'
+		return config.languages_path + 'prism-' + lang + (config.use_minified ? '.min' : '') + '.js';
 	}
 
 	/**
@@ -427,7 +478,7 @@
 					languageCallback(lang, 'error');
 				});
 			}
-		};
+		}
 
 		var dependencies = lang_dependencies[lang];
 		if (dependencies && dependencies.length) {
