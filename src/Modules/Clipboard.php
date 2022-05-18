@@ -107,11 +107,20 @@ class Clipboard extends ModuleAbstract {
 							}
 		
 							if (isLanguage !== -1) {
+								var current_pre = pre[i];
+								var parent = current_pre.parentNode;
+								var div = document.createElement("div");
+								div.style[\'position\'] = \'relative\';
+
+								parent.replaceChild(div, current_pre);
+
 								var button = document.createElement("button");
 								button.className = "copy-button";
 								button.textContent = "Copy";
-			
-								pre[i].appendChild(button);
+
+								div.appendChild(current_pre);
+								div.appendChild(button);
+
 								hasLanguage = true;
 							}
 						};
