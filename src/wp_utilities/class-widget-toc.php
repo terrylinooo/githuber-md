@@ -1,7 +1,7 @@
 <?php
 /**
  * Githuber_Widget_Toc
- * Add a Table of Content for your article. This widget is for single-post pages only.
+ * Add a Table of Contents for your article. This widget is for single-post pages only.
  *
  * @package   WordPress
  * @author    Terry Lin <terrylinooo>
@@ -22,7 +22,7 @@ class Githuber_Widget_Toc extends WP_Widget {
 
 		$widget_ops = array(
 			'classname'                   => 'widget_githuber_toc',
-			'description'                 => __( 'Add a Table of Content for your article. This widget is for single-post pages only.', 'wp-githuber-md' ),
+			'description'                 => __( 'Add a Table of Contents for your article. This widget is for single-post pages only.', 'wp-githuber-md' ),
 			'customize_selective_refresh' => true,
 		);
 

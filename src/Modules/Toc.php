@@ -1,7 +1,7 @@
 <?php
 /**
- * Module Name: Table of Content
- * Module Description: Display table of content in article section.
+ * Module Name: Table of Contents
+ * Module Description: Display table of contents in article section.
  *
  * @author Terry Lin
  * @link https://terryl.in/
@@ -43,7 +43,7 @@ class Toc extends ModuleAbstract {
 				}
 
 				return '<div class="post-toc-block float-' . $css . '"> 
-					<div class="post-toc-header">' . __( 'Table of Content', 'wp-githuber-md' ) . '</div>
+					<div class="post-toc-header">' . __( 'Table of Contents', 'wp-githuber-md' ) . '</div>
 					<nav id="md-post-toc" class="md-post-toc"></nav>
 					</div>' . $string;
 			}, 10, 1 );

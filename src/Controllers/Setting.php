@@ -464,7 +464,7 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'    => 'support_toc',
-					'label'   => __( 'Table of Content', 'wp-githuber-md' ),
+					'label'   => __( 'Table of Contents', 'wp-githuber-md' ),
 					'desc'    => __( 'Display a TOC in the every first section.', 'wp-githuber-md' ),
 					'type'    => 'radio',
 					'default' => 'no',
@@ -796,13 +796,13 @@ class Setting extends ControllerAbstract {
 				array(
 					'section_title' => true,
 					'location_id'   => 'table-of-content',
-					'label'         => __( 'Table of Content', 'wp-githuber-md' ),
+					'label'         => __( 'Table of Contents', 'wp-githuber-md' ),
 				),
 
 				array(
 					'name'        => 'support_toc',
 					//'label'     => __( 'Image Paste', 'wp-githuber-md' ),
-					'desc'        => __( 'Support Table of Content.', 'wp-githuber-md' ),
+					'desc'        => __( 'Support Table of Contents.', 'wp-githuber-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'table-of-content',

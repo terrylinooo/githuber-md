@@ -345,11 +345,11 @@ msgid "Upload to Media Library?"
 msgstr "上传至媒体库"
 
 #: src/Controllers/Setting.php:799 src/Modules/Toc.php:46
-msgid "Table of Content"
+msgid "Table of Contents"
 msgstr "内容纲要"
 
 #: src/Controllers/Setting.php:805
-msgid "Support Table of Content."
+msgid "Support Table of Contents."
 msgstr " 支持内容纲要。"
 
 #: src/Controllers/Setting.php:814
@@ -894,7 +894,7 @@ msgstr "MathJax 行內："
 
 #: src/wp_utilities/class-widget-toc.php:25
 msgid ""
-"Add a Table of Content for your article. This widget is for single-post "
+"Add a Table of Contents for your article. This widget is for single-post "
 "pages only."
 msgstr "为您的文章添加内容纲要。此小工具仅适用于文章页面。"
 

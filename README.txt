@@ -248,7 +248,7 @@ GNU General Public License for more details.
 
 = 1.9.0
 
-* Add feature: TOC (Table of content) module.
+* Add feature: TOC (Table of contents) module.
 * Add feature: Transform `&amp;` to `&` in URLs.
 
 = 1.9.1

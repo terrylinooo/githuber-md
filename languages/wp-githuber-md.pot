@@ -342,11 +342,11 @@ msgid "Upload to Media Library?"
 msgstr ""
 
 #: src/Controllers/Setting.php:799 src/Modules/Toc.php:46
-msgid "Table of Content"
+msgid "Table of Contents"
 msgstr ""
 
 #: src/Controllers/Setting.php:805
-msgid "Support Table of Content."
+msgid "Support Table of Contents."
 msgstr ""
 
 #: src/Controllers/Setting.php:814
@@ -856,7 +856,7 @@ msgstr ""
 
 #: src/wp_utilities/class-widget-toc.php:25
 msgid ""
-"Add a Table of Content for your article. This widget is for single-post "
+"Add a Table of Contents for your article. This widget is for single-post "
 "pages only."
 msgstr ""
 
