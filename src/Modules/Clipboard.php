@@ -110,6 +110,7 @@ class Clipboard extends ModuleAbstract {
 								var current_pre = pre[i];
 								var parent = current_pre.parentNode;
 								var div = document.createElement("div");
+								div.className = "pre-container";
 								div.style[\'position\'] = \'relative\';
 
 								parent.replaceChild(div, current_pre);

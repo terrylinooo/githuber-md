@@ -102,6 +102,12 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
     pre:hover .copy-button {
         background-color: rgba(255, 255, 255, 0.9);
     }
+    .pre-container:hover .copy-button {
+        opacity: 1;
+    }
+    .copy-button {
+        opacity: 0;
+    }
 
 <?php endif; ?>
 
