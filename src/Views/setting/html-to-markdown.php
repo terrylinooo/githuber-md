@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/Setting
  *
@@ -10,11 +14,8 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  * @since 1.3.0
  * @version 1.3.0
  */
-?>
 
-<?php 
-
-echo __( 'Dsiplaying A <strong>HTML to Markdown</strong> helper widget beside Markdown editor that helps you convert an <strong>old post</strong> into Markdown. <br />It is just a <strong>preview</strong>, to let you know what the converted content looks like after converting to Markdown.<br /><br />Notice: Turning on this option will force to disable <strong>auto-save</strong>, prevents breaking your original content.<br />If you are not satisfied with the result, do not click <strong>Update</strong> button.', 'wp-githuber-md');
+echo __( 'Display a <strong>HTML to Markdown</strong> helper widget beside the Markdown editor to assist in converting an <strong>old post</strong> into Markdown. <br />This is just a <strong>preview</strong> toshow what the converted content would look like in Markdown.<br /><br />Note: Turning on this option will disable <strong>auto-save</strong> to prevent altering your original content.<br />If you arenot satisfied with the result, do not click the <strong>Update</strong> button.', 'wp-githuber-md' );
 
 ?>
 

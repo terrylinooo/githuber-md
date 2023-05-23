@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/Setting
  *
@@ -10,9 +14,6 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  * @since 1.4.2
  * @version 1.4.2
  */
-?>
 
-<?php 
-
-echo __( 'Required while the choosed storage space is <u>sm.ms</u>. If you don\'t have one, <a href="https://sm.ms/home/apitoken" target="_blank">sign up</a> here.', 'wp-githuber-md' );
+echo __( 'Required when the chosen storage space is <u>sm.ms</u>. If you don’t have one, <a href="https://sm.ms/home/apitoken" target="_blank">sign up</a> here.', 'wp-githuber-md' );
 

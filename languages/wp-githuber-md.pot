@@ -75,11 +75,11 @@ msgid "About"
 msgstr ""
 
 #: src/Controllers/Setting.php:215
-msgid "Your system langauge is supported."
+msgid "Your system language is supported."
 msgstr ""
 
 #: src/Controllers/Setting.php:217
-msgid "Your system langauge is not supported."
+msgid "Your system language is not supported."
 msgstr ""
 
 #: src/Controllers/Setting.php:226
@@ -213,7 +213,7 @@ msgid "Toolbar"
 msgstr ""
 
 #: src/Controllers/Setting.php:389
-msgid "Choose a perferred style for the Editor's toolbar."
+msgid "Choose a preferred style for the Editor's toolbar."
 msgstr ""
 
 #: src/Controllers/Setting.php:400
@@ -221,7 +221,7 @@ msgid "Editing Area"
 msgstr ""
 
 #: src/Controllers/Setting.php:401
-msgid "Choose a perferred style for the Editor's editing area."
+msgid "Choose a preferred style for the Editor's editing area."
 msgstr ""
 
 #: src/Controllers/Setting.php:497 src/Controllers/Setting.php:566
@@ -233,7 +233,7 @@ msgid "prism.js"
 msgstr ""
 
 #: src/Controllers/Setting.php:506
-msgid "Highligh the syntax in your code snippets by Prism.js"
+msgid "Highlight the syntax in your code snippets by Prism.js"
 msgstr ""
 
 #: src/Controllers/Setting.php:506 src/Controllers/Setting.php:575
@@ -246,7 +246,7 @@ msgid "Theme"
 msgstr ""
 
 #: src/Controllers/Setting.php:516 src/Controllers/Setting.php:585
-msgid "Choose a perferred theme for the syntax highlighter."
+msgid "Choose a preferred theme for the syntax highlighter."
 msgstr ""
 
 #: src/Controllers/Setting.php:535
@@ -290,7 +290,7 @@ msgid "highlight.js"
 msgstr ""
 
 #: src/Controllers/Setting.php:575
-msgid "Highligh the syntax in your code snippets by Highlight.js"
+msgid "Highlight the syntax in your code snippets by Highlight.js"
 msgstr ""
 
 #: src/Controllers/Setting.php:707
@@ -831,7 +831,7 @@ msgid ""
 msgstr ""
 
 #: src/Views/example/highlight-js.php:28 src/Views/example/prism.php:28
-msgid "Check out this page to view full list."
+msgid "Check out this page to view the full list."
 msgstr ""
 
 #: src/Views/example/html5-figure.php:22

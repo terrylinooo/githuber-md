@@ -74,11 +74,11 @@ msgid "About"
 msgstr "关于"
 
 #: src/Controllers/Setting.php:215
-msgid "Your system langauge is supported."
+msgid "Your system language is supported."
 msgstr "支持您的系统语言。"
 
 #: src/Controllers/Setting.php:217
-msgid "Your system langauge is not supported."
+msgid "Your system language is not supported."
 msgstr "不支持您的系统语言。"
 
 #: src/Controllers/Setting.php:226
@@ -212,7 +212,7 @@ msgid "Toolbar"
 msgstr "工具列"
 
 #: src/Controllers/Setting.php:389
-msgid "Choose a perferred style for the Editor's toolbar."
+msgid "Choose a preferred style for the Editor's toolbar."
 msgstr "为编辑器工具列选取偏好"
 
 #: src/Controllers/Setting.php:400
@@ -220,7 +220,7 @@ msgid "Editing Area"
 msgstr "编辑区域"
 
 #: src/Controllers/Setting.php:401
-msgid "Choose a perferred style for the Editor's editing area."
+msgid "Choose a preferred style for the Editor's editing area."
 msgstr "为编辑器的编辑区选取偏好的样式。"
 
 #: src/Controllers/Setting.php:497 src/Controllers/Setting.php:566
@@ -232,7 +232,7 @@ msgid "prism.js"
 msgstr "prism.js"
 
 #: src/Controllers/Setting.php:506
-msgid "Highligh the syntax in your code snippets by Prism.js"
+msgid "Highlight the syntax in your code snippets by Prism.js"
 msgstr "启用这项设定后，便能使用 Prism.js 为程式码片段中的语法标示高亮提示。"
 
 #: src/Controllers/Setting.php:506 src/Controllers/Setting.php:575
@@ -245,7 +245,7 @@ msgid "Theme"
 msgstr "布景主题"
 
 #: src/Controllers/Setting.php:516 src/Controllers/Setting.php:585
-msgid "Choose a perferred theme for the syntax highlighter."
+msgid "Choose a preferred theme for the syntax highlighter."
 msgstr "为语法高亮提示选取偏好的布景主题。"
 
 #: src/Controllers/Setting.php:535
@@ -289,7 +289,7 @@ msgid "highlight.js"
 msgstr "highlight.js"
 
 #: src/Controllers/Setting.php:575
-msgid "Highligh the syntax in your code snippets by Highlight.js"
+msgid "Highlight the syntax in your code snippets by Highlight.js"
 msgstr "使用 Highlight.js 将您程式码片段中的语法进行高亮效果。"
 
 #: src/Controllers/Setting.php:707
@@ -869,7 +869,7 @@ msgid ""
 msgstr "如果您切换至另一个语法高亮模组，您必须更新每篇文章来生效。 <br />因为只有定义在代码区块的编程语言文件会被读取，而不是整包肥胖的文件。"
 
 #: src/Views/example/highlight-js.php:28 src/Views/example/prism.php:28
-msgid "Check out this page to view full list."
+msgid "Check out this page to view the full list."
 msgstr "前往说明页面检视完整清单。"
 
 #: src/Views/example/html5-figure.php:22

@@ -77,6 +77,7 @@ You'll find answers to many of your questions on [Report issues](https://github.
 
 == Translations ==
 
+English (en_US) by [Colocal](https://colocal.com/).
 Traditional Chinese (zh_TW) by [Alex Lion](https://www.alexclassroom.com/).
 Simplified Chinese (zh_CN) by [Terry Lin](https://terryl.in/zh/).
 

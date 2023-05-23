@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/Setting
  *
@@ -10,9 +14,6 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  * @since 1.2.0
  * @version 1.3.1
  */
-?>
-
-<?php 
 
 echo __( 'Support <a href="https://michelf.ca/projects/php-markdown/extra/" target="_blank">Markdown Extra</a>.', 'wp-githuber-md' );
 

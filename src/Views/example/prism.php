@@ -25,7 +25,7 @@ echo sayHello();
 </pre>
 <p class="description"><?php echo __( 'Block identification code:', 'wp-githuber-md' ); ?> 
 <a href="https://terryl.in/en/prism-js-html-code-language-list-for-syntax-highlighting/" target="_blank">
-<?php echo __( 'Check out this page to view full list.', 'wp-githuber-md' ); ?></a>
+<?php echo __( 'Check out this page to view the full list.', 'wp-githuber-md' ); ?></a>
 </p>
 
 <script>

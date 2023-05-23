@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/CustomMediaLibrary
  *
@@ -13,6 +17,6 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 
 ?>
 <select class="githuber_image_insert" name="githuber_image_insert">
-    <option value="markdown" selected><?php echo __( 'Markdown', 'wp-githuber-md'  ); ?></option>
-    <option value="html"><?php echo __( 'HTML', 'wp-githuber-md'  ); ?></option>
+	<option value="markdown" selected><?php echo __( 'Markdown', 'wp-githuber-md' ); ?></option>
+	<option value="html"><?php echo __( 'HTML', 'wp-githuber-md' ); ?></option>
 </select>

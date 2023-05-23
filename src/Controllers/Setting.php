@@ -230,9 +230,9 @@ class Setting extends ControllerAbstract {
 
 		if ( array_key_exists( $system_lang, $spellcheck_lang_list ) ) {
 			$default_spellcheck_lang = $system_lang;
-			$spellcheck_warning      = '<br /><span style="color: #0081ab">' . __( 'Your system langauge is supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
+			$spellcheck_warning      = '<br /><span style="color: #0081ab">' . __( 'Your system language is supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
 		} else {
-			$spellcheck_warning = '<br /><span style="color: #b00000">' . __( 'Your system langauge is not supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
+			$spellcheck_warning = '<br /><span style="color: #b00000">' . __( 'Your system language is not supported.', 'wp-githuber-md' ) . ' (' . $system_lang . ')</span>';
 		}
 
 		return array(
@@ -259,7 +259,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'disable_revision',
 					'label'   => __( 'Disable Revision', 'wp-githuber-md' ),
-					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
+					'desc'    => __( 'If you think the revision function is annoying when you\'re writing, you can disable it.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'no',
@@ -269,7 +269,7 @@ class Setting extends ControllerAbstract {
 					'name'    => 'disable_autosave',
 					'class'   => 'disable_autosave',
 					'label'   => __( 'Disable Auto-save', 'wp-githuber-md' ),
-					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can to disable it.', 'wp-githuber-md' ),
+					'desc'    => __( 'If you think the auto-save function is annoying when you\'re writing, you can disable it.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'size'    => 'sm',
 					'default' => 'yes',
@@ -390,7 +390,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'editor_toolbar_theme',
 					'label'   => __( 'Toolbar', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred style for the Editor\'s toolbar.', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a preferred style for the Editor\'s toolbar.', 'wp-githuber-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -402,7 +402,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'editor_editor_theme',
 					'label'   => __( 'Editing Area', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred style for the Editor\'s editing area.', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a preferred style for the Editor\'s editing area.', 'wp-githuber-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'options' => array(
@@ -476,7 +476,7 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'        => 'support_prism',
-					'desc'        => __( 'Highligh the syntax in your code snippets by Prism.js', 'wp-githuber-md' ) . '<br />' . __( 'This option is not available if you choose another highlighter modules.', 'wp-githuber-md' ),
+					'desc'        => __( 'Highlight the syntax in your code snippets by Prism.js', 'wp-githuber-md' ) . '<br />' . __( 'This option is not available if you choose another highlighter modules.', 'wp-githuber-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'syntax-highlight',
@@ -486,7 +486,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'prism_theme',
 					'label'   => __( 'Theme', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', 'wp-githuber-md' ),
+					'desc'    => __( 'Choose a preferred theme for the syntax highlighter.', 'wp-githuber-md' ),
 					'type'    => 'select',
 					'default' => 'default',
 					'parent'  => 'support_prism',
@@ -542,7 +542,7 @@ class Setting extends ControllerAbstract {
 
 				array(
 					'name'        => 'support_highlight',
-					'desc'        => __( 'Highligh the syntax in your code snippets by Highlight.js', 'wp-githuber-md' ) . '<br />' . __( 'This option is not available if you choose another highlighter modules.', 'wp-githuber-md' ),
+					'desc'        => __( 'Highlight the syntax in your code snippets by Highlight.js', 'wp-githuber-md' ) . '<br />' . __( 'This option is not available if you choose another highlighter modules.', 'wp-githuber-md' ),
 					'type'        => 'toggle',
 					'has_child'   => true,
 					'location_id' => 'syntax-highlight-js',
@@ -552,7 +552,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'highlight_theme',
 					'label'   => __( 'Theme', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a perferred theme for the syntax highlighter.', 'wp-githuber-md' ) . ' [<a href="https://highlightjs.org/static/demo/" target="_blank">' . __( 'Demo') . '</a>]',
+					'desc'    => __( 'Choose a preferred theme for the syntax highlighter.', 'wp-githuber-md' ) . ' [<a href="https://highlightjs.org/static/demo/" target="_blank">' . __( 'Demo') . '</a>]',
 					'type'    => 'select',
 					'default' => 'default',
 					'parent'  => 'support_highlight',
@@ -1168,7 +1168,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'richeditor_by_default',
 					'label'   => __( 'Default: Rich Editor', 'wp-githuber-md' ),
-					'desc'    => __( 'Notice: Your users might be confused because that if they swith to Markdown editor and then switch back to Rich editor or Gutenberg, the Markdown text of that single post will be lost. That is because that Rich editor and Markdown editor use differnt fields to store data.', 'wp-githuber-md' ),
+					'desc'    => __( 'Notice: Your users might be confused because if they switch to the Markdown editor and then switch back to the Rich editor or Gutenberg, the Markdown text for that single post will be lost. This is because the Rich editor and Markdown editor use different fields to store data.', 'wp-githuber-md' ),
 					'type'    => 'toggle',
 					'default' => 'no',
 				),

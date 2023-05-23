@@ -77,11 +77,11 @@ msgid "About"
 msgstr "關於"
 
 #: src/Controllers/Setting.php:215
-msgid "Your system langauge is supported."
+msgid "Your system language is supported."
 msgstr "目前的設定可支援這個網站的系統語言。"
 
 #: src/Controllers/Setting.php:217
-msgid "Your system langauge is not supported."
+msgid "Your system language is not supported."
 msgstr "目前的設定不支援這個網站的系統語言。"
 
 #: src/Controllers/Setting.php:226
@@ -217,7 +217,7 @@ msgid "Toolbar"
 msgstr "工具列"
 
 #: src/Controllers/Setting.php:389
-msgid "Choose a perferred style for the Editor's toolbar."
+msgid "Choose a preferred style for the Editor's toolbar."
 msgstr "為編輯器工具列選取偏好的樣式。"
 
 #: src/Controllers/Setting.php:400
@@ -225,7 +225,7 @@ msgid "Editing Area"
 msgstr "編輯區域"
 
 #: src/Controllers/Setting.php:401
-msgid "Choose a perferred style for the Editor's editing area."
+msgid "Choose a preferred style for the Editor's editing area."
 msgstr "為編輯器的編輯區選取偏好的樣式。"
 
 #: src/Controllers/Setting.php:497 src/Controllers/Setting.php:566
@@ -237,7 +237,7 @@ msgid "prism.js"
 msgstr "prism.js"
 
 #: src/Controllers/Setting.php:506
-msgid "Highligh the syntax in your code snippets by Prism.js"
+msgid "Highlight the syntax in your code snippets by Prism.js"
 msgstr "啟用這項設定後，便能使用 Prism.js 為程式碼片段中的語法標示醒目提示。"
 
 #: src/Controllers/Setting.php:506 src/Controllers/Setting.php:575
@@ -250,7 +250,7 @@ msgid "Theme"
 msgstr "佈景主題"
 
 #: src/Controllers/Setting.php:516 src/Controllers/Setting.php:585
-msgid "Choose a perferred theme for the syntax highlighter."
+msgid "Choose a preferred theme for the syntax highlighter."
 msgstr "為語法醒目提示選取偏好的佈景主題。"
 
 #: src/Controllers/Setting.php:535
@@ -294,7 +294,7 @@ msgid "highlight.js"
 msgstr "highlight.js"
 
 #: src/Controllers/Setting.php:575
-msgid "Highligh the syntax in your code snippets by Highlight.js"
+msgid "Highlight the syntax in your code snippets by Highlight.js"
 msgstr "使用 Highlight.js 將您程式碼片段中的語法進行醒目效果。"
 
 #: src/Controllers/Setting.php:707
@@ -870,7 +870,7 @@ msgid ""
 msgstr "如果您切換至另一個語法高亮模組，您必須更新每篇文章來生效。<br />因為只有定義在程式碼區塊的程式語言檔案會被讀取，而不是整包肥胖的檔案。"
 
 #: src/Views/example/highlight-js.php:28 src/Views/example/prism.php:28
-msgid "Check out this page to view full list."
+msgid "Check out this page to view the full list."
 msgstr "前往說明頁面檢視完整清單"
 
 #: src/Views/example/html5-figure.php:22

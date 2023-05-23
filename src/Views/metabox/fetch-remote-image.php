@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/FetchRemoteImage
  *
@@ -21,7 +25,7 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
 					<input type="checkbox" name="fetch_remote_image" value="yes">
 				</td>
 				<td>
-                    <?php echo __( 'Fetch remote images and save them into local folder.', 'wp-githuber-md'  ); ?>
+					<?php echo __( 'Fetch remote images and save them into local folder.', 'wp-githuber-md' ); ?>
 				</td>
 			</tr>
 		</table>

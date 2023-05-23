@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/Setting
  *
@@ -10,13 +14,10 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  * @since 1.2.0
  * @version 1.3.1
  */
-?>
 
-<?php 
+echo __( 'Required when the chosen storage space is <u>imgur.com</u>. If you don’t have one, <a href="https://api.imgur.com/oauth2/addclient" target="_blank">sign up</a> here.', 'wp-githuber-md' );
 
-echo __( 'Required while the choosed storage space is <u>imgur.com</u>. If you don\'t have one, <a href="https://api.imgur.com/oauth2/addclient" target="_blank">sign up</a> here.', 'wp-githuber-md' );
-
-if ( ! function_exists( 'curl_init') ) {
+if ( ! function_exists( 'curl_init' ) ) {
 
 	echo '<br /><span style="color: #b00000">';
 

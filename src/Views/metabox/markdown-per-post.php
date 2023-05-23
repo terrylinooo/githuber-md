@@ -1,5 +1,9 @@
-<?php 
-if ( ! defined('GITHUBER_PLUGIN_NAME') ) die; 
+<?php
+
+if ( ! defined( 'GITHUBER_PLUGIN_NAME' ) ) {
+	die;
+}
+
 /**
  * View for Controller/HtmlToMarkdown
  *
@@ -11,8 +15,9 @@ if ( ! defined('GITHUBER_PLUGIN_NAME') ) die;
  * @version 1.6.0
  */
 if ( ! isset( $markdown_this_post_choice ) ) {
-   return;
+	return;
 }
+
 ?>
 <div class="submitbox p-r">
 	<div class="misc-publishing-actions">
@@ -32,7 +37,7 @@ if ( ! isset( $markdown_this_post_choice ) ) {
 	</div>
 </div>
 
-<?php if ( 'yes' == githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) : ?>
+<?php if ( 'yes' === githuber_get_option( 'support_mathjax', 'githuber_modules' ) ) : ?>
 <!-- BEGIN - This section is a templete for MathJax module -->
 <script type="text/x-mathjax-config"> 
 	MathJax.Hub.Config({
@@ -66,4 +71,3 @@ if ( ! isset( $markdown_this_post_choice ) ) {
 </script>
 <!-- END - This section is a templete for MathJax module -->
 <?php endif; ?>
-

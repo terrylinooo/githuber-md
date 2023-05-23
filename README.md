@@ -99,17 +99,18 @@ If you're planning to use this plugin in an existing blog, be sure to:
 | Setting Page 1 | ![Setting page 1](https://i.imgur.com/0yhHBhLm.png) | [view](https://i.imgur.com/0yhHBhL.gif) | Markdown settings. |
 | Setting page 2 | ![Setting page 2](https://i.imgur.com/Va8z7Jgm.png) | [view](https://i.imgur.com/Va8z7Jg.gif) | Modules settings. |
 
+### Author
+
+Created by [Terry L.](https://terryl.in) and contributors.
+Thanks for the [donators](https://terryl.in/thank-you/) for supporting me, and the translators such as [CoLocal](https://colocal.com/) and others for providing translation.
 
 ### Notes
 
 - [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
 - [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
 - [Known issues](https://github.com/terrylinooo/githuber-md/wiki/Known-Issues)
-- [Donators](https://terryl.in/thank-you/)
+- 
 
 ### License
 
 GPLv3 or later
-
-
-
