@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Githuber MD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-29 09:48+0000\n"
+"POT-Creation-Date: 2023-05-23 08:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,798 +15,50 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.2.0; wp-5.0.3"
 
-#: src/Controllers/CustomMediaLibrary.php:63
-msgid "Code type"
+#: src/Views/setting/smart-quotes.php:21
+msgid "(detail)"
 msgstr ""
 
-#: src/Controllers/FetchRemoteImage.php:78 src/Controllers/Setting.php:328
-msgid "Fetch Remote Image"
-msgstr ""
-
-#: src/Controllers/HtmlToMarkdown.php:89
-msgid "HTML to Markdown"
-msgstr ""
-
-#: src/Controllers/ImagePaste.php:85 src/Controllers/ImagePaste.php:99
-#: src/Controllers/ImagePaste.php:115
-#, php-format
-msgid "Error while processing your request to %s!"
-msgstr ""
-
-#: src/Controllers/ImagePaste.php:102 src/Controllers/ImagePaste.php:122
-msgid "PHP Curl is not installed on your system."
-msgstr ""
-
-#: src/Controllers/ImagePaste.php:152 src/Controllers/KeywordSuggestion.php:132
-msgid "Error while uploading file."
-msgstr ""
-
-#: src/Controllers/KeywordSuggestion.php:78
-msgid "Keyword Suggestions"
-msgstr ""
-
-#: src/Controllers/Markdown.php:324
-msgid "Happy Markdowning!"
-msgstr ""
-
-#: src/Controllers/Markdown.php:547
-msgid "Enable Markdown"
-msgstr ""
-
-#: src/Controllers/Setting.php:119
-#: src/Views/metabox/custom-media-library.php:16
-msgid "Markdown"
-msgstr ""
-
-#: src/Controllers/Setting.php:124
-msgid "Modules"
-msgstr ""
-
-#: src/Controllers/Setting.php:129
-msgid "Extensions"
-msgstr ""
-
-#: src/Controllers/Setting.php:134
-msgid "Preferences"
-msgstr ""
-
-#: src/Controllers/Setting.php:139
-msgid "About"
-msgstr ""
-
-#: src/Controllers/Setting.php:215
-msgid "Your system language is supported."
-msgstr ""
-
-#: src/Controllers/Setting.php:217
-msgid "Your system language is not supported."
-msgstr ""
-
-#: src/Controllers/Setting.php:226
-msgid "Writing"
-msgstr ""
-
-#: src/Controllers/Setting.php:231
-msgid "Enable"
-msgstr ""
-
-#: src/Controllers/Setting.php:232
-msgid "Which post types you would like to enable Markdown editor for."
-msgstr ""
-
-#: src/Controllers/Setting.php:257
-msgid "Disable Revision"
-msgstr ""
-
-#: src/Controllers/Setting.php:258
-msgid ""
-"If you think the revision function is annoying when you're writing, you can "
-"to disable it."
-msgstr ""
-
-#: src/Controllers/Setting.php:267
-msgid "Disable Auto-save"
-msgstr ""
-
-#: src/Controllers/Setting.php:268
-msgid ""
-"If you think the auto-save function is annoying when you're writing, you can "
-"to disable it."
-msgstr ""
-
-#: src/Controllers/Setting.php:276
-msgid "Spell Check"
-msgstr ""
-
-#: src/Controllers/Setting.php:277
-msgid ""
-"Enable spell check on the input. (This feature does not apply to code blocks."
-")"
-msgstr ""
-
-#: src/Controllers/Setting.php:285
-msgid "Language"
-msgstr ""
-
-#: src/Controllers/Setting.php:286
-msgid "Please specify your language for spell check in the setting above."
-msgstr ""
-
-#: src/Controllers/Setting.php:294
-msgid "Match Highlighter"
-msgstr ""
-
-#: src/Controllers/Setting.php:295
-msgid ""
-"Everywhere else in your text where <strong>current word</strong> appears "
-"will automatically illuminate."
-msgstr ""
-
-#: src/Controllers/Setting.php:302
-msgid "Meta Boxes"
-msgstr ""
-
-#: src/Controllers/Setting.php:308
-msgid "HTML-to-Markdown"
-msgstr ""
-
-#: src/Controllers/Setting.php:318
-msgid "Markdown Editor Switcher"
-msgstr ""
-
-#: src/Controllers/Setting.php:329
+#: src/Controllers/Setting.php:333
 msgid ""
 "A remote image means that it is not a URL from your site. This option allows "
 "you to fetch remote images and save them into local folder."
 msgstr ""
 
-#: src/Controllers/Setting.php:338
-msgid "Keyword Suggestion Tool"
+#: src/Controllers/Setting.php:157
+msgid "About"
 msgstr ""
 
-#: src/Controllers/Setting.php:339
+#: src/wp_utilities/class-widget-toc.php:25
 msgid ""
-"This keyword suggestion tool can give you a list of long-tail terms based on "
-"the keyword you enter. If you are good in On-page SEO skills, it will help "
-"you a lot in writing. Data source is from Google Suggestions."
+"Add a Table of Contents for your article. This widget is for single-post "
+"pages only."
 msgstr ""
 
-#: src/Controllers/Setting.php:347
-msgid "Markdown Editor"
-msgstr ""
-
-#: src/Controllers/Setting.php:352
-msgid "Live Preview"
-msgstr ""
-
-#: src/Controllers/Setting.php:353
-msgid ""
-"Split editor into two panes to display a live preview when editing post."
-msgstr ""
-
-#: src/Controllers/Setting.php:361
-msgid "Sync Scrolling"
-msgstr ""
-
-#: src/Controllers/Setting.php:362
-msgid "Synchronize scrolling of two editor panes by content."
-msgstr ""
-
-#: src/Controllers/Setting.php:370
-msgid "HTML Decode"
-msgstr ""
-
-#: src/Controllers/Setting.php:371
+#: src/Controllers/Setting.php:375
 msgid "Allow all HTML tags and attributes in the Markdown Editor."
 msgstr ""
 
-#: src/Controllers/Setting.php:379 src/Controllers/Setting.php:534
-msgid "Line Number"
-msgstr ""
-
-#: src/Controllers/Setting.php:380
-msgid "Display line number in the Markdown Editor."
-msgstr ""
-
-#: src/Controllers/Setting.php:388
-msgid "Toolbar"
-msgstr ""
-
-#: src/Controllers/Setting.php:389
-msgid "Choose a preferred style for the Editor's toolbar."
-msgstr ""
-
-#: src/Controllers/Setting.php:400
-msgid "Editing Area"
-msgstr ""
-
-#: src/Controllers/Setting.php:401
-msgid "Choose a preferred style for the Editor's editing area."
-msgstr ""
-
-#: src/Controllers/Setting.php:497 src/Controllers/Setting.php:566
-msgid "Syntax Highlight"
-msgstr ""
-
-#: src/Controllers/Setting.php:500
-msgid "prism.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:506
-msgid "Highlight the syntax in your code snippets by Prism.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:506 src/Controllers/Setting.php:575
-msgid "This option is not available if you choose another highlighter modules."
-msgstr ""
-
-#: src/Controllers/Setting.php:515 src/Controllers/Setting.php:584
-#: src/Controllers/Setting.php:1237
-msgid "Theme"
-msgstr ""
-
-#: src/Controllers/Setting.php:516 src/Controllers/Setting.php:585
-msgid "Choose a preferred theme for the syntax highlighter."
-msgstr ""
-
-#: src/Controllers/Setting.php:535
-msgid "Show line number in code area?"
-msgstr ""
-
-#: src/Controllers/Setting.php:544 src/Controllers/Setting.php:684
-#: src/Controllers/Setting.php:722 src/Controllers/Setting.php:875
-#: src/Controllers/Setting.php:913 src/Controllers/Setting.php:951
-#: src/Controllers/Setting.php:989 src/Controllers/Setting.php:1026
-#: src/Controllers/Setting.php:1063
-msgid "File Host"
-msgstr ""
-
-#: src/Controllers/Setting.php:545 src/Controllers/Setting.php:685
-#: src/Controllers/Setting.php:723 src/Controllers/Setting.php:876
-#: src/Controllers/Setting.php:914 src/Controllers/Setting.php:952
-#: src/Controllers/Setting.php:990 src/Controllers/Setting.php:1027
-#: src/Controllers/Setting.php:1064
-msgid "Use this library with a CDN service or self-hosted (default)?"
-msgstr ""
-
-#: src/Controllers/Setting.php:550 src/Controllers/Setting.php:690
-#: src/Controllers/Setting.php:728 src/Controllers/Setting.php:758
-#: src/Controllers/Setting.php:840 src/Controllers/Setting.php:881
-#: src/Controllers/Setting.php:919 src/Controllers/Setting.php:957
-#: src/Controllers/Setting.php:995 src/Controllers/Setting.php:1032
-#: src/Controllers/Setting.php:1069 src/Controllers/Setting.php:1087
-msgid "default"
-msgstr ""
-
-#: src/Controllers/Setting.php:557 src/Controllers/Setting.php:696
-#: src/Controllers/Setting.php:888 src/Controllers/Setting.php:926
-#: src/Controllers/Setting.php:964 src/Controllers/Setting.php:1002
-#: src/Controllers/Setting.php:1039
-msgid "Example"
-msgstr ""
-
-#: src/Controllers/Setting.php:569
-msgid "highlight.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:575
-msgid "Highlight the syntax in your code snippets by Highlight.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:707
-msgid "Copy to Clipboard"
-msgstr ""
-
-#: src/Controllers/Setting.php:708
-msgid "clipboard.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:713
-msgid ""
-"Display a `Copy` button on the highlighting code block. Copy the text into "
-"clipboard by clicking the button."
-msgstr ""
-
-#: src/Controllers/Setting.php:737
-msgid "Image Paste"
-msgstr ""
-
-#: src/Controllers/Setting.php:752
-msgid "Storage Space"
-msgstr ""
-
-#: src/Controllers/Setting.php:753
-msgid ""
-"Images are stored in WordPress's <strong>uploads</strong> folder by default. "
-"However, you can use Imgur instead of the default place."
-msgstr ""
-
-#: src/Controllers/Setting.php:759
-msgid "imgur.com"
-msgstr ""
-
-#: src/Controllers/Setting.php:760
-msgid "sm.ms"
-msgstr ""
-
-#: src/Controllers/Setting.php:766
-msgid "Imgur Client ID"
-msgstr ""
-
-#: src/Controllers/Setting.php:777
-msgid "sm.ms API Key"
-msgstr ""
-
-#: src/Controllers/Setting.php:788
-msgid "Upload to Media Library?"
-msgstr ""
-
-#: src/Controllers/Setting.php:799 src/Modules/Toc.php:46
-msgid "Table of Contents"
-msgstr ""
-
-#: src/Controllers/Setting.php:805
-msgid "Support Table of Contents."
-msgstr ""
-
-#: src/Controllers/Setting.php:814
-msgid "Widget"
-msgstr ""
-
-#: src/Controllers/Setting.php:815
-msgid "Display a TOC in the widget area for single post."
-msgstr ""
-
-#: src/Controllers/Setting.php:824
-msgid "Inside a Post"
-msgstr ""
-
-#: src/Controllers/Setting.php:825
-msgid "Insert a TOC inside a post header location."
-msgstr ""
-
-#: src/Controllers/Setting.php:834
-msgid "Float"
-msgstr ""
-
-#: src/Controllers/Setting.php:835
-msgid "Would you like to float the TOC in the post to left or right?"
-msgstr ""
-
-#: src/Controllers/Setting.php:841
-msgid "right"
-msgstr ""
-
-#: src/Controllers/Setting.php:842
-msgid "left"
-msgstr ""
-
-#: src/Controllers/Setting.php:848
-msgid "Border"
-msgstr ""
-
-#: src/Controllers/Setting.php:849
-msgid "Would you like to show the border of the TOC in the post?"
-msgstr ""
-
-#: src/Controllers/Setting.php:859
-msgid "KaTex"
-msgstr ""
-
-#: src/Controllers/Setting.php:860
-msgid "KaTex.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:866
-msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
-"target=\"_blank\">KaTeX</a> math typesetting."
-msgstr ""
-
-#: src/Controllers/Setting.php:897
-msgid "Mermaid"
-msgstr ""
-
-#: src/Controllers/Setting.php:898
-msgid "mermaid.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:904
-msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
-"target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
-msgstr ""
-
-#: src/Controllers/Setting.php:935
-msgid "Flow Chart"
-msgstr ""
-
-#: src/Controllers/Setting.php:936
-msgid "flowchart.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:942
-msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
-"target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
-msgstr ""
-
-#: src/Controllers/Setting.php:973
-msgid "Sequence Diagrams"
-msgstr ""
-
-#: src/Controllers/Setting.php:974
-msgid "sequence-diagrams.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:980
-msgid ""
-"Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
-"target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
-"sequence diagrams."
-msgstr ""
-
-#: src/Controllers/Setting.php:1011
-msgid "MathJax"
-msgstr ""
-
-#: src/Controllers/Setting.php:1012
-msgid "MathJax.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:1017
-msgid ""
-"MathJax displays mathematical notation in web browsers, using LaTeX markup. "
-msgstr ""
-
-#: src/Controllers/Setting.php:1048
-msgid "Emojify"
-msgstr ""
-
-#: src/Controllers/Setting.php:1049
-msgid "emojify.js"
-msgstr ""
-
-#: src/Controllers/Setting.php:1054
-msgid "Display emojis on Markdown editor preview pane and frontend posts."
-msgstr ""
-
-#: src/Controllers/Setting.php:1077
-msgid "Image Size"
-msgstr ""
-
-#: src/Controllers/Setting.php:1078
-msgid "What size would you want the emojis to be in your posts."
-msgstr ""
-
-#: src/Controllers/Setting.php:1098
-msgid "Markdown Extra"
-msgstr ""
-
-#: src/Controllers/Setting.php:1106
-msgid "GFM Task List"
-msgstr ""
-
-#: src/Controllers/Setting.php:1107
-msgid "Support Github Flavored Markdown task lists."
-msgstr ""
-
-#: src/Controllers/Setting.php:1119
-msgid "Githuber MD Extensions"
-msgstr ""
-
-#: src/Controllers/Setting.php:1125
-msgid "HTML5 Figure"
-msgstr ""
-
-#: src/Controllers/Setting.php:1134
-msgid "Inline Code Block with Keyboard Style"
-msgstr ""
-
-#: src/Controllers/Setting.php:1145
-msgid "Link Opening Method"
-msgstr ""
-
-#: src/Controllers/Setting.php:1146
-msgid "For links in posts, please specify where to open the linked document."
-msgstr ""
-
-#: src/Controllers/Setting.php:1150
-msgid "Same window. (default)"
-msgstr ""
-
-#: src/Controllers/Setting.php:1151
-msgid "New window."
-msgstr ""
-
-#: src/Controllers/Setting.php:1157
-msgid "Shortcode"
-msgstr ""
-
-#: src/Controllers/Setting.php:1158
+#: src/Controllers/Setting.php:1123
 msgid "Allow using shortcode in Markdown text."
 msgstr ""
 
-#: src/Controllers/Setting.php:1158
-msgid ""
-"Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
-" therefore live-preview panel does not support it."
-msgstr ""
-
-#: src/Controllers/Setting.php:1165
-msgid "Smart Quotes"
-msgstr ""
-
-#: src/Controllers/Setting.php:1173
+#: src/Controllers/Setting.php:1138
 msgid "Ampersands in URL"
 msgstr ""
 
-#: src/Controllers/Setting.php:1174
-msgid "Replace `&amp;amp;` to `&` in URLs."
+#. Description of the plugin
+msgid "An all-in-one Markdown plugin for your WordPress sites."
 msgstr ""
 
 #: src/Controllers/Setting.php:1181
-msgid "Yoast SEO Analysis"
-msgstr ""
-
-#: src/Controllers/Setting.php:1182
-msgid "Support Yoast SEO readability analysis."
-msgstr ""
-
-#: src/Controllers/Setting.php:1189
-msgid "Clear all Settings"
-msgstr ""
-
-#: src/Controllers/Setting.php:1190
-msgid "Clear all settings when uninstalling WP GitHuber MD."
-msgstr ""
-
-#: src/Controllers/Setting.php:1197
-msgid "Decode Code Blocks"
-msgstr ""
-
-#: src/Controllers/Setting.php:1198
-#, php-format
-msgid ""
-"If you have met issues similar to issue #30, <a href=\"%s\" "
-"target=\"_blank\">#89</a>, try enabling this."
-msgstr ""
-
-#: src/Controllers/Setting.php:1205
-msgid "Default: Rich Editor"
-msgstr ""
-
-#: src/Controllers/Setting.php:1206
-msgid ""
-"Notice: Your users might be confused because that if they swith to Markdown "
-"editor and then switch back to Rich editor or Gutenberg, the Markdown text "
-"of that single post will be lost. That is because that Rich editor and "
-"Markdown editor use differnt fields to store data."
-msgstr ""
-
-#: src/Controllers/Setting.php:1216
 msgid "Author"
 msgstr ""
 
-#: src/Controllers/Setting.php:1223 src/Controllers/Setting.php:1277
-msgid "Version"
-msgstr ""
-
-#: src/Controllers/Setting.php:1230
-msgid "GitHub Repository"
-msgstr ""
-
-#: src/Controllers/Setting.php:1256
-msgid "WP Githuber MD "
-msgstr ""
-
-#. Name of the plugin
-#: src/Controllers/Setting.php:1257
-msgid "WP Githuber MD"
-msgstr ""
-
-#: src/Controllers/Setting.php:1276
-msgid "Report an issue"
-msgstr ""
-
-#: src/Controllers/Setting.php:1287
-msgid "Maintain social distancing. Wash your hands frequently."
-msgstr ""
-
-#: src/Controllers/Setting.php:1288
-msgid "Stay at home. Write your articles with Githuber MD."
-msgstr ""
-
-#: src/Controllers/Setting.php:1306
-msgid "Settings"
-msgstr ""
-
-#: src/Controllers/Setting.php:1324
-msgid "View GitHub project"
-msgstr ""
-
-#: src/Controllers/Setting.php:1325
-msgid "Report issues"
-msgstr ""
-
-#: src/Views/metabox/custom-media-library.php:17
-msgid "HTML"
-msgstr ""
-
-#: src/Views/metabox/fetch-remote-image.php:24
-msgid "Fetch remote images and save them into local folder."
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:18
-msgid ""
-"This is a tool that helps you easily convert an old post into Markdown. If "
-"you are not satisfied with the result, do not click <strong>Update</strong> "
-"button."
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:23
-msgid "Strip tags"
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:27
-#: src/Views/metabox/html-to-markdown.php:38
-msgid "Yes"
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:29
-#: src/Views/metabox/html-to-markdown.php:40
-msgid "No"
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:34
-msgid "Line break"
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:49
-msgid "Reload"
-msgstr ""
-
-#: src/Views/metabox/html-to-markdown.php:50
-msgid "Convert"
-msgstr ""
-
-#: src/Views/metabox/keyword-suggestion-tool.php:18
-msgid "Enter a keyword that you want to fetch its related long-tail terms."
-msgstr ""
-
-#: src/Views/metabox/keyword-suggestion-tool.php:36
-msgid "Clear"
-msgstr ""
-
-#: src/Views/metabox/keyword-suggestion-tool.php:37
-msgid "Query"
-msgstr ""
-
-#: src/Views/setting/about-github-repo.php:15
-msgid ""
-"If you have any issues, or found any bugs, please report them in the "
-"following URL."
-msgstr ""
-
-#: src/Views/setting/about-github-repo.php:20
-#, php-format
-msgid ""
-"WP Githuber MD recommends you install %s to increase your website security."
-msgstr ""
-
-#: src/Views/setting/html-to-markdown.php:17
-msgid ""
-"Dsiplaying A <strong>HTML to Markdown</strong> helper widget beside Markdown "
-"editor that helps you convert an <strong>old post</strong> into Markdown. "
-"<br />It is just a <strong>preview</strong>, to let you know what the "
-"converted content looks like after converting to Markdown.<br /><br />Notice:"
-" Turning on this option will force to disable <strong>auto-save</strong>, "
-"prevents breaking your original content.<br />If you are not satisfied with "
-"the result, do not click <strong>Update</strong> button."
-msgstr ""
-
-#: src/Views/setting/image-paste-imgur.php:17
-msgid ""
-"Required while the choosed storage space is <u>imgur.com</u>. If you don't "
-"have one, <a href=\"https://api.imgur.com/oauth2/addclient\" "
-"target=\"_blank\">sign up</a> here."
-msgstr ""
-
-#: src/Views/setting/image-paste-imgur.php:23
-msgid ""
-"Uploading images to Imgur is unavailable because that <strong>PHP "
-"CURL</strong> is not installed on your system."
-msgstr ""
-
-#: src/Views/setting/image-paste-media-library.php:15
-msgid ""
-"This is Media Library that copy-paste images will be uploaded to, and "
-"generates different sizes of thumbnail."
-msgstr ""
-
-#: src/Views/setting/image-paste-media-library.php:17
-msgid ""
-"If you would like to simply copy and paste images into your article and "
-"don’t care about the image management, , please choose No."
-msgstr ""
-
-#: src/Views/setting/image-paste-media-library.php:20
-msgid "Notice: This setting only works when Storage Space is set to `default`."
-msgstr ""
-
-#: src/Views/setting/image-paste-smms.php:17
-msgid ""
-"Required while the choosed storage space is <u>sm.ms</u>. If you don't have "
-"one, <a href=\"https://sm.ms/home/apitoken\" target=\"_blank\">sign up</a> "
-"here."
-msgstr ""
-
-#: src/Views/setting/image-paste.php:17
-msgid ""
-"Easily <a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
-"target=\"_blank\">paste image from clipboard</a> directly into the post "
-"content."
-msgstr ""
-
-#: src/Views/setting/markdown-editor-switcher.php:15
-msgid ""
-"This feature is for specific posts you don't want to use Markdown, allows "
-"you switch your Markdown editor to Rich editor (or Gutenberg)"
-msgstr ""
-
-#: src/Views/setting/markdown-editor-switcher.php:16
+#: src/Views/setting/markdown-editor-switcher.php:21
 msgid ""
 "Be careful of using this feature - If you switch back to Rich editor then "
 "save, Markdown text will be cleared. "
-msgstr ""
-
-#: src/Views/setting/markdown-extra.php:17
-msgid ""
-"Support <a href=\"https://michelf.ca/projects/php-markdown/extra/\" "
-"target=\"_blank\">Markdown Extra</a>."
-msgstr ""
-
-#: src/Views/setting/markdown-extra.php:23
-#: src/Views/message/php-libxml-warning.php:18
-msgid ""
-"Markdown Extra parser requires PHP module <strong>libxml</strong> and your "
-"system does not have <strong>libxml</strong> installed. Please disable "
-"Markdown Extra."
-msgstr ""
-
-#: src/Views/setting/smart-quotes.php:15
-msgid ""
-"This is WordPress default, you should not turn it off unless you know what "
-"you do."
-msgstr ""
-
-#: src/Views/setting/smart-quotes.php:16
-msgid "(detail)"
-msgstr ""
-
-#: src/Views/setting/theme-description.php:20
-msgid ""
-"Mynote is a WordPress theme built for developer. Click <a href=\"https:"
-"//wordpress.org/themes/mynote/\" target=\"_blank\">here</a> to download it "
-"from WordPress theme dictionary."
-msgstr ""
-
-#: src/Views/message/php-mbstring-warning.php:18
-msgid ""
-"Markdown parser requires PHP module <strong>mbstring</strong> and your "
-"system does not have <strong>mbstring</strong> installed. Please ask for "
-"your web hosting provider to help you."
-msgstr ""
-
-#: src/Views/message/php-version-warning.php:18
-#, php-format
-msgid ""
-"The minimum required PHP version for WP Githuber MD is PHP <strong>5.3."
-"6</strong>, and yours is <strong>%1s</strong>."
-msgstr ""
-
-#: src/Views/message/php-version-warning.php:19
-msgid "Please remove WP Githuber MD or upgrade your PHP version."
 msgstr ""
 
 #: src/Views/example/flowchart.php:29 src/Views/example/highlight-js.php:26
@@ -816,11 +68,286 @@ msgstr ""
 msgid "Block identification code:"
 msgstr ""
 
-#: src/Views/example/flowchart.php:30 src/Views/example/gfm-task-list.php:22
-#: src/Views/example/inline-code-keyboard-style.php:25
-#: src/Views/example/katex.php:33 src/Views/example/mathjax.php:33
-#: src/Views/example/mermaid.php:33 src/Views/example/sequence.php:25
-msgid "The Markdown text above will be rendered to:"
+#: src/Controllers/Setting.php:816
+msgid "Border"
+msgstr ""
+
+#: src/Views/example/highlight-js.php:28 src/Views/example/prism.php:28
+msgid "Check out this page to view the full list."
+msgstr ""
+
+#: src/Controllers/Setting.php:405
+msgid "Choose a preferred style for the Editor's editing area."
+msgstr ""
+
+#: src/Controllers/Setting.php:393
+msgid "Choose a preferred style for the Editor's toolbar."
+msgstr ""
+
+#: src/Controllers/Setting.php:489 src/Controllers/Setting.php:555
+msgid "Choose a preferred theme for the syntax highlighter."
+msgstr ""
+
+#: src/Views/metabox/keyword-suggestion-tool.php:40
+msgid "Clear"
+msgstr ""
+
+#: src/Controllers/Setting.php:1154
+msgid "Clear all Settings"
+msgstr ""
+
+#: src/Controllers/Setting.php:1155
+msgid "Clear all settings when uninstalling WP GitHuber MD."
+msgstr ""
+
+#: src/Controllers/Setting.php:678
+msgid "clipboard.js"
+msgstr ""
+
+#: src/Controllers/CustomMediaLibrary.php:70
+msgid "Code type"
+msgstr ""
+
+#: src/Views/metabox/html-to-markdown.php:54
+msgid "Convert"
+msgstr ""
+
+#: src/Controllers/Setting.php:677
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: src/Controllers/Setting.php:851
+msgid "custom"
+msgstr ""
+
+#: src/Controllers/Setting.php:1162
+msgid "Decode Code Blocks"
+msgstr ""
+
+#: src/Controllers/Setting.php:523 src/Controllers/Setting.php:660
+#: src/Controllers/Setting.php:698 src/Controllers/Setting.php:727
+#: src/Controllers/Setting.php:808 src/Controllers/Setting.php:848
+#: src/Controllers/Setting.php:886 src/Controllers/Setting.php:923
+#: src/Controllers/Setting.php:960 src/Controllers/Setting.php:997
+#: src/Controllers/Setting.php:1034 src/Controllers/Setting.php:1052
+msgid "default"
+msgstr ""
+
+#: src/Controllers/Setting.php:1170
+msgid "Default: Rich Editor"
+msgstr ""
+
+#: src/Controllers/Setting.php:271
+msgid "Disable Auto-save"
+msgstr ""
+
+#: src/Controllers/Setting.php:261
+msgid "Disable Revision"
+msgstr ""
+
+#: src/Views/setting/html-to-markdown.php:18
+msgid ""
+"Display a <strong>HTML to Markdown</strong> helper widget beside the "
+"Markdown editor to assist in converting an <strong>old post</strong> into "
+"Markdown. <br />This is just a <strong>preview</strong> toshow what the "
+"converted content would look like in Markdown.<br /><br />Note: Turning on "
+"this option will disable <strong>auto-save</strong> to prevent altering your "
+"original content.<br />If you arenot satisfied with the result, do not click "
+"the <strong>Update</strong> button."
+msgstr ""
+
+#: src/Controllers/Setting.php:683
+msgid ""
+"Display a `Copy` button on the highlighting code block. Copy the text into "
+"clipboard by clicking the button."
+msgstr ""
+
+#: src/Controllers/Setting.php:783
+msgid "Display a TOC in the widget area for single post."
+msgstr ""
+
+#: src/Controllers/Setting.php:1019
+msgid "Display emojis on Markdown editor preview pane and frontend posts."
+msgstr ""
+
+#: src/Controllers/Setting.php:384
+msgid "Display line number in the Markdown Editor."
+msgstr ""
+
+#: src/Views/setting/image-paste.php:18
+msgid ""
+"Easily <a href=\"https://terryl.in/en/githuber-md-image-paste/\" "
+"target=\"_blank\">paste image from clipboard</a> directly into the post "
+"content."
+msgstr ""
+
+#: src/Controllers/Setting.php:404
+msgid "Editing Area"
+msgstr ""
+
+#: src/Controllers/Setting.php:1013
+msgid "Emojify"
+msgstr ""
+
+#: src/Controllers/Setting.php:1014
+msgid "emojify.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:249
+msgid "Enable"
+msgstr ""
+
+#: src/Controllers/Markdown.php:556
+msgid "Enable Markdown"
+msgstr ""
+
+#: src/Controllers/Setting.php:281
+msgid ""
+"Enable spell check on the input. (This feature does not apply to code blocks."
+")"
+msgstr ""
+
+#: src/Views/metabox/keyword-suggestion-tool.php:22
+msgid "Enter a keyword that you want to fetch its related long-tail terms."
+msgstr ""
+
+#. %s: the service provider's name
+#: src/Controllers/ImagePaste.php:93 src/Controllers/ImagePaste.php:108
+#: src/Controllers/ImagePaste.php:125
+#, php-format
+msgid "Error while processing your request to %s!"
+msgstr ""
+
+#: src/Controllers/ImagePaste.php:162 src/Controllers/KeywordSuggestion.php:132
+msgid "Error while uploading file."
+msgstr ""
+
+#: src/Controllers/Setting.php:299
+msgid ""
+"Everywhere else in your text where <strong>current word</strong> appears "
+"will automatically illuminate."
+msgstr ""
+
+#: src/Controllers/Setting.php:530 src/Controllers/Setting.php:666
+#: src/Controllers/Setting.php:856 src/Controllers/Setting.php:893
+#: src/Controllers/Setting.php:930 src/Controllers/Setting.php:967
+#: src/Controllers/Setting.php:1004
+msgid "Example"
+msgstr ""
+
+#: src/Controllers/Setting.php:147
+msgid "Extensions"
+msgstr ""
+
+#: src/Controllers/FetchRemoteImage.php:78 src/Controllers/Setting.php:332
+msgid "Fetch Remote Image"
+msgstr ""
+
+#: src/Views/metabox/fetch-remote-image.php:28
+msgid "Fetch remote images and save them into local folder."
+msgstr ""
+
+#: src/Controllers/Setting.php:517 src/Controllers/Setting.php:654
+#: src/Controllers/Setting.php:692 src/Controllers/Setting.php:842
+#: src/Controllers/Setting.php:880 src/Controllers/Setting.php:917
+#: src/Controllers/Setting.php:954 src/Controllers/Setting.php:991
+#: src/Controllers/Setting.php:1028
+msgid "File Host"
+msgstr ""
+
+#: src/Controllers/Setting.php:802
+msgid "Float"
+msgstr ""
+
+#: src/Controllers/Setting.php:902
+msgid "Flow Chart"
+msgstr ""
+
+#: src/Controllers/Setting.php:903
+msgid "flowchart.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:1111
+msgid "For links in posts, please specify where to open the linked document."
+msgstr ""
+
+#: src/Controllers/Setting.php:1071
+msgid "GFM Task List"
+msgstr ""
+
+#: src/Controllers/Setting.php:1195
+msgid "GitHub Repository"
+msgstr ""
+
+#: src/Controllers/Setting.php:1084
+msgid "Githuber MD Extensions"
+msgstr ""
+
+#: src/wp_utilities/class-widget-toc.php:29
+msgid "Githuber MD: TOC"
+msgstr ""
+
+#: src/Controllers/Markdown.php:333
+msgid "Happy Markdowning!"
+msgstr ""
+
+#: src/Controllers/Setting.php:545
+msgid "Highlight the syntax in your code snippets by Highlight.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:479
+msgid "Highlight the syntax in your code snippets by Prism.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:540
+msgid "highlight.js"
+msgstr ""
+
+#: src/Views/metabox/custom-media-library.php:21
+msgid "HTML"
+msgstr ""
+
+#: src/Controllers/Setting.php:374
+msgid "HTML Decode"
+msgstr ""
+
+#: src/Controllers/HtmlToMarkdown.php:96
+msgid "HTML to Markdown"
+msgstr ""
+
+#: src/Controllers/Setting.php:312
+msgid "HTML-to-Markdown"
+msgstr ""
+
+#: src/Controllers/Setting.php:1090
+msgid "HTML5 Figure"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/terrylinooo/githuber-md"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr ""
+
+#: src/Views/setting/about-github-repo.php:19
+msgid ""
+"If you have any issues or have found any bugs, please report them at the "
+"following URL."
+msgstr ""
+
+#: src/Controllers/Setting.php:1163
+#, php-format
+msgid ""
+"If you have met issues similar to issue #30, <a href=\"%s\" "
+"target=\"_blank\">#89</a>, try enabling this."
+msgstr ""
+
+#: src/Views/setting/image-paste-media-library.php:21
+msgid ""
+"If you prefer to simply copy and paste images into your article without "
+"worrying about image management, please choose \"No\"."
 msgstr ""
 
 #: src/Views/example/highlight-js.php:14 src/Views/example/prism.php:14
@@ -830,12 +357,54 @@ msgid ""
 "code block will be loaded, not all fat packed file."
 msgstr ""
 
-#: src/Views/example/highlight-js.php:28 src/Views/example/prism.php:28
-msgid "Check out this page to view the full list."
+#: src/Controllers/Setting.php:272
+msgid ""
+"If you think the auto-save function is annoying when you're writing, you can "
+"disable it."
 msgstr ""
 
-#: src/Views/example/html5-figure.php:22
-msgid "The Markdown text above will be transformed to:"
+#: src/Controllers/Setting.php:262
+msgid ""
+"If you think the revision function is annoying when you're writing, you can "
+"disable it."
+msgstr ""
+
+#: src/Controllers/Setting.php:707
+msgid "Image Paste"
+msgstr ""
+
+#: src/Controllers/Setting.php:1042
+msgid "Image Size"
+msgstr ""
+
+#: src/Controllers/Setting.php:722
+msgid ""
+"Images are stored in WordPress's <strong>uploads</strong> folder by default. "
+"However, you can use Imgur instead of the default place."
+msgstr ""
+
+#: src/Controllers/Setting.php:735
+msgid "Imgur Client ID"
+msgstr ""
+
+#: src/Controllers/Setting.php:728
+msgid "imgur.com"
+msgstr ""
+
+#: src/Controllers/Setting.php:1099
+msgid "Inline Code Block with Keyboard Style"
+msgstr ""
+
+#: src/Controllers/Setting.php:793
+msgid "Insert a TOC inside a post header location."
+msgstr ""
+
+#: src/Controllers/Setting.php:792
+msgid "Inside a Post"
+msgstr ""
+
+#: src/Controllers/Setting.php:827
+msgid "KaTex"
 msgstr ""
 
 #: src/Views/example/katex.php:15
@@ -846,36 +415,471 @@ msgstr ""
 msgid "KaTeX inline:"
 msgstr ""
 
+#: src/Controllers/Setting.php:828
+msgid "KaTex.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:342
+msgid "Keyword Suggestion Tool"
+msgstr ""
+
+#: src/Controllers/KeywordSuggestion.php:78
+msgid "Keyword Suggestions"
+msgstr ""
+
+#: src/Controllers/Setting.php:289
+msgid "Language"
+msgstr ""
+
+#: src/Controllers/Setting.php:810
+msgid "left"
+msgstr ""
+
+#: src/Views/metabox/html-to-markdown.php:38
+msgid "Line break"
+msgstr ""
+
+#: src/Controllers/Setting.php:383 src/Controllers/Setting.php:507
+msgid "Line Number"
+msgstr ""
+
+#: src/Controllers/Setting.php:1110
+msgid "Link Opening Method"
+msgstr ""
+
+#: src/Controllers/Setting.php:356
+msgid "Live Preview"
+msgstr ""
+
+#: src/Controllers/Setting.php:1252
+msgid "Maintain social distancing. Wash your hands frequently."
+msgstr ""
+
+#: src/Controllers/Setting.php:137
+#: src/Views/metabox/custom-media-library.php:20
+msgid "Markdown"
+msgstr ""
+
+#: src/Controllers/Setting.php:351
+msgid "Markdown Editor"
+msgstr ""
+
+#: src/Controllers/Setting.php:322
+msgid "Markdown Editor Switcher"
+msgstr ""
+
+#: src/Controllers/Setting.php:1063
+msgid "Markdown Extra"
+msgstr ""
+
+#: src/Views/message/php-libxml-warning.php:18
+#: src/Views/setting/markdown-extra.php:24
+msgid ""
+"Markdown Extra parser requires PHP module <strong>libxml</strong> and your "
+"system does not have <strong>libxml</strong> installed. Please disable "
+"Markdown Extra."
+msgstr ""
+
+#: src/Views/message/php-mbstring-warning.php:18
+msgid ""
+"Markdown parser requires PHP module <strong>mbstring</strong> and your "
+"system does not have <strong>mbstring</strong> installed. Please ask for "
+"your web hosting provider to help you."
+msgstr ""
+
+#: src/Controllers/Setting.php:298
+msgid "Match Highlighter"
+msgstr ""
+
+#: src/Controllers/Setting.php:976
+msgid "MathJax"
+msgstr ""
+
 #: src/Views/example/mathjax.php:15
 msgid "MathJax block:"
+msgstr ""
+
+#: src/Controllers/Setting.php:982
+msgid ""
+"MathJax displays mathematical notation in web browsers, using LaTeX markup. "
 msgstr ""
 
 #: src/Views/example/mathjax.php:25
 msgid "MathJax inline:"
 msgstr ""
 
-#: src/wp_utilities/class-widget-toc.php:25
+#: src/Controllers/Setting.php:977
+msgid "MathJax.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:865
+msgid "Mermaid"
+msgstr ""
+
+#: src/Controllers/Setting.php:866
+msgid "mermaid.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:306
+msgid "Meta Boxes"
+msgstr ""
+
+#: src/Controllers/Setting.php:142
+msgid "Modules"
+msgstr ""
+
+#: src/Views/setting/theme-description.php:24
 msgid ""
-"Add a Table of Contents for your article. This widget is for single-post "
-"pages only."
+"Mynote is a WordPress theme built for developer. Click <a href=\"https:"
+"//wordpress.org/themes/mynote/\" target=\"_blank\">here</a> to download it "
+"from WordPress theme dictionary."
 msgstr ""
 
-#: src/wp_utilities/class-widget-toc.php:29
-msgid "Githuber MD: TOC"
+#: src/Controllers/Setting.php:1116
+msgid "New window."
 msgstr ""
 
-#. Description of the plugin
-msgid "An all-in-one Markdown plugin for your WordPress sites."
+#: src/Views/metabox/html-to-markdown.php:33
+#: src/Views/metabox/html-to-markdown.php:44
+msgid "No"
 msgstr ""
 
-#. URI of the plugin
-msgid "https://github.com/terrylinooo/githuber-md"
+#: src/Views/setting/image-paste-media-library.php:24
+msgid "Notice: This setting only works when Storage Space is set to `default`."
+msgstr ""
+
+#: src/Controllers/Setting.php:1171
+msgid ""
+"Notice: Your users might be confused because if they switch to the Markdown "
+"editor and then switch back to the Rich editor or Gutenberg, the Markdown "
+"text for that single post will be lost. This is because the Rich editor and "
+"Markdown editor use different fields to store data."
+msgstr ""
+
+#: src/Controllers/ImagePaste.php:111 src/Controllers/ImagePaste.php:132
+msgid "PHP Curl is not installed on your system."
+msgstr ""
+
+#: src/Views/message/php-version-warning.php:19
+msgid "Please remove WP Githuber MD or upgrade your PHP version."
+msgstr ""
+
+#: src/Controllers/Setting.php:290
+msgid "Please specify your language for spell check in the setting above."
+msgstr ""
+
+#: src/Controllers/Setting.php:1123
+msgid ""
+"Please understand that shortcode is processed to HTML by PHP, not JavaScript,"
+" therefore live-preview panel does not support it."
+msgstr ""
+
+#: src/Controllers/Setting.php:152
+msgid "Preferences"
+msgstr ""
+
+#: src/Controllers/Setting.php:474
+msgid "prism.js"
+msgstr ""
+
+#: src/Views/metabox/keyword-suggestion-tool.php:41
+msgid "Query"
+msgstr ""
+
+#: src/Views/metabox/html-to-markdown.php:53
+msgid "Reload page"
+msgstr ""
+
+#: src/Controllers/Setting.php:1139
+msgid "Replace `&amp;amp;` to `&` in URLs."
+msgstr ""
+
+#: src/Controllers/Setting.php:1241
+msgid "Report an issue"
+msgstr ""
+
+#: src/Controllers/Setting.php:1290
+msgid "Report issues"
+msgstr ""
+
+#: src/Views/setting/image-paste-imgur.php:18
+msgid ""
+"Required when the chosen storage space is <u>imgur.com</u>. If you don’t "
+"have one, <a href=\"https://api.imgur.com/oauth2/addclient\" "
+"target=\"_blank\">sign up</a> here."
+msgstr ""
+
+#: src/Views/setting/image-paste-smms.php:18
+msgid ""
+"Required when the chosen storage space is <u>sm.ms</u>. If you don’t have "
+"one, <a href=\"https://sm.ms/home/apitoken\" target=\"_blank\">sign up</a> "
+"here."
+msgstr ""
+
+#: src/Controllers/Setting.php:809
+msgid "right"
+msgstr ""
+
+#: src/Controllers/Setting.php:1115
+msgid "Same window. (default)"
+msgstr ""
+
+#: src/Controllers/Setting.php:939
+msgid "Sequence Diagrams"
+msgstr ""
+
+#: src/Controllers/Setting.php:940
+msgid "sequence-diagrams.js"
+msgstr ""
+
+#: src/Controllers/Setting.php:1271
+msgid "Settings"
+msgstr ""
+
+#: src/Controllers/Setting.php:1122
+msgid "Shortcode"
+msgstr ""
+
+#: src/Controllers/Setting.php:508
+msgid "Show line number in code area?"
+msgstr ""
+
+#: src/Controllers/Setting.php:729
+msgid "sm.ms"
+msgstr ""
+
+#: src/Controllers/Setting.php:746
+msgid "sm.ms API Key"
+msgstr ""
+
+#: src/Controllers/Setting.php:1130
+msgid "Smart Quotes"
+msgstr ""
+
+#: src/Controllers/Setting.php:280
+msgid "Spell Check"
+msgstr ""
+
+#: src/Controllers/Setting.php:357
+msgid ""
+"Split editor into two panes to display a live preview when editing post."
+msgstr ""
+
+#: src/Controllers/Setting.php:1253
+msgid "Stay at home. Write your articles with Githuber MD."
+msgstr ""
+
+#: src/Controllers/Setting.php:721
+msgid "Storage Space"
+msgstr ""
+
+#: src/Views/metabox/html-to-markdown.php:27
+msgid "Strip tags"
+msgstr ""
+
+#: src/Views/setting/markdown-extra.php:18
+msgid ""
+"Support <a href=\"https://michelf.ca/projects/php-markdown/extra/\" "
+"target=\"_blank\">Markdown Extra</a>."
+msgstr ""
+
+#: src/Controllers/Setting.php:908
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-flow-chart/\" "
+"target=\"_blank\">flowchart.js</a> to draws simple SVG flow chart diagrams."
+msgstr ""
+
+#: src/Controllers/Setting.php:833
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-katax/\" "
+"target=\"_blank\">KaTeX</a> math typesetting."
+msgstr ""
+
+#: src/Controllers/Setting.php:871
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-mermaid/\" "
+"target=\"_blank\">Mermaid.js</a>, a Markdownish Syntax for Generating Charts."
+msgstr ""
+
+#: src/Controllers/Setting.php:945
+msgid ""
+"Support <a href=\"https://terryl.in/en/githuber-md-sequence-diagrams/\" "
+"target=\"_blank\">js-sequence-diagrams</a> to turn text into vector UML "
+"sequence diagrams."
+msgstr ""
+
+#: src/Controllers/Setting.php:1072
+msgid "Support Github Flavored Markdown task lists."
+msgstr ""
+
+#: src/Controllers/Setting.php:773
+msgid "Support Table of Contents."
+msgstr ""
+
+#: src/Controllers/Setting.php:1147
+msgid "Support Yoast SEO readability analysis."
+msgstr ""
+
+#: src/Controllers/Setting.php:365
+msgid "Sync Scrolling"
+msgstr ""
+
+#: src/Controllers/Setting.php:366
+msgid "Synchronize scrolling of two editor panes by content."
+msgstr ""
+
+#: src/Controllers/Setting.php:471 src/Controllers/Setting.php:537
+msgid "Syntax Highlight"
+msgstr ""
+
+#: src/Controllers/Setting.php:768 src/Modules/Toc.php:54
+msgid "Table of Contents"
 msgstr ""
 
 #. Author of the plugin
 msgid "Terry Lin"
 msgstr ""
 
-#. Author URI of the plugin
-msgid "https://terryl.in/"
+#: src/Views/example/flowchart.php:30 src/Views/example/gfm-task-list.php:22
+#: src/Views/example/inline-code-keyboard-style.php:25
+#: src/Views/example/katex.php:33 src/Views/example/mathjax.php:33
+#: src/Views/example/mermaid.php:33 src/Views/example/sequence.php:25
+msgid "The Markdown text above will be rendered to:"
+msgstr ""
+
+#: src/Views/example/html5-figure.php:22
+msgid "The Markdown text above will be transformed to:"
+msgstr ""
+
+#: src/Views/message/php-version-warning.php:18
+#, php-format
+msgid ""
+"The minimum required PHP version for WP Githuber MD is PHP <strong>5.3."
+"6</strong>, and yours is <strong>%1s</strong>."
+msgstr ""
+
+#: src/Controllers/Setting.php:488 src/Controllers/Setting.php:554
+#: src/Controllers/Setting.php:1202
+msgid "Theme"
+msgstr ""
+
+#: src/Views/setting/markdown-editor-switcher.php:19
+msgid ""
+"This feature is for specific posts you don't want to use Markdown, allows "
+"you switch your Markdown editor to Rich editor (or Gutenberg)"
+msgstr ""
+
+#: src/Views/setting/image-paste-media-library.php:19
+msgid ""
+"This is Media Library that copy-paste images will be uploaded to, and "
+"generates different sizes of thumbnail."
+msgstr ""
+
+#: src/Views/setting/smart-quotes.php:19
+msgid ""
+"This is WordPress default, you should not turn it off unless you know what "
+"you do."
+msgstr ""
+
+#: src/Controllers/Setting.php:343
+msgid ""
+"This keyword suggestion tool can give you a list of long-tail terms based on "
+"the keyword you enter. If you are good in On-page SEO skills, it will help "
+"you a lot in writing. Data source is from Google Suggestions."
+msgstr ""
+
+#: src/Controllers/Setting.php:479 src/Controllers/Setting.php:545
+msgid "This option is not available if you choose another highlighter modules."
+msgstr ""
+
+#: src/Views/metabox/html-to-markdown.php:22
+msgid ""
+"This tool helps you easily convert an old post into Markdown. If you are not "
+"satisfied with the result, do not click the <strong>Update</strong> button."
+msgstr ""
+
+#: src/Controllers/Setting.php:392
+msgid "Toolbar"
+msgstr ""
+
+#: src/Controllers/Setting.php:757
+msgid "Upload to Media Library?"
+msgstr ""
+
+#: src/Views/setting/image-paste-imgur.php:24
+msgid ""
+"Uploading images to Imgur is unavailable because that <strong>PHP "
+"CURL</strong> is not installed on your system."
+msgstr ""
+
+#: src/Controllers/Setting.php:518 src/Controllers/Setting.php:655
+#: src/Controllers/Setting.php:693 src/Controllers/Setting.php:843
+#: src/Controllers/Setting.php:881 src/Controllers/Setting.php:918
+#: src/Controllers/Setting.php:955 src/Controllers/Setting.php:992
+#: src/Controllers/Setting.php:1029
+msgid "Use this library with a CDN service or self-hosted (default)?"
+msgstr ""
+
+#: src/Controllers/Setting.php:1188 src/Controllers/Setting.php:1242
+msgid "Version"
+msgstr ""
+
+#: src/Controllers/Setting.php:1289
+msgid "View GitHub project"
+msgstr ""
+
+#: src/Controllers/Setting.php:1043
+msgid "What size would you want the emojis to be in your posts."
+msgstr ""
+
+#: src/Controllers/Setting.php:250
+msgid "Which post types you would like to enable Markdown editor for."
+msgstr ""
+
+#: src/Controllers/Setting.php:782
+msgid "Widget"
+msgstr ""
+
+#: src/Controllers/Setting.php:803
+msgid "Would you like to float the TOC in the post to left or right?"
+msgstr ""
+
+#: src/Controllers/Setting.php:817
+msgid "Would you like to show the border of the TOC in the post?"
+msgstr ""
+
+#. Name of the plugin
+#: src/Controllers/Setting.php:1222
+msgid "WP Githuber MD"
+msgstr ""
+
+#: src/Controllers/Setting.php:1221
+msgid "WP Githuber MD "
+msgstr ""
+
+#: src/Views/setting/about-github-repo.php:24
+#, php-format
+msgid ""
+"WP Githuber MD recommends you install %s to increase your website security."
+msgstr ""
+
+#: src/Controllers/Setting.php:244
+msgid "Writing"
+msgstr ""
+
+#: src/Views/metabox/html-to-markdown.php:31
+#: src/Views/metabox/html-to-markdown.php:42
+msgid "Yes"
+msgstr ""
+
+#: src/Controllers/Setting.php:1146
+msgid "Yoast SEO Analysis"
+msgstr ""
+
+#: src/Controllers/Setting.php:235
+msgid "Your system language is not supported."
+msgstr ""
+
+#: src/Controllers/Setting.php:233
+msgid "Your system language is supported."
 msgstr ""
