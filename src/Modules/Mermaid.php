@@ -23,7 +23,7 @@ class Mermaid extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-	public $mermaid_version = '8.9.0';
+	public $mermaid_version = '9.4.3';
 
 	/**
 	 * Constructer.

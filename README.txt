@@ -387,7 +387,9 @@ GNU General Public License for more details.
 
 = 1.16.2
 
-- Tested for compatibility with WordPress 6.2.2 and PHP 8.2.5 (No new updates for this version, just testing for compatibility)
+- Test for compatibility with WordPress 6.2.2 and PHP 8.2.5 (No new updates for this version, just testing for compatibility)
+- Fix coding style.
+- Mermaid.js has been updated to 9.4.3
 
 == Upgrade Notice ==
 

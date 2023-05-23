@@ -16,9 +16,17 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 if ( ! function_exists( 'githuber_get_option' ) ) {
+	/**
+	 * Get option.
+	 *
+	 * @param array  $option  The option name.
+	 * @param string $section The section name.
+	 * @param string $default The default value.
+	 * @return string
+	 */
 	function githuber_get_option( $option, $section, $default = '' ) {
 		$options = get_option( $section );
-	
+
 		if ( isset( $options[ $option ] ) ) {
 			return $options[ $option ];
 		}
@@ -27,7 +35,6 @@ if ( ! function_exists( 'githuber_get_option' ) ) {
 }
 
 if ( 'yes' === githuber_get_option( 'clear_all_settings', 'githuber_preferences' ) ) {
- 
 	$options_names = array(
 		'githuber_markdown',
 		'githuber_modules',
@@ -62,7 +69,3 @@ if ( 'yes' === githuber_get_option( 'clear_all_settings', 'githuber_preferences'
 
 // enable rich text.
 add_filter( 'user_can_richedit', '__return_true' );
-
-// drop a custom database table
-// global $wpdb;
-//$wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}mytable");
