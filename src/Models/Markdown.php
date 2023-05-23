@@ -12,12 +12,13 @@
 
 namespace Githuber\Model;
 
+/**
+ * Class Markdown
+ */
 class Markdown extends ModelAbstract {
 
 	/**
 	 * Constructer.
-	 * 
-	 * @return void
 	 */
 	public function __construct() {
 		parent::__construct();
@@ -33,7 +34,7 @@ class Markdown extends ModelAbstract {
 	function get_lastest_revision( $post_id ) {
 		return $this->db->get_row(
 			$this->db->prepare(
-				"SELECT * FROM {$this->db->posts} WHERE post_type = 'revision' AND post_parent = %d ORDER BY ID DESC", 
+				"SELECT * FROM {$this->db->posts} WHERE post_type = 'revision' AND post_parent = %d ORDER BY ID DESC",
 				$post_id
 			)
 		);

@@ -12,13 +12,16 @@
 
 namespace Githuber\Controller;
 
+/**
+ * The custom media library controller.
+ */
 class CustomMediaLibrary extends ControllerAbstract {
 
 	/**
 	 * Constructer.
 	 */
 	public function __construct() {
-        parent::__construct();
+		parent::__construct();
 	}
 
 	/**
@@ -26,17 +29,19 @@ class CustomMediaLibrary extends ControllerAbstract {
 	 */
 	public function init() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-    }
+	}
 
 	/**
 	 * Initalize to WP `admin_init` hook.
 	 */
 	public function admin_init() {
-        add_filter( 'attachment_fields_to_edit', array( $this, 'attachment_fields_to_edit' ) , 10, 2 );
-    }
+		add_filter( 'attachment_fields_to_edit', array( $this, 'attachment_fields_to_edit' ), 10, 2 );
+	}
 
 	/**
 	 * Register CSS style files.
+	 *
+	 * @param string $hook_suffix The hook suffix.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 
@@ -44,27 +49,29 @@ class CustomMediaLibrary extends ControllerAbstract {
 
 	/**
 	 * Register JS files.
+	 *
+	 * @param string $hook_suffix The hook suffix.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
 	}
 
-    /**
-     * Show custom media field.
-     *
-     * @param array $form_fields
-     * @param object $post
-     * @return void
-     */
-    function attachment_fields_to_edit( $form_fields, $post = null ) {
- 
-        $form_fields['githuber_image_insert'] = array(
-            'value' => 'markdown',
-            'label' => __( 'Code type', 'wp-githuber-md' ),
-            'input' => 'html',
-            'html'  => githuber_load_view( 'metabox/custom-media-library' ),
-        );
+	/**
+	 * Show custom media field.
+	 *
+	 * @param array  $form_fields The form fields.
+	 * @param object $post        The post object.
+	 *
+	 * @return array
+	 */
+	function attachment_fields_to_edit( $form_fields, $post = null ) {
+		$form_fields['githuber_image_insert'] = array(
+			'value' => 'markdown',
+			'label' => __( 'Code type', 'wp-githuber-md' ),
+			'input' => 'html',
+			'html'  => githuber_load_view( 'metabox/custom-media-library' ),
+		);
 
-        return $form_fields;
-    }
+		return $form_fields;
+	}
 }

@@ -12,6 +12,9 @@
 
 namespace Githuber\Controller;
 
+/**
+ * Class Register
+ */
 class Register extends ControllerAbstract {
 
 	/**
@@ -29,11 +32,11 @@ class Register extends ControllerAbstract {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
 		if ( 'yes' === githuber_get_option( 'disable_revision', 'githuber_markdown' ) ) {
-			add_action( 'admin_init', array( $this , 'remove_revisions' ), 999 );
+			add_action( 'admin_init', array( $this, 'remove_revisions' ), 999 );
 		}
 
 		if ( 'yes' === githuber_get_option( 'disable_autosave', 'githuber_markdown' ) ) {
-			add_action( 'wp_print_scripts', array( $this , 'remove_autosave' ), 10 );
+			add_action( 'wp_print_scripts', array( $this, 'remove_autosave' ), 10 );
 		}
 	}
 
@@ -46,7 +49,7 @@ class Register extends ControllerAbstract {
 		if ( user_can_richedit() ) {
 			update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 		}
-		add_filter( 'user_can_richedit' , '__return_false', 50 );
+		add_filter( 'user_can_richedit', '__return_false', 50 );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
 	}
@@ -64,11 +67,13 @@ class Register extends ControllerAbstract {
 	 * Remove auto-save function.
 	 */
 	function remove_autosave() {
-		wp_deregister_script('autosave');
+		wp_deregister_script( 'autosave' );
 	}
 
 	/**
 	 * Register CSS style files.
+	 *
+	 * @param string $hook_suffix The hook suffix for the current admin page.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 		wp_enqueue_style( 'custom_wp_admin_css', $this->githuber_plugin_url . 'assets/css/admin-style.css', array(), $this->version, 'all' );
@@ -76,10 +81,10 @@ class Register extends ControllerAbstract {
 
 	/**
 	 * Register JS files.
+	 *
+	 * @param string $hook_suffix The hook suffix for the current admin page.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 
 	}
-
-			
 }

@@ -13,6 +13,9 @@
 
 namespace Githuber\Module;
 
+/**
+ * Table of Contents.
+ */
 class Toc extends ModuleAbstract {
 
 	/**
@@ -22,37 +25,45 @@ class Toc extends ModuleAbstract {
 		parent::__construct();
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @return void
+	 */
 	public function init() {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 
 		if ( 'yes' === githuber_get_option( 'display_toc_in_post', 'githuber_modules' ) ) {
+			add_filter(
+				'the_content',
+				function( $string ) {
+					// Only single page will display TOC.
+					if ( ! is_single() ) {
+						return $string;
+					}
 
-			add_filter( 'the_content', function( $string ) {
+					$css = githuber_get_option( 'post_toc_float', 'githuber_modules' );
 
-				// Only single page will display TOC.
-				if ( ! is_single() ) {
-					return $string;
-				}
-	
-				$css = githuber_get_option( 'post_toc_float', 'githuber_modules' );
+					if ( 'yes' === githuber_get_option( 'post_toc_border', 'githuber_modules' ) ) {
+						$css .= ' with-border';
+					}
 
-				if ( 'yes' === githuber_get_option( 'post_toc_border', 'githuber_modules' ) ) {
-					$css .= ' with-border';
-				}
-
-				return '<div class="post-toc-block float-' . $css . '"> 
-					<div class="post-toc-header">' . __( 'Table of Contents', 'wp-githuber-md' ) . '</div>
-					<nav id="md-post-toc" class="md-post-toc"></nav>
-					</div>' . $string;
-			}, 10, 1 );
+					return '<div class="post-toc-block float-' . $css . '"> 
+						<div class="post-toc-header">' . __( 'Table of Contents', 'wp-githuber-md' ) . '</div>
+						<nav id="md-post-toc" class="md-post-toc"></nav>
+						</div>' . $string;
+				},
+				10,
+				1
+			);
 		}
 	}
 
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
@@ -61,11 +72,11 @@ class Toc extends ModuleAbstract {
 
 	/**
 	 * Register JS files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
-	
+
 		// Only single page will display TOC.
 		if ( ! is_single() ) {
 			return;

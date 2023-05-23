@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Class ControllerAbstract
- * 
+ *
  * Controllers are specifically used for admin (backend) use.
  *
  * @author Terry Lin
@@ -15,6 +14,9 @@
 
 namespace Githuber\Controller;
 
+/**
+ * Class ControllerAbstract
+ */
 abstract class ControllerAbstract {
 
 	/**
@@ -61,7 +63,7 @@ abstract class ControllerAbstract {
 
 	/**
 	 * Constructer.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct() {
@@ -81,19 +83,19 @@ abstract class ControllerAbstract {
 	 * @return void
 	 */
 	abstract public function init();
-	
+
 	/**
 	 * Register CSS style files.
-	 * 
-	 * @param string Hook suffix string.
+	 *
+	 * @param string $hook_suffix Hook suffix string.
 	 * @return void
 	 */
 	abstract public function admin_enqueue_styles( $hook_suffix );
 
 	/**
 	 * Register JS files.
-	 * 
-	 * @param string Hook suffix string.
+	 *
+	 * @param string $hook_suffix Hook suffix string.
 	 * @return void
 	 */
 	abstract public function admin_enqueue_scripts( $hook_suffix );

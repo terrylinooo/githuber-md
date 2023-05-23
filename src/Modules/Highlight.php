@@ -9,11 +9,13 @@
  * @package Githuber
  * @since 1.0.0
  * @version 1.4.0
- * 
  */
 
 namespace Githuber\Module;
 
+/**
+ * Highlight.
+ */
 class Highlight extends ModuleAbstract {
 
 	/**
@@ -31,7 +33,11 @@ class Highlight extends ModuleAbstract {
 	 */
 	public $css_priority = 999;
 
-	// This is what highlight.js uses.
+	/**
+	 * This is what highlight.js uses.
+	 *
+	 * @var array
+	 */
 	public static $highlight_codes = array(
 		'1c'             => '1C:Enterprise (v7, v8)',
 		'abnf'           => 'Augmented Backus-Naur Form',
@@ -225,7 +231,7 @@ class Highlight extends ModuleAbstract {
 	 * Constant. Should be same as `Markdown::MD_POST_META_HIGHLIGHT`.
 	 */
 	const MD_POST_META_HIGHLIGHT = '_githuber_highlightjs';
-	
+
 	/**
 	 * Constructer.
 	 */
@@ -243,10 +249,10 @@ class Highlight extends ModuleAbstract {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
- 
+
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
@@ -274,7 +280,7 @@ class Highlight extends ModuleAbstract {
 
 	/**
 	 * Register JS files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
@@ -298,7 +304,7 @@ class Highlight extends ModuleAbstract {
 					}
 					break;
 
-				default: 
+				default:
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/highlight.js/highlight.min.js';
 
 					if ( ! empty( $highlight_meta_array ) ) {

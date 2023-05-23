@@ -13,6 +13,9 @@
 
 namespace Githuber\Module;
 
+/**
+ * KaTeX.
+ */
 class KaTeX extends ModuleAbstract {
 
 	/**
@@ -48,19 +51,19 @@ class KaTeX extends ModuleAbstract {
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles'), $this->css_priority );
+		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), $this->css_priority );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
- 
+
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
 		if ( $this->is_module_should_be_loaded( self::MD_POST_META_KATEX ) ) {
-			
+
 			$option = githuber_get_option( 'katex_src', 'githuber_modules' );
 
 			switch ( $option ) {
@@ -75,14 +78,14 @@ class KaTeX extends ModuleAbstract {
 				default:
 					$style_url = $this->githuber_plugin_url . 'assets/vendor/katex/katex.min.css';
 					break;
-			} 
+			}
 			wp_enqueue_style( 'katex', $style_url, array(), $this->katex_version, 'all' );
 		}
 	}
 
 	/**
 	 * Register JS files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
@@ -102,7 +105,7 @@ class KaTeX extends ModuleAbstract {
 				default:
 					$script_url = $this->githuber_plugin_url . 'assets/vendor/katex/katex.min.js';
 					break;
-			} 
+			}
 			wp_enqueue_script( 'katex', $script_url, array(), $this->katex_version, true );
 		}
 	}
@@ -154,25 +157,29 @@ class KaTeX extends ModuleAbstract {
 
 	/**
 	 * Katex Inline Markup
-	 * 
+	 *
 	 * Ex.
 	 * `$$ x_{1,2} = {-b\pm\sqrt{b^2 - 4ac} \over 2a}.$$`
 	 *
-	 * @param string  $content HTML or Markdown content.
-	 * @return void
+	 * @param string $content HTML or Markdown content.
+	 * @return string
 	 */
 	public static function katex_inline_markup( $content ) {
 
-		$regex = '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix';
-		$result = preg_replace_callback( $regex, function() {
-			$matches = func_get_arg(0);
+		$regex  = '%<code>\$\$((?:[^$]+ |(?<=(?<!\\\\)\\\\)\$ )+)(?<!\\\\)\$\$<\/code>%ix';
+		$result = preg_replace_callback(
+			$regex,
+			function () {
+				$matches = func_get_arg( 0 );
 
-			if ( ! empty( $matches[1] ) ) {
-				$katex = $matches[1];
-				$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
-				return '<code class="katex-inline">' . trim( $katex ) . '</code>';
-			}
-		}, $content );
+				if ( ! empty( $matches[1] ) ) {
+					$katex = $matches[1];
+					$katex = str_replace( array( '&lt;', '&gt;', '&quot;', '&#039;', '&#038;', '&amp;', "\n", "\r" ), array( '<', '>', '"', "'", '&', '&', ' ', ' ' ), $katex );
+					return '<code class="katex-inline">' . trim( $katex ) . '</code>';
+				}
+			},
+			$content
+		);
 
 		if ( ! empty( $result ) ) {
 			return $result;

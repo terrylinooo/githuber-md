@@ -13,11 +13,14 @@
 
 namespace Githuber\Module;
 
+/**
+ * Task List.
+ */
 class TaskList {
 
 	/**
 	 * Support Github Flavored Markdown task lists.
-	 * 
+	 *
 	 * @param string $text HTML content.
 	 * @return string filtered HTML content.
 	 */
@@ -26,8 +29,8 @@ class TaskList {
 		$unchecked_item = '<li class="gfm-task-list"><input type="checkbox" checked>$1$2';
 
 		// Replace task-list signs to corresponding HTML code.
-		$text = preg_replace( "#<li>\[\s\] (.*?)([</li>|<ul>])#", $checked_item, $text );
-		$text = preg_replace( "#<li>\[[x]\] (.*?)([</li>|<ul>])#", $unchecked_item, $text );
+		$text = preg_replace( '#<li>\[\s\] (.*?)([</li>|<ul>])#', $checked_item, $text );
+		$text = preg_replace( '#<li>\[[x]\] (.*?)([</li>|<ul>])#', $unchecked_item, $text );
 		return $text;
 	}
 }

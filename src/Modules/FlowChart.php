@@ -13,6 +13,9 @@
 
 namespace Githuber\Module;
 
+/**
+ * Flow Chart.
+ */
 class FlowChart extends ModuleAbstract {
 
 	/**
@@ -20,7 +23,7 @@ class FlowChart extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-    public $flowchart_version = '1.14.1'; // 1.11.3 => 1.14.1
+	public $flowchart_version = '1.14.1'; // 1.11.3 => 1.14.1
 
 	/**
 	 * The version of raphael.js we are using.
@@ -28,7 +31,7 @@ class FlowChart extends ModuleAbstract {
 	 * @var string
 	 */
 	public $raphael_version = '2.2.27';
-	
+
 	/**
 	 * Constants.
 	 */
@@ -50,10 +53,10 @@ class FlowChart extends ModuleAbstract {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
- 
+
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
@@ -62,7 +65,7 @@ class FlowChart extends ModuleAbstract {
 
 	/**
 	 * Register JS files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
@@ -89,7 +92,7 @@ class FlowChart extends ModuleAbstract {
 					$script_url[0] = $this->githuber_plugin_url . 'assets/vendor/raphael/raphael.min.js';
 					$script_url[1] = $this->githuber_plugin_url . 'assets/vendor/flowchart/flowchart.min.js';
 					break;
-			} 
+			}
 			wp_enqueue_script( 'raphael', $script_url[0], array(), $this->raphael_version, true );
 			wp_enqueue_script( 'flowchart', $script_url[1], array(), $this->flowchart_version, true );
 		}

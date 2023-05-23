@@ -13,6 +13,9 @@
 namespace Githuber\Controller;
 use League\HTMLToMarkdown\HtmlConverter;
 
+/**
+ * Class HtmlToMarkdown
+ */
 class HtmlToMarkdown extends ControllerAbstract {
 
 	/**
@@ -45,12 +48,14 @@ class HtmlToMarkdown extends ControllerAbstract {
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 
 			// Remove auto-save function.
-			add_action( 'admin_enqueue_scripts', array( $this , 'remove_autosave' ), 100 );
+			add_action( 'admin_enqueue_scripts', array( $this, 'remove_autosave' ), 100 );
 		}
 	}
 
 	/**
 	 * Register CSS style files.
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 
@@ -58,6 +63,8 @@ class HtmlToMarkdown extends ControllerAbstract {
 
 	/**
 	 * Register JS files.
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 		wp_enqueue_script( 'githuber-md-h2m', $this->githuber_plugin_url . 'assets/js/githuber-md-h2m.js', array(), $this->version, true );
@@ -72,14 +79,14 @@ class HtmlToMarkdown extends ControllerAbstract {
 	 * Remove auto-save function.
 	 */
 	function remove_autosave() {
-		wp_dequeue_script('autosave');
+		wp_dequeue_script( 'autosave' );
 	}
 
 	/**
 	 * Register the `HtmlToMarkdown` meta box in the post-editor.
 	 */
 	public function add_meta_box() {
-		
+
 		if ( ! githuber_current_user_can( 'edit_posts' ) ) {
 			return false;
 		}
@@ -93,7 +100,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 			'high'
 		);
 	}
-	
+
 	/**
 	 * Show `HtmlToMarkdown` meta box.
 	 */
@@ -122,21 +129,14 @@ class HtmlToMarkdown extends ControllerAbstract {
 			$is_line_break = true;
 		}
 
-		if ( ! isset( $_POST['post_id'] ) ) {
-			//return;
-		}
-
 		if ( ! empty( $_POST['post_content'] ) ) {
 			$post_content = $_POST['post_content'];
 		}
 
-		//$post_id = (int) $_POST['post_id'];
-		//$post    = (array) get_post( $post_id );
-
 		$converter = new HtmlConverter();
-		$converter->getConfig()->setOption('strip_tags', $is_strip_tags);
-		$converter->getConfig()->setOption('hard_break', $is_line_break);
-		$converter->getConfig()->setOption('header_style', 'atx');
+		$converter->getConfig()->setOption( 'strip_tags', $is_strip_tags );
+		$converter->getConfig()->setOption( 'hard_break', $is_line_break );
+		$converter->getConfig()->setOption( 'header_style', 'atx' );
 
 		$markdown = $converter->convert( $post_content );
 		$markdown = $this->filter_wordpress_html( $markdown );
@@ -148,8 +148,8 @@ class HtmlToMarkdown extends ControllerAbstract {
 			);
 		}
 
-		header('Content-type: application/json');
-		
+		header( 'Content-type: application/json' );
+
 		echo json_encode( $response );
 
 		// To avoid wp_ajax return "0" string to break the vaild json string.
@@ -159,7 +159,7 @@ class HtmlToMarkdown extends ControllerAbstract {
 	/**
 	 * Strip slash and quotes that added by jQuery AJAX.
 	 *
-	 * @param string HTML string
+	 * @param string $content HTML string that converted from Markdown.
 	 * @return string
 	 */
 	private function filter_wordpress_html( $content ) {

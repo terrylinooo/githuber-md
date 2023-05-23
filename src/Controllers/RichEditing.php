@@ -11,11 +11,13 @@
  */
 
 namespace Githuber\Controller;
-use Githuber\Controller\Monolog as Monolog;
 
+/**
+ * Class RichEditing
+ */
 class RichEditing {
 
-	const MD_POST_META_ENABLED  = '_is_githuber_markdown_enabled';
+	const MD_POST_META_ENABLED = '_is_githuber_markdown_enabled';
 
 	/**
 	 * Constructer.
@@ -30,14 +32,14 @@ class RichEditing {
 	public function enable() {
 		add_action( 'admin_init', array( $this, '_rich_editing_true' ) );
 	}
-		
+
 	/**
 	 * Enable rich editor.
 	 */
 	public function disable() {
 		add_action( 'admin_init', array( $this, '_rich_editing_false' ) );
 	}
-		
+
 	/**
 	 * Apply hook for enabling rich editor.
 	 */
@@ -47,10 +49,10 @@ class RichEditing {
 		if ( ! user_can_richedit() ) {
 			update_user_option( $current_user->ID, 'rich_editing', 'true', true );
 		}
-		add_filter( 'user_can_richedit' , '__return_true', 50 );
+		add_filter( 'user_can_richedit', '__return_true', 50 );
 	}
 
-		/**
+	/**
 	 * Apply hook for disabling rich editor.
 	 */
 	public function _rich_editing_false() {
@@ -59,7 +61,7 @@ class RichEditing {
 		if ( user_can_richedit() ) {
 			update_user_option( $current_user->ID, 'rich_editing', 'false', true );
 		}
-		add_filter( 'user_can_richedit' , '__return_false', 50 );
+		add_filter( 'user_can_richedit', '__return_false', 50 );
 	}
 
 	/**
@@ -67,7 +69,7 @@ class RichEditing {
 	 */
 	public function enable_gutenberg() {
 		if ( $GLOBALS['wp_version'] > '5.0' ) {
-			add_filter('use_block_editor_for_post', '__return_true', 5);
+			add_filter( 'use_block_editor_for_post', '__return_true', 5 );
 		}
 	}
 
@@ -76,7 +78,7 @@ class RichEditing {
 	 */
 	public function disable_gutenberg() {
 		if ( $GLOBALS['wp_version'] > '5.0' ) {
-			add_filter('use_block_editor_for_post', '__return_false', 5);
+			add_filter( 'use_block_editor_for_post', '__return_false', 5 );
 		}
 	}
 }

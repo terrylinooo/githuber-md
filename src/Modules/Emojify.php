@@ -45,14 +45,14 @@ class Emojify extends ModuleAbstract {
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles'), $this->css_priority );
+		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ), $this->css_priority );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
 
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
@@ -77,7 +77,7 @@ class Emojify extends ModuleAbstract {
 
 	/**
 	 * Register JS files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
@@ -96,7 +96,7 @@ class Emojify extends ModuleAbstract {
 			default:
 				$script_url = $this->githuber_plugin_url . 'assets/vendor/emojify/js/emojify.min.js';
 				break;
-		} 
+		}
 		wp_enqueue_script( 'emojify', $script_url, array(), $this->emojify_version, true );
 	}
 
@@ -121,7 +121,7 @@ class Emojify extends ModuleAbstract {
 			default:
 				$img_dir = $this->githuber_plugin_url . 'assets/vendor/emojify/images';
 				break;
-		} 
+		}
 
 		$script = '
 			<script id="module-emojify">

@@ -14,8 +14,16 @@ use Githuber\Controller as Controller;
 use Githuber\Module as Module;
 use Githuber\Controller\Monolog as Monolog;
 
+/**
+ * Main class.
+ */
 class Githuber {
 
+	/**
+	 * Current browsing URL.
+	 *
+	 * @var string
+	 */
 	public $current_url;
 
 	/**
@@ -35,22 +43,28 @@ class Githuber {
 		$this->current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 		// Only use it in DEBUG mode.
-		githuber_logger( 'Hello, Githuber MD.', array(
-			'wp_version'  => $GLOBALS['wp_version'],
-			'php_version' => phpversion(),
-		) );
+		githuber_logger(
+			'Hello, Githuber MD.',
+			array(
+				'wp_version'  => $GLOBALS['wp_version'],
+				'php_version' => phpversion(),
+			)
+		);
 
 		// If in Admin Panel and WordPress > 5.0, load Class editor and disable Gutenberg editor.
 		if ( $GLOBALS['wp_version'] > '5.0' && is_admin() ) {
-			add_filter('use_block_editor_for_post', '__return_false', 5);
+			add_filter( 'use_block_editor_for_post', '__return_false', 5 );
 		}
 
-		// Load TOC widget. // 
-		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
-			if ( 'yes' == githuber_get_option( 'is_toc_widget', 'githuber_modules' ) ) {
-				add_action( 'widgets_init', function() {
-					register_widget( 'Githuber_Widget_Toc' );
-				} );
+		// Load TOC widget. //
+		if ( 'yes' === githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+			if ( 'yes' === githuber_get_option( 'is_toc_widget', 'githuber_modules' ) ) {
+				add_action(
+					'widgets_init',
+					function () {
+						register_widget( 'Githuber_Widget_Toc' );
+					}
+				);
 			}
 		}
 
@@ -63,7 +77,7 @@ class Githuber {
 
 	/**
 	 * Initialize everything the Githuber plugin needs.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function init() {
@@ -76,25 +90,25 @@ class Githuber {
 
 			$setting = new Controller\Setting();
 			$setting->init();
-	
+
 			if ( 'yes' === githuber_get_option( 'support_image_paste', 'githuber_modules' ) ) {
 				$image_paste = new Controller\ImagePaste();
 				$image_paste->init();
 			}
 
 			if ( 'yes' === githuber_get_option( 'editor_html_decode', 'githuber_markdown' ) ) {
-				$customMediaLibrary = new Controller\CustomMediaLibrary();
-				$customMediaLibrary->init();
+				$custom_media_library = new Controller\CustomMediaLibrary();
+				$custom_media_library->init();
 			}
 
 			if ( 'yes' === githuber_get_option( 'editor_spell_check', 'githuber_markdown' ) ) {
-				$spellCheck = new Controller\SpellCheck();
-				$spellCheck->init();
+				$spell_check = new Controller\SpellCheck();
+				$spell_check->init();
 			}
 
 			if ( 'yes' === githuber_get_option( 'keyword_suggestion_tool', 'githuber_markdown' ) ) {
-				$keywordSuggestion = new Controller\KeywordSuggestion();
-				$keywordSuggestion->init();
+				$keyword_suggestion = new Controller\KeywordSuggestion();
+				$keyword_suggestion->init();
 			}
 
 			$markdown = new Controller\Markdown();
@@ -103,7 +117,7 @@ class Githuber {
 
 		/**
 		 * Let's start loading frontend modules.
-		 */ 
+		 */
 
 		// Module Name: FlowChart
 		if ( 'yes' === githuber_get_option( 'support_flowchart', 'githuber_modules' ) ) {
@@ -148,7 +162,7 @@ class Githuber {
 		}
 
 		// Replace `&amp;` to `&` in URLs in post content.
-		if ( 'yes' == githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
+		if ( 'yes' === githuber_get_option( 'support_toc', 'githuber_modules' ) ) {
 			$module_toc = new Module\Toc();
 			$module_toc->init();
 		}
@@ -175,17 +189,26 @@ class Githuber {
 
 		// Replace `&amp;` to `&` in URLs in post content.
 		if ( 'yes' === githuber_get_option( 'restore_ampersands', 'githuber_preferences' ) ) {
-			add_filter( 'the_content', function( $string ) {
-				return preg_replace_callback( '|<a\b([^>]*)>(.*?)</a>|', function( $matches ) {
-					return '<a' . str_replace( '&amp;', '&', $matches[1] ) . '>' . $matches[2] . '</a>';
-				}, $string );
-			}, 10, 1 );
+			add_filter(
+				'the_content',
+				function( $string ) {
+					return preg_replace_callback(
+						'|<a\b([^>]*)>(.*?)</a>|',
+						function ( $matches ) {
+							return '<a' . str_replace( '&amp;', '&', $matches[1] ) . '>' . $matches[2] . '</a>';
+						},
+						$string
+					);
+				},
+				10,
+				1
+			);
 		}
 	}
 
 	/**
 	 * Load plugin textdomain.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function load_textdomain() {
@@ -194,7 +217,7 @@ class Githuber {
 
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
@@ -215,7 +238,7 @@ class Githuber {
 
 	/**
 	 * Print Javascript plaintext in page footer.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_print_footer_scripts() {

@@ -8,14 +8,16 @@
  * @package Githuber
  * @since 1.10.2
  * @version 1.10.2
- * 
+ *
  * Hunspell dictories source:
  * https://spellcheck-dictionaries.github.io/
- * 
  */
 
 namespace Githuber\Controller;
 
+/**
+ * The spell check controller.
+ */
 class SpellCheck extends ControllerAbstract {
 
 	/**
@@ -39,17 +41,19 @@ class SpellCheck extends ControllerAbstract {
 	 */
 	public function init() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-    }
-    
+	}
+
 	/**
 	 * Initalize to WP `admin_init` hook.
 	 */
 	public function admin_init() {
-        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-    }
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+	}
 
 	/**
 	 * Register CSS style files.
+	 *
+	 * @param string $hook_suffix The hook suffix.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 
@@ -57,9 +61,11 @@ class SpellCheck extends ControllerAbstract {
 
 	/**
 	 * Register JS files.
+	 *
+	 * @param string $hook_suffix The hook suffix.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
-        wp_enqueue_script( 'githuber-md-typo-check', $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/typo.js', array( 'editormd' ), $this->spellcheck_varsion, true );
-        wp_enqueue_script( 'githuber-md-spell-check', $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/spell-checker.js', array( 'editormd' ), $this->spellcheck_varsion, true );
+		wp_enqueue_script( 'githuber-md-typo-check', $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/typo.js', array( 'editormd' ), $this->spellcheck_varsion, true );
+		wp_enqueue_script( 'githuber-md-spell-check', $this->githuber_plugin_url . 'assets/vendor/editor.md/lib/codemirror/addon/spellcheck/spell-checker.js', array( 'editormd' ), $this->spellcheck_varsion, true );
 	}
 }

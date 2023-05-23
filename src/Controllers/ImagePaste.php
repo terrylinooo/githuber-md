@@ -12,6 +12,9 @@
 
 namespace Githuber\Controller;
 
+/**
+ * Class ImagePaste
+ */
 class ImagePaste extends ControllerAbstract {
 
 	/**
@@ -51,6 +54,8 @@ class ImagePaste extends ControllerAbstract {
 
 	/**
 	 * Register CSS style files.
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 
@@ -58,6 +63,8 @@ class ImagePaste extends ControllerAbstract {
 
 	/**
 	 * Register JS files.
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 		wp_enqueue_script( 'image-paste', $this->githuber_plugin_url . 'assets/vendor/inline-attachment/inline-attachment.min.js', array(), $this->imagepaste_version, true );
@@ -69,7 +76,7 @@ class ImagePaste extends ControllerAbstract {
 	 */
 	public function admin_githuber_image_paste() {
 		$response = array();
-		
+
 		if ( isset( $_FILES['file'], $_GET['_wpnonce'], $_GET['post_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'image_paste_action_' . $_GET['post_id'] ) && current_user_can( 'edit_post', $_GET['post_id'] ) ) {
 			$image_src        = githuber_get_option( 'image_paste_src', 'githuber_modules' );
 			$imgur_client_id  = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
@@ -82,37 +89,40 @@ class ImagePaste extends ControllerAbstract {
 			$file_mimetype = $file['type'];
 
 			if ( ! $is_file_image || 'image/png' !== $file_mimetype ) {
+				/* translators: %s: the service provider's name */
 				$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Githuber MD' );
 				echo json_encode( $response );
 				wp_die();
 			}
-	
+
 			if ( 'imgur' === $image_src && ! empty( $imgur_client_id ) ) {
-				
-				if ( function_exists( 'curl_init') ) {
+
+				if ( function_exists( 'curl_init' ) ) {
 					$image = file_get_contents( $file['tmp_name'] );
 					$data  = $this->upload_to_imgur( $image, $imgur_client_id );
 
 					if ( true === $data['success'] ) {
 						$response['filename'] = $data['data']['link'];
 					} else {
+						/* translators: %s: the service provider's name */
 						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'Imgur' );
 					}
 				} else {
 					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
 				}
 			} elseif ( 'smms' === $image_src ) {
-				
-				if ( function_exists( 'curl_init') ) {
+
+				if ( function_exists( 'curl_init' ) ) {
 					$image    = $file['tmp_name'];
 					$filename = uniqid() . '.png';
 
-					$data  = $this->upload_to_smms( $image, $filename, $smms_api_key );
+					$data = $this->upload_to_smms( $image, $filename, $smms_api_key );
 
 					if ( 'success' === $data['code'] ) {
 						$response['filename'] = $data['data']['url'];
 					} else {
-						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'sm.mse' ) . '(' . json_encode($data) . ')';
+						/* translators: %s: the service provider's name */
+						$response['error'] = sprintf( __( 'Error while processing your request to %s!', 'wp-githuber-md' ), 'sm.mse' ) . '(' . json_encode( $data ) . ')';
 
 						if ( ! empty( $data['msg'] ) ) {
 							$response['error'] .= $data['msg'];
@@ -127,8 +137,8 @@ class ImagePaste extends ControllerAbstract {
 					$upload_dir  = wp_upload_dir();
 					$upload_path = $upload_dir['path'];
 					$online_path = $upload_dir['url'];
-
-					$filename = uniqid() . '.' . ( pathinfo( $file['name'], PATHINFO_EXTENSION ) ? : 'png' );
+					$ext_name    = pathinfo( $file['name'], PATHINFO_EXTENSION );
+					$filename    = uniqid() . '.' . ( $ext_name ? $ext_name : 'png' );
 
 					if ( is_ssl() ) {
 						$online_path = str_replace( 'http://', 'https://', $online_path );
@@ -159,7 +169,7 @@ class ImagePaste extends ControllerAbstract {
 
 	/**
 	 * Upload images to Imgur.com
-	 * 
+	 *
 	 * @param string $image     Image binary string.
 	 * @param string $client_id Imgur application Client ID.
 	 * @return array Response from Imgur image API.
@@ -179,7 +189,7 @@ class ImagePaste extends ControllerAbstract {
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
-		
+
 		$result = curl_exec( $ch );
 		curl_close( $ch );
 
@@ -188,7 +198,7 @@ class ImagePaste extends ControllerAbstract {
 
 	/**
 	 * Upload images to sm.ms (v2 API)
-	 * 
+	 *
 	 * @param string $image     Image binary string.
 	 * @param string $filename  Filename.
 	 * @param string $api_key   sm.ms API key (required since v2 API.)
@@ -210,10 +220,10 @@ class ImagePaste extends ControllerAbstract {
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
 
 		$header[] = 'Content-Type: multipart/form-data';
-    	$header[] = 'Authorization: ' . $api_key;
+		$header[] = 'Authorization: ' . $api_key;
 
-    	curl_setopt( $ch, CURLOPT_HTTPHEADER, $header );
-		
+		curl_setopt( $ch, CURLOPT_HTTPHEADER, $header );
+
 		$result = curl_exec( $ch );
 		curl_close( $ch );
 
@@ -222,7 +232,7 @@ class ImagePaste extends ControllerAbstract {
 
 	/**
 	 * Upload images to sm.ms (deprecated)
-	 * 
+	 *
 	 * @param string $image     Image binary string.
 	 * @param string $filename  Filename.
 	 * @return array Response from sm.ms image API.
@@ -241,7 +251,7 @@ class ImagePaste extends ControllerAbstract {
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
-		
+
 		$result = curl_exec( $ch );
 		curl_close( $ch );
 

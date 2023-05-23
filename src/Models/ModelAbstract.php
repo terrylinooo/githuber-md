@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Class ModelAbstract
- * 
+ *
  * Models are specifically used for dealing with the data exchange between controller and database.
  *
  * @author Terry Lin
@@ -15,6 +14,9 @@
 
 namespace Githuber\Model;
 
+/**
+ * ModelAbstract class.
+ */
 abstract class ModelAbstract {
 
 	/**
@@ -26,7 +28,7 @@ abstract class ModelAbstract {
 
 	/**
 	 * Constructer.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct() {

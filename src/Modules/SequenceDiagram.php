@@ -2,7 +2,7 @@
 /**
  * Module Name: Sequence Diagram
  * Module Description: Turn text into vector UML sequence diagrams.
- * 
+ *
  * JavaScript package: https://github.com/bramp/js-sequence-diagrams
  *
  * @author Terry Lin
@@ -15,6 +15,9 @@
 
 namespace Githuber\Module;
 
+/**
+ * Sequence Diagram.
+ */
 class SequenceDiagram extends ModuleAbstract {
 
 	/**
@@ -22,7 +25,7 @@ class SequenceDiagram extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-    public $sequence_diagram_version = '1.0.6';
+	public $sequence_diagram_version = '1.0.6';
 
 	/**
 	 * The version of raphael.js we are using.
@@ -30,13 +33,13 @@ class SequenceDiagram extends ModuleAbstract {
 	 * @var string
 	 */
 	public $raphael_version = '2.2.27';
-	
+
 	/**
 	 * The version of underscore.js we are using.
 	 *
 	 * @var string
 	 */
-    public $underscore_version = '2.2.27';
+	public $underscore_version = '2.2.27';
 
 	/**
 	 * Constructer.
@@ -59,10 +62,10 @@ class SequenceDiagram extends ModuleAbstract {
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
 	}
- 
+
 	/**
 	 * Register CSS style files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_styles() {
@@ -71,7 +74,7 @@ class SequenceDiagram extends ModuleAbstract {
 
 	/**
 	 * Register JS files for frontend use.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function front_enqueue_scripts() {
@@ -96,7 +99,7 @@ class SequenceDiagram extends ModuleAbstract {
 					$script_url[1] = $this->githuber_plugin_url . 'assets/vendor/underscore/underscore.min.js';
 					$script_url[2] = $this->githuber_plugin_url . 'assets/vendor/js-sequence-diagrams/sequence-diagram.min.js';
 					break;
-			} 
+			}
 
 			wp_enqueue_script( 'raphael', $script_url[0], array(), $this->raphael_version, true );
 			wp_enqueue_script( 'underscore', $script_url[1], array(), $this->underscore_version, true );
@@ -122,7 +125,7 @@ class SequenceDiagram extends ModuleAbstract {
 							});
 						}
 					});
-                })(jQuery);
+				})(jQuery);
 			</script>
 		';
 		echo preg_replace( '/\s+/', ' ', $script );

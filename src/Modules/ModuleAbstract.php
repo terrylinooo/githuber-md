@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Class ModuleAbstract
- * 
+ *
  * Modules are specifically used for frontend.
  *
  * @author Terry Lin
@@ -15,6 +14,9 @@
 
 namespace Githuber\Module;
 
+/**
+ * ModuleAbstract.
+ */
 abstract class ModuleAbstract {
 
 	/**
@@ -33,14 +35,14 @@ abstract class ModuleAbstract {
 
 	/**
 	 * Constructer.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct() {
 		/**
 		 * Basic plugin information. Mapping from the Constant in the plugin loader script.
 		 */
-		$this->githuber_plugin_url  = GITHUBER_PLUGIN_URL;
+		$this->githuber_plugin_url = GITHUBER_PLUGIN_URL;
 	}
 
 	/**
@@ -49,7 +51,7 @@ abstract class ModuleAbstract {
 	 * @return void
 	 */
 	abstract public function init();
-	
+
 	/**
 	 * Register CSS style files for frontend use.
 	 *
@@ -73,13 +75,15 @@ abstract class ModuleAbstract {
 
 	/**
 	 * Check if this module should be loaded.
+	 *
+	 * @param string $meta_name The meta name.
 	 */
 	public function is_module_should_be_loaded( $meta_name ) {
 		if ( empty( self::$front_post_id ) ) {
 			// Get current post ID if an user is viewing a post.
 			self::$front_post_id = githuber_get_current_post_id();
-		} 
-		
+		}
+
 		if ( ! empty( self::$front_post_id ) ) {
 			$post_meta = get_metadata( 'post', self::$front_post_id, $meta_name );
 			if ( empty( $post_meta[0] ) ) {

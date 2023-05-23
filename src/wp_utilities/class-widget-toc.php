@@ -39,10 +39,12 @@ class Githuber_Widget_Toc extends WP_Widget {
 
 	/**
 	 * Outputs the content for the Githuber TOC instance.
+	 *
+	 * @param array $args     Display arguments including 'before_title', 'after_title',
+	 * @param array $instance The settings for the particular instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
-		$title = apply_filters( 'widget_title', $instance['title'] );
- 
+		$title  = apply_filters( 'widget_title', $instance['title'] );
 		$output = $args['before_widget'];
 
 		if ( ! empty( $title ) ) {
@@ -57,20 +59,25 @@ class Githuber_Widget_Toc extends WP_Widget {
 		echo $output;
 	}
 
-	// Widget Backend 
+	/**
+	 * Outputs the options form on admin.
+	 *
+	 * @param array $instance The settings for the particular instance of the widget.
+	 * @return void
+	 */
 	public function form( $instance ) {
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
 		} else {
 			$title = __( 'New title', 'wpb_widget_domain' );
 		}
 		// Widget admin form
-	?>
+		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
-	<?php 
+		<?php
 	}
 
 	/**

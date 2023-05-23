@@ -15,20 +15,28 @@ namespace Githuber\Module;
 use Markdown;
 use ParsedownExtra;
 
+/**
+ * Markdown Extra Parser.
+ */
 class MarkdownExtraParser extends ParsedownExtra {
-
-	// Stores shortcodes we remove and then replace
+	/**
+	 * Stores shortcodes we remove and then replace
+	 *
+	 * @var array
+	 */
 	protected $preserve_text_hash = array();
 
 	/**
 	 * Preserve shortcodes, untouched by Markdown.
 	 * This requires use within a WordPress installation.
+	 *
 	 * @var boolean
 	 */
 	public $preserve_shortcodes = true;
 
 	/**
 	 * Preserve single-line <code> blocks.
+	 *
 	 * @var boolean
 	 */
 	public $preserve_inline_code_blocks = true;
@@ -42,7 +50,9 @@ class MarkdownExtraParser extends ParsedownExtra {
 		$is_html5_figure = githuber_get_option( 'support_html_figure', 'githuber_extensions' );
 
 		if ( 'no' !== $is_html5_figure ) {
+			// @phpcs:ignore
 			$this->InlineTypes['%'] = array( 'Figure' );
+			// @phpcs:ignore
 			$this->inlineMarkerList = '!%"*_&[:<>`~\\';
 		}
 
@@ -65,8 +75,9 @@ class MarkdownExtraParser extends ParsedownExtra {
 
 	/**
 	 * Teansform Markdown to HTML.
-	 * 
+	 *
 	 * @param string $text Markdown content.
+	 * @return string
 	 */
 	public function transform( $text ) {
 
@@ -89,27 +100,28 @@ class MarkdownExtraParser extends ParsedownExtra {
 	/**
 	 * Extend ParseDown for HTML 5 figure tag.
 	 *
-	 * @param array $excerpt
+	 * @param array $excerpt The excerpt.
+	 *
 	 * @return array
 	 */
 	protected function inlineFigure( $excerpt ) {
 
-        if ( !isset( $excerpt['text'][1] ) || '[' !== $excerpt['text'][1] ) {
-            return;
-        }
+		if ( ! isset( $excerpt['text'][1] ) || '[' !== $excerpt['text'][1] ) {
+			return;
+		}
 
-        $excerpt['text']= substr($excerpt['text'], 1);
+		$excerpt['text'] = substr( $excerpt['text'], 1 );
 
-        $link = $this->inlineLink($excerpt);
+		$link = $this->inlineLink( $excerpt );
 
-        if ( null === $link ) {
-            return;
+		if ( null === $link ) {
+			return;
 		}
 
 		$attr_href  = $link['element']['attributes']['href'];
 		$attr_text  = $link['element']['text'];
 		$attr_title = $link['element']['attributes']['title'];
-		
+
 		$markup = '<figure>';
 
 		$markup .= '<img src="' . $attr_href . '" alt="' . $attr_text . '">';
@@ -120,30 +132,31 @@ class MarkdownExtraParser extends ParsedownExtra {
 
 		$markup .= '</figure>';
 
-        $inline = array(
+		$inline = array(
 			'extent'  => $link['extent'] + 1,
 			'markup'  => $markup,
-            'element' => array(
-                'name'       => 'img',
-                'attributes' => array(
-                    'src' => $attr_href,
-                    'alt' => $attr_text,
-                ),
-            ),
-        );
+			'element' => array(
+				'name'       => 'img',
+				'attributes' => array(
+					'src' => $attr_href,
+					'alt' => $attr_text,
+				),
+			),
+		);
 
-        return $inline;
+		return $inline;
 	}
-	
+
 	/**
 	 * The below methods are from Jetpack: Markdown modular
-	 * 
+	 *
 	 * @link https://github.com/Automattic/jetpack/blob/master/_inc/lib/markdown/gfm.php
 	 * @license GPL
 	 */
 
 	/**
 	 * Retrieve the shortcode regular expression for searching.
+	 *
 	 * @return string A regex for grabbing shortcodes.
 	 */
 	protected function get_shortcode_regex() {
@@ -195,9 +208,12 @@ class MarkdownExtraParser extends ParsedownExtra {
 	 * @param  string $text Text that may need preserving
 	 * @return string Text that was preserved if needed
 	 */
-	
 	public function single_line_code_preserve( $text ) {
-		return preg_replace_callback( "/[`]{1}([^\n`]*?[^\n`])[`]{1}/", array( $this, 'do_single_line_code_preserve' ), $text );
+		return preg_replace_callback(
+			"/[`]{1}([^\n`]*?[^\n`])[`]{1}/",
+			array( $this, 'do_single_line_code_preserve' ),
+			$text
+		);
 	}
 
 	/**
@@ -211,7 +227,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 		if ( 'yes' === githuber_get_option( 'support_inline_code_keyboard_style', 'githuber_extensions' ) ) {
 			$first_char = substr( $matches[1], 0, 1 );
 			$last_char  = substr( $matches[1], -1 );
-			
+
 			if ( '{' === $first_char && '}' === $last_char ) {
 				return '<code class="kb-btn">' . $this->hash_block( esc_html( substr( $matches[1], 1, -1 ) ) ) . '</code>';
 			}
@@ -246,7 +262,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 		$block = esc_html( $block );
 		$block = str_replace( '\\', '\\\\', $block );
 		$open  = $matches[1] . $matches[2] . "\n";
-		$end   =  "\n" . $matches[4];
+		$end   = "\n" . $matches[4];
 
 		return $open . $block . $end;
 	}
@@ -275,7 +291,7 @@ class MarkdownExtraParser extends ParsedownExtra {
 
 		$block = str_replace( '&#x60;', '`', $block );
 		$open  = $matches[1] . $matches[2] . "\n";
-		$end   =  "\n" . $matches[4];
+		$end   = "\n" . $matches[4];
 
 		return $open . $block . $end;
 	}
