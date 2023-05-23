@@ -552,7 +552,7 @@ class Setting extends ControllerAbstract {
 				array(
 					'name'    => 'highlight_theme',
 					'label'   => __( 'Theme', 'wp-githuber-md' ),
-					'desc'    => __( 'Choose a preferred theme for the syntax highlighter.', 'wp-githuber-md' ) . ' [<a href="https://highlightjs.org/static/demo/" target="_blank">' . __( 'Demo') . '</a>]',
+					'desc'    => __( 'Choose a preferred theme for the syntax highlighter.', 'wp-githuber-md' ) . ' [<a href="https://highlightjs.org/static/demo/" target="_blank">' . __( 'Demo' ) . '</a>]',
 					'type'    => 'select',
 					'default' => 'default',
 					'parent'  => 'support_highlight',
