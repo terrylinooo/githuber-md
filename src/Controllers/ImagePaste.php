@@ -81,8 +81,8 @@ class ImagePaste extends ControllerAbstract {
 			$image_src        = githuber_get_option( 'image_paste_src', 'githuber_modules' );
 			$imgur_client_id  = githuber_get_option( 'imgur_client_id', 'githuber_modules' );
 			$smms_api_key     = githuber_get_option( 'smms_api_key', 'githuber_modules' );
-			$cheveveto_api_url = githuber_get_option( 'cheveveto_api_url', 'githuber_modules' );
-			$cheveveto_api_key = githuber_get_option( 'cheveveto_api_key', 'githuber_modules' );
+			$chevereto_api_url = githuber_get_option( 'chevereto_api_url', 'githuber_modules' );
+			$chevereto_api_key = githuber_get_option( 'chevereto_api_key', 'githuber_modules' );
 			$is_media_library = githuber_get_option( 'is_image_paste_media_library', 'githuber_modules' );
 
 			$file = $_FILES['file'];
@@ -133,11 +133,11 @@ class ImagePaste extends ControllerAbstract {
 				} else {
 					$response['error'] = __( 'PHP Curl is not installed on your system.', 'wp-githuber-md' );
 				}
-			} elseif ( 'cheveveto' === $image_src && ! empty( $cheveveto_api_url ) && ! empty( $cheveveto_api_key )){
+			} elseif ( 'chevereto' === $image_src && ! empty( $chevereto_api_url ) && ! empty( $chevereto_api_key )){
 
 				if ( function_exists( 'curl_init' ) ) {
 					$image = file_get_contents( $file['tmp_name'] );
-					$data  = $this->upload_to_chevereto( $image,$cheveveto_api_url, $cheveveto_api_key );
+					$data  = $this->upload_to_chevereto( $image,$chevereto_api_url, $chevereto_api_key );
 
 					if ( 200 === $data['status_code'] ) {
 						$response['filename'] = $data['image']['url'];

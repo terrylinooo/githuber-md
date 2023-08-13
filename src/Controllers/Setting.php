@@ -727,7 +727,7 @@ class Setting extends ControllerAbstract {
 						'default' => __( 'default', 'wp-githuber-md' ),
 						'imgur'   => __( 'imgur.com', 'wp-githuber-md' ),
 						'smms'    => __( 'sm.ms', 'wp-githuber-md' ),
-						'cheveveto'=> __( 'cheveveto', 'wp-githuber-md' ),
+						'chevereto'=> __( 'chevereto', 'wp-githuber-md' ),
 					),
 				),
 
@@ -754,9 +754,9 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'name'              => 'cheveveto_api_url',
-					'label'             => __( 'cheveveto api url', 'wp-githuber-md' ),
-					'desc'              => githuber_load_view( 'setting/image-paste-cheveveto-url' ),
+					'name'              => 'chevereto_api_url',
+					'label'             => __( 'chevereto api url', 'wp-githuber-md' ),
+					'desc'              => githuber_load_view( 'setting/image-paste-chevereto-url' ),
 					'placeholder'       => '',
 					'type'              => 'text',
 					'default'           => '',
@@ -765,9 +765,9 @@ class Setting extends ControllerAbstract {
 				),
 
 				array(
-					'name'              => 'cheveveto_api_key',
-					'label'             => __( 'cheveveto api key', 'wp-githuber-md' ),
-					'desc'              => githuber_load_view( 'setting/image-paste-cheveveto-key' ),
+					'name'              => 'chevereto_api_key',
+					'label'             => __( 'chevereto api key', 'wp-githuber-md' ),
+					'desc'              => githuber_load_view( 'setting/image-paste-chevereto-key' ),
 					'placeholder'       => '',
 					'type'              => 'text',
 					'default'           => '',
