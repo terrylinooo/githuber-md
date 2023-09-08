@@ -375,10 +375,11 @@
 
 		lang = lang_aliases[lang] || lang; // resolve alias
 
-		if (lang in Prism.languages) {
-			// the given language is already loaded
-			return true;
-		}
+		// 关掉这个优化, 该优化会导致xml无法正常显示
+		// if (lang in Prism.languages) {
+		// 	// the given language is already loaded
+		// 	return true;
+		// }
 
 		// this will catch extensions like CSS extras that don't add a grammar to Prism.languages
 		var data = lang_data[lang];
