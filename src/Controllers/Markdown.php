@@ -867,11 +867,16 @@ class Markdown extends ControllerAbstract {
 		if ( 'revision' === $postarr['post_type'] && $this->has_markdown( $postarr['post_parent'] ) ) {
 			$this->monitoring['parent'][ $postarr['post_parent'] ] = true;
 		}
-	
-		// Is it support Prism - syntax highlighter.
-		$this->detect_code_languages( $post_id, wp_unslash( $post_data['post_content'] ) );
 
-		$post_data['post_content'] = $this->fix_issue_209( $post_data['post_content'] );
+
+		$post_data['post_content'] = $this->fix_issue_209($post_data['post_content']);
+
+		// if no language type is specified in the code block, we will add a default language type. Otherwise, a code highlighter will not be loaded and
+		// the <pre> experience will be different from any other codeblock.
+		$post_data['post_content'] = preg_replace('/<code((?!class=).)*?>/', '<code class="language-plaintext"$1>', $post_data['post_content']);
+
+		// Is it support Prism - syntax highlighter.
+		$this->detect_code_languages($post_id, wp_unslash($post_data['post_content']));
 
 		return $post_data;
 	}
