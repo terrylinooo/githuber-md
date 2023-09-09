@@ -482,8 +482,8 @@ class Markdown extends ControllerAbstract {
 					$is_mathjax = true;
 				}
 			}
-		} 
-		
+		}
+
 		// If we find inline KaTex syntax.
 		if ( strpos( $post_content, '<code class="katex-inline">' ) !== false ) {
 			$is_katex = true;
@@ -867,11 +867,16 @@ class Markdown extends ControllerAbstract {
 		if ( 'revision' === $postarr['post_type'] && $this->has_markdown( $postarr['post_parent'] ) ) {
 			$this->monitoring['parent'][ $postarr['post_parent'] ] = true;
 		}
-	
-		// Is it support Prism - syntax highlighter.
-		$this->detect_code_languages( $post_id, wp_unslash( $post_data['post_content'] ) );
 
-		$post_data['post_content'] = $this->fix_issue_209( $post_data['post_content'] );
+
+		$post_data['post_content'] = $this->fix_issue_209($post_data['post_content']);
+
+		// if no language type is specified in the code block, we will add a default language type. Otherwise, a code highlighter will not be loaded and
+		// the <pre> experience will be different from any other codeblock.
+		$post_data['post_content'] = preg_replace('/<pre([^>]+)?><code((?!class=)[^>])*?>/', '<pre$1><code class="language-plaintext"$2>', $post_data['post_content']);
+
+		// Is it support Prism - syntax highlighter.
+		$this->detect_code_languages($post_id, wp_unslash($post_data['post_content']));
 
 		return $post_data;
 	}
@@ -1212,8 +1217,8 @@ class Markdown extends ControllerAbstract {
 	/**
 	 * Detect remote images.
 	 *
-	 * @param string $post_content 
-	 * 
+	 * @param string $post_content
+	 *
 	 * @return string
 	 */
 	public function convert_remote_image( $post_content  ) {
@@ -1233,7 +1238,7 @@ class Markdown extends ControllerAbstract {
 		if ( 'yes' === githuber_get_option( 'fetch_remote_image', 'githuber_markdown' ) ) {
 			if ( isset( $_POST['fetch_remote_image'] ) && 'yes' === $_POST['fetch_remote_image'] ) {
 				return true;
-			}	
+			}
 		}
 		return false;
 	}
