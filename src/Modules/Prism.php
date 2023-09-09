@@ -23,7 +23,7 @@ class Prism extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-	public $prism_version = '1.28.0';
+	public $prism_version = '1.29.0';
 
 	/**
 	 * The priority order to load CSS file, the value should be higher than theme's.
@@ -87,6 +87,9 @@ class Prism extends ModuleAbstract {
 		'cfscript'                 => 'CFScript',
 		'chaiscript'               => 'ChaiScript',
 		'cil'                      => 'CIL',
+		'cilk-c'                   => 'cilkc',
+		'cilk-cpp'                 => 'cilkcpp',
+		'cilk'                     => 'cilkcpp',
 		'clike'                    => 'C-like',
 		'clojure'                  => 'Clojure',
 		'cmake'                    => 'CMake',
@@ -343,6 +346,7 @@ class Prism extends ModuleAbstract {
 		'scheme'                   => 'Scheme',
 		'sclang'                   => 'SuperCollider',
 		'scss'                     => 'Sass (Scss)',
+		'sh'                       => 'bash',
 		'sh-session'               => 'Shell session',
 		'shell'                    => 'Shell',
 		'shell-session'            => 'Shell session',
@@ -447,6 +451,8 @@ class Prism extends ModuleAbstract {
 		'cfc'                      => array( 'clike' ),
 		'cfscript'                 => array( 'clike' ),
 		'chaiscript'               => array( 'clike', 'cpp' ),
+		'cilkc'                    => array( 'c' ),
+		'cilkcpp'                  => array( 'cpp' ),
 		'coffee'                   => array( 'javascript' ),
 		'coffeescript'             => array( 'javascript' ),
 		'cpp'                      => array( 'c' ),
@@ -471,6 +477,7 @@ class Prism extends ModuleAbstract {
 		'glsl'                     => array( 'c' ),
 		'gml'                      => array( 'clike' ),
 		'go'                       => array( 'clike' ),
+		'gradle'                   => array( 'clike' ),
 		'groovy'                   => array( 'clike' ),
 		'haml'                     => array( 'ruby' ),
 		'handlebars'               => array( 'markup-templating' ),
