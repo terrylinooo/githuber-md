@@ -75,7 +75,6 @@ class Highlight extends ModuleAbstract {
 		'cpp'            => 'C++',
 		'crmsh'          => 'crmsh',
 		'crystal'        => 'Crystal',
-		'cs'             => 'C#',
 		'csp'            => 'CSP',
 		'css'            => 'CSS',
 		'd'              => 'D',
@@ -115,7 +114,6 @@ class Highlight extends ModuleAbstract {
 		'haskell'        => 'Haskell',
 		'haxe'           => 'Haxe',
 		'hsp'            => 'HSP',
-		'htmlbars'       => 'HTMLBars',
 		'http'           => 'HTTP (Header Plaintext)',
 		'hy'             => 'Hy',
 		'inform7'        => 'Inform 7',
@@ -153,7 +151,6 @@ class Highlight extends ModuleAbstract {
 		'moonscript'     => 'MoonScript',
 		'n1ql'           => 'N1QL',
 		'nginx'          => 'Nginx',
-		'nimrod'         => 'Nim (formerly Nimrod)',
 		'nix'            => 'Nix',
 		'nsis'           => 'NSIS',
 		'objectivec'     => 'Objective-C',
@@ -165,7 +162,6 @@ class Highlight extends ModuleAbstract {
 		'pf'             => 'pf.conf',
 		'pgsql'          => 'PostgreSQL SQL dialect and PL/pgSQL',
 		'php'            => 'PHP',
-		'plaintext'      => 'Plaintext',
 		'pony'           => 'Pony',
 		'powershell'     => 'PowerShell',
 		'processing'     => 'Processing',
@@ -225,6 +221,12 @@ class Highlight extends ModuleAbstract {
 		'xquery'         => 'XQuery',
 		'yaml'           => 'YAML',
 		'zephir'         => 'Zephir',
+		'csharp'         => 'C#',
+		'latex'          => 'LaTeX',
+		'nim'            => 'Nim',
+		'node-repl'      => 'Node.js REPL',
+		'php-template'   => 'PHP Template',
+		'python-repl'    => 'Python REPL'
 	);
 
 	/**
