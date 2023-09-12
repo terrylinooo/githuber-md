@@ -78,77 +78,69 @@ class Clipboard extends ModuleAbstract {
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
-		$script = '
+		$script = <<<EOL
 			<script id="module-clipboard">
 
-				(function($) {
+			document.addEventListener('DOMContentLoaded', function() {
+					const preElements = document.getElementsByTagName("pre");
+					let hasLanguage = false;
 
-					$(function() {
-	
-						var pre = document.getElementsByTagName("pre");
-						var pasteContent = document.getElementById("paste-content");
-						var hasLanguage = false;
-		
-						for (var i = 0; i < pre.length; i++) {
-							var codeClass = pre[i].children[0].className;
-							var isLanguage = codeClass.indexOf("language-");
-		
-							var excludedCodeClassNames = [
-								"language-katex",
-								"language-seq",
-								"language-sequence",
-								"language-flow",
-								"language-flowchart",
-								"language-mermaid",
-							];
-		
-							var isExcluded = excludedCodeClassNames.indexOf(codeClass);
-		
-							if (isExcluded !== -1) {
-								isLanguage = -1;
+					for (let i = 0; i < preElements.length; i++) {
+							if (preElements[i].children[0]) {
+									const codeClass = preElements[i].children[0].className;
+									const isLanguage = codeClass.indexOf("language-");
+
+									const excludedCodeClassNames = [
+											"language-katex",
+											"language-seq",
+											"language-sequence",
+											"language-flow",
+											"language-flowchart",
+											"language-mermaid",
+									];
+
+									const isExcluded = excludedCodeClassNames.indexOf(codeClass) !== -1;
+
+									if (!isExcluded && isLanguage !== -1) {
+											const currentPre = preElements[i];
+											const parent = currentPre.parentNode;
+											const div = document.createElement("div");
+											div.style.position = 'relative';
+
+											parent.replaceChild(div, currentPre);
+
+											const button = document.createElement("button");
+											button.className = "copy-button";
+											button.textContent = "Copy";
+
+											div.appendChild(currentPre);
+											div.appendChild(button);
+
+											hasLanguage = true;
+									}
 							}
-		
-							if (isLanguage !== -1) {
-								var current_pre = pre[i];
-								var parent = current_pre.parentNode;
-								var div = document.createElement("div");
-								div.style[\'position\'] = \'relative\';
+					}
 
-								parent.replaceChild(div, current_pre);
-
-								var button = document.createElement("button");
-								button.className = "copy-button";
-								button.textContent = "Copy";
-
-								div.appendChild(current_pre);
-								div.appendChild(button);
-
-								hasLanguage = true;
-							}
-						};
-
-						if (hasLanguage) {
-							var copyCode = new ClipboardJS(".copy-button", {
-								target: function(trigger) {
-									return trigger.previousElementSibling;
-								}
+					if (hasLanguage) {
+							const copyCode = new ClipboardJS(".copy-button", {
+									target: function(trigger) {
+											return trigger.previousElementSibling;
+									}
 							});
 
 							copyCode.on("success", function(event) {
-								event.clearSelection();
-								event.trigger.textContent = "Copied";
-								window.setTimeout(function() {
-									event.trigger.textContent = "Copy";
-								}, 2000);
+									event.clearSelection();
+									event.trigger.textContent = "Copied";
+									window.setTimeout(function() {
+											event.trigger.textContent = "Copy";
+									}, 2000);
 							});
+					}
+			});
 
-						}
-					});
-
-				})(jQuery);
 
 			</script>
-		';
+		EOL;
 
 		echo preg_replace( '/\s+/', ' ', $script );
 	}
