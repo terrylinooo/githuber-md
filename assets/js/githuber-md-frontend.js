@@ -31,7 +31,10 @@
 
                 for (var i = 0; i < pre.length; i++) {
                     var codeClass = pre[i].children[0].className;
-                    var isLanguage = codeClass.indexOf('language-');
+                    
+                    /** 默认不是代码块 */ 
+                    var isLanguage = -1;
+                    var isExcluded = -1;
 
                     var excludedCodeClassNames = [
                         'language-katex',
@@ -42,7 +45,11 @@
                         'language-mermaid',
                     ];
 
-                    var isExcluded = excludedCodeClassNames.indexOf(codeClass);
+                    /** 如果是字符串再进行语言类型判定 */ 
+                    if ('string' === typeof (codeClass)) { 
+                        isLanguage = codeClass.indexOf('language-');
+                        isExcluded = excludedCodeClassNames.indexOf(codeClass);
+                    }
 
                     if (isExcluded !== -1) {
                         isLanguage = -1;
