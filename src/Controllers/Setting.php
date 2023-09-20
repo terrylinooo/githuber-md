@@ -727,6 +727,7 @@ class Setting extends ControllerAbstract {
 						'default' => __( 'default', 'wp-githuber-md' ),
 						'imgur'   => __( 'imgur.com', 'wp-githuber-md' ),
 						'smms'    => __( 'sm.ms', 'wp-githuber-md' ),
+						'chevereto'=> __( 'chevereto', 'wp-githuber-md' ),
 					),
 				),
 
@@ -745,6 +746,28 @@ class Setting extends ControllerAbstract {
 					'name'              => 'smms_api_key',
 					'label'             => __( 'sm.ms API Key', 'wp-githuber-md' ),
 					'desc'              => githuber_load_view( 'setting/image-paste-smms' ),
+					'placeholder'       => '',
+					'type'              => 'text',
+					'default'           => '',
+					'parent'            => 'support_image_paste',
+					'sanitize_callback' => 'sanitize_text_field',
+				),
+
+				array(
+					'name'              => 'chevereto_api_url',
+					'label'             => __( 'chevereto api url', 'wp-githuber-md' ),
+					'desc'              => githuber_load_view( 'setting/image-paste-chevereto-url' ),
+					'placeholder'       => '',
+					'type'              => 'text',
+					'default'           => '',
+					'parent'            => 'support_image_paste',
+					'sanitize_callback' => 'sanitize_text_field',
+				),
+
+				array(
+					'name'              => 'chevereto_api_key',
+					'label'             => __( 'chevereto api key', 'wp-githuber-md' ),
+					'desc'              => githuber_load_view( 'setting/image-paste-chevereto-key' ),
 					'placeholder'       => '',
 					'type'              => 'text',
 					'default'           => '',
