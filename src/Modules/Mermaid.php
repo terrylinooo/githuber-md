@@ -90,14 +90,31 @@ class Mermaid extends ModuleAbstract {
 		$script = '
 			<script id="module-mermaid">
 				(function($) {
-					$(function() {
-						if (typeof mermaid !== "undefined") {
-							if ($(".language-mermaid").length > 0) {
-								$(".language-mermaid").parent("pre").attr("style", "text-align: center; background: none;");
-								$(".language-mermaid").addClass("mermaid").removeClass("language-mermaid");
-								mermaid.init();
+					$(function () {
+						function try_init() { 
+							if (typeof mermaid !== "undefined") {
+								var clean = true;
+								var target = $(".language-mermaid");
+								if (target.length > 0) {
+									for (var i = 0; i < target.length; i++) { 
+										var element = target[i];
+										if (element.nodeName != "CODE") { 
+											element.removeAttribute("class");
+											clean = false;
+										}
+									}
+								
+									if (clean) {
+										target.parent("pre").attr("style", "text-align: center; background: none;");
+										target.addClass("mermaid").removeClass("language-mermaid");
+										mermaid.init();
+									} else { 
+										try_init();
+									}
+								}
 							}
 						}
+						try_init();
 					});
 				})(jQuery);
 			</script>
