@@ -518,7 +518,8 @@
 	Prism.hooks.add('complete', function (env) {
 		var element = env.element;
 		var language = env.language;
-		if (!element || !language || language === ignored_language) {
+		// mermaid don't highlight, use mermaid.js
+		if (!element || !language || language === ignored_language || language === "mermaid") {
 			return;
 		}
 
