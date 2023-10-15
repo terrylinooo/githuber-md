@@ -28,7 +28,7 @@ Typically you would convert HTML to Markdown if:
 
 1. You have an existing HTML document that needs to be edited by people with good taste.
 2. You want to store new content in HTML format but edit it as Markdown.
-3. You want to convert HTML email to plain text email. 
+3. You want to convert HTML email to plain text email.
 4. You know a guy who's been converting HTML to Markdown for years, and now he can speak Elvish. You'd quite like to be able to speak Elvish.
 5. You just really like Markdown.
 
@@ -95,6 +95,24 @@ $html = '<span>Turnips!</span><div>Monkeys!</div>';
 $markdown = $converter->convert($html); // $markdown now contains ""
 ```
 
+By default, all comments are stripped from the content. To preserve them, use the `preserve_comments` option, like this:
+
+```php
+$converter = new HtmlConverter(array('preserve_comments' => true));
+
+$html = '<span>Turnips!</span><!-- Monkeys! -->';
+$markdown = $converter->convert($html); // $markdown now contains "Turnips!<!-- Monkeys! -->"
+```
+
+To preserve only specific comments, set `preserve_comments` with an array of strings, like this:
+
+```php
+$converter = new HtmlConverter(array('preserve_comments' => array('Eggs!')));
+
+$html = '<span>Turnips!</span><!-- Monkeys! --><!-- Eggs! -->';
+$markdown = $converter->convert($html); // $markdown now contains "Turnips!<!-- Eggs! -->"
+```
+
 ### Style options
 
 By default bold tags are converted using the asterisk syntax, and italic tags are converted using the underlined syntax. Change these by using the `bold_style` and `italic_style` options.
@@ -121,6 +139,21 @@ $markdown = $converter->convert($html); // $markdown now contains "test\nline br
 
 $converter->getConfig()->setOption('hard_break', false); // default
 $markdown = $converter->convert($html); // $markdown now contains "test  \nline break"
+```
+
+### Autolinking options
+
+By default, `a` tags are converted to the easiest possible link syntax, i.e. if no text or title is available, then the `<url>` syntax will be used rather than the full `[url](url)` syntax. Set `use_autolinks` to `false` to change this behavior to always use the full link syntax.
+
+```php
+$converter = new HtmlConverter();
+$html = '<p><a href="https://thephpleague.com">https://thephpleague.com</a></p>';
+
+$converter->getConfig()->setOption('use_autolinks', true);
+$markdown = $converter->convert($html); // $markdown now contains "<https://thephpleague.com>"
+
+$converter->getConfig()->setOption('use_autolinks', false); // default
+$markdown = $converter->convert($html); // $markdown now contains "[https://google.com](https://google.com)"
 ```
 
 ### Passing custom Environment object
@@ -161,7 +194,7 @@ $markdown = $converter->convert($html); // $markdown now contains "### Header" a
 
      Headers of H3 priority and lower always use atx style.
 
-- Links and images are referenced inline. Footnote references (where image src and anchor href attributes are listed in the footnotes) are not used. 
+- Links and images are referenced inline. Footnote references (where image src and anchor href attributes are listed in the footnotes) are not used.
 - Blockquotes aren't line wrapped – it makes the converted Markdown easier to edit.
 
 ### Dependencies
@@ -193,4 +226,3 @@ Use one of these great libraries:
  - [Parsedown](https://github.com/erusev/parsedown)
 
 No guarantees about the Elvish, though.
-
