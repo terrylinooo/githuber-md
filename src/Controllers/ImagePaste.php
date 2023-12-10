@@ -87,6 +87,15 @@ class ImagePaste extends ControllerAbstract {
 
 			$is_file_image = getimagesize( $file['tmp_name'] ) ? true : false;
 			$file_mimetype = $file['type'];
+			$ext_name      = pathinfo( $file['name'], PATHINFO_EXTENSION );
+			$allowed_ext   = array( 'png', 'jpg', 'jpeg', 'gif' );
+
+			if ( ! in_array( $ext_name, $allowed_ext, true ) ) {
+				/* translators: %s: the file's extension name */
+				$response['error'] = sprintf( __( 'The file extension %s is not allowed to upload!', 'wp-githuber-md' ), $ext_name );
+				echo json_encode( $response );
+				wp_die();
+			}
 
 			if ( ! $is_file_image || 'image/png' !== $file_mimetype ) {
 				/* translators: %s: the service provider's name */
@@ -137,7 +146,6 @@ class ImagePaste extends ControllerAbstract {
 					$upload_dir  = wp_upload_dir();
 					$upload_path = $upload_dir['path'];
 					$online_path = $upload_dir['url'];
-					$ext_name    = pathinfo( $file['name'], PATHINFO_EXTENSION );
 					$filename    = uniqid() . '.' . ( $ext_name ? $ext_name : 'png' );
 
 					if ( is_ssl() ) {
