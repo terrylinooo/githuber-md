@@ -28,7 +28,7 @@ The demo shows you the following steps:
 
 ![Screenshot](./assets/images/screenshot-3.gif)
 
-3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result). 
+3. Click "Update" button to save Markdown to `post_content_filtered` and save HTML to `post_content` (it is what you will see in result).
 4. View the result.
 
 ### Video
@@ -43,10 +43,10 @@ https://youtu.be/it1noNCTXa4
 
 ## Download
 
-| source | download | 
-| --- | --- | 
+| source | download |
+| --- | --- |
 | WordPress | https://wordpress.org/plugins/wp-githuber-md |
-| GitHub repository | https://github.com/terrylinooo/githuber-md/releases | 
+| GitHub repository | https://github.com/terrylinooo/githuber-md/releases |
 | PHP Composer | `composer create-project terrylinooo/githuber-md wp-githuber-md` |
 
 ## Installation
@@ -99,6 +99,48 @@ If you're planning to use this plugin in an existing blog, be sure to:
 | Setting Page 1 | ![Setting page 1](https://i.imgur.com/0yhHBhLm.png) | [view](https://i.imgur.com/0yhHBhL.gif) | Markdown settings. |
 | Setting page 2 | ![Setting page 2](https://i.imgur.com/Va8z7Jgm.png) | [view](https://i.imgur.com/Va8z7Jg.gif) | Modules settings. |
 
+### Detecting Language on Past Posts
+
+Already using markdown on past posts and need to rerun the detection logic? Create this file `detect_languages.php` in your WordPress root.
+
+```php
+<?php
+define('WP_USE_THEMES', false);
+require('./wp-load.php');
+
+function detect_all_post_languages() {
+    $markdown_detector = new Githuber\Controller\Markdown();
+
+    // Query all posts
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => -1
+    );
+    $posts_query = new WP_Query($args);
+
+    // Loop through all posts and apply the detect_code_languages function
+    if ($posts_query->have_posts()) {
+        while ($posts_query->have_posts()) {
+            $posts_query->the_post();
+            $post_id = get_the_ID();
+            $content = get_the_content();
+
+            $markdown_detector->detect_code_languages($post_id, $content);
+        }
+        wp_reset_postdata();
+    }
+}
+
+detect_all_post_languages();
+```
+
+Then run it from the command line:
+
+```shell
+wp eval-file detect_languages.php
+```
+
 ### Author
 
 Created by [Terry L.](https://terryl.in) and contributors.
@@ -106,10 +148,10 @@ Thanks for the [donators](https://terryl.in/thank-you/) for supporting me, and t
 
 ### Notes
 
-- [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
+- [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog)
 - [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
 - [Known issues](https://github.com/terrylinooo/githuber-md/wiki/Known-Issues)
-- 
+-
 
 ### License
 
