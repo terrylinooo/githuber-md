@@ -329,34 +329,33 @@ class Highlight extends ModuleAbstract {
 	 * Print Javascript plaintext in page footer.
 	 */
 	public function front_print_footer_scripts() {
-		$script = '
+		$script = <<<EOL
 			<script id="module-highlight-js">
-				(function($) {
-					$(function() {
-						$("pre code").each(function(i, e) {
-							var thisclass = $(this).attr("class");
+				document.addEventListener("DOMContentLoaded", function() {
+						var codeElements = document.querySelectorAll("pre code");
 
-							if (typeof thisclass !== "undefined") {
-								if (
-									thisclass.indexOf("katex") === -1 &&
-									thisclass.indexOf("mermaid") === -1 &&
-									thisclass.indexOf("seq") === -1 &&
-									thisclass.indexOf("flow") === -1
-								) {
-									if (typeof hljs !== "undefined") {
-										$(this).closest("pre").addClass("hljs");
-										hljs.highlightBlock(e);
-									} else {
-										
-										console.log("%c WP Githuber MD %c You have enabled highlight.js modules already, but you have to update this post to take effect, identifying which file should be loaded.\nGithuber MD does not load a whole-fat-packed file for every post.", "background: #222; color: #bada55", "color: #637338");
-									}
+						for (var i = 0; i < codeElements.length; i++) {
+								var thisClass = codeElements[i].getAttribute("class");
+
+								if (thisClass) {
+										if (
+												thisClass.indexOf("katex") === -1 &&
+												thisClass.indexOf("mermaid") === -1 &&
+												thisClass.indexOf("seq") === -1 &&
+												thisClass.indexOf("flow") === -1
+										) {
+												if (typeof hljs !== "undefined") {
+														codeElements[i].closest("pre").classList.add("hljs");
+														hljs.highlightBlock(codeElements[i]);
+												} else {
+														console.log("%c WP Githuber MD %c You have enabled highlight.js modules already, but you have to update this post to take effect, identifying which file should be loaded.\nGithuber MD does not load a whole-fat-packed file for every post.", "background: #222; color: #bada55", "color: #637338");
+												}
+										}
 								}
-							}
-						});
-					});
-				})(jQuery);
+						}
+				});
 			</script>
-		';
+		EOL;
 		echo preg_replace( '/\s+/', ' ', $script );
 	}
 }
