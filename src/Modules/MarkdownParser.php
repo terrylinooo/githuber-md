@@ -39,7 +39,7 @@ class MarkdownParser extends Parsedown {
 	 *
 	 * @var boolean
 	 */
-	public $preserve_inline_code_blocks = true;
+	public $preserve_inline_code_blocks = false;
 
 	/**
 	 * Constructer.
@@ -232,7 +232,8 @@ class MarkdownParser extends Parsedown {
 	 * @return string       Markdown/HTML content with escaped code blocks
 	 */
 	public function codeblock_preserve( $text ) {
-		return preg_replace_callback( "/^(\t*[`~]{3})([^`\n]+)?\n([\s\S]*?)\n(\\1)/m", array( $this, 'do_codeblock_preserve' ), $text );
+		//return preg_replace_callback( "/^(\t*[`~]{3})([^`\n]+)?\n([\s\S]*?)\n(\\1)/m", array( $this, 'do_codeblock_preserve' ), $text );
+		return $text;
 	}
 
 	/**
@@ -264,7 +265,8 @@ class MarkdownParser extends Parsedown {
 	 * @return string Markdown/HTML content
 	 */
 	public function codeblock_restore( $text ) {
-		return preg_replace_callback( "/^(\t*[`~]{3})([^`\n]+)?\n([\s\S]*?)\n(\\1)/m", array( $this, 'do_codeblock_restore' ), $text );
+		//return preg_replace_callback( "/^(\t*[`~]{3})([^`\n]+)?\n([\s\S]*?)\n(\\1)/m", array( $this, 'do_codeblock_restore' ), $text );
+		return $text;
 	}
 
 	/**

@@ -829,6 +829,11 @@ class Markdown extends ControllerAbstract {
 		// also prevent quick edit feature from overriding already-saved markdown (issue https://github.com/Automattic/jetpack/issues/636)
 		if ( 'revision' !== $post_data['post_type'] && ! isset( $_POST['_inline_edit'] ) ) {
 
+			// revert untouched markdown
+			if ( isset( $postarr['content'] ) && ( ! empty( $postarr['content']) ) ) {
+				$post_data['post_content'] = $postarr['content'];
+			}
+
 			$post_data['post_content_filtered'] = $post_data['post_content'];
 			$post_data['post_content'] = $this->transform( $post_data['post_content'], array( 'id' => $post_id ) );
 
