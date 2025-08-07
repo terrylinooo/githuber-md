@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  wordpress:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html/wp-content/plugins/wp-githuber-md
+      - ./vendor:/var/www/html/wp-content/plugins/wp-githuber-md/vendor
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_pass
+    command: >
+      sh -c "php -S 0.0.0.0:8000 -t /var/www/html"
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+

@@ -1,0 +1,108 @@
+name: Build and Deploy
+
+on:
+  release:
+    types: [published]
+
+env:
+  WP_SLUG: wp-githuber-md
+  PLUGIN_FILE: githuber-md.php
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate version and decide publish
+        id: validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_TAG="${{ github.event.release.tag_name }}"
+          TAG="${RELEASE_TAG#v}"  # strip leading v if present
+          printf 'tag=%s\n' "$TAG" >> "$GITHUB_OUTPUT"
+          echo "publish=false" >> "$GITHUB_OUTPUT"
+
+          if [[ "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            [[ -f README.txt ]] || { echo "README.txt not found"; exit 1; }
+            [[ -f "$PLUGIN_FILE" ]] || { echo "Plugin main file not found: $PLUGIN_FILE"; exit 1; }
+
+            STABLE_TAG=$(sed -nE 's/^Stable tag:[[:space:]]*([^[:space:]]+).*$/\1/p' README.txt | head -n1)
+            [[ -n "$STABLE_TAG" ]] || { echo "Stable tag not found in README.txt"; exit 1; }
+
+            PLUGIN_VERSION=$(sed -nE 's/^[[:space:]]*(\*?[[:space:]]*)?Version:[[:space:]]*([0-9][^[:space:]]*).*/\2/p' "$PLUGIN_FILE" | head -n1)
+            [[ -n "$PLUGIN_VERSION" ]] || { echo "Version header not found in $PLUGIN_FILE"; exit 1; }
+
+            echo "Release tag: $RELEASE_TAG"
+            echo "Normalized tag: $TAG"
+            echo "Stable tag: $STABLE_TAG"
+            echo "Plugin version: $PLUGIN_VERSION"
+
+            if [[ "$STABLE_TAG" != "trunk" && "$TAG" != "$STABLE_TAG" ]]; then
+              echo "Release tag and Stable tag do not match"; exit 1
+            fi
+
+            if [[ "$TAG" != "$PLUGIN_VERSION" ]]; then
+              echo "Release tag and Plugin version do not match"; exit 1
+            fi
+
+            echo "Version check passed for official release"
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Pre-release detected ($RELEASE_TAG). Will build but skip deploy."
+          fi
+
+      - name: Build
+        run: |
+          composer install --no-dev --optimize-autoloader
+
+      - name: Verify vendor folder
+        run: |
+          if [ ! -d vendor ]; then
+            echo "vendor/ was not generated. Check Composer logs and PHP platform constraints."
+            exit 1
+          fi
+
+      - name: Stage release payload
+        run: |
+          set -euo pipefail
+          rm -rf .release
+          mkdir -p .release
+          for d in assets languages src vendor; do
+            [ -d "$d" ] && cp -R "$d" .release/
+          done
+          cp -v "$PLUGIN_FILE" .release/
+          cp -v uninstall.php .release/
+          cp -v README.txt .release/
+          cp -v LICENSE .release/
+          echo "Staged payload tree:"
+          (cd .release && find . -maxdepth 2 -print)
+
+      - name: Create release zip
+        run: |
+          cd .release
+          zip -r "../${{ env.WP_SLUG }}-${{ steps.validate.outputs.tag }}.zip" .
+  
+      - name: Attach zip to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.WP_SLUG }}-${{ steps.validate.outputs.tag }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Deploy to WordPress.org
+        if: steps.validate.outputs.publish == 'true'
+        uses: 10up/action-wordpress-plugin-deploy@2.3.0
+        env:
+          SVN_USERNAME: ${{ secrets.WP_SVN_USER }}
+          SVN_PASSWORD: ${{ secrets.WP_SVN_PASS }}
+        with:
+          slug: ${{ env.WP_SLUG }}
+          build-dir: .release
+          generate-zip: true

@@ -46,7 +46,7 @@ function githuber_get_current_post_id() {
 		$post_id = $_REQUEST['post_ID'];
 	}
 	
-	return $post_id;
+	return (int) $post_id;
 }
 
 /**
@@ -111,7 +111,7 @@ function githuber_get_current_post_type() {
 	} elseif ( ! empty( $_REQUEST['post'] ) ) {
 		$post_type = get_post_type( $_REQUEST['post'] );
 	}
-	return $post_type;
+	return sanitize_text_field( $post_type );
 }
 
 /**

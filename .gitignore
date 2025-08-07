@@ -3,5 +3,5 @@ phpunit.xml.dist
 .phpcs.xml.dist
 tests
 bin
-build_release.sh
 .vscode
+vendor/
