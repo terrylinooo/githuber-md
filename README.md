@@ -109,7 +109,15 @@ Thanks for the [donators](https://terryl.in/thank-you/) for supporting me, and t
 - [Changelog](https://github.com/terrylinooo/githuber-md/wiki/Changelog) 
 - [Translations](https://github.com/terrylinooo/githuber-md/wiki/Translations)
 - [Known issues](https://github.com/terrylinooo/githuber-md/wiki/Known-Issues)
-- 
+
+### Development
+
+```
+make up
+make wp.init-dev-site
+```
+Then, you can visit http://localhost:8000 to view the development site.
+Log in to the admin dashboard with username: admin and password: admin.
 
 ### License
 

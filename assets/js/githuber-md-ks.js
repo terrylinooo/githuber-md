@@ -2,24 +2,28 @@
     $(function() {
         var ks = window.ks_config;
 
-        $('#btn-keyword-suggestion-query').click(function() {
+        $('#btn-keyword-suggestion-query').on('click', function () {
             $.ajax({
-                url: ks.ajax_url,
-                type: 'get',
-                dataType: 'json',
-                data: {
+                    url: ks.ajax_url,
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
                     action: 'githuber_keyword_suggestion',
                     post_id: ks.post_id,
                     keyword: $('input[name=ks_keyword]').val(),
                     _wpnonce: $('input[name=ks_nonce]').val()
-                },
-                success: function(data) {
-                    if (data.success) {
-                        $('#display-keyword-suggestion').html(data.result);
-                    }
+                }
+            }).done(function (data) {
+                if (data && data.success && Array.isArray(data.result)) {
+                    const $box = $('#display-keyword-suggestion').empty();
+                    data.result.forEach(function (word) {
+
+                        $('<span>', { class: 'githuber-md-keyword', text: word }).appendTo($box);
+                    });
                 }
             });
         });
+
 
         $('#btn-keyword-suggestion-reset').click(function() {
             $('input[name=ks_keyword]').val('');

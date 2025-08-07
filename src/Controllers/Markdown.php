@@ -390,7 +390,9 @@ class Markdown extends ControllerAbstract {
 			} else {
 				self::$parser_instance = new Module\MarkdownParser();
 			}
+			self::$parser_instance->setSafeMode(true);
 		}
+
 		return self::$parser_instance;
 	}
 
@@ -632,7 +634,7 @@ class Markdown extends ControllerAbstract {
 	public function jetpack_code_snippets() {
 		$this->maybe_load_actions_and_filters();
 
-		if ( defined( 'REST_API_REQUEST' ) && REST_API_REQUEST ) {
+		if ( defined( 'REST_API_REQUEST' ) ) {
 			add_action( 'switch_blog', array( $this, 'maybe_load_actions_and_filters' ), 10, 2 );
 		}
 	}

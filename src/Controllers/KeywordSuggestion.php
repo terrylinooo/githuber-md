@@ -94,51 +94,36 @@ class KeywordSuggestion extends ControllerAbstract {
 	 * Do action hook for keyword suggestions.
 	 */
 	public function admin_githuber_keyword_suggestion() {
+		$response = array(
+			'success' => false,
+			'result'  => array(),
+			'error'   => '',
+		);
 
-        if ( 
-            isset( $_GET['_wpnonce'], $_GET['post_id'], $_GET['keyword'] ) && 
-            wp_verify_nonce( $_GET['_wpnonce'], 'keyword_suggession_action' ) && 
-            current_user_can( 'edit_post', $_GET['post_id'] )
-        ) {
+		// 驗證輸入
+		$nonce   = $_GET['_wpnonce'] ?? '';
+		$post_id = isset($_GET['post_id']) ? absint($_GET['post_id']) : 0;
+		$keyword = isset($_GET['keyword']) ? sanitize_text_field( wp_unslash($_GET['keyword']) ) : '';
 
-            // Default response.
-            $response = array(
-                'success' => false,
-                'result'  => '',
-            );
+		if ( $nonce && $post_id && $keyword
+			&& wp_verify_nonce( $nonce, 'keyword_suggession_action' )
+			&& current_user_can( 'edit_post', $post_id )
+		) {
+			$lang = str_replace( '_', '-', get_locale() );
+			$keyword_string = $this->query( $keyword, $lang );
+			$words = array_filter( array_map( 'trim', explode( ',', (string) $keyword_string ) ) );
+			$safe_words = array_map( 'sanitize_text_field', $words );
 
-            if ( ! empty( $_GET['keyword'] ) ) {
-                $keyword = $_GET['keyword'];
-            }
+			if ( ! empty( $safe_words ) ) {
+				$response['success'] = true;
+				$response['result']  = array_values( $safe_words );
+			}
+		} else {
+			$response['error'] = __( 'Invalid request.', 'wp-githuber-md' );
+		}
 
-            $lang = str_replace( '_', '-', get_locale() );
-
-            $keyword_string = $this->query( $keyword, $lang );
-            $keyword_list   = explode(',', $keyword_string);
-            $result         = '';
-    
-            foreach ($keyword_list as $word) {
-                $result .= '<span class="githuber-md-keyword">' . $word . '</span>';
-            }
-
-            if ( ! empty( $result ) ) {
-                $response = array(
-                    'success' => true,
-                    'result'  => $result,
-                );
-            }
-        
-        } else {
-            $response['error'] = __( 'Error while uploading file.', 'wp-githuber-md' );
-        }
-
-        header('Content-type: application/json');
-
-		echo json_encode( $response );
-
-		// To avoid wp_ajax return "0" string to break the vaild json string.
-		wp_die();
-    }
+		wp_send_json( $response );
+	}
     
     /**
      * Query a keyword's long-tail terms through Google Suggestions.

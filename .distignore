@@ -1,0 +1,19 @@
+# Version control
+.git
+.github
+.gitignore
+
+# Development / CI files
+composer.json
+composer.lock
+phpcs.xml
+Makefile
+docker-compose.yml
+Dockerfile
+
+# Docs
+README.md
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
